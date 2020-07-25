@@ -68,7 +68,7 @@ var path = d3.geoPath()               // path generator that will convert GeoJSO
 
 		
 // Define linear scale for output
-var color = d3.scale.linear()
+var color = d3.scaleLinear()
 			  .range(["rgb(213,222,217)","rgb(69,173,168)","rgb(84,36,55)","rgb(217,91,67)"]);
 
 var legendText = ["Cities Lived", "States Lived", "States Visited", "Nada"];
@@ -165,8 +165,8 @@ svg.selectAll("circle")
       	   .duration(200)      
            .style("opacity", .9);      
            div.text(d.place)
-           .style("left", (d3.event.pageX) + "px")     
-           .style("top", (d3.event.pageY - 28) + "px");    
+           .style("left", (d3.eventPageX) + "px")     
+           .style("top", (d3.eventPageY - 28) + "px");    
 	})   
 
     // fade out tooltip on mouse out               
