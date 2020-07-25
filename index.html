@@ -312,11 +312,11 @@ svg.selectAll("circle")
         },
 
         // Now I can use this dataset:
-        function(data) {
+        function(data_2) {
 
             // Add X axis --> it is a date format
             var x_2 = d3.scaleTime()
-                .domain(d3.extent(data, function(d) { return d.date; }))
+                .domain(d3.extent(data_2, function(d) { return d.date; }))
                 .range([ 0, width ]);
             svg_2.append("g")
                 .attr("transform", "translate(0," + height + ")")
@@ -337,7 +337,7 @@ svg.selectAll("circle")
             */
             // Add the line
             svg_2.append("path")
-                .datum(data)
+                .datum(data_2)
                 .attr("fill", "none")
                 .attr("stroke", "steelblue")
                 .attr("stroke-width", 1.5)
