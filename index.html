@@ -56,6 +56,17 @@ body {
 </head>
 <body>
 <div>
+This is
+This is a test1<br/>
+This is a test2<br/>
+This is a test3<br/>
+This is a test4<br/>
+This is a test5<br/>
+This is a test6<br/>
+This is a test7<br/>
+This is a test8<br/>
+This is a test9<br/>
+This is a test10<br/>
 </div>
 <div id="svg_1"></div>
 <div>
@@ -167,7 +178,7 @@ svg.selectAll("path")
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 
     // add a legend
-    var l_w = 140, l_h = 400;
+    var l_w = 140, l_h = 200;
 
     var key = d3.select("#svg_1")
         .append("svg")
@@ -195,14 +206,14 @@ svg.selectAll("path")
         .attr("stop-opacity", 1);
 
     key.append("rect")
-        .attr("width", l_w - 100)
-        .attr("height", l_h/2)
+        .attr("width", 20)
+        .attr("height", 200)
         .style("fill", "url(#gradient)")
         .attr("transform", "translate(49,5)");
 
 
     var y = d3.scaleLinear()
-        .range([l_h/2, 0])
+        .range([200, 0])
         .domain([0, 450000]);
 
     var yAxis = d3.axisRight(y);
