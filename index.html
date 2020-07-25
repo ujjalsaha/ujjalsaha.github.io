@@ -83,7 +83,7 @@ var path = d3.geoPath()               // path generator that will convert GeoJSO
 // Define linear scale for output
 //var color = d3.scaleLinear().range(["rgb(213,222,217)","rgb(69,173,168)","rgb(84,36,55)","rgb(217,91,67)"]);
 //var color = d3.scaleLinear().range(["blue","red"]);
-var color = d3.scaleLinear().domain([0, 200000, 400000]).range(["gray","orange","red"])
+var color = d3.scaleLinear().domain([0, 400000]).range(["gray", "red"])
 var legendText = ["Minimum Cases", "Maximum cases"];
 
 //Create SVG element and append map to the SVG
@@ -220,7 +220,7 @@ svg.selectAll("circle")
 
     legend.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", "blue")
+        .attr("stop-color", "gray")
         .attr("stop-opacity", 1);
 
     key.append("rect")
