@@ -82,8 +82,8 @@ var path = d3.geoPath()               // path generator that will convert GeoJSO
 		
 // Define linear scale for output
 //var color = d3.scaleLinear().range(["rgb(213,222,217)","rgb(69,173,168)","rgb(84,36,55)","rgb(217,91,67)"]);
-var color = d3.scaleLinear().range(["blue","red"]);
-d3.scaleLinear().domain([0, 200000, 400000]).range(["gray","orange","red"])
+//var color = d3.scaleLinear().range(["blue","red"]);
+var color = d3.scaleLinear().domain([0, 200000, 400000]).range(["gray","orange","red"])
 var legendText = ["Minimum Cases", "Maximum cases"];
 
 //Create SVG element and append map to the SVG
@@ -111,7 +111,7 @@ for (var i = 0; i < data.length; i++) {
 	// Grab State Name
 	var dataState = data[i].state;
 
-	// Grab data value 
+	// Grab positive cases
 	var dataValue = data[i].positive;
 
 	// Find the corresponding state inside the GeoJSON
@@ -147,7 +147,8 @@ svg.selectAll("path")
 	return color(value);
 	} else {
 	//If value is undefined…
-	return "rgb(213,222,217)";
+	//return "rgb(213,222,217)";
+        return "gray";
 	}
 });
 
@@ -195,7 +196,7 @@ svg.selectAll("circle")
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 
     // add a legend
-    var l_w = 140, l_h = 500;
+    var l_w = 140, l_h = 550;
 
     var key = d3.select("body")
         .append("svg")
