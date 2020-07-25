@@ -178,7 +178,7 @@ svg.selectAll("path")
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 
     // add a legend
-    var l_w = 140, l_h = 200;
+    var l_w = 140, l_h = 210;
 
     var key = d3.select("#svg_1")
         .append("svg")
@@ -220,7 +220,7 @@ svg.selectAll("path")
 
     key.append("g")
         .attr("class", "y axis")
-        .attr("transform", "translate(90,5)")
+        .attr("transform", "translate(40,5)")
         .call(yAxis)
 
 
