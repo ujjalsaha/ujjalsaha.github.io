@@ -324,8 +324,9 @@ svg.selectAll("circle")
 
             // Add Y axis
             var y_2 = d3.scaleLinear()
-                .domain([0, d3.max(data, function(d) { console.log(+d.positive); return +d.positive; })])
+                .domain([0, d3.max(data, function(d) { return +d.positive; })])
                 .range([ height, 0 ]);
+            console.log(y_2)
             svg_2.append("g")
                 .call(d3.axisLeft(y_2));
 
