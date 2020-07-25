@@ -286,7 +286,7 @@ svg.selectAll("circle")
 </script>
 <script>
     // set the dimensions and margins of the graph
-    var margin = {top: 10, right: 30, bottom: 30, left: 60},
+    var margin = {top: 10, right: 30, bottom: 30, left: 100},
         width = 1000 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
@@ -305,9 +305,9 @@ svg.selectAll("circle")
 
         // When reading the csv, I must format variables:
         function(d){
-            console.log(d.date, d.positive)
+            // console.log(d.date, d.positive)
             val =  { date : d3.timeParse("%Y%m%d")(d.date), value : d.positive }
-            console.log(val)
+            // console.log(val)
             return val
         },
 
@@ -324,7 +324,7 @@ svg.selectAll("circle")
 
             // Add Y axis
             var y_2 = d3.scaleLinear()
-                .domain([0, d3.max(data, function(d) { return +d.positive; })])
+                .domain([0, d3.max(data, function(d) { console.log(+d.positive); return +d.positive; })])
                 .range([ height, 0 ]);
             svg_2.append("g")
                 .call(d3.axisLeft(y_2));
