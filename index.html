@@ -306,7 +306,7 @@ svg.selectAll("circle")
         // When reading the csv, I must format variables:
         function(d){
             console.log(d.date, d.positive)
-            val =  { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.positive }
+            val =  { date : d3.timeParse("%Y%m%d")(d.date), value : d.positive }
             console.log(val)
             return val
         },
