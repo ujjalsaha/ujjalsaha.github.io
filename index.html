@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script src='https://d3js.org/d3.v5.min.js'></script>
+<script src='https://d3js.org/d3.v4.min.js'></script>
 <style type="text/css">
 
 /* On mouse hover, lighten state color */
@@ -140,6 +140,7 @@ svg.selectAll("path")
 
 		 
 // Map the cities I have lived in!
+/*
 d3.csv("cities-lived.csv", function(data) {
 
 svg.selectAll("circle")
@@ -176,9 +177,11 @@ svg.selectAll("circle")
            .style("opacity", 0);   
     });
 });  
-        
+
+*/
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
-var legend = d3.select("body").append("svg")
+
+    var legend = d3.select("body").append("svg")
       			.attr("class", "legend")
      			.attr("width", 140)
     			.attr("height", 200)
