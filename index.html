@@ -196,7 +196,7 @@ svg.selectAll("circle")
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 
     // add a legend
-    var l_w = 140, l_h = 450;
+    var l_w = 140, l_h = 400;
 
     var key = d3.select("body")
         .append("svg")
@@ -232,7 +232,7 @@ svg.selectAll("circle")
 
     var y = d3.scaleLinear()
         .range([l_h/2, 0])
-        .domain([0, 450000]);
+        .domain([0, 400000]);
 
     var yAxis = d3.axisRight(y);
 
