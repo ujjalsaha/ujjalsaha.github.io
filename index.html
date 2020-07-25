@@ -170,7 +170,7 @@ svg.selectAll("path")
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 
     // add a legend
-    var l_w = 140, l_h = 400;
+    var l_w = 100, l_h = 400;
 
     var key = d3.select("#svg_1")
         .append("svg")
@@ -258,7 +258,6 @@ svg.selectAll("path")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    ///*
     //Read the data
     d3.csv("country_cumulative.csv",
 
@@ -287,13 +286,7 @@ svg.selectAll("path")
                 .range([ height, 0 ]);
             svg_2.append("g")
                 .call(d3.axisLeft(y_2));
-            /*
-            var y_2 = d3.scaleLinear()
-                .domain([0, d3.max(data, function(d) { return +d.positive; })])
-                .range([ height, 0 ]);
-            svg_2.append("g")
-                .call(d3.axisLeft(y_2));
-            */
+
             // Add the line
             svg_2.append("path")
                 .datum(data)
@@ -305,6 +298,7 @@ svg.selectAll("path")
                     .y(function(d) { return y_2(d.value) })
                 )
 
+            /*
             svg_2.append("g").selectAll("text")
                 .data(data)
                 .enter()
@@ -313,8 +307,8 @@ svg.selectAll("path")
                 .attr("y", d3.max(data, function(d) { return +d.positive; }))
                 .attr("fill", "red")
                 .text(function(d) { return d3.max(data, function(d) { return +d.positive; }); });
+            */
         });
-    //*/
 </script>
 </body>
 </html>
