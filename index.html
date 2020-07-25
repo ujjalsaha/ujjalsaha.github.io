@@ -280,21 +280,6 @@ svg.selectAll("path")
                 .attr("transform", "translate(0," + height + ")")
                 .call(d3.axisBottom(x_2));
 
-            // gridlines in x axis function
-            function make_x_gridlines() {
-                return d3.axisBottom(x_2)
-                    .ticks(5)
-            }
-
-            // add the X gridlines
-            svg_2.append("g")
-                .attr("class", "grid")
-                .attr("transform", "translate(0," + height + ")")
-                .call(make_x_gridlines()
-                    .tickSize(-height)
-                    .tickFormat("")
-            )
-
             // Add Y axis
             var y_2 = d3.scaleLinear()
                 .domain([0, 4500000])
