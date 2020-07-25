@@ -66,7 +66,7 @@ This is a test10<br/>
 </div>
 <div id="svg_2"></div>
 
-<!-- script type="text/javascript">
+<script type="text/javascript">
 
 /*  This visualization was made possible by modifying code provided by:
 
@@ -283,7 +283,7 @@ svg.selectAll("circle")
     */
 	});
 });
-</script !-->
+</script>
 <script>
     // set the dimensions and margins of the graph
     var margin = {top: 10, right: 30, bottom: 30, left: 100},
@@ -312,11 +312,11 @@ svg.selectAll("circle")
         },
 
         // Now I can use this dataset:
-        function(data_2) {
+        function(data) {
 
             // Add X axis --> it is a date format
             var x_2 = d3.scaleTime()
-                .domain(d3.extent(data_2, function(d) { return d.date; }))
+                .domain(d3.extent(data, function(d) { return d.date; }))
                 .range([ 0, width ]);
             svg_2.append("g")
                 .attr("transform", "translate(0," + height + ")")
@@ -337,13 +337,13 @@ svg.selectAll("circle")
             */
             // Add the line
             svg_2.append("path")
-                .datum(data_2)
+                .datum(data)
                 .attr("fill", "none")
                 .attr("stroke", "steelblue")
                 .attr("stroke-width", 1.5)
                 .attr("d", d3.line()
                     .x(function(d) { return x_2(d.date) })
-                    .y(function(d) { return y_2(d.positive) })
+                    .y(function(d) { return y_2(d.value) })
                 )
 
         });
