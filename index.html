@@ -325,6 +325,15 @@ svg.selectAll("path")
                     .tickFormat("")
             )
 
+            // Add the text label for the Y axis
+            svg_2.append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 0 - margin.left)
+                .attr("x",0 - (height / 2))
+                .attr("dy", "1em")
+                .style("text-anchor", "middle")
+                .text("Case Count - Cumulative ");
+
             svg_2.append("text")
                 .attr("x", (width / 2))
                 .attr("y", 0 - (margin.top / 2))
