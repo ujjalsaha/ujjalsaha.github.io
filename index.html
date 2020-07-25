@@ -83,7 +83,7 @@ var path = d3.geoPath()               // path generator that will convert GeoJSO
 // Define linear scale for output
 //var color = d3.scaleLinear().range(["rgb(213,222,217)","rgb(69,173,168)","rgb(84,36,55)","rgb(217,91,67)"]);
 var color = d3.scaleLinear().range(["blue","red"]);
-
+d3.scaleLinear().domain([minVal,midVal,maxVal]).range([lowColor,midColor,highColor])
 var legendText = ["Minimum Cases", "Maximum cases"];
 
 //Create SVG element and append map to the SVG
@@ -194,6 +194,55 @@ svg.selectAll("circle")
 */
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 
+    // add a legend
+    var l_w = 140, l_h = 500;
+
+    var key = d3.select("body")
+        .append("svg")
+        .attr("width", l_w)
+        .attr("height", l_h)
+        .attr("class", "legend");
+
+    var legend = key.append("defs")
+        .append("svg:linearGradient")
+        .attr("id", "gradient")
+        .attr("x1", "100%")
+        .attr("y1", "0%")
+        .attr("x2", "100%")
+        .attr("y2", "100%")
+        .attr("spreadMethod", "pad");
+
+    legend.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "red")
+        .attr("stop-opacity", 1);
+
+    legend.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "blue")
+        .attr("stop-opacity", 1);
+
+    key.append("rect")
+        .attr("width", l_w - 100)
+        .attr("height", l_h/2)
+        .style("fill", "url(#gradient)")
+        .attr("transform", "translate(49,0)");
+
+
+    var y = d3.scaleLinear()
+        .range([l_h/2, 0])
+        .domain([0, 500000]);
+
+    var yAxis = d3.axisRight(y);
+
+    key.append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(90,0)")
+        .call(yAxis)
+
+
+
+    /*
     var legend = d3.select("body").append("svg")
       			.attr("class", "legend")
      			.attr("width", 140)
@@ -215,8 +264,8 @@ svg.selectAll("circle")
       	  .attr("y", 9)
       	  .attr("dy", ".35em")
       	  .text(function(d) { return d; });
+    */
 	});
-
 });
 </script>
 </body>
