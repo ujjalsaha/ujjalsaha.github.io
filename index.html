@@ -322,11 +322,12 @@ svg.selectAll("circle")
                 .attr("transform", "translate(0," + height + ")")
                 .call(d3.axisBottom(x_2));
 
+            console.log(d3.max(data, function(d) { return +d.positive; }))
+            
             // Add Y axis
             var y_2 = d3.scaleLinear()
                 .domain([0, d3.max(data, function(d) { return +d.positive; })])
                 .range([ height, 0 ]);
-            console.log(y_2)
             svg_2.append("g")
                 .call(d3.axisLeft(y_2));
 
