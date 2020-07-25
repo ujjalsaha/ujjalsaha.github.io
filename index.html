@@ -232,13 +232,13 @@ svg.selectAll("circle")
 
     var y = d3.scaleLinear()
         .range([l_h/2, 0])
-        .domain([0, 500000]);
+        .domain([0, 450000]);
 
     var yAxis = d3.axisRight(y);
 
     key.append("g")
         .attr("class", "y axis")
-        .attr("transform", "translate(100,0)")
+        .attr("transform", "translate(90,0)")
         .call(yAxis)
 
 
