@@ -276,7 +276,7 @@ svg.selectAll("path")
             // Add X axis --> it is a date format
             var x_2 = d3.scaleTime()
                 .domain(d3.extent(data, function(d) { return d.date; }))
-                .range([ 0, width ]);
+                .range([ 0, width]);
             svg_2.append("g")
                 .attr("transform", "translate(0," + height + ")")
                 .call(d3.axisBottom(x_2));
@@ -304,6 +304,15 @@ svg.selectAll("path")
                     .x(function(d) { return x_2(d.date) })
                     .y(function(d) { return y_2(d.value) })
                 )
+
+            svg_2.append("g").selectAll("text")
+                .data(data)
+                .enter()
+                .append("text")
+                .attr("x", function(d) { return x_2(d.date) - 20 })
+                .attr("y", function(d) { return y_2(d.value) + 20 })
+                .attr("fill", "red")
+                .text(function(d) { return d.value });
         });
     //*/
 </script>
