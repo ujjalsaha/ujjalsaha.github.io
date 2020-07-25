@@ -309,10 +309,10 @@ svg.selectAll("path")
                 .data(data)
                 .enter()
                 .append("text")
-                .attr("x", function(d) { return x_2(d.date) - 20 })
-                .attr("y", function(d) { return y_2(d.value) + 20 })
+                .attr("x", d3.max(data, function(d) { return d.date; }))
+                .attr("y", d3.max(data, function(d) { return +d.positive; }))
                 .attr("fill", "red")
-                .text(function(d) { return d.value });
+                .text(function(d) { return d3.max(data, function(d) { return +d.positive; }); });
         });
     //*/
 </script>
