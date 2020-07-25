@@ -287,6 +287,22 @@ svg.selectAll("path")
             svg_2.append("g")
                 .call(d3.axisLeft(y_2));
 
+            // gridlines in y axis function
+            function make_y_gridlines() {
+                return d3.axisLeft(y)
+                    .ticks(10)
+            }
+
+
+            // add the Y gridlines
+            svg_2.append("g")
+                .attr("class", "grid")
+                .call(make_y_gridlines()
+                    .tickSize(-width)
+                    .tickFormat("")
+            )
+
+
             // Add the line
             svg_2.append("path")
                 .datum(data)
