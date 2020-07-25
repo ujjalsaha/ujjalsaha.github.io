@@ -317,6 +317,13 @@ svg.selectAll("path")
                     .tickFormat("")
             )
 
+            svg_2.append("text")
+                .attr("x", (width / 2))
+                .attr("y", 0 - (margin.top / 2))
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("text-decoration", "underline")
+                .text("United States - Overall Case Count (Cumulative) ");
 
             // Add the line
             svg_2.append("path")
