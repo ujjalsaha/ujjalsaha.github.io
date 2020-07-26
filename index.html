@@ -376,6 +376,10 @@ d3.json("us-states.json", function(json) {
 
         // Now I can use this dataset:
         function(data) {
+            const transitionPath = d3
+                .transition()
+                .ease(d3.easeSin)
+                .duration(2500);
 
             // Add the title for the line graph
             svg_2.append("text")
@@ -431,7 +435,7 @@ d3.json("us-states.json", function(json) {
                 .text("Number of People Affected");
 
             // Add the line for cpnfirmed
-            svg_2.append("path")
+            const path = svg_2.append("path")
                 .datum(data)
                 .attr("fill", "none")
                 .attr("stroke", "steelblue")
@@ -440,6 +444,12 @@ d3.json("us-states.json", function(json) {
                     .x(function(d) { return x_2(d.date) })
                     .y(function(d) { return y_2(d.value) })
                 )
+            const pathLength = path.node().getTotalLength();
+            path
+                .attr("stroke-dashoffset", pathLength)
+                .attr("stroke-dasharray", pathLength)
+                .transition(transitionPath)
+                .attr("stroke-dashoffset", 0);
 
             // Add the line for deaths
             svg_2.append("path")
