@@ -143,7 +143,7 @@ http://bl.ocks.org/mbostock/3888852  */
 //Width and height of map
 var margin = {top: 0, right: 0, bottom: 0, left: 0}
 var width = 1000;
-var height = 400;
+var height = 500;
 
 // D3 Projection
 var projection = d3.geoAlbersUsa()
@@ -318,7 +318,7 @@ d3.json("us-states.json", function(json) {
     // set the dimensions and margins of the graph
     var margin = {top: 40, right: 30, bottom: 60, left: 100},
         width = 1000 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        height = 400 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
     var svg_2 = d3.select("#svg_2")
