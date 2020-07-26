@@ -440,7 +440,7 @@ d3.json("us-states.json", function(json) {
                 },{
                     //below in makeAnnotations has type set to d3.annotationLabel
                     //you can add this type value below to override that default
-                    type: d3.annotationCalloutCircle,
+                    type: d3.annotationCalloutRect,
                     note: {
                         label: "Increase in case case at much more rapid space than the slope in last few weeks or months",
                         title: "Effect on Case counts when states reopened after lock down",
@@ -448,7 +448,8 @@ d3.json("us-states.json", function(json) {
                     },
                     //settings for the subject, in this case the circle radius
                     subject: {
-                        radius: 75
+                        width: 100,
+                        height: 350
                     },
                     x: 720,
                     y: 120,
