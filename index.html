@@ -241,15 +241,15 @@ d3.json("us-states.json", function(json) {
             div.text(d.properties.state)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 15) + "px")
-                .attr("dy", "0em")
+                .dy("0em")
             div.text(d.properties.positive)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 30) + "px")
-                .attr("dy", "1em")
+                .dy("1em")
             div.text(d.properties.death)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 45) + "px")
-                .attr("dy", "1em")
+                .dy("2em")
         })
         // fade out tooltip on mouse out
         .on("mouseout", function(d) {
