@@ -238,15 +238,9 @@ d3.json("us-states.json", function(json) {
             div.transition()
                 .duration(200)
                 .style("opacity", .9);
-            div.text(d.properties.state)
+            div.text(d.properties.state + "\nPositive:" + d.properties.positive + "\nDeaths:" + d.properties.death)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 15) + "px");
-            div.text(d.properties.positive)
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 30) + "px");
-            div.text(d.properties.death)
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY - 45) + "px");
         })
         // fade out tooltip on mouse out
         .on("mouseout", function(d) {
