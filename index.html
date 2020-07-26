@@ -169,14 +169,13 @@ var svg = d3.select("#svg_1")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height - margin.top);
-        
+
 // Append Div for tooltip to SVG
-/*
 var div = d3.select("body")
 		    .append("div")   
     		.attr("class", "tooltip")               
     		.style("opacity", 0);
-*/
+
 // Load Cumulative State Data
 d3.csv("state_cumulative.csv", function(data) {
 //color.domain([0,500000]); // setting the range of the input data
