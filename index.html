@@ -446,10 +446,10 @@ d3.json("us-states.json", function(json) {
                 )
             const pathLength = path.node().getTotalLength();
             path
-                .attr("stroke-dashoffset", pathLength)
-                .attr("stroke-dasharray", pathLength)
+                .attr("stroke-dashoffset", 0)
                 .transition(transitionPath)
-                .attr("stroke-dashoffset", 0);
+                .attr("stroke-dashoffset", pathLength)
+                .attr("stroke-dasharray", pathLength);
 
             // Add the line for deaths
             svg_2.append("path")
