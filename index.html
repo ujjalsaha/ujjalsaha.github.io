@@ -108,7 +108,7 @@ span.bold {
 </div>
 <div id="svg_1" class="svg"><div style="alignment: center">US Map - States with Case Counts</div></div>
 <div class="ex2">
-    <span class="guideline_header">Scene: Line Graph - Showing Cumulative Confirmed Cases for the United States</span><br/>
+    <span class="guideline_header">Scene: Line Graph - Cumulative Confirmed Cases and Deaths for the United States</span><br/>
     Seeing the total number of confirmed cases over time, can illustrate how the pandemic is expanding within the country.
     Below chart shows cumulative cases – for instance, the number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered.
     An fine <span class="bold"> observation </span> we see from this graph is upward bend in a curve can indicate either a time of explosive growth of coronavirus cases or a change in how cases are defined or counted.
@@ -352,7 +352,7 @@ d3.json("us-states.json", function(json) {
                 .attr("text-anchor", "middle")
                 .style("font-size", "16px")
                 .style("text-decoration", "underline")
-                .text("United States - Overall Case Count (Cumulative) ");
+                .text("United States - Overall Case Count and Deaths (Cumulative) ");
 
             // Add X axis --> it is a date format
             var x_2 = d3.scaleTime()
@@ -366,7 +366,7 @@ d3.json("us-states.json", function(json) {
             svg_2.append("text")
                 .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 20) + ")")
                 .style("text-anchor", "middle")
-                .text("Date");
+                .text("Date - [Mar 16, 2020 Onwards]");
 
             // Add Y axis
             var y_2 = d3.scaleLinear()
@@ -396,7 +396,7 @@ d3.json("us-states.json", function(json) {
                 .attr("x",0 - (height / 2))
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
-                .text("Case Count - Cumulative ");
+                .text("Number of People Affected");
 
             // Add the line for cpnfirmed
             svg_2.append("path")
