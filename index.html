@@ -85,7 +85,7 @@ span.bold {
 
 </style>
 </head>
-<body >
+<body onload="all_state()">
 <div class="ex2">
     <span class="guideline_header">Narrative Visualization Walkthrough - Demonstrating Interactive Slideshow using COVID-19 Dataset</span><br/>
     This is a demonstration of of Narrative Visualisation using the Interactive Slideshow Structure.
@@ -431,6 +431,8 @@ d3.json("us-states.json", function(json) {
 });
 </script>
 <script>
+
+function all_state() {
     // set the dimensions and margins of the graph
     var margin = {top: 40, right: 30, bottom: 60, left: 100},
         width = 1000 - margin.left - margin.right,
@@ -449,15 +451,15 @@ d3.json("us-states.json", function(json) {
     d3.csv("country_cumulative.csv",
 
         // When reading the csv, I must format variables:
-        function(d){
+        function (d) {
             // console.log(d.date, d.positive)
-            val =  { date : d3.timeParse("%Y%m%d")(d.date), value : d.positive, death : d.death }
+            val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, death: d.death}
             // console.log(val)
             return val
         },
 
         // Now I can use this dataset:
-        function(data) {
+        function (data) {
             // Add the title for the line graph
             svg_2.append("text")
                 .attr("x", (width / 2) - 10)
@@ -469,8 +471,10 @@ d3.json("us-states.json", function(json) {
 
             // Add X axis --> it is a date format
             var x_2 = d3.scaleTime()
-                .domain(d3.extent(data, function(d) { return d.date; }))
-                .range([ 0, width]);
+                .domain(d3.extent(data, function (d) {
+                    return d.date;
+                }))
+                .range([0, width]);
             svg_2.append("g")
                 .attr("transform", "translate(0," + height + ")")
                 .call(d3.axisBottom(x_2));
@@ -484,7 +488,7 @@ d3.json("us-states.json", function(json) {
             // Add Y axis
             var y_2 = d3.scaleLinear()
                 .domain([0, 4500000])
-                .range([ height, 0 ]);
+                .range([height, 0]);
             svg_2.append("g")
                 .call(d3.axisLeft(y_2));
 
@@ -500,13 +504,13 @@ d3.json("us-states.json", function(json) {
                 .call(make_y_gridlines()
                     .tickSize(-width)
                     .tickFormat("")
-            )
+                )
 
             // Add the text label for the Y axis
             svg_2.append("text")
                 .attr("transform", "rotate(-90)")
                 .attr("y", 0 - (margin.left / 2) - 30)
-                .attr("x",0 - (height / 2))
+                .attr("x", 0 - (height / 2))
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
                 .text("Number of People Affected");
@@ -518,8 +522,12 @@ d3.json("us-states.json", function(json) {
                 .attr("stroke", "steelblue")
                 .attr("stroke-width", 1.5)
                 .attr("d", d3.line()
-                    .x(function(d) { return x_2(d.date) })
-                    .y(function(d) { return y_2(d.value) })
+                    .x(function (d) {
+                        return x_2(d.date)
+                    })
+                    .y(function (d) {
+                        return y_2(d.value)
+                    })
                 );
 
             /*
@@ -544,9 +552,13 @@ d3.json("us-states.json", function(json) {
                 .attr("stroke", "orange")
                 .attr("stroke-width", 1.5)
                 .attr("d", d3.line()
-                    .x(function(d) { return x_2(d.date) })
-                    .y(function(d) { return y_2(d.death) })
-            )
+                    .x(function (d) {
+                        return x_2(d.date)
+                    })
+                    .y(function (d) {
+                        return y_2(d.death)
+                    })
+                )
 
             // Add a annotation showing curve spike after lockdown
             const annotations = [
@@ -568,7 +580,7 @@ d3.json("us-states.json", function(json) {
                     y: 0,
                     dx: -200,
                     dy: 40,
-                },{
+                }, {
                     //below in makeAnnotations has type set to d3.annotationLabel
                     //you can add this type value below to override that default
                     type: d3.annotationCalloutRect,
@@ -579,7 +591,10 @@ d3.json("us-states.json", function(json) {
                     },
                     x: 650,
                     y: 0,
-                }].map(function(d){ d.color = "#E8336D"; return d})
+                }].map(function (d) {
+                d.color = "#E8336D";
+                return d
+            })
 
             const makeAnnotations = d3.annotation()
                 .type(d3.annotationLabel)
@@ -591,6 +606,7 @@ d3.json("us-states.json", function(json) {
                 .attr("pointer-events", "none")
 
         });
+}
 </script>
 </body>
 </html>
