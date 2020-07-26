@@ -378,8 +378,7 @@ d3.json("us-states.json", function(json) {
         function(data) {
             const transitionPath = d3
                 .transition()
-                .reverse()
-                .ease(d3.easeSin)
+                .ease(d3.easeSinOut)
                 .duration(2500);
 
             // Add the title for the line graph
