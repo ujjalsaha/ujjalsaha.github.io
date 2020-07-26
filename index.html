@@ -416,8 +416,8 @@ d3.json("us-states.json", function(json) {
                     //you can add this type value below to override that default
                     type: d3.annotationCalloutCircle,
                     note: {
-                        label: "A different annotation type",
-                        title: "d3.annotationCalloutCircle",
+                        label: "Increase in case case at much more rapid space than the slope in last few weeks or months",
+                        title: "Effect on Case counts when states reopened after lock down",
                         wrap: 190
                     },
                     //settings for the subject, in this case the circle radius
@@ -427,7 +427,7 @@ d3.json("us-states.json", function(json) {
                     x: 720,
                     y: 120,
                     dy: -50,
-                    dx: -150
+                    dx: -200
                 }].map(function(d){ d.color = "#E8336D"; return d})
 
             const makeAnnotations = d3.annotation()
