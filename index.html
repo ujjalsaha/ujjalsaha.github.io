@@ -463,6 +463,7 @@ d3.json("us-states.json", function(json) {
             svg_2.append("g")
                 .attr("class", "annotation-group")
                 .call(makeAnnotations)
+                .attr("pointer-events", "none")
 
         });
 </script>
