@@ -235,10 +235,14 @@ d3.json("us-states.json", function(json) {
             }
         })
         .on("mouseover", function(d) {
+            var html  = "<span class='bold'>" + d.properties.state + "</span><br/>" +
+                        "<span class='bold'> Confirmed Cases: " + d.properties.positive + "</span><br/>" +
+                        "<span class='bold'> Deaths: " + d.properties.death + "</span><br/>";
+
             div.transition()
                 .duration(200)
                 .style("opacity", .9);
-            div.text(d.properties.state + "<br/>" + d.properties.positive + "<br/>" + d.properties.death)
+            div.html(html)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 15) + "px")
         })
