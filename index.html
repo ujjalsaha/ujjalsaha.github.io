@@ -304,6 +304,12 @@ svg.selectAll("path")
                 .attr("transform", "translate(0," + height + ")")
                 .call(d3.axisBottom(x_2));
 
+            // Add the text label for the x axis
+            svg_2.append("text")
+                .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom) + ")")
+                .style("text-anchor", "middle")
+                .text("Date");
+
             // Add Y axis
             var y_2 = d3.scaleLinear()
                 .domain([0, 4500000])
