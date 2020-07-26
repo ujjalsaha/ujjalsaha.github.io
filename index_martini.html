@@ -35,7 +35,7 @@ body {
 .legend {
 	position:absolute;
 	left:850px;
-	top:700px;
+	top:1200px;
 }
 
  .line {
@@ -87,18 +87,29 @@ span.bold {
 </head>
 <body >
 <div class="ex2">
-    <span class="guideline_header">Narrative Visualization Walkthrough - Demonstrating using COVID-19 Dataset</span><br/>
+    <span class="guideline_header">Narrative Visualization Walkthrough - Demonstrating using Martini Glass Structure COVID-19 Dataset</span><br/>
     This is a demonstration of of Narrative Visualisation using the Martini Glass Structure.
     This first slide of this Martini glass structure is more like an <span class="bold"> article </span> which talks about the dataset and various visualizations along with the observations and any related questions.
-    This Narrative Visualization walk through using the Martini Glass structure is distributed into three slides (pages): The first 2 pages are author Driven while the last slide (page) is user driven.
-    <p><span class="bold">Slide 1 (United States - COVID-19 Overall Case Count):</span> where author puts forwards the observation with overall cases </p>
-    <p><span class="bold">Slide 2 (United States - COVID-19 New Case Count):</span> where author puts forwards the observation with new cases and latest case counts</p>
-    <p><span class="bold">Slide 3 (United States - COVID-19 Interactive Maps and Graphs):</span> where author lets the user take the control to change the views based on certain option and control. This gives flexibility to the user to derive more conclusions or get some of their question answered </p>
-    This is Page1 where the author shows impact of COVID-19 across states but in terms of cumulative confirmed cases.
-    In this page, the <span class="bold">Scene</span> with Map shows how overall cases has impacted various states since beginning of pandemic.
-    Also in in this page, the <span class="bold">Scene</span> with line graph shows how overall cases has increased over the period (cumulative) and is still increasing.
+    This Narrative Visualization walk through using the Martini Glass structure is distributed into 4 scenes: The first 2 scenes are author Driven while the last 2 scenes are user driven.
+    <p>
+        <span class="bold">Scene 1 and Scene 2  (United States - COVID-19 Overall Case Count and New cases counts):</span>
+        These first two graphs will have very limited or no user control but mainly author explaining the observations along with annotations (author driven)
+    </p>
+    <p>
+        <span class="bold">Scene 3 amd Scene 4  (United States - COVID-19 Maps and Line Graph with Controls):</span>
+        After the first 2 scenes, when scrolling down the same web page, the US Map will appear (scene 3) where user user can select to see the affected states with options to select Cumulative Cases and New Cases.
+        Also there would be another line graph (scene 4) below the map graph which based on state selection from the map, will display the case counts for the respective state.
+        Also tooltip will be enabled on the states of the map.
+    </p>
 </div>
-
+<div class="ex2">
+    <span class="guideline_header">Scene 1: - Cumulative Confirmed Cases - United States</span><br/>
+    Seeing the total number of confirmed cases over time, one can illustrate how the pandemic is expanding within the country.
+    Below chart shows cumulative cases – for instance, the number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered.
+    An fine <span class="bold"> observation </span> we see from this graph is upward bend in a curve can indicate either a time of explosive growth of coronavirus cases or a change in how cases are defined or counted.
+    Around late June, when the lockdown was lifted, there is sudden rise in the graph which would mean as states are opening more community spreading is also aggressive.
+</div>
+<div id="svg_2" class="svg"></div>
 <div class="ex2">
     <span class="guideline_header">Scene: Map - Showing Cumulative Confirmed Cases for Each States of United States</span><br/>
     Seeing the total number of confirmed cases over time, can illustrate how the pandemic is expanding within the country.
@@ -107,14 +118,6 @@ span.bold {
     From the map, as <span class="bold"> observation </span> we see states like New York, California, New Jersey, Florida, Texas etc are the hard hit areas with highest count of cumulative COVID-19 cases so far.
 </div>
 <div id="svg_1" class="svg"><div style="alignment: center">US Map - States with Case Counts</div></div>
-<div class="ex2">
-    <span class="guideline_header">Scene: Line Graph - Showing Cumulative Confirmed Cases for the United States</span><br/>
-    Seeing the total number of confirmed cases over time, can illustrate how the pandemic is expanding within the country.
-    Below chart shows cumulative cases – for instance, the number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered.
-    An fine <span class="bold"> observation </span> we see from this graph is upward bend in a curve can indicate either a time of explosive growth of coronavirus cases or a change in how cases are defined or counted.
-    Around late June, when the lockdown was lifted, there is sudden rise in the graph which would mean as states are opening more community spreading is also aggressive.
-</div>
-<div id="svg_2" class="svg"></div>
 <div class="ex2">
     <span class="guideline_header">Definitions of the Parameters:</span><br/>
     1. <span class="bold">Confirmed Cases:</span> A confirmed case is a person who has a positive test result from an FDA approved diagnostic molecular test.<br/>
