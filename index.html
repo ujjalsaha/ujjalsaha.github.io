@@ -402,7 +402,7 @@ d3.json("us-states.json", function(json) {
             svg_2.append("path")
                 .datum(data)
                 .attr("fill", "none")
-                .attr("stroke", "magenta")
+                .attr("stroke", "#E8336D")
                 .attr("stroke-width", 1.5)
                 .attr("d", d3.line()
                     .x(function(d) { return x_2(d.date) })
@@ -439,7 +439,7 @@ d3.json("us-states.json", function(json) {
                     y: 120,
                     dy: -40,
                     dx: -200
-                }].map(function(d){ d.color = "magenta"; return d})
+                }].map(function(d){ d.color = "#E8336D"; return d})
 
             const makeAnnotations = d3.annotation()
                 .type(d3.annotationLabel)
