@@ -88,7 +88,7 @@ span.bold {
 <body >
 <div class="ex2">
     <span class="guideline_header">Narrative Visualization Walkthrough - Demonstrating using COVID-19 Dataset</span><br/>
-    This is a demonstration of of Narrative Visualisation using the Martini Glass Structure.
+    This is a demonstration of of Narrative Vi 0sualisation using the Martini Glass Structure.
     This first slide of this Martini glass structure is more like an <span class="bold"> article </span> which talks about the dataset and various visualizations along with the observations and any related questions.
     This Narrative Visualization walk through using the Martini Glass structure is distributed into three slides (pages): The first 2 pages are author Driven while the last slide (page) is user driven.
     <p><span class="bold">Slide 1 (United States - COVID-19 Overall Case Count):</span> where author puts forwards the observation with overall cases </p>
@@ -337,7 +337,7 @@ d3.json("us-states.json", function(json) {
         // When reading the csv, I must format variables:
         function(d){
             // console.log(d.date, d.positive)
-            val =  { date : d3.timeParse("%Y%m%d")(d.date), value : d.positive }
+            val =  { date : d3.timeParse("%Y%m%d")(d.date), value : d.positive, death : d.death }
             // console.log(val)
             return val
         },
@@ -398,7 +398,18 @@ d3.json("us-states.json", function(json) {
                 .style("text-anchor", "middle")
                 .text("Case Count - Cumulative ");
 
-            // Add the line
+            // Add the line for cpnfirmed
+            svg_2.append("path")
+                .datum(data)
+                .attr("fill", "none")
+                .attr("stroke", "green")
+                .attr("stroke-width", 1.5)
+                .attr("d", d3.line()
+                    .x(function(d) { return x_2(d.date) })
+                    .y(function(d) { return y_2(d.value) })
+                )
+
+            // Add the line for deaths
             svg_2.append("path")
                 .datum(data)
                 .attr("fill", "none")
@@ -406,8 +417,8 @@ d3.json("us-states.json", function(json) {
                 .attr("stroke-width", 1.5)
                 .attr("d", d3.line()
                     .x(function(d) { return x_2(d.date) })
-                    .y(function(d) { return y_2(d.value) })
-                )
+                    .y(function(d) { return y_2(d.death) })
+            )
 
             // Add a annotation showing curve spike after lockdown
             const annotations = [
