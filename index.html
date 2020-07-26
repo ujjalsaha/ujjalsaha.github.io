@@ -15,12 +15,12 @@ path:hover {
 /* Style for Custom Tooltip */
 div.tooltip {   
  	position: absolute;           
-	text-align: center;           
+	text-align: left;
 	width: 150px;
 	height: 50px;
 	padding: 2px;             
 	font: 12px sans-serif;        
-	background: yellow;
+	background: linen;
 	border: 0px;      
 	border-radius: 8px;           
 	pointer-events: none;         
@@ -235,9 +235,9 @@ d3.json("us-states.json", function(json) {
             }
         })
         .on("mouseover", function(d) {
-            var html  = "<span class='bold'>" + d.properties.state + "</span><br/>" +
-                        "<span class='bold'> Confirmed Cases: " + d.properties.positive + "</span><br/>" +
-                        "<span class='bold'> Deaths: " + d.properties.death + "</span><br/>";
+            var html  = "<span class='bold' style='font-size: medium;color: maroon'>" + d.properties.state + "</span><br/>" +
+                        "<span class='bold'> Confirmed Cases: </span>" + d.properties.positive + "<br/>" +
+                        "<span class='bold'> Deaths: </span>" + d.properties.death + "<br/>";
 
             div.transition()
                 .duration(200)
