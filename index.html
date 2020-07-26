@@ -255,7 +255,9 @@ d3.json("us-states.json", function(json) {
         })
         .on("click", function(d) { selected_state = d.properties.state; });
 
-    console.log(selected_state)
+    console.log("111")
+    console.log("selected_state: " + selected_state)
+    console.log("222")
 
     // Add the title for the line graph
     svg.append("text")
