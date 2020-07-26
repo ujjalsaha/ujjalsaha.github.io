@@ -435,8 +435,8 @@ d3.json("us-states.json", function(json) {
                     connector: { end: "arrow" },
                     x: 720,
                     y: 120,
-                    dy: 20,
-                    dx: 75
+                    dy: -40,
+                    dx: -200
                 },{
                     //below in makeAnnotations has type set to d3.annotationLabel
                     //you can add this type value below to override that default
@@ -463,8 +463,6 @@ d3.json("us-states.json", function(json) {
                     },
                     x: 650,
                     y: 0,
-                    dy: -40,
-                    dx: -200
                 }].map(function(d){ d.color = "#E8336D"; return d})
 
             const makeAnnotations = d3.annotation()
