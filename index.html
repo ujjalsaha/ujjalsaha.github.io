@@ -238,7 +238,7 @@ d3.json("us-states.json", function(json) {
             div.transition()
                 .duration(200)
                 .style("opacity", .9);
-            div.text(d.properties.state + "\nPositive:" + d.properties.positive + "\nDeaths:" + d.properties.death)
+            div.text(d.properties.state + "\nTotal Positive: " + d.properties.positive + "\nTotal Deaths: " + d.properties.death)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 15) + "px");
         })
