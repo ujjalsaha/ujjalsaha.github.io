@@ -425,6 +425,21 @@ d3.json("us-states.json", function(json) {
                 {
                     //below in makeAnnotations has type set to d3.annotationLabel
                     //you can add this type value below to override that default
+                    type: d3.annotationCalloutElbow,
+                    note: {
+                        label: "Some relief to see death not peaking compared to postives cases after reopening from lockdown",
+                        title: "Effect on Death counts when states reopened after lock down",
+                        wrap: 200
+                    },
+                    //settings for the subject, in this case the circle radius
+                    connector: { end: "arrow" },
+                    x: 720,
+                    y: 120,
+                    dy: 20,
+                    dx: 75
+                },{
+                    //below in makeAnnotations has type set to d3.annotationLabel
+                    //you can add this type value below to override that default
                     type: d3.annotationCalloutCircle,
                     note: {
                         label: "Increase in case case at much more rapid space than the slope in last few weeks or months",
