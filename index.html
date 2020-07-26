@@ -180,6 +180,8 @@ var div = d3.select("body")
 d3.csv("state_cumulative.csv", function(data) {
 //color.domain([0,500000]); // setting the range of the input data
 
+var selected_state = ""
+
 // Load GeoJSON data and merge with states data
 d3.json("us-states.json", function(json) {
 
@@ -251,7 +253,9 @@ d3.json("us-states.json", function(json) {
                 .duration(500)
                 .style("opacity", 0);
         })
-        .on("click", function(d) { alert("hello"); });
+        .on("click", function(d) { selected_state = d.properties.state; });
+
+    console.log(selected_state)
 
     // Add the title for the line graph
     svg.append("text")
