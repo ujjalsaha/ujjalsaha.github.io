@@ -269,7 +269,7 @@ svg.selectAll("path")
 </script>
 <script>
     // set the dimensions and margins of the graph
-    var margin = {top: 30, right: 30, bottom: 30, left: 75},
+    var margin = {top: 30, right: 30, bottom: 30, left: 100},
         width = 1000 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
@@ -328,7 +328,7 @@ svg.selectAll("path")
             // Add the text label for the Y axis
             svg_2.append("text")
                 .attr("transform", "rotate(-90)")
-                .attr("y", 0 - margin.left)
+                .attr("y", 0 - margin.left - 20)
                 .attr("x",0 - (height / 2))
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
