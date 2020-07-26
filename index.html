@@ -254,7 +254,85 @@ d3.json("us-states.json", function(json) {
                 .style("opacity", 0);
         })
         .on("click", function(d) {
-            // display total cases for the selected state
+            //Read the data
+            d3.csv("country_cumulative.csv",
+
+                // When reading the csv, I must format variables:
+                function(d){
+                    // console.log(d.date, d.positive)
+                    val =  { date : d3.timeParse("%Y%m%d")(d.date), value : d.positive, death : d.death }
+                    // console.log(val)
+                    return val
+                },
+
+                // Now I can use this dataset:
+                function(data) {
+                    // Add the title for the line graph
+                    svg_2.append("text")
+                        .attr("x", (width / 2) - 10)
+                        .attr("y", 0 - (margin.top / 2))
+                        .attr("text-anchor", "middle")
+                        .style("font-size", "16px")
+                        .style("text-decoration", "underline")
+                        .text("United States - Overall Case Count and Deaths (Cumulative) ");
+
+                    // Add X axis --> it is a date format
+                    var x_2 = d3.scaleTime()
+                        .domain(d3.extent(data, function(d) { return d.date; }))
+                        .range([ 0, width]);
+                    svg_2.append("g")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(d3.axisBottom(x_2));
+
+                    // Add the text label for the x axis
+                    svg_2.append("text")
+                        .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 20) + ")")
+                        .style("text-anchor", "middle")
+                        .text("Date - [Mar 16, 2020 Onwards]");
+
+                    // Add Y axis
+                    var y_2 = d3.scaleLinear()
+                        .domain([0, 4500000])
+                        .range([ height, 0 ]);
+                    svg_2.append("g")
+                        .call(d3.axisLeft(y_2));
+
+                    // gridlines in y axis function
+                    function make_y_gridlines() {
+                        return d3.axisLeft(y_2)
+                            .ticks(10)
+                    }
+
+                    // add the Y gridlines
+                    svg_2.append("g")
+                        .attr("class", "grid")
+                        .call(make_y_gridlines()
+                            .tickSize(-width)
+                            .tickFormat("")
+                        )
+
+                    // Add the text label for the Y axis
+                    svg_2.append("text")
+                        .attr("transform", "rotate(-90)")
+                        .attr("y", 0 - (margin.left / 2) - 30)
+                        .attr("x",0 - (height / 2))
+                        .attr("dy", "1em")
+                        .style("text-anchor", "middle")
+                        .text("Number of People Affected");
+
+                    // Add the line for confirmed
+                    const path = svg_2.append("path")
+                        .datum(data)
+                        .attr("fill", "none")
+                        .attr("stroke", "steelblue")
+                        .attr("stroke-width", 1.5)
+                        .attr("d", d3.line()
+                            .x(function(d) { return x_2(d.date) })
+                            .y(function(d) { return y_2(d.value) })
+                        );
+
+                });
+
 
         });
 
@@ -429,7 +507,7 @@ d3.json("us-states.json", function(json) {
                 .style("text-anchor", "middle")
                 .text("Number of People Affected");
 
-            // Add the line for cpnfirmed
+            // Add the line for confirmed
             const path = svg_2.append("path")
                 .datum(data)
                 .attr("fill", "none")
