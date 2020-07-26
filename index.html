@@ -274,6 +274,8 @@ d3.json("us-states.json", function(json) {
                     svg_2.selectAll("*").remove();
 
                     svg_2.append("input")
+                        .attr("x", (width / 2) - 100)
+                        .attr("y", 0 - (margin.top / 2))
                         .attr("type", "button")
                         .attr("name", "toggle")
                         .attr("value", "Toggle")
