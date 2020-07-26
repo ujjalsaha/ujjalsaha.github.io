@@ -260,8 +260,10 @@ d3.json("us-states.json", function(json) {
             d3.csv("daily.csv",
                 // When reading the csv, I must format variables:
                 function(d, selected_state){
-                    console.log("d.state: " + d.state)
+                    console.log("Current d.state: " + d.state)
+                    console.log("Required d.state: " + selected_state)
                     if (selected_state === d.state) {
+                        console.log("STATE MATCHED: " + d.state)
                         val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, death: d.death}
                     }
                     console.log(val)
