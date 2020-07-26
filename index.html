@@ -266,7 +266,7 @@ d3.json("us-states.json", function(json) {
 
                 // Now I can use this dataset:
                 function(data) {
-                    svg_2.clear()
+                    svg.selectAll("*").remove();
 
                     // Add the title for the line graph
                     svg_2.append("text")
