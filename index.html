@@ -354,6 +354,14 @@ d3.json("us-states.json", function(json) {
                 .style("text-decoration", "underline")
                 .text("United States - Overall Case Count and Deaths (Cumulative) ");
 
+            // Add the title for the line graph
+            svg_2.append("text")
+                .attr("x", 650)
+                .attr("y", 0)
+                .style("font-size", "8px")
+                .style("color", "#E8336D")
+                .text("Re-opening");
+
             // Add X axis --> it is a date format
             var x_2 = d3.scaleTime()
                 .domain(d3.extent(data, function(d) { return d.date; }))
