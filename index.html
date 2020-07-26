@@ -425,7 +425,7 @@ d3.json("us-states.json", function(json) {
                 .attr("text-anchor", "start")
                 .style("fill", "steelblue")
                 .text(data[0].positive);
-            
+
             // Add the line for deaths
             svg_2.append("path")
                 .datum(data)
@@ -473,7 +473,7 @@ d3.json("us-states.json", function(json) {
                     type: d3.annotationCalloutRect,
                     //settings for the subject, in this case the circle radius
                     subject: {
-                        width: 100,
+                        width: 220,
                         height: 350
                     },
                     x: 650,
