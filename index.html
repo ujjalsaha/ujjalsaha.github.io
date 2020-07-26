@@ -376,11 +376,6 @@ d3.json("us-states.json", function(json) {
 
         // Now I can use this dataset:
         function(data) {
-            const transitionPath = d3
-                .transition()
-                .ease(d3.easeSinOut)
-                .duration(2500);
-
             // Add the title for the line graph
             svg_2.append("text")
                 .attr("x", (width / 2) - 10)
@@ -443,13 +438,22 @@ d3.json("us-states.json", function(json) {
                 .attr("d", d3.line()
                     .x(function(d) { return x_2(d.date) })
                     .y(function(d) { return y_2(d.value) })
-                )
+                );
+
+            /*
+            // TODO
+            // Add path animation
+            const transitionPath = d3
+                .transition()
+                .ease(d3.easeSinOut)
+                .duration(2500);
             const pathLength = path.node().getTotalLength();
             path
                 .attr("stroke-dashoffset", pathLength)
                 .attr("stroke-dasharray", pathLength)
                 .transition(transitionPath)
                 .attr("stroke-dashoffset", 0);
+            */
 
             // Add the line for deaths
             svg_2.append("path")
