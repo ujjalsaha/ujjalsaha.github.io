@@ -356,11 +356,11 @@ d3.json("us-states.json", function(json) {
 
             // Add the title for the line graph
             svg_2.append("text")
-                .attr("x", 700)
+                .attr("x", 650)
                 .attr("y", -10)
-                .style("color", "#E8336D")
+                .style("text-color", "#E8336D")
                 .style("font-size", "10px")
-                .text("Re-opening");
+                .text("Re-opening from Lock Down");
 
             // Add X axis --> it is a date format
             var x_2 = d3.scaleTime()
