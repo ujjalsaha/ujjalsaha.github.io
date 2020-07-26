@@ -274,7 +274,7 @@ d3.json("us-states.json", function(json) {
                         .attr("text-anchor", "middle")
                         .style("font-size", "16px")
                         .style("text-decoration", "underline")
-                        .text("United States - Overall Case Count and Deaths (Cumulative) ");
+                        .text(d.properties.state + " - Overall Case Count and Deaths (Cumulative) ");
 
                     // Add X axis --> it is a date format
                     var x_2 = d3.scaleTime()
