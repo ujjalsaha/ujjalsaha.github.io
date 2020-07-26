@@ -232,7 +232,7 @@ d3.json("us-states.json", function(json) {
             div.transition()
                 .duration(200)
                 .style("opacity", .9);
-            div.text(d.positive)
+            div.text(d.value)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
         })
@@ -422,14 +422,6 @@ d3.json("us-states.json", function(json) {
                     .y(function(d) { return y_2(d.value) })
                 )
 
-            // Add label at end of the line
-            svg.append("text")
-                .attr("transform", "translate("+(width+3)+","+y_2(data[0].positive)+")")
-                .attr("dy", ".35em")
-                .attr("text-anchor", "start")
-                .style("fill", "steelblue")
-                .text(data[0].positive);
-
             // Add the line for deaths
             svg_2.append("path")
                 .datum(data)
@@ -468,7 +460,7 @@ d3.json("us-states.json", function(json) {
                     //settings for the subject, in this case the circle radius
                     connector: { end: "arrow" },
                     x: 700,
-                    y: 300,
+                    y: 280,
                     dx: -100,
                     dy: -40,
                 },{
