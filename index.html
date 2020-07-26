@@ -254,13 +254,17 @@ d3.json("us-states.json", function(json) {
                 .style("opacity", 0);
         })
         .on("click", function(d) {
-            //Read the data
+            // Read the data
+            selected_state = d.properties.state
+            console.log("selected_state: " + selected_state)
             d3.csv("daily.csv",
                 // When reading the csv, I must format variables:
-                function(d){
+                function(d, selected_state){
                     console.log("d.state: " + d.state)
-                    console.log("d.properties.state: " + d.state)
-                    val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, death: d.death}
+                    console.log("d.properties.state: " + d.properties.state)
+                    if (selected_state === d.state) {
+                        val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, death: d.death}
+                    }
                     console.log(val)
                     return val
                 },
