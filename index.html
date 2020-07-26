@@ -435,7 +435,7 @@ d3.json("us-states.json", function(json) {
                     //you can add this type value below to override that default
                     type: d3.annotationCalloutElbow,
                     note: {
-                        label: "More than normal case counts after re-opening",
+                        label: "Case counts increasing more than normal after re-opening",
                         wrap: 150
                     },
                     //settings for the subject, in this case the circle radius
@@ -449,15 +449,15 @@ d3.json("us-states.json", function(json) {
                     //you can add this type value below to override that default
                     type: d3.annotationCalloutElbow,
                     note: {
-                        label: "Normal death counts after re-opening",
+                        label: "Death counts seems normal even after re-opening",
                         wrap: 200
                     },
                     //settings for the subject, in this case the circle radius
                     connector: { end: "arrow" },
                     x: 720,
                     y: 300,
-                    dx: -350,
-                    dy: -90,
+                    dx: 50,
+                    dy: -80,
                 },{
                     //below in makeAnnotations has type set to d3.annotationLabel
                     //you can add this type value below to override that default
