@@ -232,7 +232,7 @@ d3.json("us-states.json", function(json) {
             div.transition()
                 .duration(200)
                 .style("opacity", .9);
-            div.text(d.value)
+            div.text(d.properties.positive)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
         })
