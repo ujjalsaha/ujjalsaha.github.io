@@ -251,7 +251,7 @@ d3.json("us-states.json", function(json) {
                 .duration(500)
                 .style("opacity", 0);
         })
-        .on("onclick", "alert('You have clicked the circle.')" );
+        .on("click", function(d) { alert("hello"); });
 
     // Add the title for the line graph
     svg.append("text")
