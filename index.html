@@ -93,14 +93,14 @@ span.bold {
 }
 
 .tooltip1 {
-    width: 94px;
+    width: 150px;
     padding: 4px 10px;
     border: 1px solid #aaa;
     border-radius: 4px;
     box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     position: absolute;
     background-color: white;
-    font-size: 14px;
+    font-size: 12px;
     pointer-events: none;
     -webkit-transition: all 0.25s;
     -moz-transition: all 0.25s;
@@ -467,7 +467,7 @@ d3.json("us-states.json", function(json) {
                     var tooltipLikes = tooltip.append("div");
                     tooltipLikes.append("span")
                         .attr("class", "tooltip-title")
-                        .text("Confirmed Cases: ");
+                        .text("Cases: ");
 
                     var tooltipLikesValue = tooltipLikes.append("span")
                         .attr("class", "tooltip-cases");
