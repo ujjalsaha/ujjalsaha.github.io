@@ -477,7 +477,7 @@ d3.json("us-states.json", function(json) {
                     function mousemove() {
                         var x0 = x_2.invert(d3.mouse(this)[0])
                         console.log("x0: " + x0)
-                        i = d3.bisectLeft(data, x0)
+                        i = d3.bisectLeft(x0)
                         console.log("i: " + i)
                         d0 = data[i - 1]
                         console.log("d0.date: " + d0.date)
