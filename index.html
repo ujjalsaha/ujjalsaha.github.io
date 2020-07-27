@@ -519,15 +519,7 @@ d3.json("us-states.json", function(json) {
     // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 
     // add a legend
-    var l_w = 140, l_h = 210;
-
-    var key = d3.select("#svg_1")
-        .append("svg")
-        .attr("width", l_w)
-        .attr("height", l_h)
-        .attr("class", "legend");
-
-    var legend = key.append("defs")
+    var legend = svg.append("defs")
         .append("svg:linearGradient")
         .attr("id", "gradient")
         .attr("x1", "100%")
