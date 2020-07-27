@@ -72,10 +72,10 @@
         formatValue = d3.format(","),
         dateFormatter = d3.timeFormat("%m/%d/%y");
 
-    var x = d3.time.scale()
+    var x = d3.scaleTime()
         .range([0, width]);
 
-    var y = d3.scale.linear()
+    var y = d3.scaleLinear()
         .range([height, 0]);
 
     var xAxis = d3.svg.axis()
@@ -88,7 +88,7 @@
         .orient("left")
         .tickFormat(d3.format("s"))
 
-    var line = d3.svg.line()
+    var line = d3.svg("line")
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.likes); });
 
