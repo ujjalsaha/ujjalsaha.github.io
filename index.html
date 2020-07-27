@@ -277,8 +277,8 @@ d3.json("us-states.json", function(json) {
         })
         .on("mouseover", function(d) {
             var tooltip_html  = "<span class='bold' style='font-size: medium;color: maroon'>" + d.properties.state + "</span><br/>" +
-                        "<span class='bold'> Confirmed Cases: </span>" + d.properties.positive + "<br/>" +
-                        "<span class='bold'> Deaths: </span>" + d.properties.death + "<br/>";
+                        "<span class='bold'> Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
+                        "<span class='bold'> Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
             div.transition()
                 .duration(200)
                 .style("opacity", .9);
@@ -560,6 +560,7 @@ d3.json("us-states.json", function(json) {
 });
 </script>
 <script>
+    var formatValue = d3.format(",")
 
     // set the dimensions and margins of the graph
     var margin = {top: 40, right: 30, bottom: 60, left: 100},
