@@ -490,6 +490,7 @@ d3.json("us-states.json", function(json) {
                         d2 = x0 - d0.date > d1.date - x0 ? d1 : d0
                         console.log("d2.date: " + d2.date)
                         console.log("d2.value: " + d2.value)
+                        /*
                         focus.attr("transform", "translate(" + x_2(d2.date) + "," + y_2(d2.value) + ")");
                         focus.select(".tooltip-date").text(dateFormatter(d2.value));
                         focus.select(".tooltip-cases").text(d.value);
