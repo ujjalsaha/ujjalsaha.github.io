@@ -478,9 +478,17 @@ d3.json("us-states.json", function(json) {
                         .on("mousemove", mousemove);
 
                     function mousemove() {
+                        var x0 = x.invert(d3.mouse(this)[0])
+                        var x1 = x.invert(d3.mouse(this)[1])
+                        var x2 = x.invert(d3.mouse(this)[2])
+                        console.log("x0: " + x0)
+                        console.log("x1: " + x1)
+                        console.log("x2: " + x2)
+                        /*
                         focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
                         focus.select(".tooltip-date").text(dateFormatter(d.date));
                         focus.select(".tooltip-cases").text(d.positive);
+                        */
                     }
                 }
             );
