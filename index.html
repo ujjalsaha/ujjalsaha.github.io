@@ -489,8 +489,8 @@ d3.json("us-states.json", function(json) {
                         console.log("d.positive: " + d.positive)
                         console.log("d.date: " + d.date)
                         focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
-                        // tooltip.attr("style", "left:" + (x_2(d.date) + 64) + "px;top:" + y_2(d.positive) + "px;");
-                        tooltip.attr("transform", "translate(" + x_2(d.date)  + "," + y_2(d.positive) + ")");
+                        tooltip.attr("style", "left:" + (x_2(d.date) + 64) + "px;top:" + y_2(d.positive) + "px;");
+                        //tooltip.attr("transform", "translate(" + x_2(d.date)  + "," + y_2(d.positive) + ")");
                         tooltip.select(".tooltip-date").text(dateFormatter(d.date));
                         tooltip.select(".tooltip-cases").text(formatValue(d.positive));
                     }
