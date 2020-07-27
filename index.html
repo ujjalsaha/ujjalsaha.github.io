@@ -267,7 +267,7 @@ d3.json("us-states.json", function(json) {
             // Read the data
             selected_state = d.properties.state
             csv_file = selected_state + ".csv"
-            d3.csv("all_state_master.csv",
+            d3.csv("all_states_master.csv",
                 // When reading the csv, I must format variables:
                 function(d){
                     val = {state: d.state, date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, death: d.death}
