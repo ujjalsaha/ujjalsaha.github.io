@@ -470,7 +470,7 @@ d3.json("us-states.json", function(json) {
                         .text("Confirmed Cases: ");
 
                     var tooltipLikesValue = tooltipLikes.append("span")
-                        .attr("class", "tooltip-likes");
+                        .attr("class", "tooltip-cases");
 
                     svg_2.append("rect")
                         .attr("class", "overlay")
@@ -491,7 +491,7 @@ d3.json("us-states.json", function(json) {
                         focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
                         tooltip.attr("style", "left:" + (x_2(d.date) + 64) + "px;top:" + y_2(d.positive) + "px;");
                         tooltip.select(".tooltip-date").text(dateFormatter(d.date));
-                        tooltip.select(".tooltip-likes").text(formatValue(d.positive));
+                        tooltip.select(".tooltip-cases").text(formatValue(d.positive));
                     }
                 }
             );
