@@ -467,7 +467,7 @@ d3.json("us-states.json", function(json) {
                     var tooltipLikes = tooltip.append("div");
                     tooltipLikes.append("span")
                         .attr("class", "tooltip-title")
-                        .text("Overall Cases: ");
+                        .text("Confirmed Cases: ");
 
                     var tooltipLikesValue = tooltipLikes.append("span")
                         .attr("class", "tooltip-cases");
@@ -475,7 +475,7 @@ d3.json("us-states.json", function(json) {
                     svg_2.append("rect")
                         .attr("class", "overlay")
                         .attr("width", width)
-                        .attr("height", 50)
+                        .attr("height", height)
                         .on("mouseover", function() { focus.style("display", null); tooltip.style("display", null);  })
                         .on("mouseout", function() { focus.style("display", "none"); tooltip.style("display", "none"); })
                         .on("mousemove", mousemove);
