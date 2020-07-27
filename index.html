@@ -669,7 +669,7 @@ function country_cases() {
                 .attr("text-anchor", "start")
                 .style("font-size", "12px")
                 .style("font-weight", "bold")
-                .text(data[0].value);
+                .text(formatValue(data[0].value));
 
             // Add the line for deaths
             svg_2.append("path")
