@@ -1,164 +1,752 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
-<style>
+<script src='https://d3js.org/d3.v4.min.js'></script>
+<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 
-    body {
-        font: 10px "Helvetica Neue", Helvetica, Arial, sans-serif;
-        position: relative;
-    }
+    <style type="text/css">
 
-    .axis path,
-    .axis line {
-        fill: none;
-        stroke: #000;
-        shape-rendering: crispEdges;
-    }
+/* On mouse hover, lighten state color */
+path:hover {
+	fill-opacity: .7;
+}
 
-    .x.axis path {
-        display: none;
-    }
+/* Style for Custom Tooltip */
+div.tooltip {   
+ 	position: absolute;           
+	text-align: left;
+	width: 150px;
+	height: 50px;
+	padding: 10px;
+	font: 12px sans-serif;
+	background: linen;
+	border: 0px;      
+	border-radius: 8px;           
+	pointer-events: none;         
+}
+        
+/* Legend Font Style */
+body {
+	font: 12px sans-serif;
+}
+        
+/* Legend Position Style */
+.legend {
+	position:absolute;
+	left:850px;
+	top:1300px;
+}
 
-    .line {
-        fill: none;
-        stroke: steelblue;
-        stroke-width: 1.5px;
-    }
+ .line {
+     fill: none;
+     stroke: steelblue;
+     stroke-width: 2px;
+ }
 
-    .overlay {
-        fill: none;
-        pointer-events: all;
-    }
+.grid line {
+    stroke: lightgrey;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+}
 
-    .focus circle {
-        fill: steelblue;
-    }
+.grid path {
+    stroke-width: 0;
+}
 
-    .tooltip {
-        width: 94px;
-        padding: 4px 10px;
-        border: 1px solid #aaa;
-        border-radius: 4px;
-        box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        position: absolute;
-        background-color: white;
-        font-size: 14px;
-        pointer-events: none;
-        -webkit-transition: all 0.25s;
-        -moz-transition: all 0.25s;
-        -ms-transition: all 0.25s;
-        -o-transition: all 0.25s;
-        transition: all 0.25s;
-    }
+div.ex2 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 1000px;
+    border: 3px solid #73ad21;
+    line-height: 20px;
+    color: grey;
+}
 
-    .tooltip div {
-        margin: 3px 0;
-    }
+svg {
+    border: 3px solid #AAAE92;
+}
 
-    .tooltip-date, .tooltip-likes {
-        font-weight: bold;
-    }
+div.svg {
+    border: 3px solid #FF4521;
+}
+
+span.guideline_header {
+    font-weight: bold;
+    font-size: large;
+    color: gray
+}
+
+span.bold {
+    font-weight: bold;
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+.focus circle {
+    fill: steelblue;
+}
+
+.tooltip1 {
+    width: 94px;
+    padding: 4px 10px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: absolute;
+    background-color: white;
+    font-size: 14px;
+    pointer-events: none;
+    -webkit-transition: all 0.25s;
+    -moz-transition: all 0.25s;
+    -ms-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    transition: all 0.25s;
+}
+
+.tooltip div {
+    margin: 3px 0;
+}
+
+.tooltip-date, .tooltip-cases {
+    font-weight: bold;
+}
 
 </style>
-
+</head>
 <body>
-<script src='https://d3js.org/d3.v4.min.js'></script>
-<script>
-    var margin = { top: 30, right: 132, bottom: 30, left: 50 },
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+<div class="ex2">
+    <span class="guideline_header">Narrative Visualization Walkthrough - Demonstrating Interactive Slideshow using COVID-19 Dataset</span><br/>
+    This is a demonstration of of Narrative Visualisation using the Interactive Slideshow Structure.
+    This first slide of this Martini glass structure is more like an <span class="bold"> article </span> which talks about the dataset and various visualizations along with the observations and any related questions.
+    This Narrative Visualization walk through using the Martini Glass structure is distributed into three slides (pages): The first 2 pages are author Driven while the last slide (page) is user driven.
+    <p><span class="bold">Slide 1 (United States - COVID-19 Overall Case Count):</span> where author puts forwards the observation with overall cases </p>
+    <p><span class="bold">Slide 2 (United States - COVID-19 New Case Count):</span> where author puts forwards the observation with new cases and latest case counts</p>
+    <p><span class="bold">Slide 3 (United States - COVID-19 Interactive Maps and Graphs):</span> where author lets the user take the control to change the views based on certain option and control. This gives flexibility to the user to derive more conclusions or get some of their question answered </p>
+    This is Page1 where the author shows impact of COVID-19 across states but in terms of cumulative confirmed cases.
+    In this page, the <span class="bold">Scene</span> with Map shows how overall cases has impacted various states since beginning of pandemic.
+    Also in in this page, the <span class="bold">Scene</span> with line graph shows how overall cases has increased over the period (cumulative) and is still increasing.
+</div>
 
-    var parseDate = d3.timeParse("%m/%e/%Y")
-        bisectDate = d3.bisector(function(d) { return d.date; }).left,
-        formatValue = d3.format(","),
-        dateFormatter = d3.timeFormat("%m/%d/%y");
+<div class="ex2">
+    <span class="guideline_header">Scene: Line Graph - Cumulative Confirmed Cases and Deaths for the United States</span><br/>
+    Seeing the total number of confirmed cases over time, can illustrate how the pandemic is expanding within the country.
+    Below chart shows cumulative cases – for instance, the number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered.
+    An fine <span class="bold"> observation </span> we see from this graph is upward bend in a curve can indicate either a time of explosive growth of coronavirus cases or a change in how cases are defined or counted.
+    Around late June, when the lockdown was lifted, there is sudden rise in the graph which would mean as states are opening more community spreading is also aggressive.
+</div>
+<div class="svg">
+    <div style="padding-left: 30px">
+        <input name="updateButton"
+               type="button"
+               value="Overall Cases for United States"
+               onclick="country_cases()" />
+    </div>
+    <div id="svg_2" class="svg"></div>
+</div>
+<div class="ex2">
+    <span class="guideline_header">Scene: Map - Showing Cumulative Confirmed Cases for Each States of United States</span><br/>
+    Seeing the total number of confirmed cases over time, can illustrate how the pandemic is expanding within the country.
+    Below map shows cumulative cases for each states – for instance, the number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered.
+    Comparing across states within United States can also show where the pandemic is growing most rapidly at any point in time.
+    From the map, as <span class="bold"> observation </span> we see states like New York, California, New Jersey, Florida, Texas etc are the hard hit areas with highest count of cumulative COVID-19 cases so far.
+</div>
+<div id="svg_1" class="svg"><div style="alignment: center">US Map - States with Case Counts</div></div>
 
-    var x = d3.scaleTime()
-        .range([0, width]);
+<div class="ex2">
+    <span class="guideline_header">Definitions of the Parameters:</span><br/>
+    1. <span class="bold">Confirmed Cases:</span> A confirmed case is a person who has a positive test result from an FDA approved diagnostic molecular test.<br/>
+    2: <span class="bold">Date: </span>Date on which data was compiled by the data provider.<br/>
+    3. <span class="bold">States: </span>States of the United States.<br/>
+</div>
+
+<div class="ex2">
+    <span class="guideline_header">General Facts<br/></span>
+    1. All coronavirus related data used on the graphs and analysis were gathered from <a href="https://covidtracking.com/data/api">https://covidtracking.com/data/api</a><br/>
+    2. All dates and times are in US eastern time (ET). Each state has its own set of caveats, which we have documented on our data page.<br/>
+</div>
+
+
+
+<script type="text/javascript">
+
+/*  This visualization was made possible by modifying code provided by:
+
+Scott Murray, Choropleth example from "Interactive Data Visualization for the Web" 
+https://github.com/alignedleft/d3-book/blob/master/chapter_12/05_choropleth.html   
+		
+Malcolm Maclean, tooltips example tutorial
+http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
+
+Mike Bostock, Pie Chart Legend
+http://bl.ocks.org/mbostock/3888852  */
+
+		
+//Width and height of map
+var margin = {top: 0, right: 0, bottom: 0, left: 0}
+var width = 1000;
+var height = 500;
+
+// D3 Projection
+var projection = d3.geoAlbersUsa()
+				   .translate([width/2, height/2])    // translate to center of screen
+				   .scale([1000]);          // scale things down so see entire US
+        
+// Define path generator
+var path = d3.geoPath()               // path generator that will convert GeoJSON to SVG paths
+		  	 .projection(projection);  // tell path generator to use albersUsa projection
+
+		
+// Define linear scale for output
+//var color = d3.scaleLinear().range(["rgb(213,222,217)","rgb(69,173,168)","rgb(84,36,55)","rgb(217,91,67)"]);
+//var color = d3.scaleLinear().range(["blue","red"]);
+var color = d3.scaleLinear().domain([0, 400000]).range(["gainsboro", "red"])
+var legendText = ["Minimum Cases", "Maximum cases"];
+
+//Create SVG element and append map to the SVG
+var svg = d3.select("#svg_1")
+			.append("svg")
+			.attr("width", width)
+			.attr("height", height - margin.top);
+
+// Append Div for tooltip to SVG
+var div = d3.select("body")
+		    .append("div")   
+    		.attr("class", "tooltip")               
+    		.style("opacity", 0);
+
+// Load Cumulative State Data
+d3.csv("state_cumulative.csv", function(data) {
+//color.domain([0,500000]); // setting the range of the input data
+
+var selected_state = ""
+
+// Load GeoJSON data and merge with states data
+d3.json("us-states.json", function(json) {
+
+    // Loop through each state data value in the .csv file
+    for (var i = 0; i < data.length; i++) {
+
+        // Grab State Name
+        var dataState = data[i].state;
+
+        // Grab positive cases
+        var dataValue = data[i].positive;
+
+        // Grab death
+        var dataDeath = data[i].death;
+
+
+        // Find the corresponding state inside the GeoJSON
+        for (var j = 0; j < json.features.length; j++)  {
+            var jsonState = json.features[j].properties.name;
+
+            if (dataState === jsonState) {
+
+            // Copy the data value into the JSON
+                json.features[j].properties.state = dataState;
+                json.features[j].properties.positive = dataValue;
+                json.features[j].properties.death = dataDeath;
+
+            // Stop looking through the JSON
+            break;
+            }
+        }
+    }
+		
+    // Bind the data to the SVG and create one path per GeoJSON feature
+    svg.selectAll("path")
+        .data(json.features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .style("stroke", "#fff")
+        .style("stroke-width", "1")
+        .style("fill", function(d) {
+            // Get data value
+            var value = d.properties.positive;
+
+            if (value) {
+            //If value exists…
+            return color(value);
+            } else {
+            //If value is undefined…
+            //return "rgb(213,222,217)";
+                return "gray";
+            }
+        })
+        .on("mouseover", function(d) {
+            var tooltip_html  = "<span class='bold' style='font-size: medium;color: maroon'>" + d.properties.state + "</span><br/>" +
+                        "<span class='bold'> Confirmed Cases: </span>" + d.properties.positive + "<br/>" +
+                        "<span class='bold'> Deaths: </span>" + d.properties.death + "<br/>";
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div.html(tooltip_html)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 15) + "px")
+        })
+        // fade out tooltip on mouse out
+        .on("mouseout", function(d) {
+            div.transition()
+                .duration(500)
+                .style("opacity", 0);
+        })
+        .on("click", function(d) {
+            // Read the data
+            selected_state = d.properties.state
+        d3.csv("all_states_master.csv",
+                // When reading the csv, I must format variables:
+                function(d){
+                    val = { state: d.state,
+                            date: d3.timeParse("%Y%m%d")(d.date),
+                            positive: d.positive,
+                            death: d.death}
+                    // console.log("Val: " + val)
+                    return val
+                },
+
+                // Now I can use this dataset:
+                function(data) {
+                    // Clear the SVG Chart
+                    svg_2.selectAll("*").remove();
+
+                    // Filter the dataset to get selected state rows only
+                    var filterdata = data.filter(function (d) {
+                        return d.state == selected_state
+                    })
+                    // Add the title for the line graph
+                    svg_2.append("text")
+                        .attr("x", (width / 2) - 10)
+                        .attr("y", 0 - (margin.top / 2))
+                        .attr("text-anchor", "middle")
+                        .style("font-size", "16px")
+                        .style("text-decoration", "underline")
+                        .text(d.properties.state + " - Overall Case Count and Deaths (Cumulative) ");
+
+                    // Add the title for the line graph
+                    svg_2.append("text")
+                        .attr("x", (width / 2) - 10)
+                        .attr("y", 0 - (margin.top / 2))
+                        .attr("text-anchor", "middle")
+                        .style("font-size", "16px")
+                        .style("text-decoration", "underline")
+                        .text(d.properties.state + " - Overall Case Count and Deaths (Cumulative) ");
+
+                    // Add X axis --> it is a date format
+                    var x_2 = d3.scaleTime()
+                        .domain(d3.extent(filterdata, function (d) {
+                            return d.date;
+                        }))
+                        .range([0, width]);
+                    svg_2.append("g")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(d3.axisBottom(x_2));
+
+                    // Add the text label for the x axis
+                    svg_2.append("text")
+                        .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 20) + ")")
+                        .style("text-anchor", "middle")
+                        .text("Date - [Mar 16, 2020 Onwards]");
+
+                    // Add Y axis
+                    var y_2 = d3.scaleLinear()
+                        .domain([0, 450000])
+                        .range([height, 0]);
+                    svg_2.append("g")
+                        .call(d3.axisLeft(y_2));
+
+                    // gridlines in y axis function
+                    function make_y_gridlines() {
+                        return d3.axisLeft(y_2)
+                            .ticks(10)
+                    }
+
+                    // add the Y gridlines
+                    svg_2.append("g")
+                        .attr("class", "grid")
+                        .call(make_y_gridlines()
+                            .tickSize(-width)
+                            .tickFormat("")
+                        )
+
+                    // Add the text label for the Y axis
+                    svg_2.append("text")
+                        .attr("transform", "rotate(-90)")
+                        .attr("y", 0 - (margin.left / 2) - 30)
+                        .attr("x", 0 - (height / 2))
+                        .attr("dy", "1em")
+                        .style("text-anchor", "middle")
+                        .text("Number of People Affected");
+
+                    // Add the line for confirmed
+                    const path = svg_2.append("path")
+                        .datum(filterdata)
+                        .attr("fill", "none")
+                        .attr("stroke", "steelblue")
+                        .attr("stroke-width", 1.5)
+                        .attr("d", d3.line()
+                            .x(function (d) {
+                                return x_2(d.date)
+                            })
+                            .y(function (d) {
+                                return y_2(d.positive)
+                            })
+                        );
+
+                    // Add a annotation showing curve spike after lockdown
+                    const annotations = [
+                        {
+                            //below in makeAnnotations has type set to d3.annotationLabel
+                            //you can add this type value below to override that default
+                            type: d3.annotationCalloutElbow,
+                            note: {
+                                label: "Case counts increasing more than normal after re-opening",
+                                title: "States Reopening After Lockdown",
+                                wrap: 200
+                            },
+                            x: 630,
+                            y: 0,
+                            dx: -200,
+                            dy: 30,
+                        }, {
+                            //below in makeAnnotations has type set to d3.annotationLabel
+                            //you can add this type value below to override that default
+                            type: d3.annotationCalloutRect,
+                            // dimensions for the annotation rect, in this case the rect width and height
+                            subject: {
+                                width: 250,
+                                height: 330
+                            },
+                            x: 630,
+                            y: 0,
+                        }].map(function (d) {
+                        d.color = "#E8336D";
+                        return d
+                    })
+
+                    const makeAnnotations = d3.annotation()
+                        .type(d3.annotationLabel)
+                        .annotations(annotations)
+
+                    svg_2.append("g")
+                        .attr("class", "annotation-group")
+                        .call(makeAnnotations)
+                        .attr("pointer-events", "none")
+
+                    // Add Tooltip for line chart
+                    var parseDate = d3.time.format("%m/%e/%Y").parse,
+                        bisectDate = d3.bisector(function(d) { return d.date; }).left,
+                        formatValue = d3.format(","),
+                        dateFormatter = d3.time.format("%m-%d-%Y");
+
+                    var focus = svg.append("g")
+                        .attr("class", "focus")
+                        .style("display", "none");
+
+                    focus.append("circle")
+                        .attr("r", 5);
+
+                    var tooltipDate = tooltip.append("div")
+                        .attr("class", "tooltip-date");
+
+                    var tooltipLikes = tooltip.append("div");
+                    tooltipLikes.append("span")
+                        .attr("class", "tooltip-title")
+                        .text("Likes: ");
+
+                    var tooltipLikesValue = tooltipLikes.append("span")
+                        .attr("class", "tooltip-likes");
+
+                    svg.append("rect")
+                        .attr("class", "overlay")
+                        .attr("width", width)
+                        .attr("height", height)
+                        .on("mouseover", function() { focus.style("display", null); tooltip.style("display", null);  })
+                        .on("mouseout", function() { focus.style("display", "none"); tooltip.style("display", "none"); })
+                        .on("mousemove", mousemove);
+
+                    function mousemove() {
+                        var x0 = x_2.invert(d3.mouse(this)[0]),
+                            i = bisectDate(data, x0, 1),
+                            d0 = data[i - 1],
+                            d1 = data[i],
+                            d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+                        focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
+                        tooltip.attr("style", "left:" + (x_2(d.date) + 64) + "px;top:" + y_2(d.positive) + "px;");
+                        tooltip.select(".tooltip-date").text(dateFormatter(d.date));
+                        tooltip.select(".tooltip-likes").text(formatValue(d.positive));
+                    }
+                }
+            );
+        });
+
+    // Add the title for the line graph
+    svg.append("text")
+        .attr("x", (width / 2))
+        .attr("y", 0 - (margin.top / 2))
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("text-decoration", "underline")
+        .text("United States - Overall Case Count (Cumulative) ");
+
+
+    // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
+
+    // add a legend
+    var l_w = 140, l_h = 210;
+
+    var key = d3.select("#svg_1")
+        .append("svg")
+        .attr("width", l_w)
+        .attr("height", l_h)
+        .attr("class", "legend");
+
+    var legend = key.append("defs")
+        .append("svg:linearGradient")
+        .attr("id", "gradient")
+        .attr("x1", "100%")
+        .attr("y1", "0%")
+        .attr("x2", "100%")
+        .attr("y2", "100%")
+        .attr("spreadMethod", "pad");
+
+    legend.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "red")
+        .attr("stop-opacity", 1);
+
+    legend.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "gainsboro")
+        .attr("stop-opacity", 1);
+
+    key.append("rect")
+        .attr("width", 20)
+        .attr("height", 200)
+        .style("fill", "url(#gradient)")
+        .attr("transform", "translate(49,5)");
+
 
     var y = d3.scaleLinear()
-        .range([height, 0]);
+        .range([200, 0])
+        .domain([0, 450000]);
 
-    var line = d3.line()
-        .x(function(d) { return x(d.date); })
-        .y(function(d) { return y(d.likes); });
+    var yAxis = d3.axisRight(y);
 
-    var svg = d3.select("body").append("svg")
+    key.append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(70,5)")
+        .call(yAxis)
+
+
+
+    /*
+    var legend = d3.select("body").append("svg")
+      			.attr("class", "legend")
+     			.attr("width", 140)
+    			.attr("height", 200)
+   				.selectAll("g")
+   				.data(color.domain().slice().reverse())
+   				.enter()
+   				.append("g")
+     			.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  	legend.append("rect")
+   		  .attr("width", 18)
+   		  .attr("height", 18)
+   		  .style("fill", color);
+
+  	legend.append("text")
+  		  .data(legendText)
+      	  .attr("x", 24)
+      	  .attr("y", 9)
+      	  .attr("dy", ".35em")
+      	  .text(function(d) { return d; });
+    */
+	});
+});
+</script>
+<script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 40, right: 30, bottom: 60, left: 100},
+        width = 1000 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+    // append the svg object to the body of the page
+    var svg_2 = d3.select("#svg_2")
+        .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
 
-    var tooltip = d3.select("body").append("div")
-        .attr("class", "tooltip")
-        .style("display", "none");
+    country_cases()
 
-    d3.tsv("data.tsv", function(error, data) {
-        if (error) throw error;
+function country_cases() {
+    svg_2.selectAll("*").remove();
+    //Read the data
+    d3.csv("country_cumulative.csv",
 
-        data.forEach(function(d) {
-            d.date = parseDate(d.date);
-            d.likes = +d.likes;
+        // When reading the csv, I must format variables:
+        function (d) {
+            // console.log(d.date, d.positive)
+            val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, death: d.death}
+            // console.log(val)
+            return val
+        },
+
+        // Now I can use this dataset:
+        function (data) {
+            // Add the title for the line graph
+            svg_2.append("text")
+                .attr("x", (width / 2) - 10)
+                .attr("y", 0 - (margin.top / 2))
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("text-decoration", "underline")
+                .text("United States - Overall Case Count and Deaths (Cumulative) ");
+
+            // Add X axis --> it is a date format
+            var x_2 = d3.scaleTime()
+                .domain(d3.extent(data, function (d) {
+                    return d.date;
+                }))
+                .range([0, width]);
+            svg_2.append("g")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x_2));
+
+            // Add the text label for the x axis
+            svg_2.append("text")
+                .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 20) + ")")
+                .style("text-anchor", "middle")
+                .text("Date - [Mar 16, 2020 Onwards]");
+
+            // Add Y axis
+            var y_2 = d3.scaleLinear()
+                .domain([0, 4500000])
+                .range([height, 0]);
+            svg_2.append("g")
+                .call(d3.axisLeft(y_2));
+
+            // gridlines in y axis function
+            function make_y_gridlines() {
+                return d3.axisLeft(y_2)
+                    .ticks(10)
+            }
+
+            // add the Y gridlines
+            svg_2.append("g")
+                .attr("class", "grid")
+                .call(make_y_gridlines()
+                    .tickSize(-width)
+                    .tickFormat("")
+                )
+
+            // Add the text label for the Y axis
+            svg_2.append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 0 - (margin.left / 2) - 30)
+                .attr("x", 0 - (height / 2))
+                .attr("dy", "1em")
+                .style("text-anchor", "middle")
+                .text("Number of People Affected");
+
+            // Add the line for confirmed
+            const path = svg_2.append("path")
+                .datum(data)
+                .attr("fill", "none")
+                .attr("stroke", "steelblue")
+                .attr("stroke-width", 1.5)
+                .attr("d", d3.line()
+                    .x(function (d) {
+                        return x_2(d.date)
+                    })
+                    .y(function (d) {
+                        return y_2(d.value)
+                    })
+                );
+
+            /*
+            // TODO
+            // Add path animation
+            const transitionPath = d3
+                .transition()
+                .ease(d3.easeSinOut)
+                .duration(2500);
+            const pathLength = path.node().getTotalLength();
+            path
+                .attr("stroke-dashoffset", pathLength)
+                .attr("stroke-dasharray", pathLength)
+                .transition(transitionPath)
+                .attr("stroke-dashoffset", 0);
+            */
+
+            // Add the line for deaths
+            svg_2.append("path")
+                .datum(data)
+                .attr("fill", "none")
+                .attr("stroke", "orange")
+                .attr("stroke-width", 1.5)
+                .attr("d", d3.line()
+                    .x(function (d) {
+                        return x_2(d.date)
+                    })
+                    .y(function (d) {
+                        return y_2(d.death)
+                    })
+                )
+
+            // Add a annotation showing curve spike after lockdown
+            const annotations = [
+                {
+                    //below in makeAnnotations has type set to d3.annotationLabel
+                    //you can add this type value below to override that default
+                    type: d3.annotationCalloutElbow,
+                    note: {
+                        label: "Case counts increasing more than normal after re-opening",
+                        title: "States Reopening After Lockdown",
+                        wrap: 200
+                    },
+                    x: 630,
+                    y: 0,
+                    dx: -200,
+                    dy: 40,
+                }, {
+                    //below in makeAnnotations has type set to d3.annotationLabel
+                    //you can add this type value below to override that default
+                    type: d3.annotationCalloutRect,
+                    // dimensions for the annotation rect, in this case the rect width and height
+                    subject: {
+                        width: 250,
+                        height: 330
+                    },
+                    x: 630,
+                    y: 0,
+                }].map(function (d) {
+                d.color = "#E8336D";
+                return d
+            })
+
+            const makeAnnotations = d3.annotation()
+                .type(d3.annotationLabel)
+                .annotations(annotations)
+
+            svg_2.append("g")
+                .attr("class", "annotation-group")
+                .call(makeAnnotations)
+                .attr("pointer-events", "none")
+
         });
-
-        data.sort(function(a, b) {
-            return a.date - b.date;
-        });
-
-        x.domain([data[0].date, data[data.length - 1].date]);
-        y.domain(d3.extent(data, function(d) { return d.likes; }));
-
-        svg.append("path")
-            .datum(data)
-            .attr("class", "line")
-            .attr("d", line);
-
-        var focus = svg.append("g")
-            .attr("class", "focus")
-            .style("display", "none");
-
-        focus.append("circle")
-            .attr("r", 5);
-
-        var tooltipDate = tooltip.append("div")
-            .attr("class", "tooltip-date");
-
-        var tooltipLikes = tooltip.append("div");
-        tooltipLikes.append("span")
-            .attr("class", "tooltip-title")
-            .text("Likes: ");
-
-        var tooltipLikesValue = tooltipLikes.append("span")
-            .attr("class", "tooltip-likes");
-
-        svg.append("rect")
-            .attr("class", "overlay")
-            .attr("width", width)
-            .attr("height", height)
-            .on("mouseover", function() { focus.style("display", null); tooltip.style("display", null);  })
-            .on("mouseout", function() { focus.style("display", "none"); tooltip.style("display", "none"); })
-            .on("mousemove", mousemove);
-
-        function mousemove() {
-            var x0 = x.invert(d3.mouse(this)[0]),
-                i = bisectDate(data, x0, 1),
-                d0 = data[i - 1],
-                d1 = data[i],
-                d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-
-            console.log("x0: " + x0)
-            console.log("i: " + i)
-            console.log("d0.date: " + d0.date)
-            console.log("d0.value: " + d0.likes)
-            console.log("d1.date: " + d1.date)
-            console.log("d1.value: " + d1.likes)
-            console.log("d.date: " + d.date)
-            console.log("d.value: " + d.likes)
-
-            focus.attr("transform", "translate(" + x(d.date) + "," + y(d.likes) + ")");
-            tooltip.attr("style", "left:" + (x(d.date) + 64) + "px;top:" + y(d.likes) + "px;");
-            tooltip.select(".tooltip-date").text(dateFormatter(d.date));
-            tooltip.select(".tooltip-likes").text(formatValue(d.likes));
-        }
-    });
-
+}
 </script>
+</body>
+</html>
