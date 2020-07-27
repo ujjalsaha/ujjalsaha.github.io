@@ -661,9 +661,10 @@ function country_cases() {
                         return y_2(d.value)
                     })
                 );
+            
             // Add the label at the tip of the line
             svg_2.append("text")
-                .attr("transform", "translate("+(width+3)+","+y(data[0].value)+")")
+                .attr("transform", "translate("+(width+3)+","+y_2(data[0].value)+")")
                 .attr("dy", ".35em")
                 .attr("text-anchor", "start")
                 .style("fill", "red")
