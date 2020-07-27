@@ -314,7 +314,7 @@ d3.json("us-states.json", function(json) {
                         .text("Date - [Mar 16, 2020 Onwards]");
 
                     // Add Y axis
-                    var y_2 = d3.scaleLog()
+                    var y_2 = d3.scaleLinear()
                         .domain([0, 450000])
                         .range([ height, 0 ]);
                     svg_2.append("g")
