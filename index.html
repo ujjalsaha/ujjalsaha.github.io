@@ -266,7 +266,6 @@ d3.json("us-states.json", function(json) {
         .on("click", function(d) {
             // Read the data
             selected_state = d.properties.state
-            csv_file = selected_state + ".csv"
             d3.csv("all_states_master.csv",
                 // When reading the csv, I must format variables:
                 function(d){
