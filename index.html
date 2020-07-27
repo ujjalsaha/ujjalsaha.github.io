@@ -67,10 +67,10 @@
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
-    var parseDate = d3.time.format("%m/%e/%Y").parse,
+    var parseDate = d3.timeFormat("%m/%e/%Y").parse,
         bisectDate = d3.bisector(function(d) { return d.date; }).left,
         formatValue = d3.format(","),
-        dateFormatter = d3.time.format("%m/%d/%y");
+        dateFormatter = d3.timeFormat("%m/%d/%y");
 
     var x = d3.time.scale()
         .range([0, width]);
