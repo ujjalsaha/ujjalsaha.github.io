@@ -449,7 +449,7 @@ d3.json("us-states.json", function(json) {
                         .attr("class", "tooltip1")
                         .style("display", "none");
 
-                    var focus = svg.append("g")
+                    var focus = svg_2.append("g")
                         .attr("class", "focus")
                         .style("display", "none");
 
@@ -467,7 +467,7 @@ d3.json("us-states.json", function(json) {
                     var tooltipLikesValue = tooltipLikes.append("span")
                         .attr("class", "tooltip-likes");
 
-                    svg.append("rect")
+                    svg_2.append("rect")
                         .attr("class", "overlay")
                         .attr("width", width)
                         .attr("height", height)
