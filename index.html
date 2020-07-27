@@ -479,18 +479,17 @@ d3.json("us-states.json", function(json) {
                         var y0 = y_2.invert(d3.mouse(this)[0])
                         console.log("x0: " + x0)
                         console.log("y0: " + y0)
-                        /*
-                            i = bisectDate(data, x0, 1)
-                            console.log("i: " + i)
-                            d0 = data[i - 1]
-                            console.log("d0.date: " + d0.date)
-                            console.log("d0.value: " + d0.value)
-                            d1 = data[i]
-                            console.log("d1.date: " + d1.date)
-                            console.log("d1.value: " + d1.value)
-                            d2 = x0 - d0.date > d1.date - x0 ? d1 : d0
-                            console.log("d2.date: " + d2.date)
-                            console.log("d2.value: " + d2.value)
+                        i = d3.bisectLeft(data, x0, 1)
+                        console.log("i: " + i)
+                        d0 = data[i - 1]
+                        console.log("d0.date: " + d0.date)
+                        console.log("d0.value: " + d0.value)
+                        d1 = data[i]
+                        console.log("d1.date: " + d1.date)
+                        console.log("d1.value: " + d1.value)
+                        d2 = x0 - d0.date > d1.date - x0 ? d1 : d0
+                        console.log("d2.date: " + d2.date)
+                        console.log("d2.value: " + d2.value)
                         focus.attr("transform", "translate(" + x_2(d2.date) + "," + y_2(d2.value) + ")");
                         focus.select(".tooltip-date").text(dateFormatter(d2.value));
                         focus.select(".tooltip-cases").text(d.value);
