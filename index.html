@@ -276,12 +276,11 @@ d3.json("us-states.json", function(json) {
 
                 // Now I can use this dataset:
                 function(data) {
-                    console.log("state_selected: " + selected_state)
-                    console.log("data: " + data)
-                    var filterdata = data.filter(function(d){return d.state == selected_state})
-                    console.log("filterdata: " + filterdata)
+                    // Clear the SVG Chart
                     svg_2.selectAll("*").remove();
 
+                    // Filter the dataset to get selected state rows only
+                    var filterdata = data.filter(function(d){return d.state == selected_state})
                     // Add the title for the line graph
                     svg_2.append("text")
                         .attr("x", (width / 2) - 10)
