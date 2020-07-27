@@ -424,11 +424,10 @@ d3.json("us-states.json", function(json) {
                         .style("display", "none");
 
                     // Add Tooltip for line chart
-                    var parseDate = d3.time.format("%m/%e/%Y").parse,
-                        bisectDate = d3.bisector(function(d) { return d.date; }).left,
+                    var bisectDate = d3.bisector(function(d) { return d.date; }).left,
                         formatValue = d3.format(","),
                         dateFormatter = d3.time.format("%m/%d/%y");
-                    
+
                     focus.append("circle")
                         .attr("r", 5);
 
