@@ -269,16 +269,18 @@ d3.json("us-states.json", function(json) {
             console.log("selected_state: " + selected_state)
             csv_file = selected_state + ".csv"
             console.log("filename: " + csv_file)
-            d3.csv(csv_file,
+            d3.csv("all_state_master.csv",
                 // When reading the csv, I must format variables:
                 function(d){
-                    val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, death: d.death}
+                    val = {state: d.state, date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, death: d.death}
                     // console.log("Val: " + val)
                     return val
                 },
 
                 // Now I can use this dataset:
                 function(data) {
+                    data = data.filter(function (d) { return d.state === selected_state})
+                    console.log(data)
                     svg_2.selectAll("*").remove();
 
                     // Add the title for the line graph
