@@ -266,9 +266,7 @@ d3.json("us-states.json", function(json) {
         .on("click", function(d) {
             // Read the data
             selected_state = d.properties.state
-            console.log("selected_state: " + selected_state)
             csv_file = selected_state + ".csv"
-            console.log("filename: " + csv_file)
             d3.csv("all_state_master.csv",
                 // When reading the csv, I must format variables:
                 function(d){
@@ -279,7 +277,9 @@ d3.json("us-states.json", function(json) {
 
                 // Now I can use this dataset:
                 function(data) {
-                    var filterdata = data.filter(function(d){return d.state == selectedGroup})
+                    console.log("state_selected: " + selected_state)
+                    console.log("date: " + data)
+                    var filterdata = data.filter(function(d){return d.state == selected_state})
                     console.log(filterdata)
                     svg_2.selectAll("*").remove();
 
