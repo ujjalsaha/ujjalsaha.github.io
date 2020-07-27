@@ -101,7 +101,7 @@ span.bold {
     stroke: #000;
 }
 
-.tooltip-date, .tooltip-likes {
+.tooltip-date, .tooltip-cases {
     font-weight: bold;
 }
 
@@ -448,14 +448,14 @@ d3.json("us-states.json", function(json) {
                     focus.append("text")
                         .attr("x", 18)
                         .attr("y", 18)
-                        .text("Likes:");
+                        .text("Case Count:");
 
                     focus.append("text")
-                        .attr("class", "tooltip-likes")
+                        .attr("class", "tooltip-cases")
                         .attr("x", 60)
                         .attr("y", 18);
 
-                    svg.append("rect")
+                    svg_@.append("rect")
                         .attr("class", "overlay")
                         .attr("width", width)
                         .attr("height", height)
@@ -471,7 +471,7 @@ d3.json("us-states.json", function(json) {
                             d = x0 - d0.date > d1.date - x0 ? d1 : d0;
                         focus.attr("transform", "translate(" + x(d.date) + "," + y(d.positive) + ")");
                         focus.select(".tooltip-date").text(dateFormatter(d.date));
-                        focus.select(".tooltip-likes").text(formatValue(d.positive));
+                        focus.select(".tooltip-cases").text(formatValue(d.positive));
                     }
 
 
