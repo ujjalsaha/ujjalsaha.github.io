@@ -3,16 +3,11 @@
 <head>
 <meta charset="utf-8">
 <script src='https://d3js.org/d3.v4.min.js'></script>
-<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 <style type="text/css">
-
-    #parent_div_1, #parent_div_2, #parent_div_3 {
-        width: 100px;
-        height: 100px;
-        border: 1px solid red;
-        margin-right: 10px;
-        float: left;
+    body {
+        font: 12px sans-serif;
     }
+
     /* On mouse hover, lighten state color */
     path:hover {
         fill-opacity: .7;
@@ -30,18 +25,6 @@
         border: 0px;
         border-radius: 8px;
         pointer-events: none;
-    }
-
-    /* Legend Font Style */
-    body {
-        font: 12px sans-serif;
-    }
-
-    /* Legend Position Style */
-    .legend {
-        position:absolute;
-        left:850px;
-        top:1300px;
     }
 
      .line {
@@ -100,7 +83,7 @@
     span.bold {
         font-weight: bold;
     }
-
+    
     .overlay {
         fill: none;
         pointer-events: all;
@@ -416,48 +399,7 @@ d3.json("us-states.json", function(json) {
                             })
                         );
 
-                    // Add a annotation showing curve spike after lockdown
-                    const annotations = [
-                        {
-                            //below in makeAnnotations has type set to d3.annotationLabel
-                            //you can add this type value below to override that default
-                            type: d3.annotationCalloutElbow,
-                            note: {
-                                label: "Case counts increasing more than normal after re-opening",
-                                title: "States Reopening After Lockdown",
-                                wrap: 200
-                            },
-                            x: 630,
-                            y: 0,
-                            dx: -200,
-                            dy: 30,
-                        }, {
-                            //below in makeAnnotations has type set to d3.annotationLabel
-                            //you can add this type value below to override that default
-                            type: d3.annotationCalloutRect,
-                            // dimensions for the annotation rect, in this case the rect width and height
-                            subject: {
-                                width: 250,
-                                height: 330
-                            },
-                            x: 630,
-                            y: 0,
-                        }].map(function (d) {
-                        d.color = "#E8336D";
-                        return d
-                    })
-
-                    const makeAnnotations = d3.annotation()
-                        .type(d3.annotationLabel)
-                        .annotations(annotations)
-
-                    svg_2.append("g")
-                        .attr("class", "annotation-group")
-                        .call(makeAnnotations)
-                        .attr("pointer-events", "none")
-
                     // Add Tooltip for line chart
-
                     var focus = svg_2.append("g")
                         .attr("class", "focus")
                         .style("display", "none");
@@ -615,32 +557,6 @@ d3.json("us-states.json", function(json) {
         .attr("class", "y axis")
         .attr("transform", "translate(70,5)")
         .call(yAxis)
-
-
-
-    /*
-    var legend = d3.select("body").append("svg")
-      			.attr("class", "legend")
-     			.attr("width", 140)
-    			.attr("height", 200)
-   				.selectAll("g")
-   				.data(color.domain().slice().reverse())
-   				.enter()
-   				.append("g")
-     			.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-  	legend.append("rect")
-   		  .attr("width", 18)
-   		  .attr("height", 18)
-   		  .style("fill", color);
-
-  	legend.append("text")
-  		  .data(legendText)
-      	  .attr("x", 24)
-      	  .attr("y", 9)
-      	  .attr("dy", ".35em")
-      	  .text(function(d) { return d; });
-    */
 	});
 });
 </script>
@@ -776,47 +692,6 @@ function country_cases() {
                         return y_2(d.death)
                     })
                 )
-
-            // Add a annotation showing curve spike after lockdown
-            const annotations = [
-                {
-                    //below in makeAnnotations has type set to d3.annotationLabel
-                    //you can add this type value below to override that default
-                    type: d3.annotationCalloutElbow,
-                    note: {
-                        label: "Case counts increasing more than normal after re-opening",
-                        title: "States Reopening After Lockdown",
-                        wrap: 200
-                    },
-                    x: 630,
-                    y: 0,
-                    dx: -200,
-                    dy: 40,
-                }, {
-                    //below in makeAnnotations has type set to d3.annotationLabel
-                    //you can add this type value below to override that default
-                    type: d3.annotationCalloutRect,
-                    // dimensions for the annotation rect, in this case the rect width and height
-                    subject: {
-                        width: 250,
-                        height: 330
-                    },
-                    x: 630,
-                    y: 0,
-                }].map(function (d) {
-                d.color = "#E8336D";
-                return d
-            })
-
-            const makeAnnotations = d3.annotation()
-                .type(d3.annotationLabel)
-                .annotations(annotations)
-
-            svg_2.append("g")
-                .attr("class", "annotation-group")
-                .call(makeAnnotations)
-                .attr("pointer-events", "none")
-
         });
 }
 </script>
