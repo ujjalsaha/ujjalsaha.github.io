@@ -428,7 +428,7 @@ d3.json("us-states.json", function(json) {
                         .attr("pointer-events", "none")
 
                     // Add Tooltip for line chart
-                    var bisectDate = d3.bisectLeft(function (d) {return d.date;}),
+                    var bisectDate = d3.bisector(function (d) {return d.date;}).left,
                         dateFormatter = d3.timeFormat("%m-%d-%Y");
 
                     var focus = svg_2.append("g")
@@ -477,7 +477,7 @@ d3.json("us-states.json", function(json) {
                     function mousemove() {
                         var x0 = x_2.invert(d3.mouse(this)[0])
                         console.log("x0: " + x0)
-                        i = d3.bisectLeft(x0)
+                        i = bisectDate(data, x0, 1)
                         console.log("i: " + i)
                         d0 = data[i - 1]
                         console.log("d0.date: " + d0.date)
