@@ -107,11 +107,11 @@ span.bold {
     Around late June, when the lockdown was lifted, there is sudden rise in the graph which would mean as states are opening more community spreading is also aggressive.
 </div>
 <div class="svg">
-    <div>
+    <div style="padding-left: 30px">
         <input name="updateButton"
                type="button"
-               value="Update"
-               onclick="alert('test')" />
+               value="Show Cumulative Cases for United States"
+               onclick="country_cases()" />
     </div>
     <div id="svg_2" class="svg"></div>
 </div>
@@ -280,7 +280,6 @@ d3.json("us-states.json", function(json) {
                 // Now I can use this dataset:
                 function(data) {
                     svg_2.selectAll("*").remove();
-
 
                     // Add the title for the line graph
                     svg_2.append("text")
@@ -466,6 +465,10 @@ d3.json("us-states.json", function(json) {
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
+    country_cases()
+
+function country_cases() {
+    svg_2.selectAll("*").remove();
     //Read the data
     d3.csv("country_cumulative.csv",
 
@@ -625,6 +628,7 @@ d3.json("us-states.json", function(json) {
                 .attr("pointer-events", "none")
 
         });
+}
 </script>
 </body>
 </html>
