@@ -475,7 +475,7 @@ d3.json("us-states.json", function(json) {
                         .on("mouseout", function () {
                             focus.style("display", "none");
                         })
-                        .on("mousemove", mousemove());
+                        .on("mousemove", mousemove);
 
                     function mousemove() {
                         var x0 = x_2.invert(d3.mouse(this)[0]),
