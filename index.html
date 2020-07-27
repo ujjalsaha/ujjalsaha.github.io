@@ -445,6 +445,10 @@ d3.json("us-states.json", function(json) {
                         formatValue = d3.format(","),
                         dateFormatter = d3.timeParse("%m-%d-%Y");
 
+                    var tooltip = d3.select("body").append("div")
+                        .attr("class", "tooltip1")
+                        .style("display", "none");
+
                     var focus = svg.append("g")
                         .attr("class", "focus")
                         .style("display", "none");
