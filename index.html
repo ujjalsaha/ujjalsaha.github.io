@@ -288,7 +288,7 @@ d3.json("us-states.json", function(json) {
         .on("click", function(d) {
             // Read the data
             selected_state = d.properties.state
-            d3.csv("all_states_master.csv",
+        d3.csv("all_states_master.csv",
                 // When reading the csv, I must format variables:
                 function(d){
                     val = { state: d.state,
@@ -305,7 +305,9 @@ d3.json("us-states.json", function(json) {
                     svg_2.selectAll("*").remove();
 
                     // Filter the dataset to get selected state rows only
-                    var filterdata = data.filter(function(d){return d.state == selected_state})
+                    var filterdata = data.filter(function (d) {
+                        return d.state == selected_state
+                    })
                     // Add the title for the line graph
                     svg_2.append("text")
                         .attr("x", (width / 2) - 10)
@@ -326,8 +328,10 @@ d3.json("us-states.json", function(json) {
 
                     // Add X axis --> it is a date format
                     var x_2 = d3.scaleTime()
-                        .domain(d3.extent(filterdata, function(d) { return d.date; }))
-                        .range([ 0, width]);
+                        .domain(d3.extent(filterdata, function (d) {
+                            return d.date;
+                        }))
+                        .range([0, width]);
                     svg_2.append("g")
                         .attr("transform", "translate(0," + height + ")")
                         .call(d3.axisBottom(x_2));
@@ -341,7 +345,7 @@ d3.json("us-states.json", function(json) {
                     // Add Y axis
                     var y_2 = d3.scaleLinear()
                         .domain([0, 450000])
-                        .range([ height, 0 ]);
+                        .range([height, 0]);
                     svg_2.append("g")
                         .call(d3.axisLeft(y_2));
 
@@ -363,7 +367,7 @@ d3.json("us-states.json", function(json) {
                     svg_2.append("text")
                         .attr("transform", "rotate(-90)")
                         .attr("y", 0 - (margin.left / 2) - 30)
-                        .attr("x",0 - (height / 2))
+                        .attr("x", 0 - (height / 2))
                         .attr("dy", "1em")
                         .style("text-anchor", "middle")
                         .text("Number of People Affected");
@@ -375,8 +379,12 @@ d3.json("us-states.json", function(json) {
                         .attr("stroke", "steelblue")
                         .attr("stroke-width", 1.5)
                         .attr("d", d3.line()
-                            .x(function(d) { return x_2(d.date) })
-                            .y(function(d) { return y_2(d.value) })
+                            .x(function (d) {
+                                return x_2(d.date)
+                            })
+                            .y(function (d) {
+                                return y_2(d.value)
+                            })
                         );
 
                     // Add a annotation showing curve spike after lockdown
@@ -420,7 +428,9 @@ d3.json("us-states.json", function(json) {
                         .attr("pointer-events", "none")
 
                     // Add Tooltip for line chart
-                    var bisectDate = d3.bisector(function(d) { return d.date; }).left,
+                    var bisectDate = d3.bisector(function (d) {
+                            return d.date;
+                        }).left,
                         dateFormatter = d3.timeFormat("%m-%d-%Y");
 
 
@@ -459,27 +469,21 @@ d3.json("us-states.json", function(json) {
                         .attr("class", "overlay")
                         .attr("width", width)
                         .attr("height", height)
-                        .on("mouseover", function() { focus.style("display", null); })
-                        .on("mouseout", function() { focus.style("display", "none"); })
+                        .on("mouseover", function () {
+                            focus.style("display", null);
+                        })
+                        .on("mouseout", function () {
+                            focus.style("display", "none");
+                        })
                         .on("mousemove", mousemove);
 
                     function mousemove() {
-                        var x0 = x_2.invert(d3.mouse(this)[0]),
-                            i = bisectDate(data, x0, 1),
-                            d0 = data[i - 1],
-                            d1 = data[i],
-                            d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-                            console.log("i: " + i)
-                            console.log("d0: " + d0)
-                            console.log("d1: " + d1)
-                            console.log("d: " + d)
                         focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
                         focus.select(".tooltip-date").text(dateFormatter(d.date));
                         focus.select(".tooltip-cases").text(d.positive);
                     }
-                });
-
-
+                }
+            );
         });
 
     // Add the title for the line graph
