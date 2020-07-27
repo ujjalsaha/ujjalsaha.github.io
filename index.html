@@ -450,7 +450,7 @@ d3.json("us-states.json", function(json) {
                         .attr("width", 120)
                         .attr("height", 50)
                         .attr("x", -180)
-                        .attr("y", -80)
+                        .attr("y", -60)
                         .attr("rx", 4)
                         .attr("ry", 4);
 
@@ -461,12 +461,12 @@ d3.json("us-states.json", function(json) {
 
                     focus.append("text")
                         .attr("x", -175)
-                        .attr("y", -60)
-                        .text("Confirmed Cases:");
+                        .attr("y", -55)
+                        .text("Cases:");
 
                     focus.append("text")
                         .attr("class", "tooltip-cases")
-                        .attr("x", 120)
+                        .attr("x", -165)
                         .attr("y", 18);
 
                     svg_2.append("rect")
