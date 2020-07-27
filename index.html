@@ -419,14 +419,14 @@ d3.json("us-states.json", function(json) {
                         .call(makeAnnotations)
                         .attr("pointer-events", "none")
 
-                    var focus = svg_2.append("g")
-                        .attr("class", "focus")
-                        .style("display", "none");
-
                     // Add Tooltip for line chart
                     var bisectDate = d3.bisector(function(d) { return d.date; }).left,
                         formatValue = d3.format(","),
                         dateFormatter = d3.timeFormat("%m-%d-%Y");
+
+                    var focus = svg_2.append("g")
+                        .attr("class", "focus")
+                        .style("display", "none");
 
                     focus.append("circle")
                         .attr("r", 5);
@@ -464,12 +464,12 @@ d3.json("us-states.json", function(json) {
                         .on("mousemove", mousemove);
 
                     function mousemove() {
-                        var x0 = x.invert(d3.mouse(this)[0]),
+                        var x0 = x_2.invert(d3.mouse(this)[0]),
                             i = bisectDate(data, x0, 1),
                             d0 = data[i - 1],
                             d1 = data[i],
                             d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-                        focus.attr("transform", "translate(" + x(d.date) + "," + y(d.positive) + ")");
+                        focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
                         focus.select(".tooltip-date").text(dateFormatter(d.date));
                         focus.select(".tooltip-cases").text(formatValue(d.positive));
                     }
