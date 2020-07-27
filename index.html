@@ -174,11 +174,11 @@
             console.log("x0: " + x0)
             console.log("i: " + i)
             console.log("d0.date: " + d0.date)
-            console.log("d0.value: " + d0.value)
+            console.log("d0.value: " + d0.likes)
             console.log("d1.date: " + d1.date)
-            console.log("d1.value: " + d1.value)
+            console.log("d1.value: " + d1.likes)
             console.log("d.date: " + d.date)
-            console.log("d.value: " + d.value)
+            console.log("d.value: " + d.likes)
 
             focus.attr("transform", "translate(" + x(d.date) + "," + y(d.likes) + ")");
             tooltip.attr("style", "left:" + (x(d.date) + 64) + "px;top:" + y(d.likes) + "px;");
