@@ -217,7 +217,7 @@ var selected_state = ""
 var parseDate = d3.timeParse("%Y%m%d"),
     bisectDate = d3.bisector(function(d) { return d.date; }).left,
     formatValue = d3.format(","),
-    dateFormatter = d3.timeParse("%Y%m%d");
+    dateFormatter = d3.timeFormat("%B %d, %Y");
 
 // Load GeoJSON data and merge with states data
 d3.json("us-states.json", function(json) {
@@ -484,7 +484,7 @@ d3.json("us-states.json", function(json) {
                             d1 = filterdata[i],
                             d = x0 - d0.date > d1.date - x0 ? d1 : d0;
                         focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
-                        focus.select(".tooltip-date").text(parseDate(d.date));
+                        focus.select(".tooltip-date").text(dateFormatter(d.date));
                         focus.select(".tooltip-cases").text(formatValue(d.positive));
                     }
 
