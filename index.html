@@ -4,108 +4,116 @@
 <meta charset="utf-8">
 <script src='https://d3js.org/d3.v4.min.js'></script>
 <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+<style type="text/css">
 
-    <style type="text/css">
+    #parent_div_1, #parent_div_2, #parent_div_3 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        margin-right: 10px;
+        float: left;
+    }
+    /* On mouse hover, lighten state color */
+    path:hover {
+        fill-opacity: .7;
+    }
 
-/* On mouse hover, lighten state color */
-path:hover {
-	fill-opacity: .7;
-}
+    /* Style for Custom Tooltip */
+    div.tooltip {
+        position: absolute;
+        text-align: left;
+        width: 150px;
+        height: 50px;
+        padding: 10px;
+        font: 12px sans-serif;
+        background: linen;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+    }
 
-/* Style for Custom Tooltip */
-div.tooltip {   
- 	position: absolute;           
-	text-align: left;
-	width: 150px;
-	height: 50px;
-	padding: 10px;
-	font: 12px sans-serif;
-	background: linen;
-	border: 0px;      
-	border-radius: 8px;           
-	pointer-events: none;         
-}
-        
-/* Legend Font Style */
-body {
-	font: 12px sans-serif;
-}
-        
-/* Legend Position Style */
-.legend {
-	position:absolute;
-	left:850px;
-	top:1300px;
-}
+    /* Legend Font Style */
+    body {
+        font: 12px sans-serif;
+    }
 
- .line {
-     fill: none;
-     stroke: steelblue;
-     stroke-width: 2px;
- }
+    /* Legend Position Style */
+    .legend {
+        position:absolute;
+        left:850px;
+        top:1300px;
+    }
 
-.grid line {
-    stroke: lightgrey;
-    stroke-opacity: 0.7;
-    shape-rendering: crispEdges;
-}
+     .line {
+         fill: none;
+         stroke: steelblue;
+         stroke-width: 2px;
+     }
 
-.grid path {
-    stroke-width: 0;
-}
+    .grid line {
+        stroke: lightgrey;
+        stroke-opacity: 0.7;
+        shape-rendering: crispEdges;
+    }
 
-div.ex2 {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    max-width: 1500px;
-    border: 3px solid #73ad21;
-    line-height: 20px;
-    color: grey;
-}
+    .grid path {
+        stroke-width: 0;
+    }
 
-svg {
-    border: 3px solid #AAAE92;
-}
+    div.ex2 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        max-width: 1500px;
+        border: 3px solid #73ad21;
+        line-height: 20px;
+        color: grey;
+        float: left;
+    }
 
-div.svg {
-    border: 3px solid #FF4521;
-}
+    svg {
+        border: 3px solid #AAAE92;
+    }
 
-span.guideline_header {
-    font-weight: bold;
-    font-size: large;
-    color: gray
-}
+    div.svg {
+        border: 3px solid #FF4521;
+    }
 
-span.bold {
-    font-weight: bold;
-}
+    span.guideline_header {
+        font-weight: bold;
+        font-size: large;
+        color: gray
+    }
 
-.overlay {
-    fill: none;
-    pointer-events: all;
-}
+    span.bold {
+        font-weight: bold;
+    }
 
-.focus circle {
-    fill: steelblue;
-}
+    .overlay {
+        fill: none;
+        pointer-events: all;
+    }
 
-.focus text {
-    font-size: 10px;
-}
+    .focus circle {
+        fill: steelblue;
+    }
 
-.tooltip1{
-    fill: white;
-    stroke: #000;
-}
+    .focus text {
+        font-size: 10px;
+    }
 
-.tooltip-date, .tooltip-cases {
-    font-weight: bold;
-}
+    .tooltip1{
+        fill: white;
+        stroke: #000;
+    }
 
+    .tooltip-date, .tooltip-cases {
+        font-weight: bold;
+    }
 </style>
+
+
 </head>
 <body>
 <div>
