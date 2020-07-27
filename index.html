@@ -488,6 +488,8 @@ d3.json("us-states.json", function(json) {
                         console.log("d0: " + d0)
                         console.log("d1: " + d1)
                         console.log("d: " + d)
+                        console.log("d.date: " + d.date)
+                        console.log("d.positive: " + d.positive)
                         focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
                         focus.select(".tooltip-date").text(dateFormatter(d.date));
                         focus.select(".tooltip-cases").text(d.positive);
