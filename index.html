@@ -93,7 +93,7 @@ span.bold {
 }
 
 .focus text {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .tooltip1{
@@ -447,8 +447,8 @@ d3.json("us-states.json", function(json) {
 
                     focus.append("rect")
                         .attr("class", "tooltip1")
-                        .attr("width", 120)
-                        .attr("height", 50)
+                        .attr("width", 150)
+                        .attr("height", 75)
                         .attr("x", 10)
                         .attr("y", -22)
                         .attr("rx", 4)
@@ -484,7 +484,7 @@ d3.json("us-states.json", function(json) {
                             d1 = filterdata[i],
                             d = x0 - d0.date > d1.date - x0 ? d1 : d0;
                         focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
-                        focus.select(".tooltip-date").text(dateFormatter(d.positive));
+                        focus.select(".tooltip-date").text(dateFormatter(d.date));
                         focus.select(".tooltip-cases").text(formatValue(d.positive));
                     }
 
