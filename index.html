@@ -92,26 +92,13 @@ span.bold {
     fill: steelblue;
 }
 
-.tooltip1 {
-    width: 150px;
-    heigt: 75px;
-    padding: 4px 10px;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    position: absolute;
-    background-color: white;
-    font-size: 12px;
-    pointer-events: none;
-    -webkit-transition: all 0.25s;
-    -moz-transition: all 0.25s;
-    -ms-transition: all 0.25s;
-    -o-transition: all 0.25s;
-    transition: all 0.25s;
+.focus text {
+    font-size: 14px;
 }
 
-.tooltip1 div {
-    margin: 3px 0;
+.tooltip1{
+    fill: white;
+    stroke: #000;
 }
 
 .tooltip-date, .tooltip-cases {
@@ -451,6 +438,57 @@ d3.json("us-states.json", function(json) {
 
                     // Add Tooltip for line chart
 
+                    var focus = svg_2.append("g")
+                        .attr("class", "focus")
+                        .style("display", "none");
+
+                    focus.append("circle")
+                        .attr("r", 5);
+
+                    focus.append("rect")
+                        .attr("class", "tooltip1")
+                        .attr("width", 120)
+                        .attr("height", 50)
+                        .attr("x", 10)
+                        .attr("y", -22)
+                        .attr("rx", 4)
+                        .attr("ry", 4);
+
+                    focus.append("text")
+                        .attr("class", "tooltip-date")
+                        .attr("x", 18)
+                        .attr("y", -2);
+
+                    focus.append("text")
+                        .attr("x", 18)
+                        .attr("y", 18)
+                        .text("Overall Case:");
+
+                    focus.append("text")
+                        .attr("class", "tooltip-cases")
+                        .attr("x", 60)
+                        .attr("y", 18);
+
+                    svg_2.append("rect")
+                        .attr("class", "overlay")
+                        .attr("width", width)
+                        .attr("height", height)
+                        .on("mouseover", function() { focus.style("display", null); })
+                        .on("mouseout", function() { focus.style("display", "none"); })
+                        .on("mousemove", mousemove);
+
+                    function mousemove() {
+                        var x0 = x_2.invert(d3.mouse(this)[0]),
+                            i = bisectDate(filterdata, x0, 1),
+                            d0 = filterdata[i - 1],
+                            d1 = filterdata[i],
+                            d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+                        focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
+                        focus.select(".tooltip-date").text(dateFormatter(d.positive));
+                        focus.select(".tooltip-cases").text(formatValue(d.positive));
+                    }
+
+                    /*
                     var tooltip = d3.select("body").append("div")
                         .attr("class", "tooltip1")
                         .style("display", "none");
@@ -495,6 +533,7 @@ d3.json("us-states.json", function(json) {
                         tooltip.select(".tooltip-date").text(dateFormatter(d.date));
                         tooltip.select(".tooltip-cases").text(formatValue(d.positive));
                     }
+                    */
                 }
             );
         });
