@@ -354,6 +354,51 @@ d3.json("us-states.json", function(json) {
                             .y(function(d) { return y_2(d.value) })
                         );
 
+                    // Add a annotation showing curve spike after lockdown
+                    const annotations = [
+                        {
+                            //below in makeAnnotations has type set to d3.annotationLabel
+                            //you can add this type value below to override that default
+                            type: d3.annotationCalloutElbow,
+                            note: {
+                                label: "Case counts increasing more than normal after re-opening",
+                                title: "States Reopening After Lockdown",
+                                wrap: 200
+                            },
+                            //settings for the subject, in this case the circle radius
+                            subject: {
+                                width: 240,
+                                height: 330
+                            },
+                            x: 650,
+                            y: 0,
+                            dx: -200,
+                            dy: 40,
+                        }, {
+                            //below in makeAnnotations has type set to d3.annotationLabel
+                            //you can add this type value below to override that default
+                            type: d3.annotationCalloutRect,
+                            //settings for the subject, in this case the circle radius
+                            subject: {
+                                width: 240,
+                                height: 330
+                            },
+                            x: 650,
+                            y: 0,
+                        }].map(function (d) {
+                        d.color = "#E8336D";
+                        return d
+                    })
+
+                    const makeAnnotations = d3.annotation()
+                        .type(d3.annotationLabel)
+                        .annotations(annotations)
+
+                    svg_2.append("g")
+                        .attr("class", "annotation-group")
+                        .call(makeAnnotations)
+                        .attr("pointer-events", "none")
+
                 });
 
 
