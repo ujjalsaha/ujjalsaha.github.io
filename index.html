@@ -325,6 +325,10 @@ d3.json("us-states.json", function(json) {
                     var filterdata = data.filter(function (d) {
                         return d.state == selected_state
                     })
+                    filterdata.sort(function(a, b) {
+                        return a.date - b.date;
+                    });
+                    
                     // Add the title for the line graph
                     svg_2.append("text")
                         .attr("x", (width / 2) - 10)
@@ -478,9 +482,9 @@ d3.json("us-states.json", function(json) {
 
                     function mousemove() {
                         var x0 = x_2.invert(d3.mouse(this)[0]),
-                            i = bisectDate(data, x0, 1),
-                            d0 = data[i - 1],
-                            d1 = data[i],
+                            i = bisectDate(filterdata, x0, 1),
+                            d0 = filterdata[i - 1],
+                            d1 = filterdata[i],
                             d = x0 - d0.date > d1.date - x0 ? d1 : d0;
                         focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
                         tooltip.attr("style", "left:" + (x_2(d.date) + 64) + "px;top:" + y_2(d.positive) + "px;");
