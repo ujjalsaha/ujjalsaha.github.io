@@ -365,11 +365,6 @@ d3.json("us-states.json", function(json) {
                                 title: "States Reopening After Lockdown",
                                 wrap: 200
                             },
-                            //settings for the subject, in this case the circle radius
-                            subject: {
-                                width: 240,
-                                height: 330
-                            },
                             x: 630,
                             y: 0,
                             dx: -200,
@@ -378,12 +373,12 @@ d3.json("us-states.json", function(json) {
                             //below in makeAnnotations has type set to d3.annotationLabel
                             //you can add this type value below to override that default
                             type: d3.annotationCalloutRect,
-                            //settings for the subject, in this case the circle radius
+                            // dimensions for the annotation rect, in this case the rect width and height
                             subject: {
                                 width: 250,
                                 height: 330
                             },
-                            x: 650,
+                            x: 630,
                             y: 0,
                         }].map(function (d) {
                         d.color = "#E8336D";
@@ -634,11 +629,6 @@ function country_cases() {
                         title: "States Reopening After Lockdown",
                         wrap: 200
                     },
-                    //settings for the subject, in this case the circle radius
-                    subject: {
-                        width: 240,
-                        height: 330
-                    },
                     x: 630,
                     y: 0,
                     dx: -200,
@@ -647,7 +637,7 @@ function country_cases() {
                     //below in makeAnnotations has type set to d3.annotationLabel
                     //you can add this type value below to override that default
                     type: d3.annotationCalloutRect,
-                    //settings for the subject, in this case the circle radius
+                    // dimensions for the annotation rect, in this case the rect width and height
                     subject: {
                         width: 250,
                         height: 330
