@@ -226,6 +226,11 @@ d3.csv("state_cumulative.csv", function(data) {
 
 var selected_state = ""
 
+var parseDate = d3.timeParse("%Y%m%d"),
+    bisectDate = d3.bisector(function(d) { return d.date; }).left,
+    formatValue = d3.format(","),
+    dateFormatter = d3.timeParse("%Y%m%d");
+
 // Load GeoJSON data and merge with states data
 d3.json("us-states.json", function(json) {
 
@@ -304,7 +309,7 @@ d3.json("us-states.json", function(json) {
                 // When reading the csv, I must format variables:
                 function(d){
                     val = { state: d.state,
-                            date: d3.timeParse("%Y%m%d")(d.date),
+                            date: parseDate(d.date),
                             positive: d.positive,
                             death: d.death}
                     // console.log("Val: " + val)
@@ -440,10 +445,6 @@ d3.json("us-states.json", function(json) {
                         .attr("pointer-events", "none")
 
                     // Add Tooltip for line chart
-                    var parseDate = d3.timeParse("%Y%m%d"),
-                        bisectDate = d3.bisector(function(d) { return d.date; }).left,
-                        formatValue = d3.format(","),
-                        dateFormatter = d3.timeParse("%Y%m%d");
 
                     var tooltip = d3.select("body").append("div")
                         .attr("class", "tooltip1")
