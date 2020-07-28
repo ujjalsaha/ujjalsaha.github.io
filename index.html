@@ -82,7 +82,7 @@
     .legend {
         position:absolute;
         left:850px;
-        top:1000px;
+        top:1300px;
     }
 
     .line {
@@ -267,8 +267,6 @@ var path = d3.geoPath()               // path generator that will convert GeoJSO
 
 		
 // Define linear scale for output
-//var color = d3.scaleLinear().range(["rgb(213,222,217)","rgb(69,173,168)","rgb(84,36,55)","rgb(217,91,67)"]);
-//var color = d3.scaleLinear().range(["blue","red"]);
 var color = d3.scaleLinear().domain([0, 400000]).range(["gainsboro", "red"])
 var legendText = ["Minimum Cases", "Maximum cases"];
 
@@ -369,7 +367,7 @@ d3.csv("state_cumulative.csv", function(data) {
             .on("click", function(d) {
                 // Read the data
                 selected_state = d.properties.state
-            d3.csv("all_states_master.csv",
+                d3.csv("all_states_master.csv",
                     // When reading the csv, I must format variables:
                     function(d){
                         val = { state: d.state,
@@ -540,8 +538,17 @@ svg.append("text")
 
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 
+
 // add a legend
-var legend = svg.append("defs")
+var l_w = 140, l_h = 210;
+
+var key = d3.select("#svg_1")
+    .append("svg")
+    .attr("width", l_w)
+    .attr("height", l_h)
+    .attr("class", "legend");
+
+var legend = key.append("defs")
     .append("svg:linearGradient")
     .attr("id", "gradient")
     .attr("x1", "100%")
@@ -560,11 +567,12 @@ legend.append("stop")
     .attr("stop-color", "gainsboro")
     .attr("stop-opacity", 1);
 
-legend.append("rect")
+key.append("rect")
     .attr("width", 20)
     .attr("height", 200)
     .style("fill", "url(#gradient)")
     .attr("transform", "translate(49,5)");
+
 
 var y = d3.scaleLinear()
     .range([200, 0])
@@ -572,10 +580,11 @@ var y = d3.scaleLinear()
 
 var yAxis = d3.axisRight(y);
 
-legend.append("g")
+key.append("g")
     .attr("class", "y axis")
-    .attr("transform", "translate(100,100)")
+    .attr("transform", "translate(70,5)")
     .call(yAxis)
+
 
 
 </script>
