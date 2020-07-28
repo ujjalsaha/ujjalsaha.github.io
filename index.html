@@ -184,8 +184,11 @@
                     <span class="guideline_header">Map - Showing Cumulative Confirmed Cases for Each States of United States</span><br/>
                     Seeing the total number of confirmed cases over time, can illustrate how the pandemic is expanding within the country.
                     Below map shows cumulative cases for each states – for instance, the number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered.
-                    Comparing across states within United States can also show where the pandemic is growing most rapidly at any point in time.
+                    Here we see many states have been affected so far with most no of positive cases. The coloring scheme shows red (most affected) to gray (least affected) states.
                     From the map, as <span class="bold"> observation </span> we see states like New York, California, New Jersey, Florida, Texas etc are the hard hit areas with highest count of cumulative COVID-19 cases so far.
+                    The map is interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:
+                    &nbsp;&nbsp;1. <span class="bold" style="color: chocolate; font-size: medium"> Tooltip </span> -> Hovering over any state shows the cases counts and few other info.
+                    &nbsp;&nbsp;2. <span class="bold" style="color: chocolate; font-size: medium"> Cross Filter (Parameter: State)</span> -> Clicking a state from the map with bring up respective state's cumulative case count on the line chart.
                 </div>
             </td>
             <td>
@@ -202,10 +205,18 @@
             <td valign="top" width="750px">
                 <div style="line-height: 20px;padding: 20px">
                     <span class="guideline_header">Line Chart - Cumulative Confirmed Cases and Deaths for the United States</span><br/>
-                    Seeing the total number of confirmed cases over time, can illustrate how the pandemic is expanding within the country.
-                    Below chart shows cumulative cases – for instance, the number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered.
-                    An fine <span class="bold"> observation </span> we see from this graph is upward bend in a curve can indicate either a time of explosive growth of coronavirus cases or a change in how cases are defined or counted.
-                    Around late June, when the lockdown was lifted, there is sudden rise in the graph which would mean as states are opening more community spreading is also aggressive.
+                    The line chart here shows:<br/>
+                    &nbsp;&nbsp;1. For entire United States at what pace the overall cases are increasing
+                    &nbsp;&nbsp;2. If user clicks on a state on the above map, as cross-filter is enable, the view on the line chart will switch to state level and will show state level overall case count.
+                    An fine <span class="bold"> observation </span> we noticed this graph has an upward bend that can indicate more cases are being report in last few weeks then ever before.
+                    Around late June, when the lockdown was lifted, there is sudden rise in the curve which would mean as states are opening more community spreading is also aggressive.
+                    The color blue was used just to make it appealing, where blue itself has no color significance on the line chart.
+                    The line chart has also couple of <span class="bold">annotations</span>:
+                    &nbsp;&nbsp;1. A vertical line shows when the lockdown was opened to let user visibly see post lockdown effect of coronavirus on people of the states or the country.
+                    &nbsp;&nbsp;2. At the tip of the line chart, show the total case count for the latest date.
+                    The line is also interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:
+                    &nbsp;&nbsp;1. <span class="bold" style="color: chocolate; font-size: medium"> Tooltip </span> -> Hovering over any part of the line chart area (not the axis) will display the tooltip showing case count on that particular day.
+                    &nbsp;&nbsp;2. <span class="bold" style="color: chocolate; font-size: medium"> Button (Switch to Country Level)  </span> -> Also a button is provided for user to let switch on entire United States data at any point of time during the interaction .
                 </div>
             </td>
             <td>
@@ -225,7 +236,7 @@
     <span class="guideline_header">Definitions of the Parameters:</span><br/>
     1. <span class="bold">Confirmed Cases:</span> A confirmed case is a person who has a positive test result from an FDA approved diagnostic molecular test.<br/>
     2: <span class="bold">Date: </span>Date on which data was compiled by the data provider.<br/>
-    3. <span class="bold">States: </span>States of the United States.<br/>
+    3. <span class="bold">States: </span>States of the United States.<br/> Cross-filter is enabled on this scnene letting the user to see state level confirmed cases.
 </div>
 <br/>
 <br/>
@@ -701,7 +712,7 @@ key.append("g")
                     );
 
                 // Add the label at the tip of the line
-                svg_2.append("text")
+                svg_2.append("line")
                     .attr("transform", "translate("+(width - 50)+","+(y_2(data[0].value) - 10)+")")
                     .attr("dy", ".35em")
                     .attr("text-anchor", "start")
