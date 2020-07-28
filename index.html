@@ -748,14 +748,11 @@ key.append("g")
 
                 // Add the line for confirmed
                 svg_2.append("path")
-                    .datum(data)
                     .attr("fill", "none")
                     .attr("stroke", "pink")
                     .attr("stroke-width", 1.5)
-                    .attr("d", d3.line()
-                        .x(parseDate("20200616"))
-                        .y(height)
-                    )
+                    .attr("x", -80)
+                    .attr("y", -60)
 
                 // Add Tooltip for line chart
                 var focus = svg_2.append("g")
