@@ -493,6 +493,20 @@ d3.csv("state_cumulative.csv", function(data) {
                             .style("font-weight", "bold")
                             .text(formatValue(max_positive));
 
+                        // Add the line for annotation
+                        var xy = [];
+                        xy.push({x: 510, y: 300})
+                        xy.push({x: 510, y: 0})
+                        svg_2.append("path")
+                            .datum(xy)
+                            .attr("fill", "none")
+                            .attr("stroke", "pink")
+                            .attr("stroke-width", 2)
+                            .attr("d", d3.line()
+                                .x(function(d) { return d.x;})
+                                .y(function(d) { return d.y;})
+                            )
+
                         // Add Tooltip for line chart
                         var focus = svg_2.append("g")
                             .attr("class", "focus")
