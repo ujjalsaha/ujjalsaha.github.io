@@ -746,8 +746,8 @@ key.append("g")
                     )
                 */
                 var xy = []; // start empty, add each element one at a time
-                xy.push({x: 0, y: 0})
-                xy.push({x: 200, y: 200})
+                xy.push({x: 450, y: 300})
+                xy.push({x: 450, y: 0})
                 var myline = d3.line()
                     .x(function(d) { return d.x;})
                     .y(function(d) { return d.y;})
@@ -757,7 +757,7 @@ key.append("g")
                 svg_2.append("path")
                     .attr("fill", "none")
                     .attr("stroke", "pink")
-                    .attr("stroke-width", 1.5)
+                    .attr("stroke-width", 2)
                     .attr("d", myline(xy))
 
                 // Add Tooltip for line chart
