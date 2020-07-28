@@ -180,7 +180,7 @@
 
 </div>
 <div class="header_div">
-    <span class="guideline_header">Scene 1 - Overall Cases: </span> Shows impact of COVID-19 across states but in terms of cumulative confirmed cases.
+    <span class="guideline_header">Scene 1 - Overall Cases: </span> Shows impact of COVID-19 across states in United States but in terms of cumulative confirmed cases.
     The Scene is comprised of a Map chart and Line Chart that shows how overall cases has impacted various states since beginning of pandemic and how overall cases has increased over the period (cumulative) and is still increasing. More description and user control options are mentioned on respective charts.
 </div>
 <br/>
@@ -192,8 +192,8 @@
                     <span class="guideline_header">Map - Showing Cumulative Confirmed Cases for Each States of United States</span><br/>
                     <p>
                         Seeing the total number of confirmed cases over time, can illustrate how the pandemic is expanding within the country.
-                        Below map shows cumulative cases for each states – for instance, the number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered.
-                        Here we see many states have been affected so far with most no of positive cases. The coloring scheme shows red (most affected) to gray (least affected) states.
+                        The map shows cumulative cases for each states – which means, till date the total number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered or died.
+                        The coloring scheme shows red (most affected) to gray (least affected) states. Here we see many states have been affected so far with most no of positive cases.
                         From the map, as <span class="bold"> observation </span> we see states like New York, California, New Jersey, Florida, Texas etc are the hard hit areas with highest count of cumulative COVID-19 cases so far.
                     </p>
                     <p>
@@ -585,15 +585,13 @@ d3.csv("state_cumulative.csv", function(data) {
 // Add the title for the line graph
 svg.append("text")
     .attr("x", (width / 2))
-    .attr("y", 0 - (margin.top / 2))
+    .attr("y", 0 - (margin.top / 2) + 20)
     .attr("text-anchor", "middle")
     .style("font-size", "16px")
     .style("text-decoration", "underline")
     .text("United States - Overall Case Count (Cumulative) ");
 
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
-
-
 // add a legend
 var l_w = 120, l_h = 210;
 
