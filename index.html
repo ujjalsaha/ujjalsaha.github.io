@@ -745,20 +745,20 @@ key.append("g")
                         })
                     )
                 */
-                var xy = []; // start empty, add each element one at a time
-                xy.push({x: 510, y: 300})
-                xy.push({x: 510, y: 0})
-                var myline = d3.line()
-                    .x(function(d) { return d.x;})
-                    .y(function(d) { return d.y;})
-
 
                 // Add the line for annotation
+                var xy = [];
+                xy.push({x: 510, y: 300})
+                xy.push({x: 510, y: 0})
                 svg_2.append("path")
+                    .datum(xy)
                     .attr("fill", "none")
                     .attr("stroke", "pink")
                     .attr("stroke-width", 2)
-                    .attr("d", myline(xy))
+                    .attr("d", d3.line()
+                        .x(function(d) { return d.x;})
+                        .y(function(d) { return d.y;})
+                    )
 
                 // Add Tooltip for line chart
                 var focus = svg_2.append("g")
