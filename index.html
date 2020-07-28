@@ -197,6 +197,7 @@
                         From the map, as <span class="bold"> observation </span> we see states like New York, California, New Jersey, Florida, Texas etc are the hard hit areas with highest count of cumulative COVID-19 cases so far.
                     </p>
                     <p>
+                        <span class="bold">User Controls:</span><br/>
                         The map is interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:<br/>
                         &nbsp;&nbsp;1. <span class="bold" style="color: chocolate; font-size: small"> Tooltip </span> -> Hovering over any state shows the cases counts and few other info.<br/>
                         &nbsp;&nbsp;2. <span class="bold" style="color: chocolate; font-size: small"> Cross Filter (Parameter: State)</span> -> Clicking a state from the map with bring up respective state's cumulative case count on the line chart.<br/>
@@ -228,14 +229,16 @@
                         The color blue was used just to make it appealing, where blue itself has no color significance on the line chart.
                     </p>
                     <p>
-                        The line chart has also couple of <span class="bold">annotations</span>:<br/>
+                        <span class="bold">Annotations:</span><br/>
+                        The line chart has also couple of annotations:<br/>
                         &nbsp;&nbsp;1. A vertical line that shows when states re-opened from lockdown. This lets user to see post lockdown effect of coronavirus on people.<br/>
                         &nbsp;&nbsp;2. At the tip of the line chart, show the total case count for the latest date.<br/>
                     </p>
                     <p>
+                        <span class="bold">User Controls:</span><br/>
                         The line is also interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:<br/>
-                        &nbsp;&nbsp;1. <span class="bold" style="color: chocolate; font-size: medium"> Tooltip </span> -> Hovering over on line chart area will display the tooltip showing case count on that particular day.<br/>
-                        &nbsp;&nbsp;2. <span class="bold" style="color: chocolate; font-size: medium"> Button (Switch to Country Level)  </span> -> Also a button is provided for user to let switch on entire United States data at any point of time during the interaction .<br/>
+                        &nbsp;&nbsp;1. <span class="bold" style="color: chocolate; font-size: small"> Tooltip </span> -> Hovering over on line chart area will display the tooltip showing case count on that particular day.<br/>
+                        &nbsp;&nbsp;2. <span class="bold" style="color: chocolate; font-size: small"> Button (Switch to Country Level)  </span> -> Also a button is provided for user to let switch on entire United States data at any point of time during the interaction .<br/>
                     </p>
                 </div>
             </td>
@@ -494,6 +497,16 @@ d3.csv("state_cumulative.csv", function(data) {
                             .style("font-size", "12px")
                             .style("font-weight", "bold")
                             .text(formatValue(max_positive));
+
+                        // Add the rectangle for annotation
+                        svg.append("rect")
+                            .attr("class", "annotation_box")
+                            .attr("width", 80)
+                            .attr("height", 50)
+                            .attr("x", -80)
+                            .attr("y", -60)
+                            .attr("rx", 4)
+                            .attr("ry", 4);
 
                         // Add the line for annotation
                         var xy = [];
