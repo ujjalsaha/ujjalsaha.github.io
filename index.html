@@ -30,7 +30,7 @@
         background: lightgray;
     }
 
-    a {
+    .slide_button {
         outline: none;
         text-decoration: none;
         display: inline-block;
@@ -41,19 +41,19 @@
         color: black;
     }
 
-    li:last-child a {
+    li:last-child .slide_button {
         margin-right: 0;
     }
 
-    a:link, a:visited, a:focus {
+    .slide_button:link, .slide_button:visited, .slide_button:focus {
         background: burlywood;
     }
 
-    a:hover {
+    .slide_button:hover {
         background: coral;
     }
 
-    a:active {
+    .slide_button:active {
         background: orangered;
         color: white;
     }
@@ -167,8 +167,8 @@
 <div class="header_div" style="text-align: center">
     <ul>
         <li><span class="selected" href="#">Overall Cases</span></li>
-        <li><a href="#">New Cases</a></li>
-        <li><a href="#">Top States</a></li>
+        <li><a class="slide_button" href="#">New Cases</a></li>
+        <li><a class="slide_button" href="#">Top States</a></li>
     </ul>
 </div>
 <div class="header_div">
