@@ -160,9 +160,9 @@
     <span class="guideline_header">Narrative Visualization Walkthrough - Demonstrating Interactive Slideshow using COVID-19 Dataset for United States</span><br/>
     This is a demonstration of of Narrative Visualisation using the Interactive Slideshow Structure using the COVID-19 Dataset and tries to establish sequence of hierarchies.
     This whole Visualization is based on three Scenes.
-    <p><span class="bold">Scene 1 (United States - COVID-19 Overall Case Count):</span> where author puts forwards the observation with overall cases and being within scene1 lets user explore with the tooltops, parameters and triggers.</p>
-    <p><span class="bold">Scene 2 (United States - COVID-19 New Case Count):</span> where author puts forwards the observation with new cases and latest case counts and being within scene2 lets user explore the visualization with the tooltops, parameters and triggers.</p>
-    <p><span class="bold">Slide 3 (United States - COVID-19 Comparative Top1 10 States with Overall and Rising cases):</span> where authour puts forwards the observation with top10 states with overall positive case counts vs top10 states with new case counts. And then letting the user explore the visualization with the tooltops, parameters and triggers.</p>
+    <p><span class="bold">Scene 1 (United States - COVID-19 Overall Case Count):</span> where author puts forwards the observation with overall cases and being within scene1 lets user explore with the tooltip, parameters and triggers.</p>
+    <p><span class="bold">Scene 2 (United States - COVID-19 New Case Count):</span> where author puts forwards the observation with new cases and latest case counts and being within scene2 lets user explore the visualization with the tooltip, parameters and triggers.</p>
+    <p><span class="bold">Scene 3 (United States - COVID-19 Top 10 States):</span> where author puts forwards the observation of top10 states with overall positive case counts vs top10 states with new case counts. And then letting the user explore the visualization with the tooltip, parameters and triggers.</p>
 </div>
 <div class="header_div" style="text-align: center">
     <ul>
@@ -172,7 +172,7 @@
     </ul>
 </div>
 <div class="header_div">
-    This is <p><span class="bold">Scene 1</span> where the author shows impact of COVID-19 across states but in terms of cumulative confirmed cases.
+    This is <span class="bold">Scene 1</span> where the author shows impact of COVID-19 across states but in terms of cumulative confirmed cases.
     In this page, the Scene is comprised of a Map chart and Line Chart that shows how overall cases has impacted various states since beginning of pandemic and how overall cases has increased over the period (cumulative) and is still increasing.
 </div>
 <br/>
@@ -348,6 +348,13 @@ d3.json("us-states.json", function(json) {
                 return "gray";
             }
         })
+        .append("text")
+        .attr("x", (width / 2) - 10)
+        .attr("y", 0 - (margin.top / 2))
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("text-decoration", "underline")
+        .text("United States - Overall Case Count and Deaths (Cumulative) ");
         .on("mouseover", function(d) {
             var tooltip_html  = "<span class='bold' style='font-size: medium;color: maroon'>" + d.properties.state + "</span><br/>" +
                         "<span class='bold'> Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
@@ -737,7 +744,9 @@ function country_cases() {
                 .style("font-weight", "bold")
                 .text(formatValue(data[0].value));
 
+
             // Add the line for deaths
+            /*
             svg_2.append("path")
                 .datum(data)
                 .attr("fill", "none")
@@ -751,6 +760,7 @@ function country_cases() {
                         return y_2(d.death)
                     })
                 )
+            */
         });
 }
 </script>
