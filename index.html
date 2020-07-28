@@ -421,7 +421,7 @@ d3.csv("state_cumulative.csv", function(data) {
                             .attr("text-anchor", "middle")
                             .style("font-size", "16px")
                             .style("text-decoration", "underline")
-                            .text(d.properties.state + " - Overall Case Count and Deaths (Cumulative) ");
+                            .text(d.properties.state + " - Overall Case Count (Cumulative) ");
 
                         // Add X axis --> it is a date format
                         var x_2 = d3.scaleTime()
@@ -657,7 +657,7 @@ key.append("g")
                     .attr("text-anchor", "middle")
                     .style("font-size", "16px")
                     .style("text-decoration", "underline")
-                    .text("United States - Overall Case Count and Deaths (Cumulative) ");
+                    .text("United States - Overall Case Count (Cumulative) ");
 
                 // Add X axis --> it is a date format
                 var x_2 = d3.scaleTime()
@@ -745,6 +745,17 @@ key.append("g")
                         })
                     )
                 */
+
+                // Add the line for confirmed
+                svg_2.append("path")
+                    .datum(data)
+                    .attr("fill", "none")
+                    .attr("stroke", "pink")
+                    .attr("stroke-width", 1.5)
+                    .attr("d", d3.line()
+                        .x(parseDate("20200616"))
+                        .y(height)
+                    )
 
                 // Add Tooltip for line chart
                 var focus = svg_2.append("g")
