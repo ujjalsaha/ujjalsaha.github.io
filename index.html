@@ -803,6 +803,16 @@ key.append("g")
                         .y(function(d) { return d.y;})
                     )
 
+                // Add the rect for annotation
+                focus.append("rect")
+                    .attr("class", "tooltip")
+                    .attr("width", 90)
+                    .attr("height", 50)
+                    .attr("x", -80)
+                    .attr("y", -60)
+                    .attr("rx", 4)
+                    .attr("ry", 4);
+
                 // Add annotation text
                 svg_2.append("text")
                     .attr("x", 425)
