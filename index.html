@@ -513,7 +513,8 @@ d3.csv("state_cumulative.csv", function(data) {
                             .attr("y", 30)
                             .attr("text-anchor", "middle")
                             .style("font-size", "10px")
-                            .style("fill", "pink")
+                            .style("font-weight", "bold")
+                            .style("fill", "deeppink")
                             .text("States reopening after lockdown");
 
                         // Add Tooltip for line chart
@@ -776,7 +777,7 @@ key.append("g")
                 svg_2.append("path")
                     .datum(xy)
                     .attr("fill", "none")
-                    .attr("stroke", "deeppink")
+                    .attr("stroke", "pink")
                     .attr("stroke-width", 2)
                     .attr("d", d3.line()
                         .x(function(d) { return d.x;})
