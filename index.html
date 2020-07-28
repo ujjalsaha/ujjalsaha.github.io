@@ -348,13 +348,6 @@ d3.json("us-states.json", function(json) {
                 return "gray";
             }
         })
-        .append("text")
-        .attr("x", (width / 2) - 10)
-        .attr("y", 0 - (margin.top / 2))
-        .attr("text-anchor", "middle")
-        .style("font-size", "16px")
-        .style("text-decoration", "underline")
-        .text("United States - Overall Case Count and Deaths (Cumulative) ");
         .on("mouseover", function(d) {
             var tooltip_html  = "<span class='bold' style='font-size: medium;color: maroon'>" + d.properties.state + "</span><br/>" +
                         "<span class='bold'> Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
@@ -529,53 +522,7 @@ d3.json("us-states.json", function(json) {
                         focus.select(".tooltip-cases").text(formatValue(d.positive));
                     }
 
-                    /*
-                    var tooltip = d3.select("body").append("div")
-                        .attr("class", "tooltip1")
-                        .style("display", "none");
-
-                    var focus = svg_2.append("g")
-                        .attr("class", "focus")
-                        .style("display", "none");
-
-                    focus.append("circle")
-                        .attr("r", 5);
-
-                    var tooltipDate = tooltip.append("div")
-                        .attr("class", "tooltip-date");
-
-                    var tooltipLikes = tooltip.append("div");
-                    tooltipLikes.append("span")
-                        .attr("class", "tooltip-title")
-                        .text("Confirmed Cases: ");
-
-                    var tooltipLikesValue = tooltipLikes.append("span")
-                        .attr("class", "tooltip-cases");
-
-                    svg_2.append("rect")
-                        .attr("class", "overlay")
-                        .attr("width", width)
-                        .attr("height", height)
-                        .on("mouseover", function() { focus.style("display", null); tooltip.style("display", null);  })
-                        .on("mouseout", function() { focus.style("display", "none"); tooltip.style("display", "none"); })
-                        .on("mousemove", mousemove);
-
-                    function mousemove() {
-                        var x0 = x_2.invert(d3.mouse(this)[0]),
-                            i = bisectDate(filterdata, x0, 1),
-                            d0 = filterdata[i - 1],
-                            d1 = filterdata[i],
-                            d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-                        console.log("d.positive: " + d.positive)
-                        console.log("d.date: " + d.date)
-                        focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
-                        tooltip.attr("style", "left:" + (x_2(d.date) + 64) + "px;top:" + y_2(d.positive) + "px;");
-                        //tooltip.attr("transform", "translate(" + x_2(d.date)  + "," + y_2(d.positive) + ")");
-                        tooltip.select(".tooltip-date").text(dateFormatter(d.date));
-                        tooltip.select(".tooltip-cases").text(formatValue(d.positive));
-                    }
-                    */
-                }
+                 }
             );
         });
 
@@ -587,7 +534,6 @@ d3.json("us-states.json", function(json) {
         .style("font-size", "16px")
         .style("text-decoration", "underline")
         .text("United States - Overall Case Count (Cumulative) ");
-
 
     // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 
