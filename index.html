@@ -565,8 +565,8 @@ svg.append("text")
 // add a legend
 var l_w = 120, l_h = 210;
 
-var key = d3.select("#svg_1")
-    .append("svg")
+// Add Tooltip for line chart
+var key = svg_2.append("g")
     .attr("width", l_w)
     .attr("height", l_h)
     .attr("class", "legend");
