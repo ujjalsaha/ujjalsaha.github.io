@@ -18,6 +18,18 @@
         display: inline;
     }
 
+    .selected {
+        outline: none;
+        text-decoration: none;
+        display: inline-block;
+        width: 19.5%;
+        margin-right: 0.625%;
+        text-align: center;
+        line-height: 3;
+        color: black;
+        background: lightgray;
+    }
+
     a {
         outline: none;
         text-decoration: none;
@@ -154,7 +166,7 @@
 </div>
 <div class="header_div" style="text-align: center">
     <ul>
-        <li><a href="#">Overall Cases</a></li>
+        <li><span class="selected" href="#">Overall Cases</span></li>
         <li><a href="#">New Cases</a></li>
         <li><a href="#">Top States</a></li>
     </ul>
