@@ -150,7 +150,7 @@
 
     .annotation_box{
         fill: gainsboro;
-        opacity: 0.2%;
+        stroke: #000;
     }
     .tooltip-date, .tooltip-cases {
         font-weight: bold;
@@ -646,11 +646,20 @@ key.append("rect")
 // Add text label for the legend
 key.append("text")
     .attr("x", 800)
-    .attr("y", 275)
+    .attr("y", 240)
     .attr("text-anchor", "middle")
     .style("font-size", "10px")
     .style("text-decoration", "underline")
-    .text("Cumulative Case Count");
+    .text("Cumulative");
+key.append("text")
+    .attr("x", 800)
+    .attr("y", 250)
+    .attr("text-anchor", "middle")
+    .style("font-size", "10px")
+    .style("text-decoration", "underline")
+    .text("Case Count");
+
+
 
 var y = d3.scaleLinear()
     .range([200, 0])
