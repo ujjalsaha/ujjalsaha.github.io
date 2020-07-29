@@ -825,8 +825,8 @@ key.append("g")
                     .text("after lockdown affected overall counts");
 
                 // Add the line for annotation
-                markerBoxWidth = 20
-                markerBoxHeight = 20
+                markerBoxWidth = 10
+                markerBoxHeight = 10
                 refX = markerBoxWidth / 2
                 refY = markerBoxHeight / 2
                 markerWidth = markerBoxWidth / 2;
@@ -843,7 +843,7 @@ key.append("g")
                     .attr('orient', 'auto-start-reverse')
                     .append('path')
                     .attr('d', d3.line()(arrowPoints))
-                    .attr('stroke', 'black');
+                    .attr('stroke', 'deeppink');
 
                 var xy = [];
                 xy.push({x: 5, y: 30})
@@ -854,6 +854,7 @@ key.append("g")
                     .attr("stroke", "deeppink")
                     .attr("stroke-width", "1.5px")
                     .attr("stroke-opacity", "0.7")
+                    .attr('marker-start', 'url(#arrow)')
                     .attr('marker-end', 'url(#arrow)')
                     .attr("d", d3.line()
                         .x(function(d) { return d.x;})
