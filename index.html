@@ -181,7 +181,7 @@
         <span class="bold">Scene 3 (United States - COVID-19 Top 10 States):</span> where author puts forwards the observation of top10 states with overall positive case counts vs top10 states with new case counts. Also letting the user explore the visualization with the tooltip, parameters and triggers. This is the summary and end of the narrative visualization.<br/>
     </p>
     <p>
-        <span class="bold">Navigation: </span>To move to next slides/pages, use the Prev and Next links below, or just click the button to jump to a page. For best understanding of the narration, it is highly recommended not to skip any slide.
+        <span class="bold">Navigation: </span>To move to next slides/pages, use the Prev and Next links below, or just click the button to jump to a page.
     </p>
 </div>
 <div class="header_div" style="text-align: center">
@@ -619,20 +619,6 @@ svg.append("text")
     .style("text-decoration", "underline")
     .text("United States - Overall Case Count (Cumulative) ");
 
-// High affected Add annotations
-var xy = [];
-xy.push({x: 350, y: 300})
-xy.push({x: 410, y: 350})
-svg.append("path")
-    .datum(xy)
-    .attr("fill", "none")
-    .attr("stroke", "deeppink")
-    .attr("stroke-width", 2)
-    .attr("d", d3.line()
-        .x(function(d) { return d.x;})
-        .y(function(d) { return d.y;})
-    )
-
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 // add a legend
 var l_w = 120, l_h = 210;
@@ -673,7 +659,7 @@ key.append("text")
     .attr("x", 785)
     .attr("y", 250)
     .attr("text-anchor", "middle")
-    .style("font-size", "11px")
+    .style("font-size", "10px")
     .style("font-weight", "bold")
     .style("text-decoration", "underline")
     .text("Cumulative");
@@ -844,7 +830,7 @@ key.append("g")
                     .attr("text-anchor", "middle")
                     .style("font-size", "12px")
                     .style("fill", "deeppink")
-                    .text("lockdown and affected overall counts");
+                    .text("lockdown affected overall counts");
 
                 svg_2.append("text")
                     .attr("x", 250)
