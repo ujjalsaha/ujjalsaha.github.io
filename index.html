@@ -827,8 +827,8 @@ key.append("g")
                 // Add the line for annotation
                 markerBoxWidth = 20
                 markerBoxHeight = 10
-                refX = markerBoxWidth / 2
-                refY = markerBoxHeight / 2
+                refX = 1
+                refY = 5
                 markerWidth = markerBoxWidth / 2;
                 markerHeight = markerBoxHeight / 2;
                 arrowPoints = [[0, 0], [0, 20], [20, 10]];
@@ -843,8 +843,8 @@ key.append("g")
                     .attr('orient', 'auto-start-reverse')
                     .append('path')
                     .attr('d', d3.line()(arrowPoints))
-                    .attr('fill', "pink")
-                    .attr('stroke', 'black');
+                    .attr('fill', "deeppink")
+                    .attr('stroke', 'deeppink');
 
                 var xy = [];
                 xy.push({x: 10, y: 30})
