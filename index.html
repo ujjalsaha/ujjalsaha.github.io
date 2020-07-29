@@ -326,15 +326,15 @@ var svg = d3.select("#svg_1")
 var y = d3.scaleLinear()
     .range([200, 0])
     .domain([0, 450000]);
+var yAxis = d3.axisRight(y)(g)
+var g = svg.append("g");
 
-var yAxis = d3.axisRight(y);
-
-/*
  svg.append("g")
     .attr("class", "y axis")
     .attr("transform", "translate(780,275)")
     .call(yAxis)
-*/
+
+
 
 // Append Div for tooltip to SVG
 var div = d3.select("body")
