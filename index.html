@@ -633,6 +633,20 @@ svg.append("path")
         .y(function(d) { return d.y;})
     )
 
+xy.push({x: 550, y: 350})
+xy.push({x: 580, y: 300})
+svg.append("path")
+    .datum(xy)
+    .attr("fill", "none")
+    .attr("stroke", "deeppink")
+    .attr("stroke-width", 2)
+    .attr("d", d3.line()
+        .x(function(d) { return d.x;})
+        .y(function(d) { return d.y;})
+    )
+
+
+
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 // add a legend
 var l_w = 120, l_h = 210;
