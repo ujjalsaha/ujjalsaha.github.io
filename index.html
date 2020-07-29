@@ -181,7 +181,7 @@
         <span class="bold">Scene 3 (United States - COVID-19 Top 10 States):</span> where author puts forwards the observation of top10 states with overall positive case counts vs top10 states with new case counts. Also letting the user explore the visualization with the tooltip, parameters and triggers. This is the summary and end of the narrative visualization.<br/>
     </p>
     <p>
-        <span class="bold">Navigation: </span>To move to next slides/pages, use the Prev and Next links below, or just click the button to jump to a page. For best understanding of the narration, it is highly recommended not to jump any slide.
+        <span class="bold">Navigation: </span>To move to next slides/pages, use the Prev and Next links below, or just click the button to jump to a page. For best understanding of the narration, it is highly recommended not to skip any slide.
     </p>
 </div>
 <div class="header_div" style="text-align: center">
@@ -519,39 +519,39 @@ d3.csv("state_cumulative.csv", function(data) {
                             .style("font-weight", "bold")
                             .text(formatValue(max_positive));
 
-                        // Add the rect for annotation
-                        svg_2.append("rect")
+                        // Add the rectangle for annotation
+                        svg.append("rect")
                             .attr("class", "annotation_box")
-                            .attr("width", 215)
-                            .attr("height", 350)
-                            .attr("x", 520)
-                            .attr("y", 0)
+                            .attr("width", 80)
+                            .attr("height", 50)
+                            .attr("x", -80)
+                            .attr("y", -60)
                             .attr("rx", 4)
                             .attr("ry", 4);
 
-                        svg_2.append("text")
-                            .attr("x", 630)
-                            .attr("y", -20)
-                            .attr("text-anchor", "middle")
-                            .style("font-size", "12px")
-                            .style("fill", "deeppink")
-                            .text("Shaded area showing reopening after");
+                        // Add the line for annotation
+                        var xy = [];
+                        xy.push({x: 510, y: 300})
+                        xy.push({x: 510, y: 0})
+                        svg_2.append("path")
+                            .datum(xy)
+                            .attr("fill", "none")
+                            .attr("stroke", "pink")
+                            .attr("stroke-width", 2)
+                            .attr("d", d3.line()
+                                .x(function(d) { return d.x;})
+                                .y(function(d) { return d.y;})
+                            )
 
+                        // Add annotation text
                         svg_2.append("text")
-                            .attr("x", 630)
-                            .attr("y", -5)
+                            .attr("x", 425)
+                            .attr("y", 30)
                             .attr("text-anchor", "middle")
-                            .style("font-size", "12px")
+                            .style("font-size", "10px")
+                            .style("font-weight", "bold")
                             .style("fill", "deeppink")
-                            .text("lockdown and affected overall counts");
-
-                        svg_2.append("text")
-                            .attr("x", 250)
-                            .attr("y", 25)
-                            .attr("text-anchor", "middle")
-                            .style("font-size", "12px")
-                            .style("fill", "deeppink")
-                            .text(" -- Un-shaded ares showing lockdown or Stay-at-home period -- ");
+                            .text("States reopening after lockdown");
 
                         // Add Tooltip for line chart
                         var focus = svg_2.append("g")
@@ -618,6 +618,20 @@ svg.append("text")
     .style("font-size", "16px")
     .style("text-decoration", "underline")
     .text("United States - Overall Case Count (Cumulative) ");
+
+// High affected Add annotations
+var xy = [];
+xy.push({x: 350, y: 300})
+xy.push({x: 410, y: 350})
+svg.append("path")
+    .datum(xy)
+    .attr("fill", "none")
+    .attr("stroke", "deeppink")
+    .attr("stroke-width", 2)
+    .attr("d", d3.line()
+        .x(function(d) { return d.x;})
+        .y(function(d) { return d.y;})
+    )
 
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 // add a legend
