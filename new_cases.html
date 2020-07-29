@@ -185,7 +185,7 @@
     </p>
 </div>
 <div class="header_div" style="text-align: center">
-    <a style="color: #aaaaaa" href="index.html">Prev</a>
+    <a style="color:darkmagenta" href="index.html">Prev</a>
     <ul>
         <li><a class="slide_button" href="index.html">Overall Cases</a></li>
         <li><span class="selected" href="#">New Cases</span></li>
@@ -313,7 +313,7 @@ var path = d3.geoPath()               // path generator that will convert GeoJSO
 		  	 .projection(projection);  // tell path generator to use albersUsa projection
 
 // Define linear scale for output
-var color = d3.scaleLinear().domain([0, 15000]).range(["moccasin", "darkcyan"])
+var color = d3.scaleLinear().domain([0, 20000]).range(["moccasin", "darkcyan"])
 var legendText = ["Minimum Cases", "Maximum cases"];
 
 //Create SVG element and append map to the SVG
@@ -464,7 +464,7 @@ d3.csv("state_cumulative.csv", function(data) {
 
                         // Add Y axis
                         var y_2 = d3.scaleLinear()
-                            .domain([0, 15000])
+                            .domain([0, 20000])
                             .range([height, 0]);
                         svg_2.append("g")
                             .call(d3.axisLeft(y_2));
@@ -649,12 +649,12 @@ var legend = svg.append("defs")
 
 legend.append("stop")
     .attr("offset", "0%")
-    .attr("stop-color", "red")
+    .attr("stop-color", "cyan")
     .attr("stop-opacity", 1);
 
 legend.append("stop")
     .attr("offset", "100%")
-    .attr("stop-color", "gainsboro")
+    .attr("stop-color", "moccasin")
     .attr("stop-opacity", 1);
 
 svg.append("rect")
@@ -665,7 +665,7 @@ svg.append("rect")
 
 var y = d3.scaleLinear()
     .range([200, 0])
-    .domain([0, 15000]);
+    .domain([0, 20000]);
 
 var yAxis = d3.axisRight(y);
 
