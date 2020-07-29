@@ -326,7 +326,7 @@ var svg = d3.select("#svg_1")
 // Append Div for tooltip to SVG
 var div = d3.select("body")
 		    .append("div")   
-    		.attr("class", "tooltip1")
+    		.attr("class", "tooltip")
     		.style("opacity", 0);
 
 // Load Cumulative State Data
@@ -521,7 +521,7 @@ d3.csv("state_cumulative.csv", function(data) {
                         svg_2.append("rect")
                             .attr("class", "annotation_box")
                             .attr("width", 215)
-                            .attr("height", 330)
+                            .attr("height", 350)
                             .attr("x", 520)
                             .attr("y", 0)
                             .attr("rx", 4)
@@ -806,7 +806,7 @@ svg.append("g")
                 svg_2.append("rect")
                     .attr("class", "annotation_box")
                     .attr("width", 215)
-                    .attr("height", 330)
+                    .attr("height", 350)
                     .attr("x", 520)
                     .attr("y", 0)
                     .attr("rx", 4)
