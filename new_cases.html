@@ -278,7 +278,7 @@
 </div>
 <br/>
 <div class="header_div">
-    <span class="guideline_header">General Facts<br/></span>
+    <span class="guideline_header" style="color: ">General Facts<br/></span>
     1. All coronavirus related data used on the graphs and analysis were gathered from https://covidtracking.com/data/api <br/>
     2. All dates and times are in US eastern time (ET). <br/>
     3.
@@ -312,9 +312,8 @@ var projection = d3.geoAlbersUsa()
 var path = d3.geoPath()               // path generator that will convert GeoJSON to SVG paths
 		  	 .projection(projection);  // tell path generator to use albersUsa projection
 
-		
 // Define linear scale for output
-var color = d3.scaleLinear().domain([0, 400000]).range(["gainsboro", "red"])
+var color = d3.scaleLinear().domain([0, 15000]).range(["moccasin", "darkcyan"])
 var legendText = ["Minimum Cases", "Maximum cases"];
 
 //Create SVG element and append map to the SVG
@@ -394,7 +393,7 @@ d3.csv("state_cumulative.csv", function(data) {
             })
             .on("mouseover", function(d) {
                 var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
-                            "<span>Confirmed Cases: </span>" + formatValue(d.properties.new_positive) + "<br/>" +
+                            "<span>New Cases: </span>" + formatValue(d.properties.new_positive) + "<br/>" +
                             "<span>Deaths: </span>" + formatValue(d.properties.new_death) + "<br/>";
                 div.transition()
                     .duration(200)
@@ -465,7 +464,7 @@ d3.csv("state_cumulative.csv", function(data) {
 
                         // Add Y axis
                         var y_2 = d3.scaleLinear()
-                            .domain([0, 500000])
+                            .domain([0, 15000])
                             .range([height, 0]);
                         svg_2.append("g")
                             .call(d3.axisLeft(y_2));
@@ -666,7 +665,7 @@ svg.append("rect")
 
 var y = d3.scaleLinear()
     .range([200, 0])
-    .domain([0, 450000]);
+    .domain([0, 15000]);
 
 var yAxis = d3.axisRight(y);
 
@@ -741,7 +740,7 @@ svg.append("g")
 
                 // Add Y axis
                 var y_2 = d3.scaleLinear()
-                    .domain([0, 4500000])
+                    .domain([0, 80000])
                     .range([height, 0]);
                 svg_2.append("g")
                     .call(d3.axisLeft(y_2));
