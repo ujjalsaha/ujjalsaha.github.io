@@ -825,13 +825,13 @@ key.append("g")
                     .text("after lockdown affected overall counts");
 
                 // Add the line for annotation
-                markerBoxWidth = 10
+                markerBoxWidth = 20
                 markerBoxHeight = 10
                 refX = markerBoxWidth / 2
                 refY = markerBoxHeight / 2
                 markerWidth = markerBoxWidth / 2;
                 markerHeight = markerBoxHeight / 2;
-                arrowPoints = [[0, 0], [0, 10], [10, 5]];
+                arrowPoints = [[0, 0], [0, 20], [20, 10]];
                 svg_2.append('defs')
                     .append('marker')
                     .attr('id', 'arrow')
@@ -843,7 +843,8 @@ key.append("g")
                     .attr('orient', 'auto-start-reverse')
                     .append('path')
                     .attr('d', d3.line()(arrowPoints))
-                    .attr('stroke', 'deeppink');
+                    .attr('fill', "pink")
+                    .attr('stroke', 'black');
 
                 var xy = [];
                 xy.push({x: 5, y: 30})
