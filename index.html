@@ -621,8 +621,8 @@ svg.append("text")
 
 // High affected Add annotations
 var xy = [];
-xy.push({x: 450, y: 300})
-xy.push({x: 500, y: 350})
+xy.push({x: 550, y: 400})
+xy.push({x: 600, y: 450})
 svg.append("path")
     .datum(xy)
     .attr("fill", "none")
@@ -633,8 +633,8 @@ svg.append("path")
         .y(function(d) { return d.y;})
     )
 
-xy.push({x: 550, y: 350})
-xy.push({x: 580, y: 300})
+xy.push({x: 550, y: 450})
+xy.push({x: 580, y: 400})
 svg.append("path")
     .datum(xy)
     .attr("fill", "none")
