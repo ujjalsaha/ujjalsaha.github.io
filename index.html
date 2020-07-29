@@ -645,17 +645,19 @@ key.append("rect")
 
 // Add text label for the legend
 key.append("text")
-    .attr("x", 780)
+    .attr("x", 785)
     .attr("y", 250)
     .attr("text-anchor", "middle")
-    .style("font-size", "11px")
+    .style("font-size", "10px")
+    .style("font-weight", "bold")
     .style("text-decoration", "underline")
     .text("Cumulative");
 key.append("text")
-    .attr("x", 780)
+    .attr("x", 785)
     .attr("y", 262)
     .attr("text-anchor", "middle")
     .style("font-size", "11px")
+    .style("font-weight", "bold")
     .style("text-decoration", "underline")
     .text("Case Count");
 
@@ -810,26 +812,12 @@ key.append("g")
                     )
                 */
 
-                // Add the line for annotation
-                var xy = [];
-                xy.push({x: 510, y: 300})
-                xy.push({x: 510, y: 0})
-                svg_2.append("path")
-                    .datum(xy)
-                    .attr("fill", "none")
-                    .attr("stroke", "pink")
-                    .attr("stroke-width", 2)
-                    .attr("d", d3.line()
-                        .x(function(d) { return d.x;})
-                        .y(function(d) { return d.y;})
-                    )
-
                 // Add the rect for annotation
                 svg_2.append("rect")
                     .attr("class", "annotation_box")
                     .attr("width", 215)
                     .attr("height", 330)
-                    .attr("opacity","0.2")
+                    .attr("opacity","0.3")
                     .attr("x", 520)
                     .attr("y", 0)
                     .attr("rx", 4)
@@ -837,13 +825,20 @@ key.append("g")
 
                 // Add annotation text
                 svg_2.append("text")
-                    .attr("x", 425)
+                    .attr("x", 430)
                     .attr("y", 30)
                     .attr("text-anchor", "middle")
                     .style("font-size", "10px")
-                    .style("font-weight", "bold")
                     .style("fill", "deeppink")
-                    .text("States reopening after lockdown");
+                    .text("Shaded area showing how reopening");
+
+                svg_2.append("text")
+                    .attr("x", 430)
+                    .attr("y", 30)
+                    .attr("text-anchor", "middle")
+                    .style("font-size", "10px")
+                    .style("fill", "deeppink")
+                    .text("after lockdown affected overall counts");
 
                 // Add Tooltip for line chart
                 var focus = svg_2.append("g")
