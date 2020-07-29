@@ -649,11 +649,12 @@ legend.append("stop")
     .attr("stop-color", "gainsboro")
     .attr("stop-opacity", 1);
 
-key.append("rect")
+svg.append("rect")
     .attr("width", 20)
     .attr("height", 200)
     .style("fill", "url(#gradient)")
     .attr("transform", "translate(760,275)");
+
 var y = d3.scaleLinear()
     .range([200, 0])
     .domain([0, 450000]);
