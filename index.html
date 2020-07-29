@@ -825,27 +825,7 @@ key.append("g")
                     .text("after lockdown affected overall counts");
 
                 // Add the line for annotation
-                markerBoxWidth = 20
-                markerBoxHeight = 10
-                refX = 1
-                refY = 5
-                markerWidth = markerBoxWidth / 2;
-                markerHeight = markerBoxHeight / 2;
-                arrowPoints = [[0, 0], [0, 20], [20, 10]];
-                svg_2.append('defs')
-                    .append('marker')
-                    .attr('id', 'arrow')
-                    .attr('viewBox', [0, 0, markerBoxWidth, markerBoxHeight])
-                    .attr('refX', refX)
-                    .attr('refY', refY)
-                    .attr('markerWidth', markerBoxWidth)
-                    .attr('markerHeight', markerBoxHeight)
-                    .attr('orient', 'auto-start-reverse')
-                    .append('path')
-                    .attr('d', d3.line()(arrowPoints))
-                    .attr('fill', "deeppink")
-                    .attr('stroke', 'deeppink');
-
+                /*
                 var xy = [];
                 xy.push({x: 10, y: 30})
                 xy.push({x: 510, y: 30})
@@ -861,6 +841,7 @@ key.append("g")
                         .x(function(d) { return d.x;})
                         .y(function(d) { return d.y;})
                     )
+                */
 
                 svg_2.append("text")
                     .attr("x", 250)
@@ -868,7 +849,7 @@ key.append("g")
                     .attr("text-anchor", "middle")
                     .style("font-size", "12px")
                     .style("fill", "deeppink")
-                    .text("Lockdown period or Stay-at-home order");
+                    .text("Un-shaded ares showing lockdown period or Stay-at-home order");
 
                 // Add Tooltip for line chart
                 var focus = svg_2.append("g")
