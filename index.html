@@ -323,12 +323,6 @@ var svg = d3.select("#svg_1")
 			.attr("width", width)
 			.attr("height", height - margin.top);
 
-var y = d3.scaleLinear()
-    .range([200, 0])
-    .domain([0, 450000]);
-var g = svg.append("g");
-var yAxis = d3.axisRight(y)(g)
-
 // Append Div for tooltip to SVG
 var div = d3.select("body")
 		    .append("div")   
@@ -630,12 +624,13 @@ svg.append("text")
 var l_w = 120, l_h = 210;
 
 // Add legend for map
+/*
 var key = svg.append("g")
     .attr("width", l_w)
     .attr("height", l_h)
     .attr("class", "legend");
-
-var legend = key.append("defs")
+*/
+var legend = svg.append("defs")
     .append("svg:linearGradient")
     .attr("id", "gradient")
     .attr("x1", "100%")
@@ -659,6 +654,18 @@ key.append("rect")
     .attr("height", 200)
     .style("fill", "url(#gradient)")
     .attr("transform", "translate(760,275)");
+var y = d3.scaleLinear()
+    .range([200, 0])
+    .domain([0, 450000]);
+
+var yAxis = d3.axisRight(y);
+
+/*
+key.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(780,275)")
+    .call(yAxis)
+*/
 
 // Add text label for the legend
 key.append("text")
