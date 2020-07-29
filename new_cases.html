@@ -185,18 +185,18 @@
     </p>
 </div>
 <div class="header_div" style="text-align: center">
-    <a style="color: #aaaaaa" href="#">Prev</a>
+    <a style="color: #aaaaaa" href="index.html">Prev</a>
     <ul>
-        <li><span class="selected" href="#">Overall Cases</span></li>
-        <li><a class="slide_button" href="#">New Cases</a></li>
-        <li><a class="slide_button" href="new_cases.html">Top States</a></li>
+        <li><a class="slide_button" href="index.html">Overall Cases</a></li>
+        <li><span class="selected" href="#">New Cases</span></li>
+        <li><a class="slide_button" href="#">Top States</a></li>
     </ul>
-    <a style="color:darkmagenta" href="new_cases.html">Next</a>
+    <a style="color:darkmagenta" href="#">Next</a>
 
 </div>
 <div class="header_div">
-    <span class="guideline_header">Scene 1 - Overall Cases: </span> Shows impact of COVID-19 across states in United States but in terms of cumulative confirmed cases.
-    The Scene is comprised of a Map chart and Line Chart that shows how overall cases has impacted various states since beginning of pandemic and how overall cases has increased over the period (cumulative) and is still increasing. More description and user control options are mentioned on respective charts.
+    <span class="guideline_header">Scene 2 - New Cases: </span> Shows impact of COVID-19 across states in United States but in terms of daily New cases that are being reported.
+    The Scene is comprised of a Map chart and Line Chart that shows how new cases has impacted various states (specially after reopening from lockdown). More description and user control options are mentioned on respective charts.
 </div>
 <br/>
 <div class="header_div">
@@ -204,18 +204,18 @@
         <tr>
             <td valign="top">
                 <div style="max-width: 700px; line-height: 20px;padding: 20px">
-                    <span class="guideline_header">Map - Showing Cumulative Confirmed Cases for Each States of United States</span><br/>
+                    <span class="guideline_header">Map - Showing New Confirmed Cases for Each States of United States</span><br/>
                     <p>
-                        Seeing the total number of confirmed cases over time, can illustrate how the pandemic is expanding within the country.
-                        The map shows cumulative cases for each states – which means, till date the total number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered or died.
-                        The coloring scale on the map shows states that are red most affected in red to gradually fading to gray states that are having least number of cases. With the color grading scale, we are seeing see most states have been affected so far with with few of them having high concentration of infected people.
-                        From the map, as an <span class="bold"> observation </span> we see states like New York, California, New Jersey, Florida, Texas etc are the hard hit areas with highest count of cumulative COVID-19 cases so far.
+                        Based on the daily new cases, this map illustrates how the pandemic is affecting each state in United States.
+                        The map shows states with latest new cases for each states – which means, on the most recent date in the dataset  how many number of people who tested positive for coronavirus in United States, regardless any previous days data.
+                        The coloring scale on the map shows red states are most affected (with highest new cases) and gradually fading to gray states that are having least number of new cases. With the color grading scale, we are seeing see most states have been affected so far with with few of them reporting huge new cases.
+                        From the map, as an <span class="bold"> observation </span> we see states like Florida, Texas, California, Arizona etc are the hard hit areas with highest count of new COVID-19 cases so far.
                     </p>
                     <p>
                         <span class="bold">User Controls:</span><br/>
                         The map is interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:<br/>
                         &nbsp;&nbsp;1. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Tooltip </span> -> Hovering over any state shows the cases counts and few other info.<br/>
-                        &nbsp;&nbsp;1. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Cross Filter (Parameter: State)</span> -> Clicking a state from the map with bring up respective state's cumulative case count on the line chart.<br/>
+                        &nbsp;&nbsp;1. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Cross Filter (Parameter: State)</span> -> Clicking a state from the map with bring up respective state's new case count on the line chart.<br/>
                     </p>
                 </div>
             </td>
@@ -231,16 +231,16 @@
         <tr>
             <td valign="top" >
                 <div style="max-width: 700px; line-height: 20px;padding: 20px">
-                    <span class="guideline_header">Line Chart - Cumulative Confirmed Cases for the United States</span><br/>
+                    <span class="guideline_header">Line Chart - New Confirmed Cases for the United States</span><br/>
                     <p>
                         The line chart here shows:<br/>
-                        &nbsp;&nbsp;1. For entire United States at what pace the overall cases are increasing<br/>
-                        &nbsp;&nbsp;2. If user clicks on a state on the above map, as cross-filter is enable, the view on the line chart will switch to state level and will show state level overall case count.<br/>
+                        &nbsp;&nbsp;1. For entire United States at what how the daily new cases reported trend look like<br/>
+                        &nbsp;&nbsp;2. If user clicks on a state on the above map, as cross-filter is enabled, the view on the line chart will switch to state level and will show state level new case count.<br/>
                     </p>
                     <p>
-                        A fine <span class="bold"> observation </span> we noticed this graph has an upward bend that can indicate more cases are being report in last few weeks then ever before.
-                        Around late June, when the lockdown was lifted, there is sudden rise in the curve which would mean as states are opening more community spreading is also aggressive.
-                        The color blue was used just to make it appealing, where blue itself has no color significance on the line chart.
+                        A fine <span class="bold"> observation </span> we noticed, this graph has an upward bend on many states that indicates more new cases are being reported in last few weeks in most areas. However there are some exception also, i.e. there are few states where new cases reporting dropped.
+                        Around late June, when the lockdown was lifted, there is sudden rise in new cases for most of the states with exception of few states..
+                        The color green was used to draw the line chart just to make the vizualization appealing, where green color itself has no color significance on the line chart.
                     </p>
                     <p>
                         <span class="bold">Annotations:</span><br/>
@@ -329,7 +329,7 @@ var div = d3.select("body")
     		.attr("class", "tooltip")
     		.style("opacity", 0);
 
-// Load Cumulative State Data
+// Load New State Data
 d3.csv("state_cumulative.csv", function(data) {
 //color.domain([0,500000]); // setting the range of the input data
 
@@ -350,10 +350,10 @@ d3.csv("state_cumulative.csv", function(data) {
             var dataState = data[i].state;
 
             // Grab positive cases
-            var dataValue = data[i].positive;
+            var dataValue = data[i].new_positive;
 
             // Grab death
-            var dataDeath = data[i].death;
+            var dataDeath = data[i].new_death;
 
 
             // Find the corresponding state inside the GeoJSON
@@ -364,8 +364,8 @@ d3.csv("state_cumulative.csv", function(data) {
 
                 // Copy the data value into the JSON
                     json.features[j].properties.state = dataState;
-                    json.features[j].properties.positive = dataValue;
-                    json.features[j].properties.death = dataDeath;
+                    json.features[j].properties.new_positive = dataValue;
+                    json.features[j].properties.new_death = dataDeath;
 
                 // Stop looking through the JSON
                 break;
@@ -383,7 +383,7 @@ d3.csv("state_cumulative.csv", function(data) {
             .style("stroke-width", "1")
             .style("fill", function(d) {
                 // Get data value
-                var value = d.properties.positive;
+                var value = d.properties.new_positive;
 
                 if (value) {
                 //If value exists…
@@ -394,8 +394,8 @@ d3.csv("state_cumulative.csv", function(data) {
             })
             .on("mouseover", function(d) {
                 var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
-                            "<span>Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
-                            "<span>Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
+                            "<span>Confirmed Cases: </span>" + formatValue(d.properties.new_positive) + "<br/>" +
+                            "<span>Deaths: </span>" + formatValue(d.properties.new_death) + "<br/>";
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
@@ -417,8 +417,8 @@ d3.csv("state_cumulative.csv", function(data) {
                     function(d){
                         val = { state: d.state,
                                 date: parseDate(d.date),
-                                positive: d.positive,
-                                death: d.death}
+                                new_positive: d.new_positive,
+                                new_death: d.new_death}
                         // console.log("Val: " + val)
                         return val
                     },
@@ -432,7 +432,7 @@ d3.csv("state_cumulative.csv", function(data) {
                         var filterdata = data.filter(function (d) {
                             return d.state == selected_state
                         })
-                        var max_positive = filterdata[0].positive
+                        var max_positive = filterdata[0].new_positive
 
                         filterdata.sort(function(a, b) {
                             return a.date - b.date;
@@ -445,7 +445,7 @@ d3.csv("state_cumulative.csv", function(data) {
                             .attr("text-anchor", "middle")
                             .style("font-size", "16px")
                             .style("text-decoration", "underline")
-                            .text(d.properties.state + " - Overall Case Count (Cumulative) ");
+                            .text(d.properties.state + " - New Case Count");
 
                         // Add X axis --> it is a date format
                         var x_2 = d3.scaleTime()
@@ -504,7 +504,7 @@ d3.csv("state_cumulative.csv", function(data) {
                                     return x_2(d.date)
                                 })
                                 .y(function (d) {
-                                    return y_2(d.positive)
+                                    return y_2(d.new_positive)
                                 })
                             );
 
@@ -597,9 +597,9 @@ d3.csv("state_cumulative.csv", function(data) {
                                 d0 = filterdata[i - 1],
                                 d1 = filterdata[i],
                                 d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-                            focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
+                            focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.new_positive) + ")");
                             focus.select(".tooltip-date").text(dateFormatter(d.date));
-                            focus.select(".tooltip-cases").text(formatValue(d.positive));
+                            focus.select(".tooltip-cases").text(formatValue(d.new_positive));
                         }
 
                      }
@@ -615,7 +615,7 @@ svg.append("text")
     .attr("text-anchor", "middle")
     .style("font-size", "16px")
     .style("text-decoration", "underline")
-    .text("United States - Overall Case Count (Cumulative) ");
+    .text("United States - New Case Count ");
 
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 // add a legend
@@ -632,20 +632,12 @@ var key = svg.append("g")
 // Add text label for the legend
 svg.append("text")
     .attr("x", 790)
-    .attr("y", 245)
-    .attr("text-anchor", "middle")
-    .style("font-size", "11px")
-    .style("font-weight", "bold")
-    .style("text-decoration", "underline")
-    .text("Cumulative");
-svg.append("text")
-    .attr("x", 790)
     .attr("y", 260)
     .attr("text-anchor", "middle")
     .style("font-size", "11px")
     .style("font-weight", "bold")
     .style("text-decoration", "underline")
-    .text("Case Count");
+    .text("New Case Count");
 
 var legend = svg.append("defs")
     .append("svg:linearGradient")
@@ -713,10 +705,9 @@ svg.append("g")
         //Read the data
         d3.csv("country_cumulative.csv",
 
-            // When reading the csv, I must format variables:
             function (d) {
-                // console.log(d.date, d.positive)
-                val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, death: d.death}
+                // console.log(d.date, d.new_positive)
+                val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.new_positive, death: d.new_death}
                 // console.log(val)
                 return val
             },
@@ -730,7 +721,7 @@ svg.append("g")
                     .attr("text-anchor", "middle")
                     .style("font-size", "16px")
                     .style("text-decoration", "underline")
-                    .text("United States - Overall Case Count (Cumulative) ");
+                    .text("United States - New Case Count");
 
                 // Add X axis --> it is a date format
                 var x_2 = d3.scaleTime()
