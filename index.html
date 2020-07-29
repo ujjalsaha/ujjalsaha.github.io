@@ -326,7 +326,7 @@ var svg = d3.select("#svg_1")
 // Append Div for tooltip to SVG
 var div = d3.select("body")
 		    .append("div")   
-    		.attr("class", "tooltip")               
+    		.attr("class", "tooltip1")
     		.style("opacity", 0);
 
 // Load Cumulative State Data
@@ -389,15 +389,13 @@ d3.csv("state_cumulative.csv", function(data) {
                 //If value exists…
                 return color(value);
                 } else {
-                //If value is undefined…
-                //return "rgb(213,222,217)";
                     return "gray";
                 }
             })
             .on("mouseover", function(d) {
-                var tooltip_html  = "<span class='bold' style='font-size: medium;color: maroon'>" + d.properties.state + "</span><br/>" +
-                            "<span class='bold'> Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
-                            "<span class='bold'> Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
+                var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
+                            "<span>Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
+                            "<span>Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
