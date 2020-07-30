@@ -499,7 +499,7 @@ d3.csv("state_cumulative.csv", function(data) {
                         // Add the text label for the Y axis
                         svg_2.append("text")
                             .attr("transform", "rotate(-90)")
-                            .attr("y", 0 - (margin.left / 2) - 30)
+                            .attr("y", 0 - (margin.left / 2) - 35)
                             .attr("x", 0 - (height / 2))
                             .attr("dy", "1em")
                             .style("text-anchor", "middle")
@@ -522,7 +522,7 @@ d3.csv("state_cumulative.csv", function(data) {
 
                         // Add the label at the tip of the line
                         svg_2.append("text")
-                            .attr("transform", "translate("+(width - 50)+","+(y_2(max_positive) - 10)+")")
+                            .attr("transform", "translate("+(width - 50)+","+(y_2(max_positive))+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "start")
                             .style("font-size", "12px")
@@ -532,7 +532,7 @@ d3.csv("state_cumulative.csv", function(data) {
                         // Add the annotation
                         svg_2.append("rect")
                             .attr("class", "annotation_box")
-                            .attr("width", 215)
+                            .attr("width", 235)
                             .attr("height", 350)
                             .attr("x", 520)
                             .attr("y", 0)
@@ -540,7 +540,7 @@ d3.csv("state_cumulative.csv", function(data) {
                             .attr("ry", 4);
 
                         svg_2.append("text")
-                            .attr("x", 630)
+                            .attr("x", 640)
                             .attr("y", -20)
                             .attr("text-anchor", "middle")
                             .style("font-size", "12px")
@@ -548,7 +548,7 @@ d3.csv("state_cumulative.csv", function(data) {
                             .text("Shaded area showing how reopening");
 
                         svg_2.append("text")
-                            .attr("x", 630)
+                            .attr("x", 640)
                             .attr("y", -5)
                             .attr("text-anchor", "middle")
                             .style("font-size", "12px")
@@ -807,7 +807,7 @@ svg.append("g")
 
                 // Add the label at the tip of the line
                 svg_2.append("text")
-                    .attr("transform", "translate("+(width - 50)+","+(y_2(data[0].value) - 10)+")")
+                    .attr("transform", "translate("+(width - 50)+","+(y_2(data[0].value))+")")
                     .attr("dy", ".35em")
                     .attr("text-anchor", "start")
                     .style("font-size", "12px")
