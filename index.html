@@ -445,6 +445,7 @@ d3.csv("state_cumulative.csv", function(data) {
                             return d.state == selected_state
                         })
                         var max_positive = filterdata[0].positive
+                        var min_positive = filterdata[filterdata.length - 1].positive
 
                         filterdata.sort(function(a, b) {
                             return a.date - b.date;
@@ -542,6 +543,29 @@ d3.csv("state_cumulative.csv", function(data) {
                             .style("font-weight", "bold")
                             .text(formatValue(max_positive));
 
+                        // Add the label at the bottom of the line
+                        // Add the line for annotation
+                        var xy = [];
+                        xy.push({x:0, y: height})
+                        xy.push({x: 30, y: height - 100})
+                        svg_2.append("path")
+                            .datum(xy)
+                            .attr("fill", "none")
+                            .attr("stroke", "pink")
+                            .attr("stroke-width", 2)
+                            .attr("d", d3.line()
+                                .x(function(d) { return d.x;})
+                                .y(function(d) { return d.y;})
+                            )
+
+                        svg_2.append("text")
+                            .attr("transform", "translate("+(20)+","+(height - 100)+")")
+                            .attr("dy", ".35em")
+                            .attr("text-anchor", "start")
+                            .style("font-size", "12px")
+                            .style("font-weight", "bold")
+                            .text(formatValue(min_positive));
+
                         // Add the annotation
                         svg_2.append("rect")
                             .attr("class", "annotation_box")
@@ -575,20 +599,6 @@ d3.csv("state_cumulative.csv", function(data) {
                             .style("font-size", "12px")
                             .style("fill", "deeppink")
                             .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
-
-                        // Add the line for annotation
-                        var xy = [];
-                        xy.push({x:0, y: height})
-                        xy.push({x: 30, y: height - 100})
-                        svg_2.append("path")
-                            .datum(xy)
-                            .attr("fill", "none")
-                            .attr("stroke", "pink")
-                            .attr("stroke-width", 2)
-                            .attr("d", d3.line()
-                                .x(function(d) { return d.x;})
-                                .y(function(d) { return d.y;})
-                            )
 
                         // Add Tooltip for line chart
                         var focus = svg_2.append("g")
