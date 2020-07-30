@@ -475,6 +475,19 @@ d3.csv("state_cumulative.csv", function(data) {
                             .style("text-anchor", "middle")
                             .text("Date - [Mar 16, 2020 Onwards]");
 
+                        svg_2.append("text")
+                            .attr("transform", "translate(" + (-5) + " ," + (height + 16) + ")")
+                            .style("text-anchor", "middle")
+                            .style("font-size", "10px")
+                            .text("Mar 16");
+
+                        svg_2.append("text")
+                            .attr("transform", "translate(" + (width + 5) + " ," + (height + 16) + ")")
+                            .style("text-anchor", "middle")
+                            .style("font-size", "10px")
+                            .text("Jul 24");
+
+
                         // Add Y axis
                         var y_2 = d3.scaleLinear()
                             .domain([0, 500000])
@@ -562,6 +575,20 @@ d3.csv("state_cumulative.csv", function(data) {
                             .style("font-size", "12px")
                             .style("fill", "deeppink")
                             .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
+
+                        // Add the line for annotation
+                        var xy = [];
+                        xy.push({x:0, y: height})
+                        xy.push({x: 30, y: height - 100})
+                        svg_2.append("path")
+                            .datum(xy)
+                            .attr("fill", "none")
+                            .attr("stroke", "pink")
+                            .attr("stroke-width", 2)
+                            .attr("d", d3.line()
+                                .x(function(d) { return d.x;})
+                                .y(function(d) { return d.y;})
+                            )
 
                         // Add Tooltip for line chart
                         var focus = svg_2.append("g")
