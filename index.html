@@ -522,7 +522,7 @@ d3.csv("state_cumulative.csv", function(data) {
 
                         // Add the label at the tip of the line
                         svg_2.append("text")
-                            .attr("transform", "translate("+(width - 50)+","+(y_2(max_positive))+")")
+                            .attr("transform", "translate("+(width - 30)+","+(y_2(max_positive) - 10)+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "start")
                             .style("font-size", "12px")
@@ -807,7 +807,7 @@ svg.append("g")
 
                 // Add the label at the tip of the line
                 svg_2.append("text")
-                    .attr("transform", "translate("+(width - 50)+","+(y_2(data[0].value))+")")
+                    .attr("transform", "translate("+(width - 40)+","+(y_2(data[0].value) - 10)+")")
                     .attr("dy", ".35em")
                     .attr("text-anchor", "start")
                     .style("font-size", "12px")
