@@ -543,7 +543,7 @@ d3.csv("state_cumulative.csv", function(data) {
                             .style("font-weight", "bold")
                             .text(formatValue(max_positive));
 
-                        xy = [];
+                        var xy = [];
                         xy.push({x: width - 45, y: y_2(max_positive.value) - 10})
                         xy.push({x: width - 60, y: y_2(max_positive.value) - 10})
                         svg_2.append("path")
