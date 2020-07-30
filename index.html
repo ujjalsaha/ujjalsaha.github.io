@@ -340,8 +340,6 @@ var layer2 = svg.append('g');
 var layer3 = svg.append('g');
 var layer4 = svg.append('g');
 
-
-
 // Append Div for tooltip to SVG
 var div = d3.select("body")
 		    .append("div")   
@@ -393,7 +391,7 @@ d3.csv("state_cumulative.csv", function(data) {
         }
 
         // Bind the data to the SVG and create one path per GeoJSON feature
-        svg.selectAll("path")
+        layer1.selectAll("path")
             .data(json.features)
             .enter()
             .append("path")
@@ -698,7 +696,7 @@ d3.csv("state_cumulative.csv", function(data) {
 
 
 // Add the title for the map
-svg.append("text")
+layer2.append("text")
     .attr("x", (width / 2))
     .attr("y", 0 - (margin.top / 2) + 20)
     .attr("text-anchor", "middle")
@@ -706,20 +704,11 @@ svg.append("text")
     .style("text-decoration", "underline")
     .text("United States - Overall Case Count (Cumulative) ");
 
-// Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 // add a legend
 var l_w = 120, l_h = 210;
 
-// Add legend for map
-/*
-var key = svg.append("g")
-    .attr("width", l_w)
-    .attr("height", l_h)
-    .attr("class", "legend");
-*/
-
 // Add text label for the legend
-svg.append("text")
+layer2.append("text")
     .attr("x", 790)
     .attr("y", 245)
     .attr("text-anchor", "middle")
@@ -727,7 +716,7 @@ svg.append("text")
     .style("font-weight", "bold")
     .style("text-decoration", "underline")
     .text("Cumulative");
-svg.append("text")
+layer2.append("text")
     .attr("x", 790)
     .attr("y", 260)
     .attr("text-anchor", "middle")
@@ -736,7 +725,7 @@ svg.append("text")
     .style("text-decoration", "underline")
     .text("Case Count");
 
-var legend = svg.append("defs")
+var legend = layer2.append("defs")
     .append("svg:linearGradient")
     .attr("id", "gradient")
     .attr("x1", "100%")
@@ -764,10 +753,16 @@ svg.append("rect")
 var y = d3.scaleLinear()
     .range([200, 0])
     .domain([0, 450000]);
+var yAxis = d3.axisRight(y);
+
+layer2.attr("class", "y axis")
+    .attr("transform", "translate(782,275)")
+    .call(yAxis)
 
 </script>
 
 <script>
+/*
 var y = d3.scaleLinear()
     .range([200, 0])
     .domain([0, 450000]);
@@ -783,10 +778,7 @@ var layer2 = svg_temp.append('g');
 var layer3 = svg_temp.append('g');
 var layer4 = svg_temp.append('g');
 
-layer1.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(782,275)")
-    .call(yAxis)
+
 
 var xy = [];
 xy.push({x: 10, y: height - 30})
@@ -855,7 +847,7 @@ d3.csv("state_cumulative.csv", function(data) {
 
     });
 });
-
+*/
 </script>
 
 <script>
