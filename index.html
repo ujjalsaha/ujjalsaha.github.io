@@ -761,6 +761,10 @@ var y = d3.scaleLinear()
 </script>
 
 <script>
+var y = d3.scaleLinear()
+    .range([200, 0])
+    .domain([0, 450000]);
+
 var yAxis = d3.axisRight(y);
 
 var svg_temp = d3.select("#svg_1")
@@ -818,7 +822,7 @@ d3.csv("state_cumulative.csv", function(data) {
         }
 
         // Bind the data to the SVG and create one path per GeoJSON feature
-        svg.selectAll("path")
+        svg_temp.selectAll("path")
             .data(json.features)
             .enter()
             .append("path")
