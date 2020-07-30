@@ -696,7 +696,7 @@ d3.csv("state_cumulative.csv", function(data) {
 
 
 // Add the title for the map
-layer2.append("text")
+layer3.append("text")
     .attr("x", (width / 2))
     .attr("y", 0 - (margin.top / 2) + 20)
     .attr("text-anchor", "middle")
@@ -708,7 +708,7 @@ layer2.append("text")
 var l_w = 120, l_h = 210;
 
 // Add text label for the legend
-layer2.append("text")
+layer3.append("text")
     .attr("x", 790)
     .attr("y", 245)
     .attr("text-anchor", "middle")
@@ -716,7 +716,7 @@ layer2.append("text")
     .style("font-weight", "bold")
     .style("text-decoration", "underline")
     .text("Cumulative");
-layer2.append("text")
+layer3.append("text")
     .attr("x", 790)
     .attr("y", 260)
     .attr("text-anchor", "middle")
@@ -744,7 +744,7 @@ legend.append("stop")
     .attr("stop-color", "gainsboro")
     .attr("stop-opacity", 1);
 
-svg.append("rect")
+layer2.append("rect")
     .attr("width", 20)
     .attr("height", 200)
     .style("fill", "url(#gradient)")
