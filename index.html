@@ -573,10 +573,13 @@ d3.csv("state_cumulative.csv", function(data) {
                             .text(formatValue(min_positive)).style("fill", "deeppink").text("started increasing");
                         svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 80)+")").attr("dy", ".35em")
                             .attr("text-anchor", "start").style("font-size", "12px")
-                            .text(formatValue(min_positive)).style("fill", "deeppink").text("during mid of March");
+                            .text(formatValue(min_positive)).style("fill", "deeppink").text("during mid of Mar");
                         svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 70)+")").attr("dy", ".35em")
                             .attr("text-anchor", "start").style("font-size", "12px")
                             .text(formatValue(min_positive)).style("fill", "deeppink").text("and lockdown begins");
+                        svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 60)+")").attr("dy", ".35em")
+                            .attr("text-anchor", "start").style("font-size", "12px")
+                            .text(formatValue(min_positive)).style("fill", "deeppink").text("begins");
 
                         // Add the annotation
                         svg_2.append("rect")
@@ -873,6 +876,44 @@ svg.append("g")
                     .style("font-size", "12px")
                     .style("font-weight", "bold")
                     .text(formatValue(data[0].value));
+
+                // Add the label at the bottom of the line and annotation
+                xy = [];
+                xy.push({x: 10, y: height - 20})
+                xy.push({x: 10, y: height - 50})
+                svg_2.append("path")
+                    .datum(xy)
+                    .attr("fill", "none")
+                    .attr("stroke", "pink")
+                    .attr("stroke-width", 2)
+                    .attr("d", d3.line()
+                        .x(function(d) { return d.x;})
+                        .y(function(d) { return d.y;})
+                    )
+
+                svg_2.append("text")
+                    .attr("transform", "translate("+(5)+","+(height - 15)+")")
+                    .attr("dy", ".35em")
+                    .attr("text-anchor", "start")
+                    .style("font-size", "12px")
+                    .style("font-weight", "bold")
+                    .text(formatValue(data[data.length].value));
+
+                svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 100)+")")
+                    .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
+                    .text(formatValue(min_positive)).style("fill", "deeppink").text("positives cases");
+                svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 90)+")").attr("dy", ".35em")
+                    .attr("text-anchor", "start").style("font-size", "12px")
+                    .text(formatValue(min_positive)).style("fill", "deeppink").text("started increasing");
+                svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 80)+")").attr("dy", ".35em")
+                    .attr("text-anchor", "start").style("font-size", "12px")
+                    .text(formatValue(min_positive)).style("fill", "deeppink").text("during mid of Mar");
+                svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 70)+")").attr("dy", ".35em")
+                    .attr("text-anchor", "start").style("font-size", "12px")
+                    .text(formatValue(min_positive)).style("fill", "deeppink").text("and lockdown begins");
+                svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 60)+")").attr("dy", ".35em")
+                    .attr("text-anchor", "start").style("font-size", "12px")
+                    .text(formatValue(min_positive)).style("fill", "deeppink").text("begins");
 
                 // Add the annotation
                 svg_2.append("rect")
