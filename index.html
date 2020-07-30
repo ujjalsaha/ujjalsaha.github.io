@@ -571,14 +571,7 @@ d3.csv("state_cumulative.csv", function(data) {
                             .attr("dy", ".35em")
                             .attr("text-anchor", "start")
                             .style("font-size", "12px")
-                            .text(formatValue(min_positive));
-
-                        svg_2.append("text")
-                            .attr("transform", "translate("+(20)+","+(height - 100)+")")
-                            .attr("dy", ".35em")
-                            .attr("text-anchor", "start")
-                            .style("font-size", "12px")
-                            .text(formatValue(min_positive));
+                            .text(formatValue(min_positive))
                             .style("fill", "deeppink")
                             .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
 
