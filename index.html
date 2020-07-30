@@ -850,8 +850,8 @@ svg.append("g")
 
                 // Add the line for annotation
                 var xy = [];
-                xy.push({x: margin.left, y: height})
-                xy.push({x: margin.left + 30, y: height - 100})
+                xy.push({x:0, y: height})
+                xy.push({x: 30, y: height - 100})
                 svg_2.append("path")
                     .datum(xy)
                     .attr("fill", "none")
