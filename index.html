@@ -546,7 +546,7 @@ d3.csv("state_cumulative.csv", function(data) {
                         // Add the label at the bottom of the line
                         // Add the line for annotation
                         var xy = [];
-                        xy.push({x: 10, y: height - 20})
+                        xy.push({x: 10, y: height - 30})
                         xy.push({x: 10, y: height - 60})
                         svg_2.append("path")
                             .datum(xy)
@@ -567,16 +567,16 @@ d3.csv("state_cumulative.csv", function(data) {
                             .text(formatValue(min_positive));
 
                         svg_2.append("text")
-                            .attr("transform", "translate("+(5)+","+(height - 70)+")")
+                            .attr("transform", "translate("+(5)+","+(height - 80)+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "start")
                             .style("font-size", "12px")
                             .text(formatValue(min_positive))
                             .style("fill", "deeppink")
-                            .text("positives cases started increasing");
+                            .text("positives cases <br/> started increasing");
 
                         svg_2.append("text")
-                            .attr("transform", "translate("+(5)+","+(height - 80)+")")
+                            .attr("transform", "translate("+(5)+","+(height - 70)+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "start")
                             .style("font-size", "12px")
