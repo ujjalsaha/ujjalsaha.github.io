@@ -848,6 +848,20 @@ svg.append("g")
                     .style("fill", "deeppink")
                     .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
 
+                // Add the line for annotation
+                var xy = [];
+                xy.push({x: margin.left, y: height})
+                xy.push({x: margin.left + 30, y: height - 100})
+                svg_2.append("path")
+                    .datum(xy)
+                    .attr("fill", "none")
+                    .attr("stroke", "pink")
+                    .attr("stroke-width", 2)
+                    .attr("d", d3.line()
+                        .x(function(d) { return d.x;})
+                        .y(function(d) { return d.y;})
+                    )
+
                 // Add Tooltip for line chart
                 var focus = svg_2.append("g")
                     .attr("class", "focus")
