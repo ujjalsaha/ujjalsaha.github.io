@@ -752,8 +752,7 @@ svg.append("g")
                     .range([0, width]);
                 svg_2.append("g")
                     .attr("transform", "translate(0," + height + ")")
-                    .call(d3.axisBottom(x_2)
-                            .ticks(15));
+                    .call(d3.axisBottom(x_2).ticks(10));
 
                 // Add the text label for the x axis
                 svg_2.append("text")
