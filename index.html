@@ -554,7 +554,7 @@ d3.csv("state_cumulative.csv", function(data) {
                             .attr("d", d3.line()
                                 .x(function(d) { return d.x;})
                                 .y(function(d) { return d.y;})
-                            )
+                            );
 
                         svg_2.append("text").attr("transform", "translate("+(width - 170)+","+(y_2(max_positive) - 10)+")")
                             .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
