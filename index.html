@@ -385,6 +385,19 @@ d3.csv("state_cumulative.csv", function(data) {
             }
         }
 
+        var xy = [];
+        xy.push({x: 10, y: height - 30})
+        xy.push({x: 10, y: height - 50})
+        svg.append("path")
+            .datum(xy)
+            .attr("fill", "none")
+            .attr("stroke", "deeppink")
+            .attr("stroke-width", 2)
+            .attr("d", d3.line()
+                .x(function(d) { return d.x;})
+                .y(function(d) { return d.y;})
+            );
+
         // Bind the data to the SVG and create one path per GeoJSON feature
         svg.selectAll("path")
             .data(json.features)
