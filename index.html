@@ -231,7 +231,7 @@
                 </div>
             </td>
             <td>
-                <div id="svg_1"></div>
+                <div id="svg_1" style="overflow: visible" data-tap-disabled="true"></div>
             </td>
         </tr>
     </table>
@@ -760,12 +760,12 @@ var y = d3.scaleLinear()
 
 var yAxis = d3.axisRight(y);
 
-/*
 svg.append("g")
     .attr("class", "y axis")
     .attr("transform", "translate(782,275)")
     .call(yAxis)
 
+/*
 var xy = [];
 xy.push({x: 10, y: height - 30})
 xy.push({x: 10, y: height - 50})
