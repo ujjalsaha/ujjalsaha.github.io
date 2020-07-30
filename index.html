@@ -851,7 +851,8 @@ d3.csv("state_cumulative.csv", function(data) {
             .enter()
             .append("path")
             .attr("d", path)
-            .style("fill", function (d) { return d.properties.positive;});
+            .style("fill", function (d) { return color(d.properties.positive)});
+
     });
 });
 
