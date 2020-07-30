@@ -781,6 +781,7 @@ var svg_temp = d3.select("#svg_1")
 var layer1 = svg_temp.append('g');
 var layer2 = svg_temp.append('g');
 var layer3 = svg_temp.append('g');
+var layer4 = svg_temp.append('g');
 
 layer1.append("g")
     .attr("class", "y axis")
@@ -791,6 +792,19 @@ var xy = [];
 xy.push({x: 10, y: height - 30})
 xy.push({x: 10, y: height - 50})
 layer2.append("path")
+    .datum(xy)
+    .attr("fill", "none")
+    .attr("stroke", "deeppink")
+    .attr("stroke-width", 2)
+    .attr("d", d3.line()
+        .x(function(d) { return d.x;})
+        .y(function(d) { return d.y;})
+    );
+
+var xy = [];
+xy.push({x: width / 2, y: (height / 2)})
+xy.push({x: width / 2, y: (height / 2) + 30})
+layer4.append("path")
     .datum(xy)
     .attr("fill", "none")
     .attr("stroke", "deeppink")
