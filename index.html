@@ -752,13 +752,19 @@ svg.append("g")
                     .range([0, width]);
                 svg_2.append("g")
                     .attr("transform", "translate(0," + height + ")")
-                    .call(d3.axisBottom(x_2).ticks(10));
+                    .call(d3.axisBottom(x_2));
 
                 // Add the text label for the x axis
                 svg_2.append("text")
                     .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 20) + ")")
                     .style("text-anchor", "middle")
                     .text("Date - [Mar 16, 2020 Onwards]");
+
+                svg_2.append("text")
+                    .attr("transform", "translate(" + (-10) + " ," + (height + margin.bottom) + ")")
+                    .style("text-anchor", "middle")
+                    .style("font-size", "8px")
+                    .text("Mar 16");
 
                 // Add Y axis
                 var y_2 = d3.scaleLinear()
