@@ -752,7 +752,8 @@ svg.append("g")
                     .range([0, width]);
                 svg_2.append("g")
                     .attr("transform", "translate(0," + height + ")")
-                    .call(d3.axisBottom(x_2));
+                    .call(d3.axisBottom(x_2)
+                            .ticks(15));
 
                 // Add the text label for the x axis
                 svg_2.append("text")
@@ -767,22 +768,19 @@ svg.append("g")
                 svg_2.append("g")
                     .call(d3.axisLeft(y_2));
 
-                /*
-                // gridlines in y axis function
+                // add the Y gridlines
                 function make_y_gridlines() {
                     return d3.axisLeft(y_2)
                         .ticks(10)
                 }
 
-                // add the Y gridlines
                 svg_2.append("g")
                     .attr("class", "grid")
                     .call(make_y_gridlines()
                         .tickSize(-width)
                         .tickFormat("")
                     )
-                */
-                
+
                 // Add the text label for the Y axis
                 svg_2.append("text")
                     .attr("transform", "rotate(-90)")
