@@ -566,23 +566,18 @@ d3.csv("state_cumulative.csv", function(data) {
                             .style("font-weight", "bold")
                             .text(formatValue(min_positive));
 
-                        svg_2.append("text")
-                            .attr("transform", "translate("+(5)+","+(height - 80)+")")
-                            .attr("dy", ".35em")
-                            .attr("text-anchor", "start")
-                            .style("font-size", "12px")
-                            .text(formatValue(min_positive))
-                            .style("fill", "deeppink")
-                            .text("positives cases <br/> started increasing");
-
-                        svg_2.append("text")
-                            .attr("transform", "translate("+(5)+","+(height - 70)+")")
-                            .attr("dy", ".35em")
-                            .attr("text-anchor", "start")
-                            .style("font-size", "12px")
-                            .text(formatValue(min_positive))
-                            .style("fill", "deeppink")
-                            .text("during mar 16, lockdown begins");
+                        svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 100)+")")
+                            .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
+                            .text(formatValue(min_positive)).style("fill", "deeppink").text("positives cases")
+                            .append("text").attr("transform", "translate("+(5)+","+(height - 90)+")").attr("dy", ".35em")
+                            .attr("text-anchor", "start").style("font-size", "12px")
+                            .text(formatValue(min_positive)).style("fill", "deeppink").text("started increasing")
+                            .append("text").attr("transform", "translate("+(5)+","+(height - 80)+")").attr("dy", ".35em")
+                            .attr("text-anchor", "start").style("font-size", "12px")
+                            .text(formatValue(min_positive)).style("fill", "deeppink").text("during mid of March")
+                            .append("text").attr("transform", "translate("+(5)+","+(height - 90)+")").attr("dy", ".35em")
+                            .attr("text-anchor", "start").style("font-size", "12px")
+                            .text(formatValue(min_positive)).style("fill", "deeppink").text("and lockdown begins");
 
                         // Add the annotation
                         svg_2.append("rect")
