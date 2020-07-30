@@ -543,9 +543,26 @@ d3.csv("state_cumulative.csv", function(data) {
                             .style("font-weight", "bold")
                             .text(formatValue(max_positive));
 
+                        xy = [];
+                        xy.push({x: width - 45, y: y_2(max_positive.value) - 10})
+                        xy.push({x: width - 60, y: y_2(max_positive.value) - 10})
+                        svg_2.append("path")
+                            .datum(xy)
+                            .attr("fill", "none")
+                            .attr("stroke", "deeppink")
+                            .attr("stroke-width", 2)
+                            .attr("d", d3.line()
+                                .x(function(d) { return d.x;})
+                                .y(function(d) { return d.y;})
+                            )
+
+                        svg_2.append("text").attr("transform", "translate("+(width - 170)+","+(y_2(max_positive) - 10)+")")
+                            .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
+                            .style("fill", "deeppink").text("Overall cases so far");
+
                         // Add the label at the bottom of the line and annotation
                         var xy = [];
-                        xy.push({x: 10, y: height - 15})
+                        xy.push({x: 10, y: height - 25})
                         xy.push({x: 10, y: height - 50})
                         svg_2.append("path")
                             .datum(xy)
@@ -897,7 +914,7 @@ svg.append("g")
                 
                 // Add the label at the bottom of the line and annotation
                 xy = [];
-                xy.push({x: 10, y: height - 15})
+                xy.push({x: 10, y: height - 25})
                 xy.push({x: 10, y: height - 50})
                 svg_2.append("path")
                     .datum(xy)
