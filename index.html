@@ -546,8 +546,8 @@ d3.csv("state_cumulative.csv", function(data) {
                         // Add the label at the bottom of the line
                         // Add the line for annotation
                         var xy = [];
-                        xy.push({x:0, y: height - 30})
-                        xy.push({x: 30, y: height - 100})
+                        xy.push({x: 10, y: height - 20})
+                        xy.push({x: 10, y: height - 60})
                         svg_2.append("path")
                             .datum(xy)
                             .attr("fill", "none")
@@ -559,7 +559,7 @@ d3.csv("state_cumulative.csv", function(data) {
                             )
 
                         svg_2.append("text")
-                            .attr("transform", "translate("+(5)+","+(height - 10)+")")
+                            .attr("transform", "translate("+(5)+","+(height - 15)+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "start")
                             .style("font-size", "12px")
@@ -567,13 +567,22 @@ d3.csv("state_cumulative.csv", function(data) {
                             .text(formatValue(min_positive));
 
                         svg_2.append("text")
-                            .attr("transform", "translate("+(20)+","+(height - 100)+")")
+                            .attr("transform", "translate("+(5)+","+(height - 70)+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "start")
                             .style("font-size", "12px")
                             .text(formatValue(min_positive))
                             .style("fill", "deeppink")
-                            .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
+                            .text("positives cases started increasing");
+
+                        svg_2.append("text")
+                            .attr("transform", "translate("+(5)+","+(height - 80)+")")
+                            .attr("dy", ".35em")
+                            .attr("text-anchor", "start")
+                            .style("font-size", "12px")
+                            .text(formatValue(min_positive))
+                            .style("fill", "deeppink")
+                            .text("during mar 16, lockdown begins");
 
                         // Add the annotation
                         svg_2.append("rect")
