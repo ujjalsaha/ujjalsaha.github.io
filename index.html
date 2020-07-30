@@ -708,7 +708,7 @@ layer3.append("text")
 var l_w = 120, l_h = 210;
 
 // Add text label for the legend
-layer3.append("text")
+layer2.append("text")
     .attr("x", 790)
     .attr("y", 245)
     .attr("text-anchor", "middle")
@@ -716,7 +716,7 @@ layer3.append("text")
     .style("font-weight", "bold")
     .style("text-decoration", "underline")
     .text("Cumulative");
-layer3.append("text")
+layer2.append("text")
     .attr("x", 790)
     .attr("y", 260)
     .attr("text-anchor", "middle")
@@ -725,7 +725,7 @@ layer3.append("text")
     .style("text-decoration", "underline")
     .text("Case Count");
 
-var legend = layer3.append("defs")
+var legend = layer2.append("defs")
     .append("svg:linearGradient")
     .attr("id", "gradient")
     .attr("x1", "100%")
@@ -755,7 +755,7 @@ var y = d3.scaleLinear()
     .domain([0, 450000]);
 var yAxis = d3.axisRight(y);
 
-layer3.attr("class", "y axis")
+layer4.attr("class", "y axis")
     .attr("transform", "translate(782,275)")
     .call(yAxis)
 
