@@ -450,7 +450,7 @@
                                 .attr("text-anchor", "middle")
                                 .style("font-size", "16px")
                                 .style("text-decoration", "underline")
-                                .text(d.properties.state + " - New Case Count (Cumulative) ");
+                                .text(d.properties.state + " - New Case Count");
 
                             // Add X axis --> it is a date format
                             var x_2 = d3.scaleTime()
@@ -483,7 +483,7 @@
 
                             // Add Y axis
                             var y_2 = d3.scaleLinear()
-                                .domain([0, 12000])
+                                .domain([0, 20000])
                                 .range([height, 0]);
                             svg_2.append("g")
                                 .call(d3.axisLeft(y_2));
@@ -797,7 +797,7 @@
 
     var y = d3.scaleLinear()
         .range([200, 0])
-        .domain([0, 12000]);
+        .domain([0, 12500]);
     var yAxis = d3.axisRight(y);
 
     layer4.attr("class", "y axis")
