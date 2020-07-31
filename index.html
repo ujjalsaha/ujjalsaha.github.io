@@ -710,14 +710,14 @@ d3.csv("state_cumulative.csv", function(data) {
             .y(function(d) { return d.y;})
         );
     layer3.append("text")
-        .attr("x", 5)
+        .attr("x", 75)
         .attr("y", 360)
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
         .style("fill", "deeppink")
         .text("Alaska is Gray in color");
     layer3.append("text")
-        .attr("x", 5)
+        .attr("x", 75)
         .attr("y", 370)
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
@@ -725,16 +725,16 @@ d3.csv("state_cumulative.csv", function(data) {
         .text("i.e. is one of states");
 
     layer3.append("text")
-        .attr("x", 5)
+        .attr("x", 75)
         .attr("y", 380)
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
         .style("fill", "deeppink")
         .text("with low overall cases");
 
-var xy = [];
-    xy.push({x: width - 150, y: 120})
-    xy.push({x: width - 150, y: 160})
+    var xy = [];
+    xy.push({x: width - 220, y: 120})
+    xy.push({x: width - 220, y: 160})
     layer2.append("path")
         .datum(xy)
         .attr("fill", "none")
