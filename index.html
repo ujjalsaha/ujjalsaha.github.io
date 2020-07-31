@@ -698,7 +698,7 @@ d3.csv("state_cumulative.csv", function(data) {
 
     // Add annotation to the maps
     var xy = [];
-    xy.push({x: 75, y: height - 50})
+    xy.push({x: 75, y: height - 100})
     xy.push({x: 100, y: height - 30})
     layer2.append("path")
         .datum(xy)
@@ -711,7 +711,7 @@ d3.csv("state_cumulative.csv", function(data) {
         );
 
     var xy = [];
-    xy.push({x: width / 2 + 30, y: height - 100})
+    xy.push({x: width / 2 + 10, y: height - 70})
     xy.push({x: width / 2 + 70, y: height - 75})
     layer2.append("path")
         .datum(xy)
