@@ -1104,17 +1104,24 @@
                     return d.date == "20200719"
                 })
 
-                console.log("1 state" + filterdata[0].state + filterdata[0].date)
-                console.log("2 state" + filterdata[1].state + filterdata[1].date)
-                console.log("3 state" + filterdata[2].state + filterdata[2].date)
-                console.log("4 state" + filterdata[3].state + filterdata[3].date)
-                console.log("5 state" + filterdata[4].state + filterdata[4].date)
+                console.log("After Filter")
+                console.log("1 state: " + filterdata[0].state + " Date: " + filterdata[0].date + " Positive: " + filterdata[0].positive)
+                console.log("2 state: " + filterdata[1].state + " Date: " + filterdata[1].date + " Positive: " + filterdata[1].positive)
+                console.log("3 state: " + filterdata[2].state + " Date: " + filterdata[2].date + " Positive: " + filterdata[2].positive)
+                console.log("4 state: " + filterdata[3].state + " Date: " + filterdata[3].date + " Positive: " + filterdata[3].positive)
+                console.log("5 state: " + filterdata[4].state + " Date: " + filterdata[4].date + " Positive: " + filterdata[4].positive)
+
 
                 filterdata.sort(function (x, y) {
                     return d3.descending(x.positive, y.positive);
                 })
+                console.log("After Sort")
+                console.log("1 state: " + filterdata[0].state + " Date: " + filterdata[0].date + " Positive: " + filterdata[0].positive)
+                console.log("2 state: " + filterdata[1].state + " Date: " + filterdata[1].date + " Positive: " + filterdata[1].positive)
+                console.log("3 state: " + filterdata[2].state + " Date: " + filterdata[2].date + " Positive: " + filterdata[2].positive)
+                console.log("4 state: " + filterdata[3].state + " Date: " + filterdata[3].date + " Positive: " + filterdata[3].positive)
+                console.log("5 state: " + filterdata[4].state + " Date: " + filterdata[4].date + " Positive: " + filterdata[4].positive)
 
-                console.log("filterdata: " + filterdata)
 
                 // Add the title for the line graph
                 svg_2.append("text")
@@ -1125,12 +1132,14 @@
                     .style("text-decoration", "underline")
                     .text("United States - New Case Count");
 
+                /*
                 states = []
-                console.log("1 state" + filterdata[0].state + filterdata[0].date)
-                console.log("2 state" + filterdata[1].state + filterdata[1].date)
-                console.log("3 state" + filterdata[2].state + filterdata[2].date)
-                console.log("4 state" + filterdata[3].state + filterdata[3].date)
-                console.log("5 state" + filterdata[4].state + filterdata[4].date)
+                console.log("1 state: " + filterdata[0].state + " Date: " + filterdata[0].date + " Positive: " + filterdata[0].positive)
+                console.log("2 state: " + filterdata[1].state + " Date: " + filterdata[1].date + " Positive: " + filterdata[1].positive)
+                console.log("3 state: " + filterdata[2].state + " Date: " + filterdata[2].date + " Positive: " + filterdata[2].positive)
+                console.log("4 state: " + filterdata[3].state + " Date: " + filterdata[3].date + " Positive: " + filterdata[3].positive)
+                console.log("5 state: " + filterdata[4].state + " Date: " + filterdata[4].date + " Positive: " + filterdata[4].positive)
+                */
             }
         );
     }
