@@ -751,8 +751,8 @@ d3.csv("state_cumulative.csv", function(data) {
         );
     layer3.append("text").attr("x", 680).attr("y", 330).style("font-size", "12px").style("fill", "deeppink").text("Scale distributes ");
     layer3.append("text").attr("x", 670).attr("y", 340).style("font-size", "12px").style("fill", "deeppink").text("colors to the states");
-    layer3.append("text").attr("x", 650).attr("y", 350).style("font-size", "12px").style("fill", "deeppink").text("red to gray meaning");
-    layer3.append("text").attr("x", 630).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("high to low counts");
+    layer3.append("text").attr("x", 660).attr("y", 350).style("font-size", "12px").style("fill", "deeppink").text("red to gray meaning");
+    layer3.append("text").attr("x", 660).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("high to low counts");
 
     // Add the title for the map
     layer3.append("text")
@@ -806,7 +806,7 @@ d3.csv("state_cumulative.csv", function(data) {
         .attr("width", 20)
         .attr("height", 200)
         .style("fill", "url(#gradient)")
-        .attr("transform", "translate(770,275)");
+        .attr("transform", "translate(775,275)");
 
     var y = d3.scaleLinear()
         .range([200, 0])
@@ -814,7 +814,7 @@ d3.csv("state_cumulative.csv", function(data) {
     var yAxis = d3.axisRight(y);
 
     layer4.attr("class", "y axis")
-        .attr("transform", "translate(792,275)")
+        .attr("transform", "translate(797,275)")
         .call(yAxis)
 
 </script>
