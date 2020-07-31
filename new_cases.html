@@ -554,8 +554,8 @@
 
                             // Add the label at the bottom of the line and annotation
                             var xy = [];
-                            xy.push({x: 10, y: height - 30})
-                            xy.push({x: 10, y: height - 50})
+                            xy.push({x: 10, y: height - 20})
+                            xy.push({x: 10, y: height - 100})
                             svg_2.append("path")
                                 .datum(xy)
                                 .attr("fill", "none")
@@ -567,28 +567,22 @@
                                 )
 
                             svg_2.append("text")
-                                .attr("transform", "translate("+(5)+","+(height - 15)+")")
+                                .attr("transform", "translate("+(5)+","+(height - 120)+")")
                                 .attr("dy", ".35em")
                                 .attr("text-anchor", "start")
                                 .style("font-size", "12px")
                                 .style("font-weight", "bold")
                                 .text(formatValue(min_positive));
 
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 100)+")")
+                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 160)+")")
                                 .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("Positives cases");
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 90)+")").attr("dy", ".35em")
+                                .style("fill", "deeppink").text("New cases started ");
+                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 150)+")").attr("dy", ".35em")
                                 .attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("started increasing");
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 80)+")").attr("dy", ".35em")
+                                .style("fill", "deeppink").text("increasing during mid of Mar");
+                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 140)+")").attr("dy", ".35em")
                                 .attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("during mid of Mar");
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 70)+")").attr("dy", ".35em")
-                                .attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("and lockdown");
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 60)+")").attr("dy", ".35em")
-                                .attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("begins");
+                                .style("fill", "deeppink").text("and lockdown begins");
 
                             // Add the annotation
                             svg_2.append("rect")
