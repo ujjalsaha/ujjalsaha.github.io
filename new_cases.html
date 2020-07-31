@@ -185,7 +185,7 @@
     This is a demonstration of Narrative Visualisation using the Interactive Slideshow Structure using the COVID-19 Dataset of United States and tries to establish sequence of hierarchies putting forward the observation in terms of various Scenes as pages. The narrative visualization mainly explore the areas of overall cases and new cases within united states and how each state is affected in terms of case counts.
     This whole Visualization is based on three Scenes. Below is the brief description of each scene.
     <p>
-        <span class="bold">Scene 1 (United States - COVID-19 Overall Case Count):</span> where author puts forwards the observation with overall cases on the states of United States and being within scene1 lets user explore with the tooltip, parameters and triggers.<br/>
+        <span class="bold">Scene 1 (United States - COVID-19 New Case Count):</span> where author puts forwards the observation with overall cases on the states of United States and being within scene1 lets user explore with the tooltip, parameters and triggers.<br/>
         <span class="bold">Scene 2 (United States - COVID-19 New Case Count):</span> where author puts forwards the observation with new cases on the states of United States and being within scene2 lets user explore the visualization with the tooltip, parameters and triggers.<br/>
         <span class="bold">Scene 3 (United States - COVID-19 Top 10 States):</span> where author puts forwards the observation of top10 states with overall positive case counts vs top10 states with new case counts. Also letting the user explore the visualization with the tooltip, parameters and triggers. This is the summary and end of the narrative visualization.<br/>
     </p>
@@ -297,18 +297,6 @@
 </div>
 <script type="text/javascript">
 
-    /*  This visualization was made possible by modifying code provided by:
-
-    Scott Murray, Choropleth example from "Interactive Data Visualization for the Web"
-    https://github.com/alignedleft/d3-book/blob/master/chapter_12/05_choropleth.html
-
-    Malcolm Maclean, tooltips example tutorial
-    http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
-
-    Mike Bostock, Pie Chart Legend
-    http://bl.ocks.org/mbostock/3888852  */
-
-
     //Width and height of map
     var margin = {top: 0, right: 0, bottom: 0, left: 0}
     var width = 850;
@@ -316,16 +304,15 @@
 
     // D3 Projection
     var projection = d3.geoAlbersUsa()
-        .translate([width/2, height/2])    // translate to center of screen
+        .translate([width/2, height/2])
         .scale([1000]);          // scale things down so see entire US
 
     // Define path generator
-    var path = d3.geoPath()               // path generator that will convert GeoJSON to SVG paths
-        .projection(projection);  // tell path generator to use albersUsa projection
-
+    var path = d3.geoPath()         // path generator that will convert GeoJSON to SVG paths
+        .projection(projection);    // tell path generator to use albersUsa projection
 
     // Define linear scale for output
-    var color = d3.scaleLinear().domain([0, 400000]).range(["gainsboro", "red"])
+    var color = d3.scaleLinear().domain([0, 12000]).range(["moccasin", "darkcyan"])
     var legendText = ["Minimum Cases", "Maximum cases"];
 
     //Create SVG element and append map to the SVG
@@ -366,10 +353,10 @@
                 var dataState = data[i].state;
 
                 // Grab positive cases
-                var dataValue = data[i].positive;
+                var dataValue = data[i].new_positive;
 
                 // Grab death
-                var dataDeath = data[i].death;
+                var dataDeath = data[i].new_death;
 
 
                 // Find the corresponding state inside the GeoJSON
@@ -380,8 +367,8 @@
 
                         // Copy the data value into the JSON
                         json.features[j].properties.state = dataState;
-                        json.features[j].properties.positive = dataValue;
-                        json.features[j].properties.death = dataDeath;
+                        json.features[j].properties.new_positive = dataValue;
+                        json.features[j].properties.new_death = dataDeath;
 
                         // Stop looking through the JSON
                         break;
@@ -400,7 +387,7 @@
                 //.style("pointer-events", "none")
                 .style("fill", function(d) {
                     // Get data value
-                    var value = d.properties.positive;
+                    var value = d.properties.new_positive;
 
                     if (value) {
                         //If value exists…
@@ -411,8 +398,8 @@
                 })
                 .on("mouseover", function(d) {
                     var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
-                        "<span>Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
-                        "<span>Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
+                        "<span>Confirmed Cases: </span>" + formatValue(d.properties.new_positive) + "<br/>" +
+                        "<span>Deaths: </span>" + formatValue(d.properties.new_death) + "<br/>";
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
@@ -434,8 +421,8 @@
                         function(d){
                             val = { state: d.state,
                                 date: parseDate(d.date),
-                                positive: d.positive,
-                                death: d.death}
+                                positive: d.new_positive,
+                                death: d.new_death}
                             // console.log("Val: " + val)
                             return val
                         },
@@ -449,8 +436,8 @@
                             var filterdata = data.filter(function (d) {
                                 return d.state == selected_state
                             })
-                            var max_positive = filterdata[0].positive
-                            var min_positive = filterdata[filterdata.length - 1].positive
+                            var max_positive = filterdata[0].new_positive
+                            var min_positive = filterdata[filterdata.length - 1].new_positive
 
                             filterdata.sort(function(a, b) {
                                 return a.date - b.date;
@@ -463,7 +450,7 @@
                                 .attr("text-anchor", "middle")
                                 .style("font-size", "16px")
                                 .style("text-decoration", "underline")
-                                .text(d.properties.state + " - Overall Case Count (Cumulative) ");
+                                .text(d.properties.state + " - New Case Count (Cumulative) ");
 
                             // Add X axis --> it is a date format
                             var x_2 = d3.scaleTime()
@@ -496,7 +483,7 @@
 
                             // Add Y axis
                             var y_2 = d3.scaleLinear()
-                                .domain([0, 500000])
+                                .domain([0, 12000])
                                 .range([height, 0]);
                             svg_2.append("g")
                                 .call(d3.axisLeft(y_2));
@@ -535,7 +522,7 @@
                                         return x_2(d.date)
                                     })
                                     .y(function (d) {
-                                        return y_2(d.positive)
+                                        return y_2(d.new_positive)
                                     })
                                 );
 
@@ -683,9 +670,9 @@
                                     d0 = filterdata[i - 1],
                                     d1 = filterdata[i],
                                     d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-                                focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
+                                focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.new_positive) + ")");
                                 focus.select(".tooltip-date").text(dateFormatter(d.date));
-                                focus.select(".tooltip-cases").text(formatValue(d.positive));
+                                focus.select(".tooltip-cases").text(formatValue(d.new_positive));
                             }
 
                         }
@@ -701,7 +688,7 @@
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
         .style("text-decoration", "underline")
-        .text("United States - Overall Case Count (Cumulative) ");
+        .text("United States - New Case Count (Cumulative) ");
 
     // Add annotation to the maps
     var xy = [];
@@ -761,7 +748,7 @@
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
         .style("text-decoration", "underline")
-        .text("United States - Overall Case Count (Cumulative) ");
+        .text("United States - New Case Count (Cumulative) ");
 
 
     // add a legend
@@ -794,12 +781,12 @@
 
     legend.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", "red")
+        .attr("stop-color", "darkcyan")
         .attr("stop-opacity", 1);
 
     legend.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", "gainsboro")
+        .attr("stop-color", "moccasin")
         .attr("stop-opacity", 1);
 
     layer3.append("rect")
@@ -810,7 +797,7 @@
 
     var y = d3.scaleLinear()
         .range([200, 0])
-        .domain([0, 450000]);
+        .domain([0, 12000]);
     var yAxis = d3.axisRight(y);
 
     layer4.attr("class", "y axis")
@@ -850,8 +837,8 @@
 
             // When reading the csv, I must format variables:
             function (d) {
-                // console.log(d.date, d.positive)
-                val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, death: d.death}
+                // console.log(d.date, d.new_positive)
+                val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.new_positive, death: d.new_death}
                 // console.log(val)
                 return val
             },
@@ -865,7 +852,7 @@
                     .attr("text-anchor", "middle")
                     .style("font-size", "16px")
                     .style("text-decoration", "underline")
-                    .text("United States - Overall Case Count (Cumulative) ");
+                    .text("United States - New Case Count (Cumulative) ");
 
                 // Add X axis --> it is a date format
                 var x_2 = d3.scaleTime()
