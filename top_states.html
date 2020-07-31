@@ -268,17 +268,17 @@
     <table>
         <tr>
             <td valign="top" >
-                <div style="max-width: 850px; line-height: 20px;padding: 20px">
-                    <span class="guideline_header">Line Chart - New Confirmed Cases for the United States</span><br/>
+                <div style="max-width: 700px; line-height: 20px;padding: 20px">
+                    <span class="guideline_header">Line Chart - Cumulative Confirmed Cases for the United States</span><br/>
                     <p>
                         The line chart here shows:<br/>
-                        &nbsp;&nbsp;1. For entire United States at what how the daily new cases reported trend look like<br/>
-                        &nbsp;&nbsp;2. If user clicks on a state on the above map, as cross-filter is enabled, the view on the line chart will switch to state level and will show state level new case count.<br/>
+                        &nbsp;&nbsp;1. For entire United States at what pace the overall cases are increasing<br/>
+                        &nbsp;&nbsp;2. If user clicks on a state on the above map, as cross-filter is enable, the view on the line chart will switch to state level and will show state level overall case count.<br/>
                     </p>
                     <p>
-                        A fine <span class="bold"> observation </span> we noticed, this graph has an upward bend on many states that indicates more new cases are being reported in last few weeks in most areas. However there are some exception also, i.e. there are few states where new cases reporting dropped.
-                        Around late June, when the lockdown was lifted, there is sudden rise in new cases for most of the states with exception of few states..
-                        The color green was used to draw the line chart just to make the vizualization appealing, where green color itself has no color significance on the line chart.
+                        A fine <span class="bold"> observation </span> we noticed this graph has an upward bend that can indicate more cases are being report in last few weeks then ever before.
+                        Around late June, when the lockdown was lifted, there is sudden rise in the curve which would mean as states are opening more community spreading is also aggressive.
+                        The color blue was used just to make it appealing, where blue itself has no color significance on the line chart.
                     </p>
                     <p>
                         <span class="bold">Annotations:</span><br/>
@@ -462,8 +462,8 @@
                 .on("mouseover", function(d) {
                     var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
                         "<span>Population: </span>" + d.properties.population + "<br/>" +
-                        "<span>Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
-                        "<span>Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
+                        "<span>Overall Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
+                        "<span>Overall Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
@@ -950,7 +950,7 @@
                     var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
                         "<span>Population: </span>" + d.properties.population + "<br/>" +
                         "<span>New Cases: </span>" + formatValue(d.properties.new_positive) + "<br/>" +
-                        "<span>Deaths: </span>" + formatValue(d.properties.new_death) + "<br/>";
+                        "<span>New Deaths: </span>" + formatValue(d.properties.new_death) + "<br/>";
                     div.transition()
                         .duration(200)
                         .style("opacity", .9);
