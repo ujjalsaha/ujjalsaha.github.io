@@ -717,9 +717,9 @@ d3.csv("state_cumulative.csv", function(data) {
             .x(function(d) { return d.x;})
             .y(function(d) { return d.y;})
         );
-    layer3.append("text").attr("x", 5).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("Alaska is Gray in color which");
-    layer3.append("text").attr("x", 5).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("means it is one of states with");
-    layer3.append("text").attr("x", 5).attr("y", 380).style("font-size", "12px").style("fill", "deeppink").text("low overall cases");
+    layer3.append("text").attr("x", 5).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("States with less population like")
+    layer3.append("text").attr("x", 5).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("Alaska is Gray color which")
+    layer3.append("text").attr("x", 5).attr("y", 380).style("font-size", "12px").style("fill", "deeppink").text("meaning low overall cases");
 
     var xy = [];
     xy.push({x: width - 200, y: 110})
@@ -733,9 +733,9 @@ d3.csv("state_cumulative.csv", function(data) {
             .x(function(d) { return d.x;})
             .y(function(d) { return d.y;})
         );
-    layer3.append("text").attr("x", width - 210).attr("y", 80).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("New York is Red in color which");
-    layer3.append("text").attr("x", width - 210).attr("y", 90).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("means it is one of the states");
-    layer3.append("text").attr("x", width - 210).attr("y", 100).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("with high overall cases.");
+    layer3.append("text").attr("x", width - 210).attr("y", 80).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("States with high population");
+    layer3.append("text").attr("x", width - 210).attr("y", 90).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("like New York is Red in color");
+    layer3.append("text").attr("x", width - 210).attr("y", 100).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("meaning high overall cases.");
 
     var xy = [];
     xy.push({x: 780, y: 280})

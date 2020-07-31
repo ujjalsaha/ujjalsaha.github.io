@@ -697,9 +697,8 @@
             .x(function(d) { return d.x;})
             .y(function(d) { return d.y;})
         );
-    layer3.append("text").attr("x", 5).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("Alaska is Gray in color which");
-    layer3.append("text").attr("x", 5).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("means it is one of states with");
-    layer3.append("text").attr("x", 5).attr("y", 380).style("font-size", "12px").style("fill", "deeppink").text("low new cases");
+    layer3.append("text").attr("x", 5).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("Alaska is still light color")
+    layer3.append("text").attr("x", 5).attr("y", 380).style("font-size", "12px").style("fill", "deeppink").text("meaning low new cases");
 
     var xy = [];
     xy.push({x: width - 200, y: 110})
@@ -713,9 +712,10 @@
             .x(function(d) { return d.x;})
             .y(function(d) { return d.y;})
         );
-    layer3.append("text").attr("x", width - 210).attr("y", 80).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("New York is Red in color which");
-    layer3.append("text").attr("x", width - 210).attr("y", 90).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("means it is one of the states");
-    layer3.append("text").attr("x", width - 210).attr("y", 100).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("with high new cases.");
+    layer3.append("text").attr("x", width - 210).attr("y", 70).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("Even though New York State")
+    layer3.append("text").attr("x", width - 210).attr("y", 80).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("is high population but it is")
+    layer3.append("text").attr("x", width - 210).attr("y", 90).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("light in colot meaning not much")
+    layer3.append("text").attr("x", width - 210).attr("y", 100).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("new cases are being reported");
 
     var xy = [];
     xy.push({x: 780, y: 280})
