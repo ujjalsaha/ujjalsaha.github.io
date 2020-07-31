@@ -1090,7 +1090,7 @@
             // When reading the csv, I must format variables:
             function (d) {
                 // console.log(d.date, d.new_positive)
-                val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, state: d.state}
+                val = {date: d.date, positive: d.positive, state: d.state}
                 // console.log(val)
                 return val
             },
@@ -1099,7 +1099,7 @@
             function (data) {
 
                 var filterdata = data.filter(function (d) {
-                    console.log(" Date: " + d.date)
+                    console.log("Date: " + d.date)
                     console.log("isDate: " + (d.date == "20200719"))
                     return d.date == "20200719"
                 })
@@ -1111,7 +1111,7 @@
                 console.log("5 state" + filterdata[4].state + filterdata[4].date)
 
                 filterdata.sort(function (x, y) {
-                    return d3.descending(x.value, y.value);
+                    return d3.descending(x.positive, y.positive);
                 })
 
                 console.log("filterdata: " + filterdata)
