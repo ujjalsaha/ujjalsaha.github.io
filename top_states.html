@@ -294,12 +294,18 @@
         </tr>
         <tr>
             <td>
-                <div id="svg_3"></div>
+                <div id="svg_3">
+                    <script type="text/javascript">
+                        top_10_overall_cases();
+                    </script></div>
             </td>
             <td>
-                <div id="svg_4"></div>
+                <div id="svg_4">
+                    <script type="text/javascript">
+                        top_10_new_cases();
+                    </script>
+                </div>
             </td>
-
         </tr>
     </table>
 </div>
@@ -1054,6 +1060,79 @@
     layer8.attr("class", "y axis")
         .attr("transform", "translate(742,275)")
         .call(yAxis)
+</script>
+
+<script>
+    /* ************************************************************************************* */
+    /* **************************** TOP 10 OVERALL STATES ********************************** */
+    /* ************************************************************************************* */
+    var formatValue = d3.format(",")
+    var parseDate = d3.timeParse("%Y%m%d"),
+        bisectDate = d3.bisector(function(d) { return d.date; }).left,
+        formatValue = d3.format(","),
+        dateFormatter = d3.timeFormat("%B %d, %Y");
+
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 70, right: 30, bottom: 60, left: 80},
+        width = 850 - margin.left - margin.right,
+        height = 450 - margin.top - margin.bottom;
+
+    // append the svg object to the body of the page
+    var svg_3 = d3.select("#svg_3")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+    country_cases()
+
+    function top_1o_overall_cases() {
+        svg_3.selectAll("*").remove();
+        //Read the data
+        d3.csv("all_states_master.csv",
+
+            // When reading the csv, I must format variables:
+            function (d) {
+                // console.log(d.date, d.new_positive)
+                val = {date: d3.timeParse("%Y%m%d")(d.date), value: d.positive, state: d.state}
+                // console.log(val)
+                return val
+            },
+
+            // Now I can use this dataset:
+            function (data) {
+
+                var filterdata = data.filter(function (d) {
+                    return d.date == "20200724"
+                })
+
+                filterdata.sort(function (x, y) {
+                    return d3.descending(x.positive, y.positive);
+                })
+
+                console.log("filterdata: " + filterdata)
+
+                // Add the title for the line graph
+                svg_2.append("text")
+                    .attr("x", (width / 2) - 10)
+                    .attr("y", 0 - (margin.top / 2))
+                    .attr("text-anchor", "middle")
+                    .style("font-size", "16px")
+                    .style("text-decoration", "underline")
+                    .text("United States - New Case Count");
+
+                states = []
+                console.log("1 state" + data[0].state)
+                console.log("2 state" + data[1].state)
+                console.log("3 state" + data[2].state)
+                console.log("4 state" + data[3].state)
+                console.log("5 state" + data[4].state)
+            }
+        );
+    }
 </script>
 
 
