@@ -294,17 +294,10 @@
         </tr>
         <tr>
             <td>
-                <div id="svg_3">
-                    <script type="text/javascript">
-                        top_10_overall_cases();
-                    </script></div>
+                <div id="svg_3"></div>
             </td>
             <td>
-                <div id="svg_4">
-                    <script type="text/javascript">
-                        top_10_new_cases();
-                    </script>
-                </div>
+                <div id="svg_4"></div>
             </td>
         </tr>
     </table>
@@ -1087,9 +1080,9 @@
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    country_cases()
+    top_10_overall_cases()
 
-    function top_1o_overall_cases() {
+    function top_10_overall_cases() {
         svg_3.selectAll("*").remove();
         //Read the data
         d3.csv("all_states_master.csv",
