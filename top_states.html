@@ -221,7 +221,7 @@
     <table>
         <tr>
             <td valign="top">
-                <div style="max-width: 700px; line-height: 20px;padding: 20px">
+                <div style="max-width: 850px; line-height: 20px;padding: 20px">
                     <span class="guideline_header">Map - Showing Cumulative Confirmed Cases for Each States of United States</span><br/>
                     <p>
                         On Scene 1 we have seen the number of states with high overall COVID-19 case count.
@@ -236,7 +236,7 @@
                 </div>
             </td>
             <td valign="top">
-                <div style="max-width: 700px; line-height: 20px;padding: 20px">
+                <div style="max-width: 850px; line-height: 20px;padding: 20px">
                     <span class="guideline_header">Map - Showing New Confirmed Cases for Each States of United States</span><br/>
                     <p>
                         On Scene 2 we have seen the number of states with high COVID-19 rising cases count.
@@ -268,7 +268,7 @@
     <table>
         <tr>
             <td valign="top" >
-                <div style="max-width: 700px; line-height: 20px;padding: 20px">
+                <div style="max-width: 850px; line-height: 20px;padding: 20px">
                     <span class="guideline_header">Line Chart - New Confirmed Cases for the United States</span><br/>
                     <p>
                         The line chart here shows:<br/>
@@ -296,7 +296,7 @@
                 </div>
             </td>
             <td valign="top" >
-                <div style="max-width: 700px; line-height: 20px;padding: 20px">
+                <div style="max-width: 850px; line-height: 20px;padding: 20px">
                     <span class="guideline_header">Line Chart - New Confirmed Cases for the United States</span><br/>
                     <p>
                         The line chart here shows:<br/>
@@ -344,7 +344,7 @@
 </div>
 <br/>
 <div class="header_div">
-    <span class="guideline_header" style="color: ">General Facts<br/></span>
+    <span class="guideline_header">General Facts<br/></span>
     1. All coronavirus related data used on the graphs and analysis were gathered from https://covidtracking.com/data/api <br/>
     2. All dates and times are in US eastern time (ET). <br/>
     3.
@@ -460,289 +460,6 @@
                         return "gray";
                     }
                 })
-                .on("mouseover", function(d) {
-                    var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
-                        "<span>Population: </span>" + d.properties.population + "<br/>" +
-                        "<span>Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
-                        "<span>Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
-                    div.transition()
-                        .duration(200)
-                        .style("opacity", .9);
-                    div.html(tooltip_html)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 15) + "px")
-                })
-                // fade out tooltip on mouse out
-                .on("mouseout", function(d) {
-                    div.transition()
-                        .duration(500)
-                        .style("opacity", 0);
-                })
-                .on("click", function(d) {
-                    // Read the data
-                    selected_state = d.properties.state
-                    d3.csv("all_states_master.csv",
-                        // When reading the csv, I must format variables:
-                        function(d){
-                            val = { state: d.state,
-                                date: parseDate(d.date),
-                                positive: d.positive,
-                                death: d.death}
-                            // console.log("Val: " + val)
-                            return val
-                        },
-
-                        // Now I can use this dataset:
-                        function(data) {
-                            // Clear the SVG Chart
-                            svg_2.selectAll("*").remove();
-
-                            // Filter the dataset to get selected state rows only
-                            var filterdata = data.filter(function (d) {
-                                return d.state == selected_state
-                            })
-                            var max_positive = filterdata[0].positive
-                            var min_positive = filterdata[filterdata.length - 1].positive
-
-                            filterdata.sort(function(a, b) {
-                                return a.date - b.date;
-                            });
-
-                            // Add the title for the line graph
-                            svg_2.append("text")
-                                .attr("x", (width / 2) - 10)
-                                .attr("y", 0 - (margin.top / 2))
-                                .attr("text-anchor", "middle")
-                                .style("font-size", "16px")
-                                .style("text-decoration", "underline")
-                                .text(d.properties.state + " - Overall Case Count (Cumulative) ");
-
-                            // Add X axis --> it is a date format
-                            var x_2 = d3.scaleTime()
-                                .domain(d3.extent(filterdata, function (d) {
-                                    return d.date;
-                                }))
-                                .range([0, width]);
-                            svg_2.append("g")
-                                .attr("transform", "translate(0," + height + ")")
-                                .call(d3.axisBottom(x_2));
-
-                            // Add the text label for the x axis
-                            svg_2.append("text")
-                                .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 20) + ")")
-                                .style("text-anchor", "middle")
-                                .text("Date - [Mar 16, 2020 Onwards]");
-
-                            svg_2.append("text")
-                                .attr("transform", "translate(" + (-5) + " ," + (height + 16) + ")")
-                                .style("text-anchor", "middle")
-                                .style("font-size", "10px")
-                                .text("Mar 16");
-
-                            svg_2.append("text")
-                                .attr("transform", "translate(" + (width + 5) + " ," + (height + 16) + ")")
-                                .style("text-anchor", "middle")
-                                .style("font-size", "10px")
-                                .text("Jul 24");
-
-
-                            // Add Y axis
-                            var y_2 = d3.scaleLinear()
-                                .domain([0, 500000])
-                                .range([height, 0]);
-                            svg_2.append("g")
-                                .call(d3.axisLeft(y_2));
-
-                            // gridlines in y axis function
-                            function make_y_gridlines() {
-                                return d3.axisLeft(y_2)
-                                    .ticks(10)
-                            }
-
-                            // add the Y gridlines
-                            svg_2.append("g")
-                                .attr("class", "grid")
-                                .call(make_y_gridlines()
-                                    .tickSize(-width)
-                                    .tickFormat("")
-                                )
-
-                            // Add the text label for the Y axis
-                            svg_2.append("text")
-                                .attr("transform", "rotate(-90)")
-                                .attr("y", 0 - (margin.left / 2) - 35)
-                                .attr("x", 0 - (height / 2))
-                                .attr("dy", "1em")
-                                .style("text-anchor", "middle")
-                                .text("Number of People Affected");
-
-                            // Add the line for confirmed
-                            const path = svg_2.append("path")
-                                .datum(filterdata)
-                                .attr("fill", "none")
-                                .attr("stroke", "steelblue")
-                                .attr("stroke-width", 3)
-                                .attr("d", d3.line()
-                                    .x(function (d) {
-                                        return x_2(d.date)
-                                    })
-                                    .y(function (d) {
-                                        return y_2(d.positive)
-                                    })
-                                );
-
-                            // Add the label at the tip of the line
-                            svg_2.append("text")
-                                .attr("transform", "translate("+(width - 30)+","+(y_2(max_positive) - 10)+")")
-                                .attr("dy", ".35em")
-                                .attr("text-anchor", "start")
-                                .style("font-size", "12px")
-                                .style("font-weight", "bold")
-                                .text(formatValue(max_positive));
-
-                            var xy = [];
-                            xy.push({x: width - 35, y: y_2(max_positive) - 10})
-                            xy.push({x: width - 60, y: y_2(max_positive) - 10})
-                            svg_2.append("path")
-                                .datum(xy)
-                                .attr("fill", "none")
-                                .attr("stroke", "deeppink")
-                                .attr("stroke-width", 2)
-                                .attr("d", d3.line()
-                                    .x(function(d) { return d.x;})
-                                    .y(function(d) { return d.y;})
-                                );
-
-                            svg_2.append("text").attr("transform", "translate("+(width - 170)+","+(y_2(max_positive) - 10)+")")
-                                .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("Overall cases so far");
-
-                            // Add the label at the bottom of the line and annotation
-                            var xy = [];
-                            xy.push({x: 10, y: height - 30})
-                            xy.push({x: 10, y: height - 50})
-                            svg_2.append("path")
-                                .datum(xy)
-                                .attr("fill", "none")
-                                .attr("stroke", "deeppink")
-                                .attr("stroke-width", 2)
-                                .attr("d", d3.line()
-                                    .x(function(d) { return d.x;})
-                                    .y(function(d) { return d.y;})
-                                )
-
-                            svg_2.append("text")
-                                .attr("transform", "translate("+(5)+","+(height - 15)+")")
-                                .attr("dy", ".35em")
-                                .attr("text-anchor", "start")
-                                .style("font-size", "12px")
-                                .style("font-weight", "bold")
-                                .text(formatValue(min_positive));
-
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 100)+")")
-                                .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("Positives cases");
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 90)+")").attr("dy", ".35em")
-                                .attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("started increasing");
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 80)+")").attr("dy", ".35em")
-                                .attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("during mid of Mar");
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 70)+")").attr("dy", ".35em")
-                                .attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("and lockdown");
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 60)+")").attr("dy", ".35em")
-                                .attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("begins");
-
-                            // Add the annotation
-                            svg_2.append("rect")
-                                .attr("class", "annotation_box")
-                                .attr("width", 240)
-                                .attr("height", 350)
-                                .attr("x", 520)
-                                .attr("y", 0)
-                                .attr("rx", 4)
-                                .attr("ry", 4);
-
-                            svg_2.append("text")
-                                .attr("x", 640)
-                                .attr("y", -20)
-                                .attr("text-anchor", "middle")
-                                .style("font-size", "12px")
-                                .style("fill", "deeppink")
-                                .text("Shaded area showing reopening after");
-
-                            svg_2.append("text")
-                                .attr("x", 640)
-                                .attr("y", -5)
-                                .attr("text-anchor", "middle")
-                                .style("font-size", "12px")
-                                .style("fill", "deeppink")
-                                .text("lockdown and affected overall counts");
-
-                            svg_2.append("text")
-                                .attr("x", 250)
-                                .attr("y", 25)
-                                .attr("text-anchor", "middle")
-                                .style("font-size", "12px")
-                                .style("fill", "deeppink")
-                                .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
-
-                            // Add Tooltip for line chart
-                            var focus = svg_2.append("g")
-                                .attr("class", "focus")
-                                .style("display", "none");
-
-                            focus.append("circle")
-                                .attr("r", 5);
-
-                            focus.append("rect")
-                                .attr("class", "tooltip1")
-                                .attr("width", 80)
-                                .attr("height", 50)
-                                .attr("x", -80)
-                                .attr("y", -60)
-                                .attr("rx", 4)
-                                .attr("ry", 4);
-
-                            focus.append("text")
-                                .attr("class", "tooltip-date")
-                                .attr("x", -75)
-                                .attr("y", -45);
-
-                            focus.append("text")
-                                .attr("x", -75)
-                                .attr("y", -32)
-                                .text("Cases:");
-
-                            focus.append("text")
-                                .attr("class", "tooltip-cases")
-                                .attr("x", -40)
-                                .attr("y", -32);
-
-                            svg_2.append("rect")
-                                .attr("class", "overlay")
-                                .attr("width", width)
-                                .attr("height", height)
-                                .on("mouseover", function() { focus.style("display", null); })
-                                .on("mouseout", function() { focus.style("display", "none"); })
-                                .on("mousemove", mousemove);
-
-                            function mousemove() {
-                                var x0 = x_2.invert(d3.mouse(this)[0]),
-                                    i = bisectDate(filterdata, x0, 1),
-                                    d0 = filterdata[i - 1],
-                                    d1 = filterdata[i],
-                                    d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-                                focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
-                                focus.select(".tooltip-date").text(dateFormatter(d.date));
-                                focus.select(".tooltip-cases").text(formatValue(d.positive));
-                            }
-
-                        }
-                    );
-                });
         });
     });
 
@@ -891,15 +608,15 @@
     var legendText = ["Minimum Cases", "Maximum cases"];
 
     //Create SVG element and append map to the SVG
-    var svg = d3.select("#svg_2")
+    var svg_2 = d3.select("#svg_2")
         .append("svg")
         .attr("width", width)
         .attr("height", height - margin.top);
 
-    var layer1 = svg.append('g');
-    var layer2 = svg.append('g');
-    var layer3 = svg.append('g');
-    var layer4 = svg.append('g');
+    var layer1 = svg_2.append('g');
+    var layer2 = svg_2.append('g');
+    var layer3 = svg_2.append('g');
+    var layer4 = svg_2.append('g');
 
     // Append Div for tooltip to SVG
     var div = d3.select("body")
@@ -983,265 +700,6 @@
                         .duration(500)
                         .style("opacity", 0);
                 })
-                .on("click", function(d) {
-                    // Read the data
-                    selected_state = d.properties.state
-                    d3.csv("all_states_master.csv",
-                        // When reading the csv, I must format variables:
-                        function(d){
-                            val = { state: d.state,
-                                date: parseDate(d.date),
-                                new_positive: d.new_positive,
-                                new_death: d.new_death}
-                            // console.log("Val: " + val)
-                            return val
-                        },
-
-                        // Now I can use this dataset:
-                        function(data) {
-                            // Clear the SVG Chart
-                            svg_2.selectAll("*").remove();
-
-                            // Filter the dataset to get selected state rows only
-                            var filterdata = data.filter(function (d) {
-                                return d.state == selected_state
-                            })
-                            var max_positive = filterdata[0].new_positive
-                            var min_positive = filterdata[filterdata.length - 1].new_positive
-
-                            filterdata.sort(function(a, b) {
-                                return a.date - b.date;
-                            });
-
-                            // Add the title for the line graph
-                            svg_2.append("text")
-                                .attr("x", (width / 2) - 10)
-                                .attr("y", 0 - (margin.top / 2))
-                                .attr("text-anchor", "middle")
-                                .style("font-size", "16px")
-                                .style("text-decoration", "underline")
-                                .text(d.properties.state + " - New Case Count");
-
-                            // Add X axis --> it is a date format
-                            var x_2 = d3.scaleTime()
-                                .domain(d3.extent(filterdata, function (d) {
-                                    return d.date;
-                                }))
-                                .range([0, width]);
-                            svg_2.append("g")
-                                .attr("transform", "translate(0," + height + ")")
-                                .call(d3.axisBottom(x_2));
-
-                            // Add the text label for the x axis
-                            svg_2.append("text")
-                                .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 20) + ")")
-                                .style("text-anchor", "middle")
-                                .text("Date - [Mar 16, 2020 Onwards]");
-
-                            svg_2.append("text")
-                                .attr("transform", "translate(" + (-5) + " ," + (height + 16) + ")")
-                                .style("text-anchor", "middle")
-                                .style("font-size", "10px")
-                                .text("Mar 16");
-
-                            svg_2.append("text")
-                                .attr("transform", "translate(" + (width + 5) + " ," + (height + 16) + ")")
-                                .style("text-anchor", "middle")
-                                .style("font-size", "10px")
-                                .text("Jul 24");
-
-
-                            // Add Y axis
-                            var y_2 = d3.scaleLinear()
-                                .domain([0, 16000])
-                                .range([height, 0]);
-                            svg_2.append("g")
-                                .call(d3.axisLeft(y_2));
-
-                            // gridlines in y axis function
-                            function make_y_gridlines() {
-                                return d3.axisLeft(y_2)
-                                    .ticks(10)
-                            }
-
-                            // add the Y gridlines
-                            svg_2.append("g")
-                                .attr("class", "grid")
-                                .call(make_y_gridlines()
-                                    .tickSize(-width)
-                                    .tickFormat("")
-                                )
-
-                            // Add the text label for the Y axis
-                            svg_2.append("text")
-                                .attr("transform", "rotate(-90)")
-                                .attr("y", 0 - (margin.left / 2) - 35)
-                                .attr("x", 0 - (height / 2))
-                                .attr("dy", "1em")
-                                .style("text-anchor", "middle")
-                                .text("Number of People Affected");
-
-                            // Add the line for confirmed
-                            const path = svg_2.append("path")
-                                .datum(filterdata)
-                                .attr("fill", "none")
-                                .attr("stroke", "steelblue")
-                                .attr("stroke-width", 3)
-                                .attr("d", d3.line()
-                                    .x(function (d) {
-                                        return x_2(d.date)
-                                    })
-                                    .y(function (d) {
-                                        return y_2(d.new_positive)
-                                    })
-                                );
-
-                            // Add the label at the tip of the line and annotation
-                            xy = [];
-                            xy.push({x: width, y: (y_2(max_positive) - 5)})
-                            xy.push({x: width, y: height - 280})
-                            svg_2.append("path")
-                                .datum(xy)
-                                .attr("fill", "none")
-                                .attr("stroke", "deeppink")
-                                .attr("stroke-width", 2)
-                                .attr("d", d3.line()
-                                    .x(function(d) { return d.x;})
-                                    .y(function(d) { return d.y;})
-                                )
-
-                            svg_2.append("text")
-                                .attr("transform", "translate("+(width - 20)+","+(height - 290)+")")
-                                .attr("dy", ".35em")
-                                .attr("text-anchor", "start")
-                                .style("font-size", "12px")
-                                .style("font-weight", "bold")
-                                .text(formatValue(max_positive));
-
-                            svg_2.append("text").attr("transform", "translate("+(width - 80)+","+(height - 305)+")")
-                                .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("Latest New cases");
-
-                            // Add the label at the bottom of the line and annotation
-                            var xy = [];
-                            xy.push({x: 10, y: height - 20})
-                            xy.push({x: 10, y: height - 200})
-                            svg_2.append("path")
-                                .datum(xy)
-                                .attr("fill", "none")
-                                .attr("stroke", "deeppink")
-                                .attr("stroke-width", 2)
-                                .attr("d", d3.line()
-                                    .x(function(d) { return d.x;})
-                                    .y(function(d) { return d.y;})
-                                )
-
-                            svg_2.append("text")
-                                .attr("transform", "translate("+(5)+","+(height - 220)+")")
-                                .attr("dy", ".35em")
-                                .attr("text-anchor", "start")
-                                .style("font-size", "12px")
-                                .style("font-weight", "bold")
-                                .text(formatValue(min_positive));
-
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 260)+")")
-                                .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("New cases started ");
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 250)+")").attr("dy", ".35em")
-                                .attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("increasing during mid of Mar");
-                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 240)+")").attr("dy", ".35em")
-                                .attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("and lockdown begins");
-
-                            // Add the annotation
-                            svg_2.append("rect")
-                                .attr("class", "annotation_box")
-                                .attr("width", 240)
-                                .attr("height", 350)
-                                .attr("x", 520)
-                                .attr("y", 0)
-                                .attr("rx", 4)
-                                .attr("ry", 4);
-
-                            svg_2.append("text")
-                                .attr("x", 640)
-                                .attr("y", -20)
-                                .attr("text-anchor", "middle")
-                                .style("font-size", "12px")
-                                .style("fill", "deeppink")
-                                .text("Shaded area showing reopening after");
-
-                            svg_2.append("text")
-                                .attr("x", 640)
-                                .attr("y", -5)
-                                .attr("text-anchor", "middle")
-                                .style("font-size", "12px")
-                                .style("fill", "deeppink")
-                                .text("lockdown and affected overall counts");
-
-                            svg_2.append("text")
-                                .attr("x", 250)
-                                .attr("y", 25)
-                                .attr("text-anchor", "middle")
-                                .style("font-size", "12px")
-                                .style("fill", "deeppink")
-                                .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
-
-                            // Add Tooltip for line chart
-                            var focus = svg_2.append("g")
-                                .attr("class", "focus")
-                                .style("display", "none");
-
-                            focus.append("circle")
-                                .attr("r", 5);
-
-                            focus.append("rect")
-                                .attr("class", "tooltip1")
-                                .attr("width", 80)
-                                .attr("height", 50)
-                                .attr("x", -80)
-                                .attr("y", -60)
-                                .attr("rx", 4)
-                                .attr("ry", 4);
-
-                            focus.append("text")
-                                .attr("class", "tooltip-date")
-                                .attr("x", -75)
-                                .attr("y", -45);
-
-                            focus.append("text")
-                                .attr("x", -75)
-                                .attr("y", -32)
-                                .text("Cases:");
-
-                            focus.append("text")
-                                .attr("class", "tooltip-cases")
-                                .attr("x", -40)
-                                .attr("y", -32);
-
-                            svg_2.append("rect")
-                                .attr("class", "overlay")
-                                .attr("width", width)
-                                .attr("height", height)
-                                .on("mouseover", function() { focus.style("display", null); })
-                                .on("mouseout", function() { focus.style("display", "none"); })
-                                .on("mousemove", mousemove);
-
-                            function mousemove() {
-                                var x0 = x_2.invert(d3.mouse(this)[0]),
-                                    i = bisectDate(filterdata, x0, 1),
-                                    d0 = filterdata[i - 1],
-                                    d1 = filterdata[i],
-                                    d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-                                focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.new_positive) + ")");
-                                focus.select(".tooltip-date").text(dateFormatter(d.date));
-                                focus.select(".tooltip-cases").text(formatValue(d.new_positive));
-                            }
-
-                        }
-                    );
-                });
         });
     });
 
