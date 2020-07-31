@@ -799,7 +799,7 @@
     // add a legend
     var l_w = 120, l_h = 210;
     layer3.append("text")
-        .attr("x", 740)
+        .attr("x", 760)
         .attr("y", 245)
         .attr("text-anchor", "middle")
         .style("font-size", "11px")
@@ -807,7 +807,7 @@
         .style("text-decoration", "underline")
         .text("Cumulative");
     layer3.append("text")
-        .attr("x", 740)
+        .attr("x", 760)
         .attr("y", 260)
         .attr("text-anchor", "middle")
         .style("font-size", "11px")
@@ -838,7 +838,7 @@
         .attr("width", 20)
         .attr("height", 200)
         .style("fill", "url(#gradient1)")
-        .attr("transform", "translate(695,275)");
+        .attr("transform", "translate(715,275)");
 
     var y = d3.scaleLinear()
         .range([200, 0])
@@ -846,7 +846,7 @@
     var yAxis = d3.axisRight(y);
 
     layer4.attr("class", "y axis")
-        .attr("transform", "translate(717,275)")
+        .attr("transform", "translate(737,275)")
         .call(yAxis)
 
 </script>
