@@ -921,17 +921,10 @@
                     );
 
                 // Add the label at the tip of the line and annotation
-                svg_2.append("text")
-                    .attr("transform", "translate("+(width - 40)+","+(y_2(data[0].value) - 10)+")")
-                    .attr("dy", ".35em")
-                    .attr("text-anchor", "start")
-                    .style("font-size", "12px")
-                    .style("font-weight", "bold")
-                    .text(formatValue(data[0].value));
-
+                // Add the label at the bottom of the line and annotation
                 xy = [];
-                xy.push({x: width - 45, y: y_2(data[0].value) - 10})
-                xy.push({x: width - 60, y: y_2(data[0].value) - 10})
+                xy.push({x: width, y: (y_2(data[0].value) - 10)})
+                xy.push({x: width, y: (y_2(data[0].value) - 20)})
                 svg_2.append("path")
                     .datum(xy)
                     .attr("fill", "none")
@@ -942,15 +935,23 @@
                         .y(function(d) { return d.y;})
                     )
 
-                svg_2.append("text").attr("transform", "translate("+(width - 170)+","+(y_2(data[0].value) - 10)+")")
+                svg_2.append("text")
+                    .attr("transform", "translate("+(width - 30)+","+(y_2(data[0].value) - 30)+")")
+                    .attr("dy", ".35em")
+                    .attr("text-anchor", "start")
+                    .style("font-size", "12px")
+                    .style("font-weight", "bold")
+                    .text(formatValue(data[0].value));
+
+                svg_2.append("text").attr("transform", "translate("+(width - 100)+","+(y_2(data[0].value) - 50)+")")
                     .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                    .style("fill", "deeppink").text("New cases so far");
+                    .style("fill", "deeppink").text("Latest New cases");
 
 
                 // Add the label at the bottom of the line and annotation
                 xy = [];
                 xy.push({x: 10, y: height - 20})
-                xy.push({x: 10, y: height - 100})
+                xy.push({x: 10, y: height - 110})
                 svg_2.append("path")
                     .datum(xy)
                     .attr("fill", "none")
