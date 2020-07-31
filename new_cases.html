@@ -273,7 +273,7 @@
                 <div style="padding-left: 10px">
                     <input name="updateButton"
                            type="button"
-                           value="new cases for United States"
+                           value="New cases for United States"
                            onclick="country_cases()" />
                 </div>
                 <div id="svg_2" ></div>
@@ -349,13 +349,9 @@
             // Loop through each state data value in the .csv file
             for (var i = 0; i < data.length; i++) {
 
-                // Grab State Name
+                var dataPopulation = data[i].population;
                 var dataState = data[i].state;
-
-                // Grab positive cases
                 var dataValue = data[i].new_positive;
-
-                // Grab death
                 var dataDeath = data[i].new_death;
 
 
@@ -369,6 +365,7 @@
                         json.features[j].properties.state = dataState;
                         json.features[j].properties.new_positive = dataValue;
                         json.features[j].properties.new_death = dataDeath;
+                        json.features[j].properties.population = dataPopulation;
 
                         // Stop looking through the JSON
                         break;
@@ -398,6 +395,7 @@
                 })
                 .on("mouseover", function(d) {
                     var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
+                        "<span>Population: </span>" + formatValue(d.properties.population) + "<br/>" +
                         "<span>Confirmed Cases: </span>" + formatValue(d.properties.new_positive) + "<br/>" +
                         "<span>Deaths: </span>" + formatValue(d.properties.new_death) + "<br/>";
                     div.transition()
