@@ -379,7 +379,7 @@
 
 
     // Define linear scale for output
-    var color = d3.scaleLinear().domain([0, 400000]).range(["gainsboro", "red"])
+    var color1 = d3.scaleLinear().domain([0, 400000]).range(["gainsboro", "red"])
     var legendText = ["Minimum Cases", "Maximum cases"];
 
     //Create SVG element and append map to the SVG
@@ -401,7 +401,6 @@
 
     // Load Cumulative State Data
     d3.csv("state_cumulative.csv", function(data) {
-//color.domain([0,500000]); // setting the range of the input data
 
         var selected_state = ""
 
@@ -455,7 +454,7 @@
 
                     if (value) {
                         //If value exists…
-                        return color(value);
+                        return color1(value);
                     } else {
                         return "gray";
                     }
@@ -888,7 +887,7 @@
         .projection(projection);    // tell path generator to use albersUsa projection
 
     // Define linear scale for output
-    var color = d3.scaleLinear().domain([0, 12000]).range(["moccasin", "darkcyan"])
+    var color2 = d3.scaleLinear().domain([0, 12000]).range(["moccasin", "darkcyan"])
     var legendText = ["Minimum Cases", "Maximum cases"];
 
     //Create SVG element and append map to the SVG
@@ -961,7 +960,7 @@
 
                     if (value) {
                         //If value exists…
-                        return color(value);
+                        return color2(value);
                     } else {
                         return "gray";
                     }
@@ -1092,7 +1091,7 @@
         .style("text-decoration", "underline")
         .text("Case Count");
 
-    var legend = layer8.append("defs")
+    var legend2 = layer8.append("defs")
         .append("svg:linearGradient")
         .attr("id", "gradient")
         .attr("x1", "100%")
@@ -1101,12 +1100,12 @@
         .attr("y2", "100%")
         .attr("spreadMethod", "pad");
 
-    legend.append("stop")
+    legend2.append("stop")
         .attr("offset", "0%")
         .attr("stop-color", "darkcyan")
         .attr("stop-opacity", 1);
 
-    legend.append("stop")
+    legend2.append("stop")
         .attr("offset", "100%")
         .attr("stop-color", "moccasin")
         .attr("stop-opacity", 1);
