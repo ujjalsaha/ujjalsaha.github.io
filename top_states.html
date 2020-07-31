@@ -1102,34 +1102,20 @@
                     return d.date == "20200724"
                 })
 
-                console.log("After Filter")
-                console.log("1 state: " + filterdata[0].state + " Date: " + filterdata[0].date + " Positive: " + filterdata[0].positive)
-                console.log("2 state: " + filterdata[1].state + " Date: " + filterdata[1].date + " Positive: " + filterdata[1].positive)
-                console.log("3 state: " + filterdata[2].state + " Date: " + filterdata[2].date + " Positive: " + filterdata[2].positive)
-                console.log("4 state: " + filterdata[3].state + " Date: " + filterdata[3].date + " Positive: " + filterdata[3].positive)
-                console.log("5 state: " + filterdata[4].state + " Date: " + filterdata[4].date + " Positive: " + filterdata[4].positive)
-
-
                 filterdata.sort(function (x, y) {
                     return d3.descending(x.positive, y.positive);
                 })
-                console.log("After Sort")
-                console.log("1 state: " + filterdata[0].state + " Date: " + filterdata[0].date + " Positive: " + filterdata[0].positive)
-                console.log("2 state: " + filterdata[1].state + " Date: " + filterdata[1].date + " Positive: " + filterdata[1].positive)
-                console.log("3 state: " + filterdata[2].state + " Date: " + filterdata[2].date + " Positive: " + filterdata[2].positive)
-                console.log("4 state: " + filterdata[3].state + " Date: " + filterdata[3].date + " Positive: " + filterdata[3].positive)
-                console.log("5 state: " + filterdata[4].state + " Date: " + filterdata[4].date + " Positive: " + filterdata[4].positive)
-
 
                 // Add the title for the line graph
-                svg_2.append("text")
+                svg_3.append("text")
                     .attr("x", (width / 2) - 10)
                     .attr("y", 0 - (margin.top / 2))
                     .attr("text-anchor", "middle")
                     .style("font-size", "16px")
                     .style("text-decoration", "underline")
-                    .text("United States - New Case Count");
+                    .text("United States - Top 10 States with Highest Overall Case Count");
 
+                filterdata = filterdata.slice(0, 10)
                 /*
                 states = []
                 console.log("1 state: " + filterdata[0].state + " Date: " + filterdata[0].date + " Positive: " + filterdata[0].positive)
@@ -1138,6 +1124,37 @@
                 console.log("4 state: " + filterdata[3].state + " Date: " + filterdata[3].date + " Positive: " + filterdata[3].positive)
                 console.log("5 state: " + filterdata[4].state + " Date: " + filterdata[4].date + " Positive: " + filterdata[4].positive)
                 */
+
+
+                // Add X axis
+                var x = d3.scaleLinear()
+                    .domain([0, filterdata[0].positive])
+                    .range([ 0, width]);
+                svg_3.append("g")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(d3.axisBottom(x))
+                    .selectAll("text")
+                    .attr("transform", "translate(-10,0)rotate(-45)")
+                    .style("text-anchor", "end");
+
+                // Y axis
+                var y = d3.scaleBand()
+                    .range([ 0, height ])
+                    .domain(filterdata.map(function(d) { return d.state; }))
+                    .padding(.1);
+                svg_3.append("g")
+                    .call(d3.axisLeft(y))
+
+                //Bars
+                svg_3.selectAll("myRect")
+                    .data(filterdata)
+                    .enter()
+                    .append("rect")
+                    .attr("x", x(0) )
+                    .attr("y", function(d) { return y(d.state); })
+                    .attr("width", function(d) { return x(d.positive); })
+                    .attr("height", y.bandwidth() )
+                    .attr("fill", "#69b3a2")
             }
         );
     }
