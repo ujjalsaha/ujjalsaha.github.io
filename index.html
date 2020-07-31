@@ -750,7 +750,21 @@ d3.csv("state_cumulative.csv", function(data) {
         .attr("text-anchor", "middle")
         .style("font-size", "12px")
         .style("fill", "deeppink")
-        .text("United States - Overall Case Count (Cumulative) ");
+        .text("New York is Red in color which means");
+    layer3.append("text")
+        .attr("x", width - 300)
+        .attr("y", 90)
+        .attr("text-anchor", "middle")
+        .style("font-size", "12px")
+        .style("fill", "deeppink")
+        .text("it is one of the states");
+    layer3.append("text")
+        .attr("x", width - 300)
+        .attr("y", 100)
+        .attr("text-anchor", "middle")
+        .style("font-size", "12px")
+        .style("fill", "deeppink")
+        .text("with high overall cases.");
 
     // Add the title for the map
     layer3.append("text")
