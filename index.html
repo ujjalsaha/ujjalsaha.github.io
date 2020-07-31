@@ -409,8 +409,8 @@ d3.csv("state_cumulative.csv", function(data) {
             })
             .on("mouseover", function(d) {
                 var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
-                    "<span>Population: </span>" + formatValue(d.properties.population) + "<br/>" +
-                    "<span>Confirmed Cases: </span>" + d.properties.positive + "<br/>" +
+                    "<span>Population: </span>" + d.properties.population + "<br/>" +
+                    "<span>Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
                             "<span>Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
                 div.transition()
                     .duration(200)
