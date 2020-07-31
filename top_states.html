@@ -1154,7 +1154,7 @@
                     .append("rect")
                     .attr("x", x(0) )
                     .attr("y", function(d) { return y(d.state); })
-                    .attr("width", function(d) { return x(d.positive); })
+                    .attr("width", function(d) { return x(d.positive) + 2; })
                     .attr("height", y.bandwidth() )
                     .style("fill", function(d) { return color1(d.positive); })
             }
@@ -1200,7 +1200,7 @@
             // When reading the csv, I must format variables:
             function (d) {
                 // console.log(d.date, d.new_positive)
-                val = {date: d.date, new_positive: parseInt(d.newpositive, 10), state: d.state}
+                val = {date: d.date, new_positive: parseInt(d.new_positive, 10), state: d.state}
                 // console.log(val)
                 return val
             },
