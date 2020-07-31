@@ -1253,17 +1253,7 @@
                     .attr("y", function(d) { return y(d.state); })
                     .attr("width", function(d) { return x(d.new_positive); })
                     .attr("height", y.bandwidth() )
-                    .style("fill", function(d) {
-                        // Get data value
-                        var value = d.new_positive;
-
-                        if (value) {
-                            //If value exists…
-                            return color2(value);
-                        } else {
-                            return "gray";
-                        }
-                    })
+                    .style("fill", function(d) { return color2(d.new_positive); })
             }
         );
     }
