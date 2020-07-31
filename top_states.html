@@ -1099,6 +1099,7 @@
             function (data) {
 
                 var filterdata = data.filter(function (d) {
+                    console.log("State: " + d.state + " Date: " + d.date)
                     return d.date == "20200719"
                 })
 
