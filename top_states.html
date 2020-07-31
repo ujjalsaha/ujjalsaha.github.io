@@ -1099,11 +1099,15 @@
             function (data) {
 
                 var filterdata = data.filter(function (d) {
-                    console.log("State: " + d.state + " Date: " + d.date)
+                    // console.log("State: " + d.state + " Date: " + d.date)
                     return d.date == "20200719"
                 })
 
-                console.log("filterdata: " + filterdata)
+                console.log("1 state" + filterdata[0].state + filterdata[0].date)
+                console.log("2 state" + filterdata[1].state + filterdata[1].date)
+                console.log("3 state" + filterdata[2].state + filterdata[2].date)
+                console.log("4 state" + filterdata[3].state + filterdata[3].date)
+                console.log("5 state" + filterdata[4].state + filterdata[4].date)
 
                 filterdata.sort(function (x, y) {
                     return d3.descending(x.value, y.value);
