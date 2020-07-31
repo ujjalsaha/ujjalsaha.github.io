@@ -731,7 +731,7 @@
     var xy = [];
     xy.push({x: width - 200, y: 110})
     xy.push({x: width - 200, y: 150})
-    layer2.append("path")
+    layer6.append("path")
         .datum(xy)
         .attr("fill", "none")
         .attr("stroke", "deeppink")
@@ -748,7 +748,7 @@
     var xy = [];
     xy.push({x: width - 250, y: 390})
     xy.push({x: width - 250, y: 440})
-    layer2.append("path")
+    layer6.append("path")
         .datum(xy)
         .attr("fill", "none")
         .attr("stroke", "deeppink")
@@ -838,7 +838,7 @@
         .domain([0, 13000]);
     var yAxis = d3.axisRight(y);
 
-    layer4.attr("class", "y axis")
+    layer8.attr("class", "y axis")
         .attr("transform", "translate(797,275)")
         .call(yAxis)
 </script>
