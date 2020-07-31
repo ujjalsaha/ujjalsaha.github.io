@@ -1090,7 +1090,7 @@
             // When reading the csv, I must format variables:
             function (d) {
                 // console.log(d.date, d.new_positive)
-                val = {date: d.date, positive: d.positive, state: d.state}
+                val = {date: d.date, positive: parseInt(d.positive, 10), state: d.state}
                 // console.log(val)
                 return val
             },
