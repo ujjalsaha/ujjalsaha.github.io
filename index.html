@@ -771,6 +771,37 @@ d3.csv("state_cumulative.csv", function(data) {
         .style("text-decoration", "underline")
         .text("United States - Overall Case Count (Cumulative) ");
 
+    var xy = [];
+    xy.push({x: 770, y: height / 2 })
+    xy.push({x: 750, y: 270 })
+    layer2.append("path")
+        .datum(xy)
+        .attr("fill", "none")
+        .attr("stroke", "deeppink")
+        .attr("stroke-width", 2)
+        .attr("d", d3.line()
+            .x(function(d) { return d.x;})
+            .y(function(d) { return d.y;})
+        );
+    layer3.append("text").attr("x",700).attr("y", 270).attr("text-anchor", "middle").style("font-size", "12px")
+        .style("fill", "deeppink").text("Scale distributes ");
+    layer3.append("text").attr("x", 780).attr("y", 280).attr("text-anchor", "middle").style("font-size", "12px")
+        .style("fill", "deeppink").text("colors to the states");
+    layer3.append("text").attr("x", 780).attr("y", 290).attr("text-anchor", "middle").style("font-size", "12px")
+        .style("fill", "deeppink").text("red to gray meaning");
+    layer3.append("text").attr("x", 780).attr("y", 300).attr("text-anchor", "middle").style("font-size", "12px")
+        .style("fill", "deeppink").text("high to low counts");
+
+    // Add the title for the map
+    layer3.append("text")
+        .attr("x", (width / 2))
+        .attr("y", 0 - (margin.top / 2) + 20)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("text-decoration", "underline")
+        .text("United States - Overall Case Count (Cumulative) ");
+
+
     // add a legend
     var l_w = 120, l_h = 210;
     layer3.append("text")
