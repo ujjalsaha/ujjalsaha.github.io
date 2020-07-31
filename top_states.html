@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script src='https://d3js.org/d3.v4.min.js'></script>
+<style type="text/css">
+    body {
+        font: 12px sans-serif;
+    }
+
+    /* Link Styles */
+    ul {
+        padding: 0;
+        width: 100%;
+    }
+
+    li {
+        display: inline;
+    }
+
+    .selected {
+        outline: none;
+        text-decoration: none;
+        display: inline-block;
+        width: 19.5%;
+        margin-right: 0.625%;
+        text-align: center;
+        line-height: 3;
+        color: black;
+        background: lightgray;
+    }
+
+    .slide_button {
+        outline: none;
+        text-decoration: none;
+        display: inline-block;
+        width: 19.5%;
+        margin-right: 0.625%;
+        text-align: center;
+        line-height: 3;
+        color: black;
+    }
+
+    li:last-child .slide_button {
+        margin-right: 0;
+    }
+
+    .slide_button:link, .slide_button:visited, .slide_button:focus {
+        background: burlywood;
+    }
+
+    .slide_button:hover {
+        background: coral;
+    }
+
+    .slide_button:active {
+        background: orangered;
+        color: white;
+    }
+    /* STOP Link Styles */
+
+    /* On mouse hover, lighten state color */
+    path:hover {
+        fill-opacity: .7;
+    }
+
+    /* Style for Custom Tooltip */
+    div.tooltip {
+        position: absolute;
+        text-align: left;
+        width: 150px;
+        height: 50px;
+        padding: 10px;
+        font: 12px sans-serif;
+        background: linen;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+    }
+
+    /* Legend Position Style */
+    .legend {
+        position:absolute;
+        left:1475px;
+        top:730px;
+    }
+
+    .line {
+         fill: none;
+         stroke: steelblue;
+         stroke-width: 2px;
+    }
+
+    .grid line {
+        stroke: lightgrey;
+        stroke-opacity: 0.7;
+        shape-rendering: crispEdges;
+    }
+
+    .grid path {
+        stroke-width: 0;
+    }
+
+    .header_div {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        /*max-width: 1600px;*/
+        max-width: 1600px;
+        border: 2px solid #AAAE92;
+        line-height: 20px;
+        color: grey;
+    }
+
+    /*
+    div {
+        border: 3px solid #73ad21;
+
+    }
+    */
+    svg {
+        border: 1px solid #AAAE92;
+    }
+
+    span.guideline_header {
+        font-weight: bold;
+        font-size: large;
+        color: gray
+    }
+
+    span.scene_header {
+        font-weight: bold;
+        font-size: large;
+        color: darkmagenta;
+    }
+
+    span.bold {
+        font-weight: bold;
+    }
+
+    .overlay {
+        fill: none;
+        pointer-events: all;
+    }
+
+    .focus circle {
+        fill: #FF4521;
+    }
+
+    .focus text {
+        font-size: 10px;
+    }
+
+    .tooltip1{
+        fill: white;
+        stroke: #000;
+    }
+
+    .unshaded_annotation_box{
+        fill: gainsboro;
+        fill-opacity: 0.3;
+        stroke: deeppink;
+        stroke-width: 1.5px;
+        stroke-opacity: 0.5;
+    }
+
+    .annotation_box{
+        fill: gainsboro;
+        fill-opacity: 0.3;
+        stroke: deeppink;
+        stroke-width: 1.5px;
+        stroke-opacity: 0.5;
+    }
+    .tooltip-date, .tooltip-cases {
+        font-weight: bold;
+    }
+</style>
+
+
+</head>
+<body>
+<div class="header_div">
+    <span class="guideline_header">Narrative Visualization Walkthrough - Demonstrating Interactive Slideshow using COVID-19 Dataset for United States</span><br/>
+    This is a demonstration of Narrative Visualisation using the Interactive Slideshow Structure using the COVID-19 Dataset of United States and tries to establish sequence of hierarchies putting forward the observation in terms of various Scenes as pages. The narrative visualization mainly explore the areas of new cases and new cases within united states and how each state is affected in terms of case counts.
+    This whole Visualization is based on three Scenes. Below is the brief description of each scene.
+    <p>
+        <span class="bold">Scene 1 (United States - COVID-19 New Case Count):</span> where author puts forwards the observation with overall cases on the states of United States and being within scene1 lets user explore with the tooltip, parameters and triggers.<br/>
+        <span class="bold">Scene 2 (United States - COVID-19 New Case Count):</span> where author puts forwards the observation with new cases on the states of United States and being within scene2 lets user explore the visualization with the tooltip, parameters and triggers.<br/>
+        <span class="bold">Scene 3 (United States - COVID-19 Top 10 States):</span> where author puts forwards the observation of top10 states with overall positive case counts vs top10 states with new case counts. Also letting the user explore the visualization with the tooltip, parameters and triggers. This is the summary and end of the narrative visualization.<br/>
+    </p>
+    <p>
+        <span class="bold">Navigation: </span>Sections below explains more about each scene. In this narrative visualization, each scene is presented as individual slide and each slide is a webpage. To move to next scene/slides/pages, use the Prev and Next links below, or just click the button to jump to a page.
+        <span style="font-size: 8px">(For best experience of the narrative visualisation, it is highly recommended to browse the slides in order, and not to jum slides)</span>
+    </p>
+</div>
+<div class="header_div" style="text-align: center">
+    <a style="color:darkmagenta" href="new_cases.html">Prev</a>
+    <ul>
+        <li><a class="slide_button" href="index.html">Overall Cases</a></li>
+        <li><a class="slide_button" href="new_cases.html">New Cases</a></li>
+        <li><span class="selected" href="#">Top States</span></li>
+    </ul>
+    <span style="color: #aaaaaa; text-decoration: underline">Next</span>
+
+</div>
+<div class="header_div">
+    <span class="scene_header">Scene 3 - Top States: </span> Shows top 10 states with highest Overall Count and Top 10 states with highest number of new cases
+    The Scene is comprised of 2 Map charts and 2 Bar Charts. 1 map chart and 1 bar chart Illustrating top 10 states with overall case caounts and other map along with bar chart illustrating top 10 states with lastest new cases count. There will are few interesting observation we noticed. Some major observations given below:<br/>
+      1. Some states with high overall cases counts (Like New Yok, New Jersey) are not showing up in the list of states with high new rising cases.
+      2. California is leading in number of positive cases.
+      3. Florida is leading in number of new rising cases (although behind California in overall case count).
+      4. Vermont being on eastern region where the case counts are generally high, still keeping the state safe with lowest counts in COVID-19 cases.
+      5. Coronavirus has direct impact on states with high population (e.g California, Texas, Florida, New York, Illinois etc).
+      5. States with low population has low impact on Coronavirus (e.g Wyoming, Vermont, Alaska, North Dakota, South Dakota etc).
+
+</div>
+<br/>
+<div class="header_div">
+    <!-- table border="1" -->
+    <table>
+        <tr>
+            <td valign="top">
+                <div style="max-width: 700px; line-height: 20px;padding: 20px">
+                    <span class="guideline_header">Map - Showing Cumulative Confirmed Cases for Each States of United States</span><br/>
+                    <p>
+                        On Scene 1 we have seen the number of states with high overall COVID-19 case count.
+                        On this Scene (Scene 3) with the help of scene 1 observation, we are creating a comparison with Top 10 states with Overall high cases count vs Top 10 states with rising new cases. The left portion of the charts (Map and Bar Charts) with redish color theme shows top 10 most affected states with overall case counts.
+                    </p>
+                    <p>
+                        <span class="bold">User Controls:</span><br/>
+                        The map is interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:<br/>
+                        &nbsp;&nbsp;1. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Tooltip </span> -> Hovering over any state shows the cases counts and few other info.<br/>
+                        &nbsp;&nbsp;2. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Cross Filter (Parameter: State)</span> -> Clicking a state from the map with bring up respective state's cumulative case count on the line chart.<br/>
+                    </p>
+                </div>
+            </td>
+            <td valign="top">
+                <div style="max-width: 700px; line-height: 20px;padding: 20px">
+                    <span class="guideline_header">Map - Showing New Confirmed Cases for Each States of United States</span><br/>
+                    <p>
+                        On Scene 2 we have seen the number of states with high COVID-19 rising cases count.
+                        On this Scene (Scene 3) with the help of scene 2 observation, we are creating a comparison with Top 10 states with Overall high cases count vs Top 10 states with rising new cases. The right portion of the scene (Map and Bar Charts) with cyan-ish color theme shows top 10 most affected states with overall case counts.
+                    </p>
+                    <p>
+                        <span class="bold">User Controls:</span><br/>
+                        The map is interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:<br/>
+                        &nbsp;&nbsp;1. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Tooltip </span> -> Hovering over any state shows the cases counts and few other info.<br/>
+                        &nbsp;&nbsp;2. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Cross Filter (Parameter: State)</span> -> Clicking a state from the map with bring up respective state's new case count on the line chart.<br/>
+                    </p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="svg_1"></div>
+            </td>
+            <td>
+                <div id="svg_2"></div>
+            </td>
+
+        </tr>
+    </table>
+</div>
+<br/>
+<div class="header_div">
+    <!-- table border="1" -->
+    <table>
+        <tr>
+            <td valign="top" >
+                <div style="max-width: 700px; line-height: 20px;padding: 20px">
+                    <span class="guideline_header">Line Chart - New Confirmed Cases for the United States</span><br/>
+                    <p>
+                        The line chart here shows:<br/>
+                        &nbsp;&nbsp;1. For entire United States at what how the daily new cases reported trend look like<br/>
+                        &nbsp;&nbsp;2. If user clicks on a state on the above map, as cross-filter is enabled, the view on the line chart will switch to state level and will show state level new case count.<br/>
+                    </p>
+                    <p>
+                        A fine <span class="bold"> observation </span> we noticed, this graph has an upward bend on many states that indicates more new cases are being reported in last few weeks in most areas. However there are some exception also, i.e. there are few states where new cases reporting dropped.
+                        Around late June, when the lockdown was lifted, there is sudden rise in new cases for most of the states with exception of few states..
+                        The color green was used to draw the line chart just to make the vizualization appealing, where green color itself has no color significance on the line chart.
+                    </p>
+                    <p>
+                        <span class="bold">Annotations:</span><br/>
+                        The line chart has also couple of annotations:<br/>
+                        &nbsp;&nbsp;1. A vertical line that shows when states re-opened from lockdown and post lockdown effect of coronavirus on people.<br/>
+                        &nbsp;&nbsp;2. At the tip of the line chart, show the total case count for the latest date.<br/>
+                    </p>
+                    <p>
+                        <span class="bold">User Controls:</span><br/>
+                        The line is also interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:<br/>
+                        &nbsp;&nbsp;1. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Tooltip </span> -> Hovering over on line chart area will display the tooltip showing case count on that particular day.<br/>
+                        &nbsp;&nbsp;2. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Button (Switch to Country Level)  </span> -> Switch on entire United States data at any point while interacting with state data.<br/>
+                        &nbsp;&nbsp;3. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Cross Filter (State selected from Map)</span> -> Clicking a state from the above map will display corresponding state's case count line chart.<br/>
+                    </p>
+                </div>
+            </td>
+            <td valign="top" >
+                <div style="max-width: 700px; line-height: 20px;padding: 20px">
+                    <span class="guideline_header">Line Chart - New Confirmed Cases for the United States</span><br/>
+                    <p>
+                        The line chart here shows:<br/>
+                        &nbsp;&nbsp;1. For entire United States at what how the daily new cases reported trend look like<br/>
+                        &nbsp;&nbsp;2. If user clicks on a state on the above map, as cross-filter is enabled, the view on the line chart will switch to state level and will show state level new case count.<br/>
+                    </p>
+                    <p>
+                        A fine <span class="bold"> observation </span> we noticed, this graph has an upward bend on many states that indicates more new cases are being reported in last few weeks in most areas. However there are some exception also, i.e. there are few states where new cases reporting dropped.
+                        Around late June, when the lockdown was lifted, there is sudden rise in new cases for most of the states with exception of few states..
+                        The color green was used to draw the line chart just to make the vizualization appealing, where green color itself has no color significance on the line chart.
+                    </p>
+                    <p>
+                        <span class="bold">Annotations:</span><br/>
+                        The line chart has also couple of annotations:<br/>
+                        &nbsp;&nbsp;1. A vertical line that shows when states re-opened from lockdown and post lockdown effect of coronavirus on people.<br/>
+                        &nbsp;&nbsp;2. At the tip of the line chart, show the total case count for the latest date.<br/>
+                    </p>
+                    <p>
+                        <span class="bold">User Controls:</span><br/>
+                        The line is also interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:<br/>
+                        &nbsp;&nbsp;1. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Tooltip </span> -> Hovering over on line chart area will display the tooltip showing case count on that particular day.<br/>
+                        &nbsp;&nbsp;2. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Button (Switch to Country Level)  </span> -> Switch on entire United States data at any point while interacting with state data.<br/>
+                        &nbsp;&nbsp;3. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Cross Filter (State selected from Map)</span> -> Clicking a state from the above map will display corresponding state's case count line chart.<br/>
+                    </p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="svg_3"></div>
+            </td>
+            <td>
+                <div id="svg_4"></div>
+            </td>
+
+        </tr>
+    </table>
+</div>
+<br/>
+<div class="header_div">
+    <span class="guideline_header">Definitions of the Parameters:</span><br/>
+    1. <span class="bold">Confirmed Cases:</span> A confirmed case is a person who has a positive test result from an FDA approved diagnostic molecular test.<br/>
+    2: <span class="bold">Date: </span>Date on which data was compiled by the data provider.<br/>
+    3. <span class="bold">States: </span>States of the United States.<br/> Cross-filter is enabled on this scnene letting the user to see state level confirmed cases.
+</div>
+<br/>
+<div class="header_div">
+    <span class="guideline_header" style="color: ">General Facts<br/></span>
+    1. All coronavirus related data used on the graphs and analysis were gathered from https://covidtracking.com/data/api <br/>
+    2. All dates and times are in US eastern time (ET). <br/>
+    3.
+</div>
+<script type="text/javascript">
+
+    /*  This visualization was made possible by modifying code provided by:
+
+    Scott Murray, Choropleth example from "Interactive Data Visualization for the Web"
+    https://github.com/alignedleft/d3-book/blob/master/chapter_12/05_choropleth.html
+
+    Malcolm Maclean, tooltips example tutorial
+    http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
+
+    Mike Bostock, Pie Chart Legend
+    http://bl.ocks.org/mbostock/3888852  */
+
+
+    //Width and height of map
+    var margin = {top: 0, right: 0, bottom: 0, left: 0}
+    var width = 850;
+    var height = 500;
+
+    // D3 Projection
+    var projection = d3.geoAlbersUsa()
+        .translate([width/2, height/2])    // translate to center of screen
+        .scale([1000]);          // scale things down so see entire US
+
+    // Define path generator
+    var path = d3.geoPath()               // path generator that will convert GeoJSON to SVG paths
+        .projection(projection);  // tell path generator to use albersUsa projection
+
+
+    // Define linear scale for output
+    var color = d3.scaleLinear().domain([0, 400000]).range(["gainsboro", "red"])
+    var legendText = ["Minimum Cases", "Maximum cases"];
+
+    //Create SVG element and append map to the SVG
+    var svg = d3.select("#svg_1")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height - margin.top);
+
+    var layer1 = svg.append('g');
+    var layer2 = svg.append('g');
+    var layer3 = svg.append('g');
+    var layer4 = svg.append('g');
+
+    // Append Div for tooltip to SVG
+    var div = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    // Load Cumulative State Data
+    d3.csv("state_cumulative.csv", function(data) {
+//color.domain([0,500000]); // setting the range of the input data
+
+        var selected_state = ""
+
+        var parseDate = d3.timeParse("%Y%m%d"),
+            bisectDate = d3.bisector(function(d) { return d.date; }).left,
+            formatValue = d3.format(","),
+            dateFormatter = d3.timeFormat("%B %d, %Y");
+
+        // Load GeoJSON data and merge with states data
+        d3.json("us-states.json", function(json) {
+
+            // Loop through each state data value in the .csv file
+            for (var i = 0; i < data.length; i++) {
+
+                var dataState = data[i].state;
+                var dataValue = data[i].positive;
+                var dataDeath = data[i].death;
+                var dataPopulation = data[i].population;
+
+
+                // Find the corresponding state inside the GeoJSON
+                for (var j = 0; j < json.features.length; j++)  {
+                    var jsonState = json.features[j].properties.name;
+
+                    if (dataState === jsonState) {
+
+                        // Copy the data value into the JSON
+                        json.features[j].properties.state = dataState;
+                        json.features[j].properties.population = dataPopulation;
+                        json.features[j].properties.positive = dataValue;
+                        json.features[j].properties.death = dataDeath;
+
+                        // Stop looking through the JSON
+                        break;
+                    }
+                }
+            }
+
+            // Bind the data to the SVG and create one path per GeoJSON feature
+            layer1.selectAll("path")
+                .data(json.features)
+                .enter()
+                .append("path")
+                .attr("d", path)
+                .style("stroke", "#fff")
+                .style("stroke-width", "1")
+                //.style("pointer-events", "none")
+                .style("fill", function(d) {
+                    // Get data value
+                    var value = d.properties.positive;
+
+                    if (value) {
+                        //If value exists…
+                        return color(value);
+                    } else {
+                        return "gray";
+                    }
+                })
+                .on("mouseover", function(d) {
+                    var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
+                        "<span>Population: </span>" + d.properties.population + "<br/>" +
+                        "<span>Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
+                        "<span>Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
+                    div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    div.html(tooltip_html)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 15) + "px")
+                })
+                // fade out tooltip on mouse out
+                .on("mouseout", function(d) {
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                })
+                .on("click", function(d) {
+                    // Read the data
+                    selected_state = d.properties.state
+                    d3.csv("all_states_master.csv",
+                        // When reading the csv, I must format variables:
+                        function(d){
+                            val = { state: d.state,
+                                date: parseDate(d.date),
+                                positive: d.positive,
+                                death: d.death}
+                            // console.log("Val: " + val)
+                            return val
+                        },
+
+                        // Now I can use this dataset:
+                        function(data) {
+                            // Clear the SVG Chart
+                            svg_2.selectAll("*").remove();
+
+                            // Filter the dataset to get selected state rows only
+                            var filterdata = data.filter(function (d) {
+                                return d.state == selected_state
+                            })
+                            var max_positive = filterdata[0].positive
+                            var min_positive = filterdata[filterdata.length - 1].positive
+
+                            filterdata.sort(function(a, b) {
+                                return a.date - b.date;
+                            });
+
+                            // Add the title for the line graph
+                            svg_2.append("text")
+                                .attr("x", (width / 2) - 10)
+                                .attr("y", 0 - (margin.top / 2))
+                                .attr("text-anchor", "middle")
+                                .style("font-size", "16px")
+                                .style("text-decoration", "underline")
+                                .text(d.properties.state + " - Overall Case Count (Cumulative) ");
+
+                            // Add X axis --> it is a date format
+                            var x_2 = d3.scaleTime()
+                                .domain(d3.extent(filterdata, function (d) {
+                                    return d.date;
+                                }))
+                                .range([0, width]);
+                            svg_2.append("g")
+                                .attr("transform", "translate(0," + height + ")")
+                                .call(d3.axisBottom(x_2));
+
+                            // Add the text label for the x axis
+                            svg_2.append("text")
+                                .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 20) + ")")
+                                .style("text-anchor", "middle")
+                                .text("Date - [Mar 16, 2020 Onwards]");
+
+                            svg_2.append("text")
+                                .attr("transform", "translate(" + (-5) + " ," + (height + 16) + ")")
+                                .style("text-anchor", "middle")
+                                .style("font-size", "10px")
+                                .text("Mar 16");
+
+                            svg_2.append("text")
+                                .attr("transform", "translate(" + (width + 5) + " ," + (height + 16) + ")")
+                                .style("text-anchor", "middle")
+                                .style("font-size", "10px")
+                                .text("Jul 24");
+
+
+                            // Add Y axis
+                            var y_2 = d3.scaleLinear()
+                                .domain([0, 500000])
+                                .range([height, 0]);
+                            svg_2.append("g")
+                                .call(d3.axisLeft(y_2));
+
+                            // gridlines in y axis function
+                            function make_y_gridlines() {
+                                return d3.axisLeft(y_2)
+                                    .ticks(10)
+                            }
+
+                            // add the Y gridlines
+                            svg_2.append("g")
+                                .attr("class", "grid")
+                                .call(make_y_gridlines()
+                                    .tickSize(-width)
+                                    .tickFormat("")
+                                )
+
+                            // Add the text label for the Y axis
+                            svg_2.append("text")
+                                .attr("transform", "rotate(-90)")
+                                .attr("y", 0 - (margin.left / 2) - 35)
+                                .attr("x", 0 - (height / 2))
+                                .attr("dy", "1em")
+                                .style("text-anchor", "middle")
+                                .text("Number of People Affected");
+
+                            // Add the line for confirmed
+                            const path = svg_2.append("path")
+                                .datum(filterdata)
+                                .attr("fill", "none")
+                                .attr("stroke", "steelblue")
+                                .attr("stroke-width", 3)
+                                .attr("d", d3.line()
+                                    .x(function (d) {
+                                        return x_2(d.date)
+                                    })
+                                    .y(function (d) {
+                                        return y_2(d.positive)
+                                    })
+                                );
+
+                            // Add the label at the tip of the line
+                            svg_2.append("text")
+                                .attr("transform", "translate("+(width - 30)+","+(y_2(max_positive) - 10)+")")
+                                .attr("dy", ".35em")
+                                .attr("text-anchor", "start")
+                                .style("font-size", "12px")
+                                .style("font-weight", "bold")
+                                .text(formatValue(max_positive));
+
+                            var xy = [];
+                            xy.push({x: width - 35, y: y_2(max_positive) - 10})
+                            xy.push({x: width - 60, y: y_2(max_positive) - 10})
+                            svg_2.append("path")
+                                .datum(xy)
+                                .attr("fill", "none")
+                                .attr("stroke", "deeppink")
+                                .attr("stroke-width", 2)
+                                .attr("d", d3.line()
+                                    .x(function(d) { return d.x;})
+                                    .y(function(d) { return d.y;})
+                                );
+
+                            svg_2.append("text").attr("transform", "translate("+(width - 170)+","+(y_2(max_positive) - 10)+")")
+                                .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
+                                .style("fill", "deeppink").text("Overall cases so far");
+
+                            // Add the label at the bottom of the line and annotation
+                            var xy = [];
+                            xy.push({x: 10, y: height - 30})
+                            xy.push({x: 10, y: height - 50})
+                            svg_2.append("path")
+                                .datum(xy)
+                                .attr("fill", "none")
+                                .attr("stroke", "deeppink")
+                                .attr("stroke-width", 2)
+                                .attr("d", d3.line()
+                                    .x(function(d) { return d.x;})
+                                    .y(function(d) { return d.y;})
+                                )
+
+                            svg_2.append("text")
+                                .attr("transform", "translate("+(5)+","+(height - 15)+")")
+                                .attr("dy", ".35em")
+                                .attr("text-anchor", "start")
+                                .style("font-size", "12px")
+                                .style("font-weight", "bold")
+                                .text(formatValue(min_positive));
+
+                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 100)+")")
+                                .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
+                                .style("fill", "deeppink").text("Positives cases");
+                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 90)+")").attr("dy", ".35em")
+                                .attr("text-anchor", "start").style("font-size", "12px")
+                                .style("fill", "deeppink").text("started increasing");
+                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 80)+")").attr("dy", ".35em")
+                                .attr("text-anchor", "start").style("font-size", "12px")
+                                .style("fill", "deeppink").text("during mid of Mar");
+                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 70)+")").attr("dy", ".35em")
+                                .attr("text-anchor", "start").style("font-size", "12px")
+                                .style("fill", "deeppink").text("and lockdown");
+                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 60)+")").attr("dy", ".35em")
+                                .attr("text-anchor", "start").style("font-size", "12px")
+                                .style("fill", "deeppink").text("begins");
+
+                            // Add the annotation
+                            svg_2.append("rect")
+                                .attr("class", "annotation_box")
+                                .attr("width", 240)
+                                .attr("height", 350)
+                                .attr("x", 520)
+                                .attr("y", 0)
+                                .attr("rx", 4)
+                                .attr("ry", 4);
+
+                            svg_2.append("text")
+                                .attr("x", 640)
+                                .attr("y", -20)
+                                .attr("text-anchor", "middle")
+                                .style("font-size", "12px")
+                                .style("fill", "deeppink")
+                                .text("Shaded area showing reopening after");
+
+                            svg_2.append("text")
+                                .attr("x", 640)
+                                .attr("y", -5)
+                                .attr("text-anchor", "middle")
+                                .style("font-size", "12px")
+                                .style("fill", "deeppink")
+                                .text("lockdown and affected overall counts");
+
+                            svg_2.append("text")
+                                .attr("x", 250)
+                                .attr("y", 25)
+                                .attr("text-anchor", "middle")
+                                .style("font-size", "12px")
+                                .style("fill", "deeppink")
+                                .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
+
+                            // Add Tooltip for line chart
+                            var focus = svg_2.append("g")
+                                .attr("class", "focus")
+                                .style("display", "none");
+
+                            focus.append("circle")
+                                .attr("r", 5);
+
+                            focus.append("rect")
+                                .attr("class", "tooltip1")
+                                .attr("width", 80)
+                                .attr("height", 50)
+                                .attr("x", -80)
+                                .attr("y", -60)
+                                .attr("rx", 4)
+                                .attr("ry", 4);
+
+                            focus.append("text")
+                                .attr("class", "tooltip-date")
+                                .attr("x", -75)
+                                .attr("y", -45);
+
+                            focus.append("text")
+                                .attr("x", -75)
+                                .attr("y", -32)
+                                .text("Cases:");
+
+                            focus.append("text")
+                                .attr("class", "tooltip-cases")
+                                .attr("x", -40)
+                                .attr("y", -32);
+
+                            svg_2.append("rect")
+                                .attr("class", "overlay")
+                                .attr("width", width)
+                                .attr("height", height)
+                                .on("mouseover", function() { focus.style("display", null); })
+                                .on("mouseout", function() { focus.style("display", "none"); })
+                                .on("mousemove", mousemove);
+
+                            function mousemove() {
+                                var x0 = x_2.invert(d3.mouse(this)[0]),
+                                    i = bisectDate(filterdata, x0, 1),
+                                    d0 = filterdata[i - 1],
+                                    d1 = filterdata[i],
+                                    d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+                                focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
+                                focus.select(".tooltip-date").text(dateFormatter(d.date));
+                                focus.select(".tooltip-cases").text(formatValue(d.positive));
+                            }
+
+                        }
+                    );
+                });
+        });
+    });
+
+    // Add the title for the map
+    layer3.append("text")
+        .attr("x", (width / 2))
+        .attr("y", 0 - (margin.top / 2) + 20)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("text-decoration", "underline")
+        .text("United States - Overall Case Count (Cumulative) ");
+
+    // Add annotation to the maps
+    var xy = [];
+    xy.push({x: 75, y: height - 120})
+    xy.push({x: 100, y: height - 70})
+    layer2.append("path")
+        .datum(xy)
+        .attr("fill", "none")
+        .attr("stroke", "deeppink")
+        .attr("stroke-width", 2)
+        .attr("d", d3.line()
+            .x(function(d) { return d.x;})
+            .y(function(d) { return d.y;})
+        );
+    layer3.append("text").attr("x", 5).attr("y", 350).style("font-size", "12px").style("fill", "deeppink").text("States with less population like")
+    layer3.append("text").attr("x", 5).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("Alaska is Gray color which")
+    layer3.append("text").attr("x", 5).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("meaning low overall cases");
+
+    var xy = [];
+    xy.push({x: width - 200, y: 110})
+    xy.push({x: width - 200, y: 150})
+    layer2.append("path")
+        .datum(xy)
+        .attr("fill", "none")
+        .attr("stroke", "deeppink")
+        .attr("stroke-width", 2)
+        .attr("d", d3.line()
+            .x(function(d) { return d.x;})
+            .y(function(d) { return d.y;})
+        );
+    layer3.append("text").attr("x", width - 210).attr("y", 80).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("States with high population");
+    layer3.append("text").attr("x", width - 210).attr("y", 90).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("like New York is Red in color");
+    layer3.append("text").attr("x", width - 210).attr("y", 100).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("meaning high overall cases.");
+
+    var xy = [];
+    xy.push({x: 780, y: 280})
+    xy.push({x: 750, y: 320})
+    layer2.append("path")
+        .datum(xy)
+        .attr("fill", "none")
+        .attr("stroke", "deeppink")
+        .attr("stroke-width", 2)
+        .attr("d", d3.line()
+            .x(function(d) { return d.x;})
+            .y(function(d) { return d.y;})
+        );
+    layer3.append("text").attr("x", 680).attr("y", 330).style("font-size", "12px").style("fill", "deeppink").text("Scale distributing ");
+    layer3.append("text").attr("x", 670).attr("y", 340).style("font-size", "12px").style("fill", "deeppink").text("color and intensity");
+    layer3.append("text").attr("x", 670).attr("y", 350).style("font-size", "12px").style("fill", "deeppink").text("to the states from");
+    layer3.append("text").attr("x", 660).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("red to gray meaning")
+    layer3.append("text").attr("x", 660).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("high to low counts");
+
+    // Add the title for the map
+    layer3.append("text")
+        .attr("x", (width / 2))
+        .attr("y", 0 - (margin.top / 2) + 20)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("text-decoration", "underline")
+        .text("United States - Overall Case Count (Cumulative) ");
+
+
+    // add a legend
+    var l_w = 120, l_h = 210;
+    layer3.append("text")
+        .attr("x", 800)
+        .attr("y", 245)
+        .attr("text-anchor", "middle")
+        .style("font-size", "11px")
+        .style("font-weight", "bold")
+        .style("text-decoration", "underline")
+        .text("Cumulative");
+    layer3.append("text")
+        .attr("x", 800)
+        .attr("y", 260)
+        .attr("text-anchor", "middle")
+        .style("font-size", "11px")
+        .style("font-weight", "bold")
+        .style("text-decoration", "underline")
+        .text("Case Count");
+
+    var legend = layer4.append("defs")
+        .append("svg:linearGradient")
+        .attr("id", "gradient")
+        .attr("x1", "100%")
+        .attr("y1", "0%")
+        .attr("x2", "100%")
+        .attr("y2", "100%")
+        .attr("spreadMethod", "pad");
+
+    legend.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "red")
+        .attr("stop-opacity", 1);
+
+    legend.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "gainsboro")
+        .attr("stop-opacity", 1);
+
+    layer3.append("rect")
+        .attr("width", 20)
+        .attr("height", 200)
+        .style("fill", "url(#gradient)")
+        .attr("transform", "translate(775,275)");
+
+    var y = d3.scaleLinear()
+        .range([200, 0])
+        .domain([0, 450000]);
+    var yAxis = d3.axisRight(y);
+
+    layer4.attr("class", "y axis")
+        .attr("transform", "translate(797,275)")
+        .call(yAxis)
+
+</script>
+<script type="text/javascript">
+
+    //Width and height of map
+    var margin = {top: 0, right: 0, bottom: 0, left: 0}
+    var width = 850;
+    var height = 500;
+
+    // D3 Projection
+    var projection = d3.geoAlbersUsa()
+        .translate([width/2, height/2])
+        .scale([1000]);          // scale things down so see entire US
+
+    // Define path generator
+    var path = d3.geoPath()         // path generator that will convert GeoJSON to SVG paths
+        .projection(projection);    // tell path generator to use albersUsa projection
+
+    // Define linear scale for output
+    var color = d3.scaleLinear().domain([0, 12000]).range(["moccasin", "darkcyan"])
+    var legendText = ["Minimum Cases", "Maximum cases"];
+
+    //Create SVG element and append map to the SVG
+    var svg = d3.select("#svg_2")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height - margin.top);
+
+    var layer1 = svg.append('g');
+    var layer2 = svg.append('g');
+    var layer3 = svg.append('g');
+    var layer4 = svg.append('g');
+
+    // Append Div for tooltip to SVG
+    var div = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    // Load Cumulative State Data
+    d3.csv("state_cumulative.csv", function(data) {
+
+        var selected_state = ""
+        var parseDate = d3.timeParse("%Y%m%d"),
+            bisectDate = d3.bisector(function(d) { return d.date; }).left,
+            formatValue = d3.format(","),
+            dateFormatter = d3.timeFormat("%B %d, %Y");
+
+        // Load GeoJSON data and merge with states data
+        d3.json("us-states.json", function(json) {
+
+            // Loop through each state data value in the .csv file
+            for (var i = 0; i < data.length; i++) {
+
+                var dataState = data[i].state;
+                var dataValue = data[i].new_positive;
+                var dataDeath = data[i].new_death;
+                var dataPopulation = data[i].population;
+
+                // Find the corresponding state inside the GeoJSON
+                for (var j = 0; j < json.features.length; j++)  {
+                    var jsonState = json.features[j].properties.name;
+
+                    if (dataState === jsonState) {
+
+                        // Copy the data value into the JSON
+                        json.features[j].properties.state = dataState;
+                        json.features[j].properties.new_positive = dataValue;
+                        json.features[j].properties.new_death = dataDeath;
+                        json.features[j].properties.population = dataPopulation;
+
+                        // Stop looking through the JSON
+                        break;
+                    }
+                }
+            }
+
+            // Bind the data to the SVG and create one path per GeoJSON feature
+            layer1.selectAll("path")
+                .data(json.features)
+                .enter()
+                .append("path")
+                .attr("d", path)
+                .style("stroke", "#fff")
+                .style("stroke-width", "1")
+                //.style("pointer-events", "none")
+                .style("fill", function(d) {
+                    // Get data value
+                    var value = d.properties.new_positive;
+
+                    if (value) {
+                        //If value exists…
+                        return color(value);
+                    } else {
+                        return "gray";
+                    }
+                })
+                .on("mouseover", function(d) {
+                    var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
+                        "<span>Population: </span>" + d.properties.population + "<br/>" +
+                        "<span>Confirmed Cases: </span>" + formatValue(d.properties.new_positive) + "<br/>" +
+                        "<span>Deaths: </span>" + formatValue(d.properties.new_death) + "<br/>";
+                    div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    div.html(tooltip_html)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 15) + "px")
+                })
+                // fade out tooltip on mouse out
+                .on("mouseout", function(d) {
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                })
+                .on("click", function(d) {
+                    // Read the data
+                    selected_state = d.properties.state
+                    d3.csv("all_states_master.csv",
+                        // When reading the csv, I must format variables:
+                        function(d){
+                            val = { state: d.state,
+                                date: parseDate(d.date),
+                                new_positive: d.new_positive,
+                                new_death: d.new_death}
+                            // console.log("Val: " + val)
+                            return val
+                        },
+
+                        // Now I can use this dataset:
+                        function(data) {
+                            // Clear the SVG Chart
+                            svg_2.selectAll("*").remove();
+
+                            // Filter the dataset to get selected state rows only
+                            var filterdata = data.filter(function (d) {
+                                return d.state == selected_state
+                            })
+                            var max_positive = filterdata[0].new_positive
+                            var min_positive = filterdata[filterdata.length - 1].new_positive
+
+                            filterdata.sort(function(a, b) {
+                                return a.date - b.date;
+                            });
+
+                            // Add the title for the line graph
+                            svg_2.append("text")
+                                .attr("x", (width / 2) - 10)
+                                .attr("y", 0 - (margin.top / 2))
+                                .attr("text-anchor", "middle")
+                                .style("font-size", "16px")
+                                .style("text-decoration", "underline")
+                                .text(d.properties.state + " - New Case Count");
+
+                            // Add X axis --> it is a date format
+                            var x_2 = d3.scaleTime()
+                                .domain(d3.extent(filterdata, function (d) {
+                                    return d.date;
+                                }))
+                                .range([0, width]);
+                            svg_2.append("g")
+                                .attr("transform", "translate(0," + height + ")")
+                                .call(d3.axisBottom(x_2));
+
+                            // Add the text label for the x axis
+                            svg_2.append("text")
+                                .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.bottom - 20) + ")")
+                                .style("text-anchor", "middle")
+                                .text("Date - [Mar 16, 2020 Onwards]");
+
+                            svg_2.append("text")
+                                .attr("transform", "translate(" + (-5) + " ," + (height + 16) + ")")
+                                .style("text-anchor", "middle")
+                                .style("font-size", "10px")
+                                .text("Mar 16");
+
+                            svg_2.append("text")
+                                .attr("transform", "translate(" + (width + 5) + " ," + (height + 16) + ")")
+                                .style("text-anchor", "middle")
+                                .style("font-size", "10px")
+                                .text("Jul 24");
+
+
+                            // Add Y axis
+                            var y_2 = d3.scaleLinear()
+                                .domain([0, 16000])
+                                .range([height, 0]);
+                            svg_2.append("g")
+                                .call(d3.axisLeft(y_2));
+
+                            // gridlines in y axis function
+                            function make_y_gridlines() {
+                                return d3.axisLeft(y_2)
+                                    .ticks(10)
+                            }
+
+                            // add the Y gridlines
+                            svg_2.append("g")
+                                .attr("class", "grid")
+                                .call(make_y_gridlines()
+                                    .tickSize(-width)
+                                    .tickFormat("")
+                                )
+
+                            // Add the text label for the Y axis
+                            svg_2.append("text")
+                                .attr("transform", "rotate(-90)")
+                                .attr("y", 0 - (margin.left / 2) - 35)
+                                .attr("x", 0 - (height / 2))
+                                .attr("dy", "1em")
+                                .style("text-anchor", "middle")
+                                .text("Number of People Affected");
+
+                            // Add the line for confirmed
+                            const path = svg_2.append("path")
+                                .datum(filterdata)
+                                .attr("fill", "none")
+                                .attr("stroke", "steelblue")
+                                .attr("stroke-width", 3)
+                                .attr("d", d3.line()
+                                    .x(function (d) {
+                                        return x_2(d.date)
+                                    })
+                                    .y(function (d) {
+                                        return y_2(d.new_positive)
+                                    })
+                                );
+
+                            // Add the label at the tip of the line and annotation
+                            xy = [];
+                            xy.push({x: width, y: (y_2(max_positive) - 5)})
+                            xy.push({x: width, y: height - 280})
+                            svg_2.append("path")
+                                .datum(xy)
+                                .attr("fill", "none")
+                                .attr("stroke", "deeppink")
+                                .attr("stroke-width", 2)
+                                .attr("d", d3.line()
+                                    .x(function(d) { return d.x;})
+                                    .y(function(d) { return d.y;})
+                                )
+
+                            svg_2.append("text")
+                                .attr("transform", "translate("+(width - 20)+","+(height - 290)+")")
+                                .attr("dy", ".35em")
+                                .attr("text-anchor", "start")
+                                .style("font-size", "12px")
+                                .style("font-weight", "bold")
+                                .text(formatValue(max_positive));
+
+                            svg_2.append("text").attr("transform", "translate("+(width - 80)+","+(height - 305)+")")
+                                .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
+                                .style("fill", "deeppink").text("Latest New cases");
+
+                            // Add the label at the bottom of the line and annotation
+                            var xy = [];
+                            xy.push({x: 10, y: height - 20})
+                            xy.push({x: 10, y: height - 200})
+                            svg_2.append("path")
+                                .datum(xy)
+                                .attr("fill", "none")
+                                .attr("stroke", "deeppink")
+                                .attr("stroke-width", 2)
+                                .attr("d", d3.line()
+                                    .x(function(d) { return d.x;})
+                                    .y(function(d) { return d.y;})
+                                )
+
+                            svg_2.append("text")
+                                .attr("transform", "translate("+(5)+","+(height - 220)+")")
+                                .attr("dy", ".35em")
+                                .attr("text-anchor", "start")
+                                .style("font-size", "12px")
+                                .style("font-weight", "bold")
+                                .text(formatValue(min_positive));
+
+                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 260)+")")
+                                .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
+                                .style("fill", "deeppink").text("New cases started ");
+                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 250)+")").attr("dy", ".35em")
+                                .attr("text-anchor", "start").style("font-size", "12px")
+                                .style("fill", "deeppink").text("increasing during mid of Mar");
+                            svg_2.append("text").attr("transform", "translate("+(5)+","+(height - 240)+")").attr("dy", ".35em")
+                                .attr("text-anchor", "start").style("font-size", "12px")
+                                .style("fill", "deeppink").text("and lockdown begins");
+
+                            // Add the annotation
+                            svg_2.append("rect")
+                                .attr("class", "annotation_box")
+                                .attr("width", 240)
+                                .attr("height", 350)
+                                .attr("x", 520)
+                                .attr("y", 0)
+                                .attr("rx", 4)
+                                .attr("ry", 4);
+
+                            svg_2.append("text")
+                                .attr("x", 640)
+                                .attr("y", -20)
+                                .attr("text-anchor", "middle")
+                                .style("font-size", "12px")
+                                .style("fill", "deeppink")
+                                .text("Shaded area showing reopening after");
+
+                            svg_2.append("text")
+                                .attr("x", 640)
+                                .attr("y", -5)
+                                .attr("text-anchor", "middle")
+                                .style("font-size", "12px")
+                                .style("fill", "deeppink")
+                                .text("lockdown and affected overall counts");
+
+                            svg_2.append("text")
+                                .attr("x", 250)
+                                .attr("y", 25)
+                                .attr("text-anchor", "middle")
+                                .style("font-size", "12px")
+                                .style("fill", "deeppink")
+                                .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
+
+                            // Add Tooltip for line chart
+                            var focus = svg_2.append("g")
+                                .attr("class", "focus")
+                                .style("display", "none");
+
+                            focus.append("circle")
+                                .attr("r", 5);
+
+                            focus.append("rect")
+                                .attr("class", "tooltip1")
+                                .attr("width", 80)
+                                .attr("height", 50)
+                                .attr("x", -80)
+                                .attr("y", -60)
+                                .attr("rx", 4)
+                                .attr("ry", 4);
+
+                            focus.append("text")
+                                .attr("class", "tooltip-date")
+                                .attr("x", -75)
+                                .attr("y", -45);
+
+                            focus.append("text")
+                                .attr("x", -75)
+                                .attr("y", -32)
+                                .text("Cases:");
+
+                            focus.append("text")
+                                .attr("class", "tooltip-cases")
+                                .attr("x", -40)
+                                .attr("y", -32);
+
+                            svg_2.append("rect")
+                                .attr("class", "overlay")
+                                .attr("width", width)
+                                .attr("height", height)
+                                .on("mouseover", function() { focus.style("display", null); })
+                                .on("mouseout", function() { focus.style("display", "none"); })
+                                .on("mousemove", mousemove);
+
+                            function mousemove() {
+                                var x0 = x_2.invert(d3.mouse(this)[0]),
+                                    i = bisectDate(filterdata, x0, 1),
+                                    d0 = filterdata[i - 1],
+                                    d1 = filterdata[i],
+                                    d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+                                focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.new_positive) + ")");
+                                focus.select(".tooltip-date").text(dateFormatter(d.date));
+                                focus.select(".tooltip-cases").text(formatValue(d.new_positive));
+                            }
+
+                        }
+                    );
+                });
+        });
+    });
+
+    // Add the title for the map
+    layer3.append("text")
+        .attr("x", (width / 2))
+        .attr("y", 0 - (margin.top / 2) + 20)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("text-decoration", "underline")
+        .text("United States - New Case Count");
+
+    // Add annotation to the maps
+    var xy = [];
+    xy.push({x: 75, y: height - 120})
+    xy.push({x: 100, y: height - 70})
+    layer2.append("path")
+        .datum(xy)
+        .attr("fill", "none")
+        .attr("stroke", "deeppink")
+        .attr("stroke-width", 2)
+        .attr("d", d3.line()
+            .x(function(d) { return d.x;})
+            .y(function(d) { return d.y;})
+        );
+    layer3.append("text").attr("x", 5).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("Alaska is still light color")
+    layer3.append("text").attr("x", 5).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("meaning low new cases");
+
+    var xy = [];
+    xy.push({x: width - 200, y: 110})
+    xy.push({x: width - 200, y: 150})
+    layer2.append("path")
+        .datum(xy)
+        .attr("fill", "none")
+        .attr("stroke", "deeppink")
+        .attr("stroke-width", 2)
+        .attr("d", d3.line()
+            .x(function(d) { return d.x;})
+            .y(function(d) { return d.y;})
+        );
+    layer3.append("text").attr("x", width - 210).attr("y", 70).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("Even though New York State")
+    layer3.append("text").attr("x", width - 210).attr("y", 80).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("is high population but it is")
+    layer3.append("text").attr("x", width - 210).attr("y", 90).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("light in color meaning not much")
+    layer3.append("text").attr("x", width - 210).attr("y", 100).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("new cases are being reported");
+
+    var xy = [];
+    xy.push({x: width - 250, y: 390})
+    xy.push({x: width - 250, y: 440})
+    layer2.append("path")
+        .datum(xy)
+        .attr("fill", "none")
+        .attr("stroke", "deeppink")
+        .attr("stroke-width", 2)
+        .attr("d", d3.line()
+            .x(function(d) { return d.x;})
+            .y(function(d) { return d.y;})
+        );
+
+    layer3.append("text").attr("x", width - 300).attr("y", 450).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("Florida is now leading with")
+    layer3.append("text").attr("x", width - 300).attr("y", 460).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("daily highest number of new cases");
+
+    var xy = [];
+    xy.push({x: 780, y: 280})
+    xy.push({x: 750, y: 320})
+    layer2.append("path")
+        .datum(xy)
+        .attr("fill", "none")
+        .attr("stroke", "deeppink")
+        .attr("stroke-width", 2)
+        .attr("d", d3.line()
+            .x(function(d) { return d.x;})
+            .y(function(d) { return d.y;})
+        );
+    layer3.append("text").attr("x", 680).attr("y", 330).style("font-size", "12px").style("fill", "deeppink").text("Scale distributing ");
+    layer3.append("text").attr("x", 670).attr("y", 340).style("font-size", "12px").style("fill", "deeppink").text("color and intensity");
+    layer3.append("text").attr("x", 670).attr("y", 350).style("font-size", "12px").style("fill", "deeppink").text("to the states from");
+    layer3.append("text").attr("x", 660).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("red to gray meaning")
+    layer3.append("text").attr("x", 660).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("high to low counts");
+
+    // Add the title for the map
+    layer3.append("text")
+        .attr("x", (width / 2))
+        .attr("y", 0 - (margin.top / 2) + 20)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .style("text-decoration", "underline")
+        .text("United States - New Case Count");
+
+
+    // add a legend
+    var l_w = 120, l_h = 210;
+    layer3.append("text")
+        .attr("x", 800)
+        .attr("y", 245)
+        .attr("text-anchor", "middle")
+        .style("font-size", "11px")
+        .style("font-weight", "bold")
+        .style("text-decoration", "underline")
+        .text("New");
+    layer3.append("text")
+        .attr("x", 800)
+        .attr("y", 260)
+        .attr("text-anchor", "middle")
+        .style("font-size", "11px")
+        .style("font-weight", "bold")
+        .style("text-decoration", "underline")
+        .text("Case Count");
+
+    var legend = layer4.append("defs")
+        .append("svg:linearGradient")
+        .attr("id", "gradient")
+        .attr("x1", "100%")
+        .attr("y1", "0%")
+        .attr("x2", "100%")
+        .attr("y2", "100%")
+        .attr("spreadMethod", "pad");
+
+    legend.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "darkcyan")
+        .attr("stop-opacity", 1);
+
+    legend.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "moccasin")
+        .attr("stop-opacity", 1);
+
+    layer3.append("rect")
+        .attr("width", 20)
+        .attr("height", 200)
+        .style("fill", "url(#gradient)")
+        .attr("transform", "translate(775,275)");
+
+    var y = d3.scaleLinear()
+        .range([200, 0])
+        .domain([0, 13000]);
+    var yAxis = d3.axisRight(y);
+
+    layer4.attr("class", "y axis")
+        .attr("transform", "translate(797,275)")
+        .call(yAxis)
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
