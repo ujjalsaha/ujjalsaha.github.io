@@ -1,4 +1,4 @@
-date,state,positive,new_positive,hospitalizedCurrently,hospitalizedCumulative,death,new_death,Population
+date,state,positive,new_positive,hospitalizedCurrently,hospitalizedCumulative,death,new_death,population
 20200724,Alabama,76005,1793,1570,9157,1438,41,"4,903,185"
 20200724,Alaska,2748,64,37,,19,0,"731,545"
 20200724,Arizona,156301,3357,2844,7461,3142,79,"7,278,717"
