@@ -738,8 +738,8 @@ d3.csv("state_cumulative.csv", function(data) {
     layer3.append("text").attr("x", width - 210).attr("y", 100).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("with high overall cases.");
 
     var xy = [];
-    xy.push({x: 770, y: 280})
-    xy.push({x: 750, y: 320})
+    xy.push({x: 770, y: 310})
+    xy.push({x: 750, y: 330})
     layer2.append("path")
         .datum(xy)
         .attr("fill", "none")
@@ -749,10 +749,10 @@ d3.csv("state_cumulative.csv", function(data) {
             .x(function(d) { return d.x;})
             .y(function(d) { return d.y;})
         );
-    layer3.append("text").attr("x", 700).attr("y", 300).style("font-size", "12px").style("fill", "deeppink").text("Scale distributes ");
-    layer3.append("text").attr("x", 780).attr("y", 310).style("font-size", "12px").style("fill", "deeppink").text("colors to the states");
-    layer3.append("text").attr("x", 780).attr("y", 320).style("font-size", "12px").style("fill", "deeppink").text("red to gray meaning");
-    layer3.append("text").attr("x", 780).attr("y", 330).style("font-size", "12px").style("fill", "deeppink").text("high to low counts");
+    layer3.append("text").attr("x", 700).attr("y", 330).style("font-size", "12px").style("fill", "deeppink").text("Scale distributes ");
+    layer3.append("text").attr("x", 700).attr("y", 340).style("font-size", "12px").style("fill", "deeppink").text("colors to the states");
+    layer3.append("text").attr("x", 700).attr("y", 350).style("font-size", "12px").style("fill", "deeppink").text("red to gray meaning");
+    layer3.append("text").attr("x", 700).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("high to low counts");
 
     // Add the title for the map
     layer3.append("text")
