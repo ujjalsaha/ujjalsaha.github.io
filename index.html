@@ -364,9 +364,9 @@ d3.csv("state_cumulative.csv", function(data) {
         for (var i = 0; i < data.length; i++) {
 
             var dataState = data[i].state;
-            var dataPopulation = data[i].population;
             var dataValue = data[i].positive;
             var dataDeath = data[i].death;
+            var dataPopulation = data[i].population;
 
 
             // Find the corresponding state inside the GeoJSON
@@ -409,7 +409,7 @@ d3.csv("state_cumulative.csv", function(data) {
             })
             .on("mouseover", function(d) {
                 var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
-                    "<span>Confirmed Cases: </span>" + formatValue(d.properties.population) + "<br/>" +
+                    "<span>Population Cases: </span>" + formatValue(d.properties.population) + "<br/>" +
                     "<span>Confirmed Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
                             "<span>Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
                 div.transition()

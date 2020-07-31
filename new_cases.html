@@ -334,10 +334,8 @@
 
     // Load Cumulative State Data
     d3.csv("state_cumulative.csv", function(data) {
-//color.domain([0,500000]); // setting the range of the input data
 
         var selected_state = ""
-
         var parseDate = d3.timeParse("%Y%m%d"),
             bisectDate = d3.bisector(function(d) { return d.date; }).left,
             formatValue = d3.format(","),
@@ -349,10 +347,10 @@
             // Loop through each state data value in the .csv file
             for (var i = 0; i < data.length; i++) {
 
-                var dataPopulation = data[i].population;
                 var dataState = data[i].state;
                 var dataValue = data[i].new_positive;
                 var dataDeath = data[i].new_death;
+                var dataPopulation = data[i].population;
 
                 console.log("Population: " + dataPopulation)
 
