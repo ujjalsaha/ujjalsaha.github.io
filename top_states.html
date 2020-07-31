@@ -1080,7 +1080,9 @@
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    top_10_overall_cases("20200724")
+    var color1 = d3.scaleLinear().domain([0, 400000]).range(["gainsboro", "red"])
+
+    top_10_overall_cases("20200724");
 
     function top_10_overall_cases(selected_date) {
         svg_3.selectAll("*").remove();
@@ -1154,7 +1156,7 @@
                     .attr("y", function(d) { return y(d.state); })
                     .attr("width", function(d) { return x(d.positive); })
                     .attr("height", y.bandwidth() )
-                    .attr("fill", "#69b3a2")
+                    .style("fill", function(d) { return color1(d.positive); })
             }
         );
     }
@@ -1188,7 +1190,7 @@
     // Define linear scale for output
     var color2 = d3.scaleLinear().domain([0, 12000]).range(["moccasin", "darkcyan"])
 
-    top_10_new_cases("20200724")
+    top_10_new_cases("20200724");
 
     function top_10_new_cases(selected_date) {
         svg_4.selectAll("*").remove();
