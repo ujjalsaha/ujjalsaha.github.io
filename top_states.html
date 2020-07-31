@@ -1025,24 +1025,6 @@
     layer7.append("text").attr("x", width - 300).attr("y", 450).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("Florida is now leading with")
     layer7.append("text").attr("x", width - 300).attr("y", 460).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("daily highest number of new cases");
 
-    var xy = [];
-    xy.push({x: 780, y: 280})
-    xy.push({x: 750, y: 320})
-    layer6.append("path")
-        .datum(xy)
-        .attr("fill", "none")
-        .attr("stroke", "deeppink")
-        .attr("stroke-width", 2)
-        .attr("d", d3.line()
-            .x(function(d) { return d.x;})
-            .y(function(d) { return d.y;})
-        );
-    layer7.append("text").attr("x", 680).attr("y", 330).style("font-size", "12px").style("fill", "deeppink").text("Scale distributing ");
-    layer7.append("text").attr("x", 670).attr("y", 340).style("font-size", "12px").style("fill", "deeppink").text("color and intensity");
-    layer7.append("text").attr("x", 670).attr("y", 350).style("font-size", "12px").style("fill", "deeppink").text("to the states from");
-    layer7.append("text").attr("x", 660).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("red to gray meaning")
-    layer7.append("text").attr("x", 660).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("high to low counts");
-
     // Add the title for the map
     layer7.append("text")
         .attr("x", (width / 2))
@@ -1052,11 +1034,10 @@
         .style("text-decoration", "underline")
         .text("United States - New Case Count");
 
-
     // add a legend
     var l_w = 120, l_h = 210;
     layer7.append("text")
-        .attr("x", 800)
+        .attr("x", 760)
         .attr("y", 245)
         .attr("text-anchor", "middle")
         .style("font-size", "11px")
@@ -1064,7 +1045,7 @@
         .style("text-decoration", "underline")
         .text("New");
     layer7.append("text")
-        .attr("x", 800)
+        .attr("x", 760)
         .attr("y", 260)
         .attr("text-anchor", "middle")
         .style("font-size", "11px")
@@ -1095,7 +1076,7 @@
         .attr("width", 20)
         .attr("height", 200)
         .style("fill", "url(#gradient2)")
-        .attr("transform", "translate(775,275)");
+        .attr("transform", "translate(735,275)");
 
     var y = d3.scaleLinear()
         .range([200, 0])
@@ -1103,7 +1084,7 @@
     var yAxis = d3.axisRight(y);
 
     layer8.attr("class", "y axis")
-        .attr("transform", "translate(797,275)")
+        .attr("transform", "translate(757,275)")
         .call(yAxis)
 </script>
 
