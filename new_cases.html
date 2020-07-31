@@ -182,7 +182,7 @@
 <body>
 <div class="header_div">
     <span class="guideline_header">Narrative Visualization Walkthrough - Demonstrating Interactive Slideshow using COVID-19 Dataset for United States</span><br/>
-    This is a demonstration of Narrative Visualisation using the Interactive Slideshow Structure using the COVID-19 Dataset of United States and tries to establish sequence of hierarchies putting forward the observation in terms of various Scenes as pages. The narrative visualization mainly explore the areas of overall cases and new cases within united states and how each state is affected in terms of case counts.
+    This is a demonstration of Narrative Visualisation using the Interactive Slideshow Structure using the COVID-19 Dataset of United States and tries to establish sequence of hierarchies putting forward the observation in terms of various Scenes as pages. The narrative visualization mainly explore the areas of new cases and new cases within united states and how each state is affected in terms of case counts.
     This whole Visualization is based on three Scenes. Below is the brief description of each scene.
     <p>
         <span class="bold">Scene 1 (United States - COVID-19 New Case Count):</span> where author puts forwards the observation with overall cases on the states of United States and being within scene1 lets user explore with the tooltip, parameters and triggers.<br/>
@@ -273,7 +273,7 @@
                 <div style="padding-left: 10px">
                     <input name="updateButton"
                            type="button"
-                           value="Overall Cases for United States"
+                           value="new cases for United States"
                            onclick="country_cases()" />
                 </div>
                 <div id="svg_2" ></div>
@@ -550,7 +550,7 @@
 
                             svg_2.append("text").attr("transform", "translate("+(width - 170)+","+(y_2(max_positive) - 10)+")")
                                 .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                                .style("fill", "deeppink").text("Overall cases so far");
+                                .style("fill", "deeppink").text("new cases so far");
 
                             // Add the label at the bottom of the line and annotation
                             var xy = [];
@@ -705,7 +705,7 @@
         );
     layer3.append("text").attr("x", 5).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("Alaska is Gray in color which");
     layer3.append("text").attr("x", 5).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("means it is one of states with");
-    layer3.append("text").attr("x", 5).attr("y", 380).style("font-size", "12px").style("fill", "deeppink").text("low overall cases");
+    layer3.append("text").attr("x", 5).attr("y", 380).style("font-size", "12px").style("fill", "deeppink").text("low new cases");
 
     var xy = [];
     xy.push({x: width - 200, y: 110})
@@ -721,7 +721,7 @@
         );
     layer3.append("text").attr("x", width - 210).attr("y", 80).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("New York is Red in color which");
     layer3.append("text").attr("x", width - 210).attr("y", 90).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("means it is one of the states");
-    layer3.append("text").attr("x", width - 210).attr("y", 100).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("with high overall cases.");
+    layer3.append("text").attr("x", width - 210).attr("y", 100).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("with high new cases.");
 
     var xy = [];
     xy.push({x: 780, y: 280})
@@ -950,7 +950,7 @@
 
                 svg_2.append("text").attr("transform", "translate("+(width - 170)+","+(y_2(data[0].value) - 10)+")")
                     .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                    .style("fill", "deeppink").text("Overall cases so far");
+                    .style("fill", "deeppink").text("New cases so far");
 
 
                 // Add the label at the bottom of the line and annotation
