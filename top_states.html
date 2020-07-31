@@ -1259,58 +1259,7 @@
         );
     }
 
-    // add a legend
-    var l_w = 120, l_h = 210;
-    svg_4.append("text")
-        .attr("x", 745)
-        .attr("y", 245)
-        .attr("text-anchor", "middle")
-        .style("font-size", "11px")
-        .style("font-weight", "bold")
-        .style("text-decoration", "underline")
-        .text("New");
-    svg_4.append("text")
-        .attr("x", 745)
-        .attr("y", 260)
-        .attr("text-anchor", "middle")
-        .style("font-size", "11px")
-        .style("font-weight", "bold")
-        .style("text-decoration", "underline")
-        .text("Case Count");
-
-    var legend4 = svg_4.append("defs")
-        .append("svg:linearGradient")
-        .attr("id", "gradient2")
-        .attr("x1", "100%")
-        .attr("y1", "0%")
-        .attr("x2", "100%")
-        .attr("y2", "100%")
-        .attr("spreadMethod", "pad");
-
-    legend4.append("stop")
-        .attr("offset", "0%")
-        .attr("stop-color", "darkcyan")
-        .attr("stop-opacity", 1);
-
-    legend4.append("stop")
-        .attr("offset", "100%")
-        .attr("stop-color", "moccasin")
-        .attr("stop-opacity", 1);
-
-    svg_4.append("rect")
-        .attr("width", 20)
-        .attr("height", 200)
-        .style("fill", "url(#gradient2)")
-        .attr("transform", "translate(720,275)");
-
-    var y = d3.scaleLinear()
-        .range([200, 0])
-        .domain([0, 13000]);
-    var yAxis = d3.axisRight(y);
-
-    svg_4.attr("class", "y axis")
-        .attr("transform", "translate(742,275)")
-        .call(yAxis)
+    
 </script>
 
 
