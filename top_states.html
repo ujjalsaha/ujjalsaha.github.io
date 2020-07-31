@@ -383,15 +383,15 @@
     var legendText = ["Minimum Cases", "Maximum cases"];
 
     //Create SVG element and append map to the SVG
-    var svg = d3.select("#svg_1")
+    var svg_1 = d3.select("#svg_1")
         .append("svg")
         .attr("width", width)
         .attr("height", height - margin.top);
 
-    var layer1 = svg.append('g');
-    var layer2 = svg.append('g');
-    var layer3 = svg.append('g');
-    var layer4 = svg.append('g');
+    var layer1 = svg_1.append('g');
+    var layer2 = svg_1.append('g');
+    var layer3 = svg_1.append('g');
+    var layer4 = svg_1.append('g');
 
     // Append Div for tooltip to SVG
     var div = d3.select("body")
