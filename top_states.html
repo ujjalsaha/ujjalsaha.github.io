@@ -1102,6 +1102,8 @@
                     return d.date == "20200719"
                 })
 
+                console.log("filterdata: " + filterdata)
+
                 filterdata.sort(function (x, y) {
                     return d3.descending(x.positive, y.positive);
                 })
