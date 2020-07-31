@@ -393,7 +393,7 @@
                 .on("mouseover", function(d) {
                     var tooltip_html  = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
                         "<span>Population: </span>" + d.properties.population + "<br/>" +
-                        "<span>Confirmed Cases: </span>" + formatValue(d.properties.new_positive) + "<br/>" +
+                        "<span>New Cases: </span>" + formatValue(d.properties.new_positive) + "<br/>" +
                         "<span>Deaths: </span>" + formatValue(d.properties.new_death) + "<br/>";
                     div.transition()
                         .duration(200)
