@@ -836,7 +836,7 @@
 
     var legend = layer4.append("defs")
         .append("svg:linearGradient")
-        .attr("id", "gradient")
+        .attr("id", "gradient1")
         .attr("x1", "100%")
         .attr("y1", "0%")
         .attr("x2", "100%")
@@ -856,7 +856,7 @@
     layer3.append("rect")
         .attr("width", 20)
         .attr("height", 200)
-        .style("fill", "url(#gradient)")
+        .style("fill", "url(#gradient1)")
         .attr("transform", "translate(775,275)");
 
     var y = d3.scaleLinear()
@@ -1093,7 +1093,7 @@
 
     var legend2 = layer8.append("defs")
         .append("svg:linearGradient")
-        .attr("id", "gradient")
+        .attr("id", "gradient2")
         .attr("x1", "100%")
         .attr("y1", "0%")
         .attr("x2", "100%")
@@ -1113,7 +1113,7 @@
     layer7.append("rect")
         .attr("width", 20)
         .attr("height", 200)
-        .style("fill", "url(#gradient)")
+        .style("fill", "url(#gradient2)")
         .attr("transform", "translate(775,275)");
 
     var y = d3.scaleLinear()
