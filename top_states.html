@@ -787,24 +787,6 @@
     layer3.append("text").attr("x", width - 210).attr("y", 90).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("like New York is Red in color");
     layer3.append("text").attr("x", width - 210).attr("y", 100).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("meaning high overall cases.");
 
-    var xy = [];
-    xy.push({x: 740, y: 280})
-    xy.push({x: 710, y: 320})
-    layer2.append("path")
-        .datum(xy)
-        .attr("fill", "none")
-        .attr("stroke", "deeppink")
-        .attr("stroke-width", 2)
-        .attr("d", d3.line()
-            .x(function(d) { return d.x;})
-            .y(function(d) { return d.y;})
-        );
-    layer3.append("text").attr("x", 640).attr("y", 330).style("font-size", "12px").style("fill", "deeppink").text("Scale distributing ");
-    layer3.append("text").attr("x", 630).attr("y", 340).style("font-size", "12px").style("fill", "deeppink").text("color and intensity");
-    layer3.append("text").attr("x", 630).attr("y", 350).style("font-size", "12px").style("fill", "deeppink").text("to the states from");
-    layer3.append("text").attr("x", 620).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("red to gray meaning")
-    layer3.append("text").attr("x", 620).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("high to low counts");
-
     // Add the title for the map
     layer3.append("text")
         .attr("x", (width / 2))
@@ -817,7 +799,7 @@
     // add a legend
     var l_w = 120, l_h = 210;
     layer3.append("text")
-        .attr("x", 760)
+        .attr("x", 740)
         .attr("y", 245)
         .attr("text-anchor", "middle")
         .style("font-size", "11px")
@@ -825,7 +807,7 @@
         .style("text-decoration", "underline")
         .text("Cumulative");
     layer3.append("text")
-        .attr("x", 760)
+        .attr("x", 740)
         .attr("y", 260)
         .attr("text-anchor", "middle")
         .style("font-size", "11px")
@@ -856,7 +838,7 @@
         .attr("width", 20)
         .attr("height", 200)
         .style("fill", "url(#gradient1)")
-        .attr("transform", "translate(735,275)");
+        .attr("transform", "translate(695,275)");
 
     var y = d3.scaleLinear()
         .range([200, 0])
@@ -864,7 +846,7 @@
     var yAxis = d3.axisRight(y);
 
     layer4.attr("class", "y axis")
-        .attr("transform", "translate(757,275)")
+        .attr("transform", "translate(717,275)")
         .call(yAxis)
 
 </script>
