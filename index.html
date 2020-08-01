@@ -552,7 +552,7 @@ d3.csv("state_cumulative.csv", function(data) {
                                     return y_2(d.death)
                                 })
                             )
-                        
+
                         // Add the label at the tip of the line
                         svg_2.append("text")
                             .attr("transform", "translate("+(width - 30)+","+(y_2(max_positive) - 10)+")")
@@ -621,15 +621,15 @@ d3.csv("state_cumulative.csv", function(data) {
                         svg_2.append("rect")
                             .attr("class", "annotation_box")
                             .attr("width", 240)
-                            .attr("height", 350)
+                            .attr("height", 370)
                             .attr("x", 520)
-                            .attr("y", 0)
+                            .attr("y", -20)
                             .attr("rx", 4)
                             .attr("ry", 4);
 
                         svg_2.append("text")
                             .attr("x", 640)
-                            .attr("y", -20)
+                            .attr("y", -40)
                             .attr("text-anchor", "middle")
                             .style("font-size", "12px")
                             .style("fill", "deeppink")
@@ -637,7 +637,7 @@ d3.csv("state_cumulative.csv", function(data) {
 
                         svg_2.append("text")
                             .attr("x", 640)
-                            .attr("y", -5)
+                            .attr("y", -25)
                             .attr("text-anchor", "middle")
                             .style("font-size", "12px")
                             .style("fill", "deeppink")
@@ -645,7 +645,7 @@ d3.csv("state_cumulative.csv", function(data) {
 
                         svg_2.append("text")
                             .attr("x", 250)
-                            .attr("y", 25)
+                            .attr("y", 5)
                             .attr("text-anchor", "middle")
                             .style("font-size", "12px")
                             .style("fill", "deeppink")
