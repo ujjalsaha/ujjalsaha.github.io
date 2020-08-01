@@ -530,6 +530,7 @@ d3.csv("state_cumulative.csv", function(data) {
                         // Add the line for confirmed
                         const path = svg_2.append("path")
                             .datum(filterdata)
+                            .interrupt()
                             .attr("fill", "none")
                             .attr("stroke", "steelblue")
                             .attr("stroke-width", 3)
@@ -970,6 +971,7 @@ d3.csv("state_cumulative.csv", function(data) {
                 // Add the line for confirmed
                 const path = svg_2.append("path")
                     .datum(data)
+                    .interrupt()
                     .attr("fill", "none")
                     .attr("stroke", "steelblue")
                     .attr("stroke-width", 3)
