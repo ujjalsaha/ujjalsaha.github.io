@@ -833,6 +833,7 @@ d3.csv("state_cumulative.csv", function(data) {
         .range([200, 0])
         .domain([0, 400000]);
     var yAxis = d3.axisRight(y)
+        .tickSize(13)
         .tickValues(["Very Low [< 100,000]", "Low [100,000+]"])
         .tickFormat(function(n) { return n + ""});
 
