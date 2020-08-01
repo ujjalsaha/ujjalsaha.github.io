@@ -330,7 +330,7 @@
         formatValue = d3.format(","),
         dateFormatter = d3.timeFormat("%B %d, %Y");
 
-    overall_cases();
+    overall_cases()
 
     function overall_cases() {
     // Clear the SVG Chart
@@ -348,31 +348,23 @@
         .style("opacity", 0);
 
     // Load Cumulative State Data
-    d3.csv("state_cumulative.csv", function (data) {
+    d3.csv("state_cumulative/april.csv", function (data) {
         //color.domain([0,500000]); // setting the range of the input data
 
         var selected_state = ""
 
-        // Filter the dataset to get selected state rows only
-        var filterdata = data.filter(function (d) {
-            console.log("Actualdate: " + parseDate(d.date))
-            console.log("Selecteddate: " + parseDate("20200430"))
-            console.log(parseDate(d.date) < parseDate("20200430"))
-            console.log("")
-            return parseDate(d.date) < parseDate("20200430")
-        })
-        console.log(filterdata)
 
         // Load GeoJSON data and merge with states data
         d3.json("us-states.json", function (json) {
 
             // Loop through each state data value in the .csv file
-            for (var i = 0; i < filterdata.length; i++) {
-                var dataState = filterdata[i].state;
-                var dataValue = filterdata[i].positive;
-                var dataDeath = filterdata[i].death;
-                var dataPopulation = filterdata[i].population;
-                var dataRopen = filterdata[i].reopen;
+            for (var i = 0; i < data.length; i++) {
+
+                var dataState = data[i].state;
+                var dataValue = data[i].positive;
+                var dataDeath = data[i].death;
+                var dataPopulation = data[i].population;
+                var dataRopen = data[i].reopen;
 
                 // Find the corresponding state inside the GeoJSON
                 for (var j = 0; j < json.features.length; j++) {
