@@ -353,18 +353,23 @@
 
         var selected_state = ""
 
+        // Filter the dataset to get selected state rows only
+        var filterdata = data.filter(function (d) {
+            return parseDate(d.date) < parseDate("20200430")
+        })
+
 
         // Load GeoJSON data and merge with states data
         d3.json("us-states.json", function (json) {
 
             // Loop through each state data value in the .csv file
-            for (var i = 0; i < data.length; i++) {
+            for (var i = 0; i < filterdata.length; i++) {
 
-                var dataState = data[i].state;
-                var dataValue = data[i].positive;
-                var dataDeath = data[i].death;
-                var dataPopulation = data[i].population;
-                var dataRopen = data[i].reopen;
+                var dataState = filterdata[i].state;
+                var dataValue = filterdata[i].positive;
+                var dataDeath = filterdata[i].death;
+                var dataPopulation = filterdata[i].population;
+                var dataRopen = filterdata[i].reopen;
 
                 // Find the corresponding state inside the GeoJSON
                 for (var j = 0; j < json.features.length; j++) {
