@@ -357,12 +357,6 @@
         // Load GeoJSON data and merge with states data
         d3.json("us-states.json", function (json) {
 
-
-            // Filter the dataset to get selected state rows only
-            var filterdata = data.filter(function (d) {
-                return d.date == selected_state
-            })
-
             // Loop through each state data value in the .csv file
             for (var i = 0; i < data.length; i++) {
 
