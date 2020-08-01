@@ -542,21 +542,6 @@ d3.csv("state_cumulative.csv", function(data) {
                                 })
                             );
 
-                        // Add the line for deaths
-                        svg_2.append("path")
-                            .datum(filterdata)
-                            .attr("fill", "none")
-                            .attr("stroke", "orange")
-                            .attr("stroke-width", 3)
-                            .attr("d", d3.line()
-                                .x(function (d) {
-                                    return x_2(d.date)
-                                })
-                                .y(function (d) {
-                                    return y_2(d.death)
-                                })
-                            )
-
                         // Add the label at the tip of the confirmed cases line
                         svg_2.append("text")
                             .attr("transform", "translate("+(width - 30)+","+(y_2(max_positive) - 10)+")")
@@ -582,6 +567,21 @@ d3.csv("state_cumulative.csv", function(data) {
                         svg_2.append("text").attr("transform", "translate("+(width - 170)+","+(y_2(max_positive) - 10)+")")
                             .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
                             .style("fill", "deeppink").text("Overall cases so far");
+
+                        // Add the line for deaths
+                        svg_2.append("path")
+                            .datum(filterdata)
+                            .attr("fill", "none")
+                            .attr("stroke", "orange")
+                            .attr("stroke-width", 3)
+                            .attr("d", d3.line()
+                                .x(function (d) {
+                                    return x_2(d.date)
+                                })
+                                .y(function (d) {
+                                    return y_2(d.death)
+                                })
+                            )
 
                         // Add the label at the tip of the death cases line
                         svg_2.append("text")
@@ -1008,7 +1008,48 @@ d3.csv("state_cumulative.csv", function(data) {
                     .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
                     .style("fill", "deeppink").text("Overall cases so far");
 
-                
+                // Add the line for deaths
+                svg_2.append("path")
+                    .datum(data)
+                    .attr("fill", "none")
+                    .attr("stroke", "orange")
+                    .attr("stroke-width", 3)
+                    .attr("d", d3.line()
+                        .x(function (d) {
+                            return x_2(d.date)
+                        })
+                        .y(function (d) {
+                            return y_2(d.death)
+                        })
+                    )
+
+                // Add the label at the tip of the death cases line
+                svg_2.append("text")
+                    .attr("transform", "translate("+(width - 20)+","+(y_2(max_death) - 10)+")")
+                    .attr("dy", ".35em")
+                    .attr("text-anchor", "start")
+                    .style("font-size", "12px")
+                    .style("font-weight", "bold")
+                    .text(formatValue(data[0].death));
+
+                var xy = [];
+                xy.push({x: width, y: y_2(data[0].value) - 25})
+                xy.push({x: width, y: y_2(data[0].value) - 45})
+                svg_2.append("path")
+                    .datum(xy)
+                    .attr("fill", "none")
+                    .attr("stroke", "deeppink")
+                    .attr("stroke-width", 2)
+                    .attr("d", d3.line()
+                        .x(function(d) { return d.x;})
+                        .y(function(d) { return d.y;})
+                    );
+
+                svg_2.append("text").attr("transform", "translate("+(width - 100)+","+(y_2(data[0].value) - 60)+")")
+                    .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
+                    .style("fill", "deeppink").text("Overall deaths so far");
+
+
                 // Add the label at the bottom of the line and annotation
                 xy = [];
                 xy.push({x: 10, y: height - 30})
@@ -1086,6 +1127,10 @@ d3.csv("state_cumulative.csv", function(data) {
                     .attr("class", "focus")
                     .style("display", "none");
 
+                var dfocus = svg_2.append("g")
+                    .attr("class", "focus")
+                    .style("display", "none");
+
                 focus.append("circle")
                     .attr("r", 5);
 
@@ -1098,27 +1143,18 @@ d3.csv("state_cumulative.csv", function(data) {
                     .attr("rx", 4)
                     .attr("ry", 4);
 
-                focus.append("text")
-                    .attr("class", "tooltip-date")
-                    .attr("x", -75)
-                    .attr("y", -45);
-
-                focus.append("text")
-                    .attr("x", -75)
-                    .attr("y", -32)
-                    .text("Cases:");
-
-                focus.append("text")
-                    .attr("class", "tooltip-cases")
-                    .attr("x", -40)
-                    .attr("y", -32);
+                focus.append("text").attr("class", "tooltip-date").attr("x", -75).attr("y", -45);
+                focus.append("text").attr("x", -75).attr("y", -32).text("Cases:");
+                focus.append("text").attr("class", "tooltip-cases").attr("x", -40).attr("y", -32);
+                focus.append("text").attr("x", -75).attr("y", -19).text("Deaths:");
+                focus.append("text").attr("class", "tooltip-deaths").attr("x", -35).attr("y", -19);
 
                 svg_2.append("rect")
                     .attr("class", "overlay")
                     .attr("width", width)
                     .attr("height", height)
-                    .on("mouseover", function() { focus.style("display", null); })
-                    .on("mouseout", function() { focus.style("display", "none"); })
+                    .on("mouseover", function() { focus.style("display", null); dfocus.style("display", null);})
+                    .on("mouseout", function() { focus.style("display", "none"); dfocus.style("display", "none");})
                     .on("mousemove", mousemove);
 
                 var sorted_data = data
@@ -1133,8 +1169,10 @@ d3.csv("state_cumulative.csv", function(data) {
                         d1 = sorted_data[i],
                         d = x0 - d0.date > d1.date - x0 ? d1 : d0;
                     focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.value) + ")");
+                    dfocus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.death) + ")");
                     focus.select(".tooltip-date").text(dateFormatter(d.date));
                     focus.select(".tooltip-cases").text(formatValue(d.value));
+                    focus.select(".tooltip-deaths").text(formatValue(d.death));
                 }
             });
     }
