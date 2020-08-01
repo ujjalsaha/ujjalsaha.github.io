@@ -356,7 +356,7 @@
         // Filter the dataset to get selected state rows only
         var filterdata = data.filter(function (d) {
             console.log("Actualdate: " + parseDate(d.date))
-            console.log("Selecteddate: " + parseDate(parseDate("20200430")))
+            console.log("Selecteddate: " + parseDate("20200430"))
             return parseDate(d.date) < parseDate("20200430")
         })
 
