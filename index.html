@@ -1025,7 +1025,7 @@ d3.csv("state_cumulative.csv", function(data) {
 
                 // Add the label at the tip of the death cases line
                 svg_2.append("text")
-                    .attr("transform", "translate("+(width - 20)+","+(y_2(d.death) - 10)+")")
+                    .attr("transform", "translate("+(width - 20)+","+(y_2(data[0].death) - 10)+")")
                     .attr("dy", ".35em")
                     .attr("text-anchor", "start")
                     .style("font-size", "12px")
