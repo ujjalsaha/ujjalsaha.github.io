@@ -851,13 +851,13 @@ d3.csv("state_cumulative.csv", function(data) {
     var y = d3.scaleLinear()
         .range([200, 0])
         .domain([0, 400000]);
-    var yAxis = d3.axisRight(y);
+    var yAxis = d3.axisRight(y)
+        .ticks(5)
+        .tickValues(["Very Low [< 100,000]", "Low [100,000+]", "Moderate [200,000+]  ", "High [300,000+]", "Extreme [400,000+]"]);
 
     layer4.attr("class", "y axis")
         .attr("transform", "translate(797,275)")
         .call(yAxis)
-        .ticks(5)
-        .tickValues(["Very Low [< 100,000]", "Low [100,000+]", "Moderate [200,000+]  ", "High [300,000+]", "Extreme [400,000+]"])
 
 </script>
 
