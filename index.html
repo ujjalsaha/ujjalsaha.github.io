@@ -682,10 +682,16 @@ d3.csv("state_cumulative.csv", function(data) {
                             .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
 
                         // Add Tooltip for line chart
+                        var dfocus = svg_2.append("g")
+                            .attr("class", "focus")
+                            .style("display", "none");
+
                         var focus = svg_2.append("g")
                             .attr("class", "focus")
                             .style("display", "none");
 
+                        dfocus.append("circle")
+                            .attr("r", 5);
                         focus.append("circle")
                             .attr("r", 5);
 
@@ -717,8 +723,8 @@ d3.csv("state_cumulative.csv", function(data) {
                             .attr("class", "overlay")
                             .attr("width", width)
                             .attr("height", height)
-                            .on("mouseover", function() { focus.style("display", null); })
-                            .on("mouseout", function() { focus.style("display", "none"); })
+                            .on("mouseover", function() { focus.style("display", null); dfocus.style("display", null); })
+                            .on("mouseout", function() { focus.style("display", "none"); dfocus.style("display", "none"); })
                             .on("mousemove", mousemove);
 
                         function mousemove() {
@@ -728,7 +734,7 @@ d3.csv("state_cumulative.csv", function(data) {
                                 d1 = filterdata[i],
                                 d = x0 - d0.date > d1.date - x0 ? d1 : d0;
                             focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
-                            focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.death) + ")");
+                            dfocus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.death) + ")");
                             focus.select(".tooltip-date").text(dateFormatter(d.date));
                             focus.select(".tooltip-cases").text(formatValue(d.positive));
                         }
