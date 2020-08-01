@@ -498,15 +498,23 @@ d3.csv("state_cumulative.csv", function(data) {
                             .domain([0, max_positive])
                             .range([height, 0]);
                         svg_2.append("g")
-                            .call(d3.axisLeft(y_2));
+                            .call(d3.axisLeft(y_2)
+                                    .tickValues([0,max_positive])
+                                    .tickFormat(d3.format(""))
+                            );
+
+                        // gridlines in y axis function
+                        function make_y_gridlines() {
+                            return d3.axisLeft(y_2)
+                                .ticks(10)
+                        }
 
                         // add the Y gridlines
                         svg_2.append("g")
                             .attr("class", "grid")
-                            .call(d3.axisLeft(y_2)
-                                .tickValues([0,max_positive])
-                                .tickFormat(d3.format("-s"))
+                            .call(make_y_gridlines()
                                 .tickSize(-width)
+                                .tickFormat("")
                             )
 
                         // Add the text label for the Y axis
