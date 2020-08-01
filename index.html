@@ -291,9 +291,10 @@
 <br/>
 <div class="header_div">
     <span class="guideline_header">General Facts<br/></span>
-    1. All coronavirus related data used on the graphs and analysis were gathered from https://covidtracking.com/data/api <br/>
-    2. All dates and times are in US eastern time (ET). <br/>
-    3.
+    <span class="bold">Data Sources:</span><br/>
+      1. COVID-19 data: <a href="https://covidtracking.com/data/api">https://covidtracking.com/data/api</a><br/>
+      2. COVID-19 States Reopen dates: <a href="https://www.nytimes.com/interactive/2020/us/states-reopen-map-coronavirus.html">https://www.nytimes.com/interactive/2020/us/states-reopen-map-coronavirus.html</a><br/>
+      3.
 </div>
 
 <script type="text/javascript">
@@ -367,7 +368,7 @@ d3.csv("state_cumulative.csv", function(data) {
             var dataValue = data[i].positive;
             var dataDeath = data[i].death;
             var dataPopulation = data[i].population;
-
+            var dataRopen = data[i].reopen;
 
             // Find the corresponding state inside the GeoJSON
             for (var j = 0; j < json.features.length; j++)  {
@@ -380,6 +381,7 @@ d3.csv("state_cumulative.csv", function(data) {
                     json.features[j].properties.population = dataPopulation;
                     json.features[j].properties.positive = dataValue;
                     json.features[j].properties.death = dataDeath;
+                    json.features[j].properties.reopen = dataRopen;
 
                 // Stop looking through the JSON
                 break;
@@ -428,6 +430,7 @@ d3.csv("state_cumulative.csv", function(data) {
             .on("click", function(d) {
                 // Read the data
                 selected_state = d.properties.state
+                selected_state_reopen = parseDate(d.properties.reopen)
                 d3.csv("all_states_master.csv",
                     // When reading the csv, I must format variables:
                     function(d){
@@ -651,9 +654,9 @@ d3.csv("state_cumulative.csv", function(data) {
                         // Add the annotation
                         svg_2.append("rect")
                             .attr("class", "annotation_box")
-                            .attr("width", 240)
+                            .attr("width", width - (width - x_2(selected_state_reopen)))
                             .attr("height", 370)
-                            .attr("x", 520)
+                            .attr("x", x_2(selected_state_reopen))
                             .attr("y", -20)
                             .attr("rx", 4)
                             .attr("ry", 4);
@@ -673,14 +676,6 @@ d3.csv("state_cumulative.csv", function(data) {
                             .style("font-size", "12px")
                             .style("fill", "deeppink")
                             .text("lockdown and affected overall counts");
-
-                        svg_2.append("text")
-                            .attr("x", 250)
-                            .attr("y", 5)
-                            .attr("text-anchor", "middle")
-                            .style("font-size", "12px")
-                            .style("fill", "deeppink")
-                            .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
 
                         // Add Tooltip for line chart
                         var dfocus = svg_2.append("g")
@@ -1093,9 +1088,9 @@ d3.csv("state_cumulative.csv", function(data) {
                 // Add the annotation
                 svg_2.append("rect")
                     .attr("class", "annotation_box")
-                    .attr("width", 240)
+                    .attr("width", 440)
                     .attr("height", 350)
-                    .attr("x", 520)
+                    .attr("x", 320)
                     .attr("y", 0)
                     .attr("rx", 4)
                     .attr("ry", 4);
@@ -1106,7 +1101,7 @@ d3.csv("state_cumulative.csv", function(data) {
                     .attr("text-anchor", "middle")
                     .style("font-size", "12px")
                     .style("fill", "deeppink")
-                    .text("Shaded area showing reopening after");
+                    .text("Shaded area showing surge in overall counts");
 
                 svg_2.append("text")
                     .attr("x", 640)
@@ -1114,15 +1109,7 @@ d3.csv("state_cumulative.csv", function(data) {
                     .attr("text-anchor", "middle")
                     .style("font-size", "12px")
                     .style("fill", "deeppink")
-                    .text("lockdown and affected overall counts");
-
-                svg_2.append("text")
-                    .attr("x", 250)
-                    .attr("y", 25)
-                    .attr("text-anchor", "middle")
-                    .style("font-size", "12px")
-                    .style("fill", "deeppink")
-                    .text(" -- Un-shaded area showing lockdown period or Stay-at-home order -- ");
+                    .text("as states were reopening from lockdown");
 
                 // Add Tooltip for line chart
                 var focus = svg_2.append("g")
