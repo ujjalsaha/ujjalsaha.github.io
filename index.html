@@ -355,9 +355,10 @@
 
         // Filter the dataset to get selected state rows only
         var filterdata = data.filter(function (d) {
+            console.log("Actualdate: " + parseDate(d.date))
+            console.log("Selecteddate: " + parseDate(parseDate("20200430")))
             return parseDate(d.date) < parseDate("20200430")
         })
-
 
         // Load GeoJSON data and merge with states data
         d3.json("us-states.json", function (json) {
