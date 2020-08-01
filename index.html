@@ -938,6 +938,21 @@ d3.csv("state_cumulative.csv", function(data) {
                         })
                     );
 
+                // Add the line for deaths
+                svg_2.append("path")
+                    .datum(data)
+                    .attr("fill", "none")
+                    .attr("stroke", "orange")
+                    .attr("stroke-width", 3)
+                    .attr("d", d3.line()
+                        .x(function (d) {
+                            return x_2(d.date)
+                        })
+                        .y(function (d) {
+                            return y_2(d.death)
+                        })
+                    )
+
                 // Add the label at the tip of the line and annotation
                 svg_2.append("text")
                     .attr("transform", "translate("+(width - 40)+","+(y_2(data[0].value) - 10)+")")
