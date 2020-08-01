@@ -593,8 +593,8 @@ d3.csv("state_cumulative.csv", function(data) {
                             .text(formatValue(max_death));
 
                         var xy = [];
-                        xy.push({x: width, y: y_2(max_death) - 30})
-                        xy.push({x: width, y: y_2(max_death) - 50})
+                        xy.push({x: width, y: y_2(max_death) - 25})
+                        xy.push({x: width, y: y_2(max_death) - 45})
                         svg_2.append("path")
                             .datum(xy)
                             .attr("fill", "none")
@@ -605,7 +605,7 @@ d3.csv("state_cumulative.csv", function(data) {
                                 .y(function(d) { return d.y;})
                             );
 
-                        svg_2.append("text").attr("transform", "translate("+(width)+","+(y_2(max_death) - 70)+")")
+                        svg_2.append("text").attr("transform", "translate("+(width - 100)+","+(y_2(max_death) - 60)+")")
                             .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
                             .style("fill", "deeppink").text("Overall deaths so far");
 
