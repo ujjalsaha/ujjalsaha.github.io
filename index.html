@@ -330,10 +330,9 @@
         formatValue = d3.format(","),
         dateFormatter = d3.timeFormat("%B %d, %Y");
 
-    end_date = "20200430"
     overall_cases(end_date)
 
-    function overall_cases(end_date) {
+    function overall_cases() {
     // Clear the SVG Chart
     svg.selectAll(`*`).remove();
 
@@ -352,15 +351,16 @@
     d3.csv("state_cumulative.csv", function (data) {
         //color.domain([0,500000]); // setting the range of the input data
 
-        var selected_state = end_date
+        var selected_state = ""
+
 
         // Load GeoJSON data and merge with states data
         d3.json("us-states.json", function (json) {
 
 
             // Filter the dataset to get selected state rows only
-            var data = data.filter(function (d) {
-                return parseDate(d.date) < parseDate(selected_state)
+            var filterdata = data.filter(function (d) {
+                return d.date == selected_state
             })
 
             // Loop through each state data value in the .csv file
