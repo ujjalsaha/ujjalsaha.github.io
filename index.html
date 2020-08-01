@@ -788,7 +788,7 @@ d3.csv("state_cumulative.csv", function(data) {
     // add a legend
     var l_w = 120, l_h = 210;
     layer3.append("text")
-        .attr("x", 800)
+        .attr("x", 780)
         .attr("y", 245)
         .attr("text-anchor", "middle")
         .style("font-size", "11px")
@@ -796,7 +796,7 @@ d3.csv("state_cumulative.csv", function(data) {
         .style("text-decoration", "underline")
         .text("Cumulative");
     layer3.append("text")
-        .attr("x", 800)
+        .attr("x", 780)
         .attr("y", 260)
         .attr("text-anchor", "middle")
         .style("font-size", "11px")
@@ -827,14 +827,14 @@ d3.csv("state_cumulative.csv", function(data) {
         .attr("width", 20)
         .attr("height", 200)
         .style("fill", "url(#gradient)")
-        .attr("transform", "translate(775,275)");
+        .attr("transform", "translate(755,275)");
 
     var y = d3.scaleLinear()
         .range([200, 0])
         .domain([0, 300000]);
     var yAxis = d3.axisRight(y).ticks(10)
     layer4.attr("class", "y axis")
-        .attr("transform", "translate(797,275)")
+        .attr("transform", "translate(777,275)")
         .call(yAxis)
 
 </script>
