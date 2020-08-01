@@ -361,6 +361,7 @@
             console.log("")
             return parseDate(d.date) < parseDate("20200430")
         })
+        console.log(filterdata)
 
         // Load GeoJSON data and merge with states data
         d3.json("us-states.json", function (json) {
