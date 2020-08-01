@@ -172,7 +172,7 @@
         stroke-width: 1.5px;
         stroke-opacity: 0.5;
     }
-    .tooltip-date, .tooltip-cases {
+    .tooltip-date, .tooltip-cases, .tooltip-deaths {
         font-weight: bold;
     }
 </style>
@@ -704,20 +704,9 @@ d3.csv("state_cumulative.csv", function(data) {
                             .attr("rx", 4)
                             .attr("ry", 4);
 
-                        focus.append("text")
-                            .attr("class", "tooltip-date")
-                            .attr("x", -75)
-                            .attr("y", -45);
-
-                        focus.append("text")
-                            .attr("x", -75)
-                            .attr("y", -32)
-                            .text("Cases:");
-
-                        focus.append("text")
-                            .attr("class", "tooltip-cases")
-                            .attr("x", -40)
-                            .attr("y", -32);
+                        focus.append("text").attr("class", "tooltip-date").attr("x", -75).attr("y", -45);
+                        focus.append("text").attr("x", -75).attr("y", -32).text("Cases:");
+                        focus.append("text").attr("x", -75).attr("y", -32).text("Deaths:");
 
                         svg_2.append("rect")
                             .attr("class", "overlay")
@@ -736,7 +725,8 @@ d3.csv("state_cumulative.csv", function(data) {
                             focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.positive) + ")");
                             dfocus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.death) + ")");
                             focus.select(".tooltip-date").text(dateFormatter(d.date));
-                            focus.select(".tooltip-cases").text(formatValue(d.positive));
+                            focus.select(".tooltip-cases").text(formatValue(d.positive))
+                            focus.select(".tooltip-deaths").text(formatValue(d.death));
                         }
 
                      }
