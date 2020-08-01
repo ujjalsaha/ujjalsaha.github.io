@@ -856,6 +856,7 @@ d3.csv("state_cumulative.csv", function(data) {
     layer4.attr("class", "y axis")
         .attr("transform", "translate(797,275)")
         .call(yAxis)
+        .ticks(5)
         .tickValues(["Very Low [< 100,000]", "Low [100,000+]", "Moderate [200,000+]  ", "High [300,000+]", "Extreme [400,000+]"])
 
 </script>
