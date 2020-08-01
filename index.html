@@ -198,9 +198,9 @@
     <span style="color: #aaaaaa; text-decoration: underline">Prev</span>
     <ul>
         <li><span class="selected" href="#">April 2020</span></li>
-        <li><a class="slide_button" href="#">May 2020</a></li>
-        <li><a class="slide_button" href="new_cases.html">June 2020</a></li>
-        <li><a class="slide_button" href="#">July 2020</a></li>
+        <li><a class="slide_button" href="#" onclick="overall_cases('may')">May 2020</a></li>
+        <li><a class="slide_button" href="new_cases.html" onclick="overall_cases('june')">June 2020</a></li>
+        <li><a class="slide_button" href="#" onclick="overall_cases('july')">July 2020</a></li>
     </ul>
     <a style="color:darkmagenta" href="new_cases.html">Next</a>
 
@@ -330,9 +330,9 @@
         formatValue = d3.format(","),
         dateFormatter = d3.timeFormat("%B %d, %Y");
 
-    overall_cases()
+    overall_cases("april")
 
-    function overall_cases() {
+    function overall_cases(month) {
     // Clear the SVG Chart
     svg.selectAll(`*`).remove();
 
@@ -348,7 +348,7 @@
         .style("opacity", 0);
 
     // Load Cumulative State Data
-    d3.csv("state_cumulative/april.csv", function (data) {
+    d3.csv("state_cumulative/" + month + ".csv", function (data) {
         //color.domain([0,500000]); // setting the range of the input data
 
         var selected_state = ""
