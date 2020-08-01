@@ -500,18 +500,13 @@ d3.csv("state_cumulative.csv", function(data) {
                         svg_2.append("g")
                             .call(d3.axisLeft(y_2));
 
-                        // gridlines in y axis function
-                        function make_y_gridlines() {
-                            return d3.axisLeft(y_2)
-                                .ticks(10)
-                        }
-
                         // add the Y gridlines
                         svg_2.append("g")
                             .attr("class", "grid")
-                            .call(make_y_gridlines()
+                            .call(d3.axisLeft(y_2)
+                                .tickValues([0,max_positive])
+                                .tickFormat(d3.format("-s"))
                                 .tickSize(-width)
-                                .tickFormat("")
                             )
 
                         // Add the text label for the Y axis
