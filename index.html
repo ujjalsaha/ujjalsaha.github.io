@@ -355,8 +355,6 @@
 
         // Filter the dataset to get selected state rows only
         var filterdata = data.filter(function (d) {
-            console.log("Actualdate: " + parseDate(d.date))
-            console.log("Selecteddate: " + parseDate("20200430"))
             return parseDate(d.date) < parseDate("20200430")
         })
 
@@ -365,12 +363,13 @@
 
             // Loop through each state data value in the .csv file
             for (var i = 0; i < filterdata.length; i++) {
-
                 var dataState = filterdata[i].state;
                 var dataValue = filterdata[i].positive;
                 var dataDeath = filterdata[i].death;
                 var dataPopulation = filterdata[i].population;
                 var dataRopen = filterdata[i].reopen;
+
+                console.log(dataValue)
 
                 // Find the corresponding state inside the GeoJSON
                 for (var j = 0; j < json.features.length; j++) {
