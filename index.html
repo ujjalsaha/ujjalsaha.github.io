@@ -358,6 +358,7 @@
             return parseDate(d.date) < parseDate("20200430")
         })
 
+        console.log(filterdata.length)
         // Load GeoJSON data and merge with states data
         d3.json("us-states.json", function (json) {
 
@@ -368,8 +369,6 @@
                 var dataDeath = filterdata[i].death;
                 var dataPopulation = filterdata[i].population;
                 var dataRopen = filterdata[i].reopen;
-
-                console.log(dataValue)
 
                 // Find the corresponding state inside the GeoJSON
                 for (var j = 0; j < json.features.length; j++) {
