@@ -862,8 +862,10 @@
                             d1 = sorted_data[i],
                             df = x0 - d0.date.getTime() > d1.date.getTime() - x0 ? d1 : d0;
                         console.log("sorted_data: " + sorted_data.length)
-                        console.log(df.date)
+                        console.log("df.date: " + df.date)
+                        console.log("filterdata[0].date: " + filterdata[0].date)
                         if (df.date.getTime() < filterdata[0].date.getTime()) {
+                            console.log("Inside displaybox")
                             focus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.value) + ")");
                             dfocus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.death) + ")");
                             focus.select(".tooltip-date").text(dateFormatter(df.date));
