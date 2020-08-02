@@ -1043,24 +1043,6 @@
                         .y(function(d) { return d.y;})
                     )
 
-                if (month == "april") {
-                    svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) - 170)+","+(y_2(filterdata[0].value) - 20)+")")
-                        .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                        .style("fill", "deeppink").text("Overall cases as of " + month + " end");
-                } else {
-                    svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) - 200)+","+(y_2(filterdata[0].value) - 20)+")")
-                        .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                        .style("fill", "deeppink").text("Overall cases as of " + month + " end");
-                }
-                var death_ann = ""
-                if (month == "april") { death_ann = "(death counts are spiking)"}
-                else if (month == "may") { death_ann = "(death counts are spiking too)"}
-                else if (month == "may") { death_ann = "(death are spiking more than before)"}
-                else if (month == "may") { death_ann = "(death are spiking more than before)"}
-                else {death_ann = ""}
-                svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) - 170)+","+(y_2(filterdata[0].value) - 20)+")")
-                    .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                    .style("fill", "deeppink").text(death_ann);
 
                 // Add the line for deaths
                 svg_2.append("path")
