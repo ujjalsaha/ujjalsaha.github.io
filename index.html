@@ -331,6 +331,7 @@
         dateFormatter = d3.timeFormat("%B %d, %Y");
 
     overall_cases("april")
+    country_cases("april")
 
     function overall_cases(month) {
         // Clear the SVG Chart
@@ -1022,7 +1023,7 @@
 
                 // Add the label at the tip of the line and annotation
                 svg_2.append("text")
-                    .attr("transform", "translate("+(width - 40)+","+(y_2(filterdata[0].value) - 10)+")")
+                    .attr("transform", "translate("+(x_2(filterdata[0].date) - 40)+","+(y_2(filterdata[0].value) - 10)+")")
                     .attr("dy", ".35em")
                     .attr("text-anchor", "start")
                     .style("font-size", "12px")
@@ -1030,8 +1031,8 @@
                     .text(formatValue(filterdata[0].value));
 
                 xy = [];
-                xy.push({x: width - 45, y: y_2(filterdata[0].value) - 10})
-                xy.push({x: width - 60, y: y_2(filterdata[0].value) - 10})
+                xy.push({x: x_2(filterdata[0].date) - 45, y: y_2(filterdata[0].value) - 10})
+                xy.push({x: x_2(filterdata[0].date) - 60, y: y_2(filterdata[0].value) - 10})
                 svg_2.append("path")
                     .datum(xy)
                     .attr("fill", "none")
@@ -1042,9 +1043,9 @@
                         .y(function(d) { return d.y;})
                     )
 
-                svg_2.append("text").attr("transform", "translate("+(width - 170)+","+(y_2(filterdata[0].value) - 10)+")")
+                svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) - 170)+","+(y_2(filterdata[0].value) - 10)+")")
                     .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                    .style("fill", "deeppink").text("Overall cases so far");
+                    .style("fill", "deeppink").text("Overall cases as of " + month + " end");
 
                 // Add the line for deaths
                 svg_2.append("path")
@@ -1063,7 +1064,7 @@
 
                 // Add the label at the tip of the death cases line
                 svg_2.append("text")
-                    .attr("transform", "translate("+(width - 30)+","+(y_2(filterdata[0].death) - 10)+")")
+                    .attr("transform", "translate("+(x_2(filterdata[0].date) - 30)+","+(y_2(filterdata[0].death) - 10)+")")
                     .attr("dy", ".35em")
                     .attr("text-anchor", "start")
                     .style("font-size", "12px")
@@ -1071,8 +1072,8 @@
                     .text(formatValue(data[0].death));
 
                 var xy = [];
-                xy.push({x: width, y: y_2(filterdata[0].death) - 25})
-                xy.push({x: width, y: y_2(filterdata[0].death) - 45})
+                xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].death) - 25})
+                xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].death) - 45})
                 svg_2.append("path")
                     .datum(xy)
                     .attr("fill", "none")
@@ -1083,9 +1084,9 @@
                         .y(function(d) { return d.y;})
                     );
 
-                svg_2.append("text").attr("transform", "translate("+(width - 100)+","+(y_2(filterdata[0].death) - 60)+")")
+                svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) - 100)+","+(y_2(filterdata[0].death) - 60)+")")
                     .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                    .style("fill", "deeppink").text("Overall deaths so far");
+                    .style("fill", "deeppink").text("Overall deaths as of " + month + " end");
 
 
                 // Add the label at the bottom of the line and annotation
@@ -1126,44 +1127,50 @@
                     .attr("text-anchor", "start").style("font-size", "12px")
                     .style("fill", "deeppink").text("begins");
 
-                // Add the annotation
-                svg_2.append("rect")
-                    .attr("class", "annotation_box")
-                    .attr("width", 430)
-                    .attr("height", 347)
-                    .attr("x", 335)
-                    .attr("y", 0)
-                    .attr("rx", 4)
-                    .attr("ry", 4);
+                // AT the end  Add the annotation
+                if (month == "june") {
+                    svg_2.append("rect")
+                        .attr("class", "annotation_box")
+                        .attr("width", 430)
+                        .attr("height", 367)
+                        .attr("x", 335)
+                        .attr("y", -20)
+                        .attr("rx", 4)
+                        .attr("ry", 4);
 
-                xy = [];
-                xy.push({x: 300, y: 10})
-                xy.push({x: 330, y: 10})
-                svg_2.append("path")
-                    .datum(xy)
-                    .attr("fill", "none")
-                    .attr("stroke", "deeppink")
-                    .attr("stroke-width", 2)
-                    .attr("d", d3.line()
-                        .x(function(d) { return d.x;})
-                        .y(function(d) { return d.y;})
-                    )
+                    xy = [];
+                    xy.push({x: 300, y: 10})
+                    xy.push({x: 330, y: 10})
+                    svg_2.append("path")
+                        .datum(xy)
+                        .attr("fill", "none")
+                        .attr("stroke", "deeppink")
+                        .attr("stroke-width", 2)
+                        .attr("d", d3.line()
+                            .x(function (d) {
+                                return d.x;
+                            })
+                            .y(function (d) {
+                                return d.y;
+                            })
+                        )
 
-                svg_2.append("text")
-                    .attr("x", 50)
-                    .attr("y", 10)
-                    .attr("text-anchor", "left")
-                    .style("font-size", "12px")
-                    .style("fill", "deeppink")
-                    .text("Shaded area showing surge in overall counts");
+                    svg_2.append("text")
+                        .attr("x", 50)
+                        .attr("y", 10)
+                        .attr("text-anchor", "left")
+                        .style("font-size", "12px")
+                        .style("fill", "deeppink")
+                        .text("Shaded area showing surge in overall counts");
 
-                svg_2.append("text")
-                    .attr("x", 50)
-                    .attr("y", 20)
-                    .attr("text-anchor", "left")
-                    .style("font-size", "12px")
-                    .style("fill", "deeppink")
-                    .text("as states were reopening from lockdown");
+                    svg_2.append("text")
+                        .attr("x", 50)
+                        .attr("y", 20)
+                        .attr("text-anchor", "left")
+                        .style("font-size", "12px")
+                        .style("fill", "deeppink")
+                        .text("as states were reopening from lockdown");
+                }
 
                 // Add Tooltip for line chart
                 var focus = svg_2.append("g")
