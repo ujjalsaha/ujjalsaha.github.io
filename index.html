@@ -510,6 +510,7 @@
                         pdate = parseDate("20200630")
                         for (i = 0; i < filterdata.length ; i++) {
                             if (filterdata[i].date == pdate) {
+                                console.log("June Match")
                                 value = filterdata[i].value
                             }
                         }
@@ -586,6 +587,7 @@
                             console.log("filterdata[" + i + "].date: " + filterdata[i].date)
                             console.log("pdate: " + pdate)
                             if (filterdata[i].date == pdate) {
+                                console.log("April Match")
                                 value = filterdata[i].value
                             }
                         }
