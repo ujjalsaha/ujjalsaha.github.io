@@ -1995,7 +1995,7 @@
                         }
 
                         svg_4.append("text")
-                            .attr("transform", "translate("+(x_2(pdate) - 10)+","+(y_2(value) - 50)+")")
+                            .attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 50)+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "end")
                             .style("font-size", "12px")
@@ -2015,10 +2015,10 @@
                                 .y(function(d) { return d.y;})
                             )
 
-                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 70)+")")
+                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 75)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                             .style("fill", "deeppink").text("(FL, AZ, GA started reporting huge daily cases)");
-                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 60)+")")
+                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 65)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                             .style("fill", "deeppink").text("Cases as of June end");
                     case 'may':
@@ -2031,7 +2031,7 @@
                         }
 
                         svg_4.append("text")
-                            .attr("transform", "translate("+(x_2(pdate) + 5)+","+(y_2(value) - 15)+")")
+                            .attr("transform", "translate("+(x_2(pdate) + 5)+","+(y_2(value) - 55)+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "end")
                             .style("font-size", "12px")
@@ -2039,8 +2039,8 @@
                             .text(formatValue(value));
 
                         xy = [];
-                        xy.push({x: x_2(pdate), y: y_2(value) - 45})
-                        xy.push({x: x_2(pdate), y: y_2(value) - 25})
+                        xy.push({x: x_2(pdate), y: y_2(value) - 40})
+                        xy.push({x: x_2(pdate), y: y_2(value) - 5})
                         svg_4.append("path")
                             .datum(xy)
                             .attr("fill", "none")
@@ -2051,10 +2051,10 @@
                                 .y(function(d) { return d.y;})
                             )
 
-                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 65)+")")
+                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 75)+")")
                             .attr("dy", ".35em").attr("text-anchor", "middle").style("font-size", "12px")
                             .style("fill", "deeppink").text("(CA, TX, started reporting huge daily cases)");
-                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 55)+")")
+                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 65)+")")
                             .attr("dy", ".35em").attr("text-anchor", "middle").style("font-size", "12px")
                             .style("fill", "deeppink").text("Cases as of May end");
                     case 'april':
