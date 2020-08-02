@@ -3141,24 +3141,28 @@
                 );
         }
 
+        new_york_comment_line0 = ""
         new_york_comment_line1 = ""
         new_york_comment_line2 = ""
         if (month == "may"){
-            new_york_comment_line1 = "New York is not spiking anymore. Although total cases";
-            new_york_comment_line2 = "are high. But less new cases which is good news.";
-            illinois_comment_line1 = "Illinois new case counts recducing as well"
+            new_york_comment_line0 = "New York is not spiking anymore.";
+            new_york_comment_line1 = "Although total cases are high";
+            new_york_comment_line2 = "but less new cases which is good news.";
+            illinois_comment_line1 = "Illinois new case counts reducing as well"
 
         }
         if (month == "april"){
-            new_york_comment_line1 = "New York is the first state to cross 4K cases";
-            new_york_comment_line2 = "in single day. Other states are spiking";
+            new_york_comment_line1 = "New York is the first state to";
+            new_york_comment_line2 = "report 4k+ new cases in single day";
             illinois_comment_line1 = "Illinois also reporting new cases more than most of other states"
         }
         if (month == "july"){
-            new_york_comment_line1 = "New York state appears to be going downward trend";
-            new_york_comment_line2 = "in reporting new cases. State seems recovering well.";
+            new_york_comment_line0 = "New York state new cases appears to be";
+            new_york_comment_line1 = "going downward trend. This might be an";
+            new_york_comment_line2 = "indication that State seems to be recovering";
             illinois_comment_line1 = "Illinois new cases are in much control like New York"
         }
+        layer3.append("text").attr("x", width - 210).attr("y", 70).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text(new_york_comment_line0);
         layer3.append("text").attr("x", width - 210).attr("y", 80).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text(new_york_comment_line1);
         layer3.append("text").attr("x", width - 210).attr("y", 90).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text(new_york_comment_line2);
         layer3.append("text").attr("x", width - 380).attr("y", 50).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink")
