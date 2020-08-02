@@ -1995,7 +1995,7 @@
                         }
 
                         svg_4.append("text")
-                            .attr("transform", "translate("+(x_2(pdate) - 10)+","+(y_2(value) - 25)+")")
+                            .attr("transform", "translate("+(x_2(pdate) - 10)+","+(y_2(value) - 50)+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "end")
                             .style("font-size", "12px")
@@ -2003,8 +2003,8 @@
                             .text(formatValue(value));
 
                         xy = [];
-                        xy.push({x: x_2(pdate), y: y_2(value) - 50})
-                        xy.push({x: x_2(pdate), y: y_2(value) - 35})
+                        xy.push({x: x_2(pdate), y: y_2(value) - 40})
+                        xy.push({x: x_2(pdate), y: y_2(value) - 5})
                         svg_4.append("path")
                             .datum(xy)
                             .attr("fill", "none")
