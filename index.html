@@ -1054,7 +1054,7 @@
                                     .attr("class", "background_box")
                                     .attr("width", 850 + margin.left + margin.right)
                                     .attr("height", 450 + margin.top + margin.bottom)
-                                    .attr("x", -margin.right)
+                                    .attr("x", -(margin.right + margin.left))
                                     .attr("y", -margin.top);
 
                                 var max_positive = filterdata[0].positive
