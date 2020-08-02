@@ -841,10 +841,10 @@
                 focus.append("text").attr("x", -75).attr("y", -19).text("Deaths:");
                 focus.append("text").attr("class", "tooltip-deaths").attr("x", -35).attr("y", -19);
 
-                console.log("filterdata[filterdata.length -1].date: " + filterdata[filterdata.length -1].date)
-                console.log("x_2(filterdata[filterdata.length -1].date): " + x_2(filterdata[filterdata.length -1].date))
-                console.log("filterdata[filterdata.length -1].value: " + filterdata[filterdata.length -1].value)
-                console.log("y_2(filterdata[filterdata.length -1].value): " + y_2(filterdata[filterdata.length -1].valye))
+                console.log("filterdata[filterdata.length -1].date: " + filterdata[0].date)
+                console.log("x_2(filterdata[filterdata.length -1].date): " + x_2(filterdata[0].date))
+                console.log("filterdata[filterdata.length -1].value: " + filterdata[0].value)
+                console.log("y_2(filterdata[filterdata.length -1].value): " + y_2(filterdata[0].value))
                 svg_2.append("rect")
                     .attr("class", "overlay")
                     .attr("width", x_2(filterdata[filterdata.length -1].date))
