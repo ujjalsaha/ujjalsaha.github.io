@@ -1793,15 +1793,18 @@
         if (selected_month == "april") {
             overall_cases_map("may")
         }
-        if (selected_month == "may") {
+        else if (selected_month == "may") {
             overall_cases_map("june")
         }
-        if (selected_month == "june") {
+        else if (selected_month == "june") {
             overall_cases_map("july")
         }
-        if (selected_month == "july") {
+        else if (selected_month == "july") {
             document.getElementById('next').style.visibility = "hiddden"
             document.getElementById('next_span').style.visibility = "visible"
+        }
+        else {
+            // NO OP
         }
     }
 
@@ -1810,14 +1813,17 @@
             document.getElementById('prev').style.visibility = "hiddden"
             document.getElementById('prev_span').style.visibility = "visible"
         }
-        if (selected_month == "may") {
+        else if (selected_month == "may") {
             overall_cases_map("april")
         }
-        if (selected_month == "june") {
+        else if (selected_month == "june") {
             overall_cases_map("may")
         }
-        if (selected_month == "july") {
+        else if (selected_month == "july") {
             overall_cases_map("june")
+        }
+        else {
+            // NO OP
         }
     }
 </script>
