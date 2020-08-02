@@ -896,9 +896,10 @@
             "&nbsp;&nbsp;2. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Cross Filter (State selected from Map)</span> -> Clicking a state from the Overall or New Cases maps and that will bring yp state level cases counts on the corresponding line charts. Use the button to switch to country view.<br/>" +
             "&nbsp;&nbsp;3. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Button (Switch to Country Level)  </span> -> On the Line char, the button is provided to Switch on entire United States data at any point while interacting with state data from map.<br/>";
 
-            document.getElementById('april').style.background = "gray"
-            document.getElementById('april').href = "#"
-            // document.getElementById('april').style.visibility = "hidden"
+            document.getElementById('april').style.background = "lightgray"
+            document.getElementById('may').style.background = "burlywood"
+            document.getElementById('june').style.background = "burlywood"
+            document.getElementById('july').style.background = "burlywood"
 
             console.log("april js done")
         }
@@ -906,19 +907,31 @@
             console.log("may")
             document.getElementById('scene_info').innerHTML = "<span  class='scene_header'>Scene 2 - " + month.toUpperCase() + " 2020: </span> Shows impact of COVID-19 across states in United States but in terms of cumulative confirmed cases." +
                 "The Scene is comprised of a Map chart and Line Chart that shows how overall cases has impacted various states since beginning of pandemic and how overall cases has increased over the period (cumulative) and is still increasing. More description and user control options are mentioned on respective charts.";
-            console.log("may js done ")
+
+            document.getElementById('april').style.background = "burlywood"
+            document.getElementById('may').style.background = "lightgray"
+            document.getElementById('june').style.background = "burlywood"
+            document.getElementById('july').style.background = "burlywood"
         }
         else if (month == "june"){
             console.log("june")
             document.getElementById('scene_info').innerHTML = "<span  class='scene_header'>Scene 3 - " + month.toUpperCase() + " 2020: </span> Shows impact of COVID-19 across states in United States but in terms of cumulative confirmed cases." +
                 "The Scene is comprised of a Map chart and Line Chart that shows how overall cases has impacted various states since beginning of pandemic and how overall cases has increased over the period (cumulative) and is still increasing. More description and user control options are mentioned on respective charts.";
-            console.log("june js done ")
+
+            document.getElementById('april').style.background = "burlywood"
+            document.getElementById('may').style.background = "burlywood"
+            document.getElementById('june').style.background = "lightgray"
+            document.getElementById('july').style.background = "burlywood"
         }
         else {
             console.log("july")
             document.getElementById('scene_info').innerHTML = "<span  class='scene_header'>Scene 4 - " + month.toUpperCase() + " 2020: </span> Shows impact of COVID-19 across states in United States but in terms of cumulative confirmed cases." +
                 "The Scene is comprised of a Map chart and Line Chart that shows how overall cases has impacted various states since beginning of pandemic and how overall cases has increased over the period (cumulative) and is still increasing. More description and user control options are mentioned on respective charts.";
-            console.log("july js done ")
+
+            document.getElementById('april').style.background = "burlywood"
+            document.getElementById('may').style.background = "burlywood"
+            document.getElementById('june').style.background = "burlywood"
+            document.getElementById('july').style.background = "lightgray"
         }
 
         selected_month = month
