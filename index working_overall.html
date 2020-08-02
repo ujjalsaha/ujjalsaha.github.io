@@ -214,25 +214,63 @@
     <table>
         <tr>
             <td valign="top">
-                <div id="svg_3" style="overflow: visible"></div>
-                <br/><br/>
-                <div style="padding-left: 10px">
-                    <input if="back_button_new" name="back_button_new"
-                           type="button"
-                           value="Back to New Cases for United States"
-                           onclick="back_to_overall_country()" />
+                <div style="max-width: 700px; line-height: 20px;padding: 20px">
+                    <span class="guideline_header">Map - Showing Cumulative Confirmed Cases for Each States of United States</span><br/>
+                    <p>
+                        Seeing the total number of confirmed cases over time, can illustrate how the pandemic is expanding within the country.
+                        The map shows cumulative cases for each states – which means, till date the total number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered or died.
+                        The coloring scale on the map shows states that are red most affected in red to gradually fading to gray states that are having least number of cases. With the color grading scale, we are seeing see most states have been affected so far with with few of them having high concentration of infected people.
+                        From the map, as an <span class="bold"> observation </span> we see states like New York, California, New Jersey, Florida, Texas etc are the hard hit areas with highest count of cumulative COVID-19 cases so far.
+                    </p>
+                    <p>
+                        <span class="bold">User Controls:</span><br/>
+                        The map is interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:<br/>
+                        &nbsp;&nbsp;1. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Tooltip </span> -> Hovering over any state shows the cases counts and few other info.<br/>
+                        &nbsp;&nbsp;2. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Cross Filter (Parameter: State)</span> -> Clicking a state from the map with bring up respective state's cumulative case count on the line chart.<br/>
+                    </p>
                 </div>
-                <div id="svg_4" ></div>
             </td>
-            </td>
-            <td>
             <td>
                 <div id="svg_1" style="overflow: visible"></div>
-                <br/><br/>
+            </td>
+        </tr>
+    </table>
+</div>
+<br/>
+<div class="header_div">
+    <!-- table border="1" -->
+    <table>
+        <tr>
+            <td valign="top" >
+                <div style="max-width: 700px; line-height: 20px;padding: 20px">
+                    <span class="guideline_header">Line Chart - Cumulative Confirmed Cases for the United States</span><br/>
+                    <p>
+                        The line chart here shows:<br/>
+                        &nbsp;&nbsp;1. For entire United States at what pace the overall cases are increasing<br/>
+                        &nbsp;&nbsp;2. If user clicks on a state on the above map, as cross-filter is enable, the view on the line chart will switch to state level and will show state level overall case count.<br/>
+                    </p>
+                    <p>
+                        A fine <span class="bold"> observation </span> we noticed this graph has an upward bend that can indicate more cases are being report in last few weeks then ever before.
+                        Around late June, when the lockdown was lifted, there is sudden rise in the curve which would mean as states are opening more community spreading is also aggressive.
+                        The color blue was used just to make it appealing, where blue itself has no color significance on the line chart.
+                    </p>
+                    <p>
+                        <span class="bold">Annotations:</span><br/>
+                        The line chart has also couple of annotations:<br/>
+                        &nbsp;&nbsp;1. A vertical line that shows when states re-opened from lockdown and post lockdown effect of coronavirus on people.<br/>
+                        &nbsp;&nbsp;2. At the tip of the line chart, show the total case count for the latest date.<br/>
+                    </p>
+                    <p>
+                        <span class="bold">User Controls:</span><br/>
+                        The line is also interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:<br/>
+                    </p>
+                </div>
+            </td>
+            <td valign="top">
                 <div style="padding-left: 10px">
-                    <input if="back_button_overall" name="back_button_overall"
+                    <input name="updateButton"
                            type="button"
-                           value="Back ases for United States"
+                           value="Overall Cases for United States"
                            onclick="back_to_overall_country()" />
                 </div>
                 <div id="svg_2" ></div>
@@ -240,7 +278,6 @@
         </tr>
     </table>
 </div>
-<br/>
 <br/>
 <div class="header_div">
     <span class="guideline_header">Definitions of the Parameters:</span><br/>
