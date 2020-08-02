@@ -2501,6 +2501,7 @@
                                 var filterdata_temp = data.filter(function (d) {
                                     return d.state == selected_state
                                 })
+
                                 // Filter the dataset to get selected date rows only
                                 var filterdata = filterdata_temp.filter(function (d) {
                                     if (month == "april"){
@@ -2545,6 +2546,9 @@
                                     min_death = (parseInt(filterdata_temp[i].death) < min_positive) ? parseInt(filterdata_temp[i].death) : min_death
                                 }
 
+                                console.log("month: " + month)
+                                console.log("filterdata_temp.length: " + filterdata_temp.length)
+                                console.log("filterdata.length: " + filterdata.length)
                                 console.log("max_positive: " + max_positive)
                                 console.log("min_positive: " + min_positive)
                                 console.log("max_death: " + max_death)
