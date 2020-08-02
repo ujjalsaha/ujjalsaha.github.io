@@ -1479,6 +1479,7 @@
                                 focus.append("text").attr("x", -75).attr("y", -19).text("Deaths:");
                                 focus.append("text").attr("class", "tooltip-deaths").attr("x", -35).attr("y", -19);
 
+                                console.log("filterdata[0].date: " + filterdata[0].date)
                                 svg_2.append("rect")
                                     .attr("class", "overlay")
                                     .attr("width", x_3(filterdata[0].date))
