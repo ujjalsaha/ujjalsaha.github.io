@@ -1797,23 +1797,20 @@
             overall_cases_map("june")
         }
         else if (selected_month == "june") {
-            overall_cases_map("july")
-        }
-        else if (selected_month == "july") {
             document.getElementById('next').style.visibility = "hiddden"
             document.getElementById('next_span').style.visibility = "visible"
+            overall_cases_map("july")
         }
-        else {
+        else (selected_month == "july") {
             // NO OP
         }
     }
 
     function prev_slide() {
-        if (selected_month == "april") {
+        if (selected_month == "may") {
             document.getElementById('prev').style.visibility = "hiddden"
             document.getElementById('prev_span').style.visibility = "visible"
-        }
-        else if (selected_month == "may") {
+
             overall_cases_map("april")
         }
         else if (selected_month == "june") {
