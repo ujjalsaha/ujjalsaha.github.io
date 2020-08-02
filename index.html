@@ -666,9 +666,9 @@
                     console.log("sorted_data: " + sorted_data.length)
                     focus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.value) + ")");
                     dfocus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.death) + ")");
-                    focus.select(".tooltip-date").text(dateFormatter(d.date));
-                    focus.select(".tooltip-cases").text(formatValue(d.value));
-                    focus.select(".tooltip-deaths").text(formatValue(d.death));
+                    focus.select(".tooltip-date").text(dateFormatter(df.date));
+                    focus.select(".tooltip-cases").text(formatValue(df.value));
+                    focus.select(".tooltip-deaths").text(formatValue(df.death));
                 }
             });
     }
