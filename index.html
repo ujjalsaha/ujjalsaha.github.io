@@ -902,8 +902,9 @@
             document.getElementById('may').style.background = "burlywood"
             document.getElementById('june').style.background = "burlywood"
             document.getElementById('july').style.background = "burlywood"
+            document.getElementById('prev').style.display = "none"
+            document.getElementById('prev_span').style.display = "block"
 
-            console.log("april js done")
         }
         else if (month == "may"){
             console.log("may")
@@ -934,6 +935,8 @@
             document.getElementById('may').style.background = "burlywood"
             document.getElementById('june').style.background = "burlywood"
             document.getElementById('july').style.background = "lightgray"
+            document.getElementById('next').style.display = "none"
+            document.getElementById('next_span').style.display = "block"
         }
 
         selected_month = month
@@ -1797,8 +1800,8 @@
             overall_cases_map("june")
         }
         else if (selected_month == "june") {
-            document.getElementById('next').style.visibility = "hiddden"
-            document.getElementById('next_span').style.visibility = "visible"
+            document.getElementById('next').style.display = "none"
+            document.getElementById('next_span').style.display = "block"
             overall_cases_map("july")
         }
         else {
@@ -1808,8 +1811,8 @@
 
     function prev_slide() {
         if (selected_month == "may") {
-            document.getElementById('prev').style.visibility = "hiddden"
-            document.getElementById('prev_span').style.visibility = "visible"
+            document.getElementById('prev').style.display = "none"
+            document.getElementById('prev_span').style.display = "block"
 
             overall_cases_map("april")
         }
