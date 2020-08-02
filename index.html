@@ -160,17 +160,13 @@
     .unshaded_annotation_box{
         fill: gainsboro;
         fill-opacity: 0.3;
-        stroke-width: 1.5px;
-        stroke-opacity: 0.5;
     }
 
     .annotation_box{
         fill: gainsboro;
         fill-opacity: 0.3;
-        stroke: deeppink;
-        stroke-width: 1.5px;
-        stroke-opacity: 0.5;
     }
+
     .tooltip-date, .tooltip-cases, .tooltip-deaths {
         font-weight: bold;
     }
@@ -490,7 +486,7 @@
 
                 // Add the CONFIRMED label at the tip of the line and annotation
                 svg_2.append("text")
-                    .attr("transform", "translate("+(x_2(filterdata[0].date) - 40)+","+(y_2(filterdata[0].value) - 10)+")")
+                    .attr("transform", "translate("+(x_2(filterdata[0].date) - 40)+","+(y_2(filterdata[0].value) - 15)+")")
                     .attr("dy", ".35em")
                     .attr("text-anchor", "start")
                     .style("font-size", "12px")
@@ -498,8 +494,8 @@
                     .text(formatValue(filterdata[0].value));
 
                 xy = [];
-                xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].value) - 40})
-                xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].value) - 20})
+                xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].value) - 45})
+                xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].value) - 25})
                 svg_2.append("path")
                     .datum(xy)
                     .attr("fill", "none")
@@ -516,10 +512,10 @@
                 else if (month == "june") { cases_ann = "(The Curve is spiking up)"}
                 else if (month == "july") { cases_ann = "(Sharp rise in the curve after reopening)"}
                 else {cases_ann = ""}
-                svg_2.append("text").attr("transform", "translate("+x_2(filterdata[0].date)+","+(y_2(filterdata[0].value) - 60)+")")
+                svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) + 10)+","+(y_2(filterdata[0].value) - 65)+")")
                     .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                     .style("fill", "deeppink").text(cases_ann);
-                svg_2.append("text").attr("transform", "translate("+x_2(filterdata[0].date)+","+(y_2(filterdata[0].value) - 50)+")")
+                svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) + 10)+","+(y_2(filterdata[0].value) - 55)+")")
                     .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                     .style("fill", "deeppink").text("Cases as of " + month + " end");
 
@@ -561,15 +557,14 @@
                         .y(function(d) { return d.y;})
                     );
 
-                var death_x = (month == "april") ? x_2(filterdata[0].date) - 30 : x_2(filterdata[0].date) - 100
                 if (month == "april") {
-                    svg_2.append("text").attr("transform", "translate("+death_x+","+(y_2(filterdata[0].death) - 50)+")")
+                    svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) - 30)+","+(y_2(filterdata[0].death) - 50)+")")
                         .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
                         .style("fill", "deeppink").text("Overall deaths as of " + month + " end");
                 }
                 else{
                     daheight = (month == "may") ? 60 : (month == "june") ? 70 : (month == "july") ? 80 : 50
-                    svg_2.append("text").attr("transform", "translate("+death_x+","+(y_2(filterdata[0].death) - daheight)+")")
+                    svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) + 5)+","+(y_2(filterdata[0].death) - daheight)+")")
                         .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                         .style("fill", "deeppink").text("Overall deaths as of " + month + " end");
                 }
@@ -580,7 +575,7 @@
                     svg_2.append("rect")
                         .attr("class", "annotation_box")
                         .attr("width", 430)
-                        .attr("height", 360)
+                        .attr("height", 355)
                         .attr("x", 335)
                         .attr("y", -13)
                         .attr("rx", 4)
