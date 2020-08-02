@@ -275,7 +275,7 @@
                     <input name="updateButton"
                            type="button"
                            value="Overall Cases for United States"
-                           onclick="country_cases(month)" />
+                           onclick="back_to_country()" />
                 </div>
                 <div id="svg_2" ></div>
             </td>
@@ -300,6 +300,7 @@
 
 <script>
 
+    var selected_month = ""
     var formatValue = d3.format(",")
     var parseDate = d3.timeParse("%Y%m%d"),
         bisectDate = d3.bisector(function(d) { return d.date; }).left,
@@ -327,10 +328,16 @@
 
     overall_cases("april")
 
+    back_to_country()
+    {
+        country_cases(selected_month)
+    }
+
     /* ################################################################ */
     /* ########################## LINE CHART ########################## */
     /* ################################################################ */
     function country_cases(month) {
+        selected_month = month
         // set the dimensions and margins of the graph
         margin = {top: 70, right: 30, bottom: 60, left: 80},
         width = 850 - margin.left - margin.right,
@@ -651,6 +658,7 @@
     /* ########################## MAP ########################## */
     /* ######################################################### */
     function overall_cases(month) {
+        selected_month = month
         margin = {top: 0, right: 0, bottom: 0, left: 0}
         width = 850;
         height = 500;
