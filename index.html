@@ -1016,9 +1016,32 @@
                                 svg_2.selectAll(`*`).remove();
 
                                 // Filter the dataset to get selected state rows only
-                                var filterdata = data.filter(function (d) {
+                                var filterdata_temp = data.filter(function (d) {
                                     return d.state == selected_state
                                 })
+                                // Filter the dataset to get selected state rows only
+                                var filterdata = filterdata_temp.filter(function (d) {
+                                    if (month == "april"){
+                                        //console.log("Month April: " + month)
+                                        return d.date < parseDate("20200501")
+                                    }
+                                    else if (month == "may"){
+                                        //console.log("Month may: " + month)
+                                        return d.date < parseDate("20200601")
+                                    }
+                                    else if (month == "june"){
+                                        //console.log("Month June: " + month)
+                                        return d.date < parseDate("20200701")
+                                    }
+                                    else if (month == "july"){
+                                        //console.log("Month July: " + month)
+                                        return d.date < parseDate("20200725")
+                                    }
+                                    else{
+                                        return true
+                                    }
+                                })
+
                                 var max_positive = filterdata[0].positive
                                 var min_positive = filterdata[filterdata.length - 1].positive
                                 var max_death = filterdata[0].death
