@@ -339,6 +339,8 @@
         }
         else if (selected_month == "july")
         {
+            console.log("222 selected month: " + selected_month)
+
             overall_cases_line("april")
             overall_cases_line("may")
             overall_cases_line("june")
@@ -1331,6 +1333,7 @@
             .attr("transform", "translate(777,275)")
             .call(yAxis)
 
+        console.log("111 selected month: " + selected_month)
         back_to_overall_country()
     }
 </script>
