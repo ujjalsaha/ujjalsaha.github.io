@@ -890,9 +890,9 @@
         if (month == "april"){
             console.log("april")
             document.getElementById('scene_info').innerHTML = "<span  class='scene_header'>Scene 1 - " + month.toUpperCase() + " 2020: </span><br/> " +
-            "Shows impact of COVID-19 across states in United States but in terms of cumulative confirmed cases." +
-            "The Scene is comprised of a Map chart and Line Chart on left hand side that shows how overall cases has impacted various states since beginning of pandemic until Apr 2020. Most of the states seems just psiking while New York has been hit hard." +
-            "The Scene is also comprised of a Map chart and Line Chart on left hand side that shows how new rising  cases since beginning of pandemic until Apr 2020. Daily counts on New York state are spiking aggressively. While some otehr states like California, Illinois, New Jeysey are also following the spike</br>" +
+            "Shows impact of COVID-19 across states in United States from beginning until Apr end. For better representation of data we have consideres data starting from Mar 16, 2020." +
+            "The Scene is comprised of a Map chart and Line Chart on right hand side that shows how overall cases has impacted various states since beginning of pandemic until Apr 2020. Most of the states seems spiking while New York has been hit hard." +
+            "The Scene is also comprised of a Map chart and Line Chart on left hand side that shows new rising cases since beginning of pandemic until Apr 2020. Daily counts on New York state are spiking aggressively. While some otehr states like California, Illinois, New Jeysey are also having daily new cases the spike</br>" +
             "<span style='font-size:small; font-weight: bold; color: #aaaaaa'>User Controls:</span><br/>" +
             "&nbsp;&nbsp;1. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Tooltip </span> -> Hovering over on Map Chart and line chart area will display the tooltip showing case count and otehr info.<br/>" +
             "&nbsp;&nbsp;2. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Cross Filter (State selected from Map)</span> -> Clicking a state from the Overall or New Cases maps and that will bring yp state level cases counts on the corresponding line charts. Use the button to switch to country view.<br/>" +
@@ -1178,12 +1178,11 @@
                                     .style("font-size", "10px")
                                     .text("Mar 16");
 
-                                e_date = (month == "april") ? "Apr 30" : (month == "may") ? "May 31" : (month =="june") ? "Jun 30" : "Jul 24";
                                 svg_2.append("text")
                                     .attr("transform", "translate(" + (width + 5) + " ," + (height + 16) + ")")
                                     .style("text-anchor", "middle")
                                     .style("font-size", "10px")
-                                    .text(e_date);
+                                    .text("Jul 24")
 
                                 // Add the line for confirmed
                                 const path = svg_2.append("path")
