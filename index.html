@@ -362,19 +362,19 @@
                 var filterdata = data.filter(function (d) {
                     if (month == "april"){
                         console.log("Month April: " + month)
-                        return d.date < parseDate("20200430")
+                        return d.date < parseDate("20200501")
                     }
                     else if (month == "may"){
                         console.log("Month may: " + month)
-                        return d.date < parseDate("20200531")
+                        return d.date < parseDate("20200601")
                     }
                     else if (month == "june"){
                         console.log("Month June: " + month)
-                        return d.date < parseDate("20200630")
+                        return d.date < parseDate("20200701")
                     }
                     else if (month == "july"){
                         console.log("Month July: " + month)
-                        return d.date < parseDate("20200731")
+                        return d.date < parseDate("20200725")
                     }
                     else{
                         return true
@@ -589,6 +589,7 @@
                             if (filterdata[i].date == pdate) {
                                 console.log("April Match")
                                 value = filterdata[i].value
+                                break;
                             }
                         }
                         console.log("Apr value: " + value)
