@@ -548,7 +548,7 @@
                     .text(formatValue(data[0].death));
 
                 var xy = [];
-                daheight = (month == "april") ? 40 : (month == "may") ? 50 : (month == "june") ? 60 : : (month == "july") ? 70 : 40
+                daheight = (month == "april") ? 40 : (month == "may") ? 50 : (month == "june") ? 60 : (month == "july") ? 70 : 40
                 xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].death) - 20})
                 xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].death) - daheight})
                 svg_2.append("path")
