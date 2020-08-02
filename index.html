@@ -369,15 +369,15 @@
                     }
                     else if (month == "may"){
                         console.log("Month may: " + month)
-                        return parseDate(d.date) < parseDate("20200531")
+                        return d.date < parseDate("20200531")
                     }
                     else if (month == "june"){
                         console.log("Month June: " + month)
-                        return parseDate(d.date) < parseDate("20200630")
+                        return d.date < parseDate("20200630")
                     }
                     else if (month == "july"){
                         console.log("Month July: " + month)
-                        return parseDate(d.date) < parseDate("20200731")
+                        return d.date < parseDate("20200731")
                     }
                     else{
                         return true
