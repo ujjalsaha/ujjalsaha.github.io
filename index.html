@@ -1019,7 +1019,7 @@
                                 var filterdata_temp = data.filter(function (d) {
                                     return d.state == selected_state
                                 })
-                                // Filter the dataset to get selected state rows only
+                                // Filter the dataset to get selected date rows only
                                 var filterdata = filterdata_temp.filter(function (d) {
                                     if (month == "april"){
                                         //console.log("Month April: " + month)
@@ -1057,7 +1057,7 @@
                                 // Add Y axis
                                 var y_3 = d3.scaleLinear()
                                     .domain([0, max_positive])
-                                    .range([height, 0]);
+                                    .range([height/2, 0]);
                                 svg_2.append("g")
                                     .call(d3.axisLeft(y_3)
                                     );
