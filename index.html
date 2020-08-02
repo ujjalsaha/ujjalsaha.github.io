@@ -1041,6 +1041,9 @@
                                         return true
                                     }
                                 })
+                                margin = {top: 70, right: 30, bottom: 60, left: 80};
+                                width = 850 - margin.left - margin.right;
+                                height = 450 - margin.top - margin.bottom;
 
                                 var max_positive = filterdata[0].positive
                                 var min_positive = filterdata[filterdata.length - 1].positive
@@ -1083,16 +1086,6 @@
                                     .attr("dy", "1em")
                                     .style("text-anchor", "middle")
                                     .text("Number of People Affected");
-
-
-                                console.log("Yaxis complete")
-                                return
-
-
-
-
-
-
 
                                 filterdata.sort(function (a, b) {
                                     return a.date - b.date;
