@@ -331,7 +331,6 @@
         dateFormatter = d3.timeFormat("%B %d, %Y");
 
     overall_cases("april")
-    country_cases("april")
 
     function overall_cases(month) {
         // Clear the SVG Chart
@@ -892,6 +891,7 @@
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
+    country_cases("april")
     function country_cases(month) {
         svg_2.selectAll("*").remove();
         //Read the data
