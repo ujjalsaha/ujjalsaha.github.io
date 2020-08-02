@@ -911,20 +911,25 @@
                 console.log("CountryCases")
 
                 console.log("Original Data Length: " + data.length)
+                console.log("Month: " + month)
 
 
                 // Filter the dataset to get selected state rows only
                 var filterdata = data.filter(function (d) {
                     if (month == "april"){
+                        console.log("April Month: " + month)
                         return parseDate(d.date) < parseDate("20200430")
                     }
                     else if (month == "may"){
+                        console.log("May Month: " + month)
                         return parseDate(d.date) < parseDate("20200531")
                     }
                     else if (month == "june"){
+                        console.log("June Month: " + month)
                         return parseDate(d.date) < parseDate("20200630")
                     }
                     else if (month == "july"){
+                        console.log("July Month: " + month)
                         return parseDate(d.date) < parseDate("20200731")
                     }
                     else{
