@@ -1031,6 +1031,47 @@
                                 console.log("width: " + width)
                                 console.log("height: " + height)
 
+                                // Add Y axis
+                                var y_3 = d3.scaleLinear()
+                                    .domain([0, max_positive])
+                                    .range([height, 0]);
+                                svg_2.append("g")
+                                    .call(d3.axisLeft(y_3)
+                                        .ticks(10)
+                                    );
+
+                                // gridlines in y axis function
+                                function make_y_gridlines() {
+                                    return d3.axisLeft(y_3)
+                                        .ticks(10)
+                                }
+
+                                // add the Y gridlines
+                                svg_2.append("g")
+                                    .attr("class", "grid")
+                                    .call(make_y_gridlines()
+                                        .tickSize(-width)
+                                        .tickFormat("")
+                                    )
+
+                                // Add the text label for the Y axis
+                                svg_2.append("text")
+                                    .attr("transform", "rotate(-90)")
+                                    .attr("y", 0 - (margin.left / 2) - 35)
+                                    .attr("x", 0 - (height / 2))
+                                    .attr("dy", "1em")
+                                    .style("text-anchor", "middle")
+                                    .text("Number of People Affected");
+
+
+                                console.log("Yaxis complete")
+                                return
+
+
+
+
+
+
 
                                 filterdata.sort(function (a, b) {
                                     return a.date - b.date;
@@ -1072,39 +1113,6 @@
                                     .style("text-anchor", "middle")
                                     .style("font-size", "10px")
                                     .text("Jul 24");
-
-
-                                // Add Y axis
-                                var y_3 = d3.scaleLinear()
-                                    .domain([0, max_positive])
-                                    .range([height, 0]);
-                                svg_2.append("g")
-                                    .call(d3.axisLeft(y_3)
-                                        .ticks(10)
-                                    );
-
-                                // gridlines in y axis function
-                                function make_y_gridlines() {
-                                    return d3.axisLeft(y_3)
-                                        .ticks(10)
-                                }
-
-                                // add the Y gridlines
-                                svg_2.append("g")
-                                    .attr("class", "grid")
-                                    .call(make_y_gridlines()
-                                        .tickSize(-width)
-                                        .tickFormat("")
-                                    )
-
-                                // Add the text label for the Y axis
-                                svg_2.append("text")
-                                    .attr("transform", "rotate(-90)")
-                                    .attr("y", 0 - (margin.left / 2) - 35)
-                                    .attr("x", 0 - (height / 2))
-                                    .attr("dy", "1em")
-                                    .style("text-anchor", "middle")
-                                    .text("Number of People Affected");
 
                                 // Add the line for confirmed
                                 const path = svg_2.append("path")
