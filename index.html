@@ -2485,8 +2485,8 @@
                                 val = {
                                     state: d.state,
                                     date: parseDate(d.date),
-                                    positive: d.new_positive,
-                                    death: d.new_death
+                                    positive: (parseInt(d.new_positive) > 0) ? d.new_positive : "0",
+                                    death: (parseInt(d.new_death) > 0) ? d.new_death : "0"
                                 }
                                 // console.log("Val: " + val)
                                 return val
