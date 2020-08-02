@@ -1959,9 +1959,9 @@
                         }
 
                         svg_4.append("text")
-                            .attr("transform", "translate("+(x_2(pdate) - 40)+","+(y_2(value) - 15)+")")
+                            .attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 15)+")")
                             .attr("dy", ".35em")
-                            .attr("text-anchor", "start")
+                            .attr("text-anchor", "end")
                             .style("font-size", "12px")
                             .style("font-weight", "bold")
                             .text(formatValue(value));
@@ -1981,7 +1981,7 @@
 
                         svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 65)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                            .style("fill", "deeppink").text("(NY, CA, TX, FL are mostly affected)");
+                            .style("fill", "deeppink").text("(CA, TX, FL are reporting alarming new cases)");
                         svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 55)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                             .style("fill", "deeppink").text("Cases as of July end");
@@ -1995,7 +1995,7 @@
                         }
 
                         svg_4.append("text")
-                            .attr("transform", "translate("+(x_2(pdate) - 40)+","+(y_2(value) - 15)+")")
+                            .attr("transform", "translate("+(x_2(pdate) - 30)+","+(y_2(value) - 15)+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "start")
                             .style("font-size", "12px")
@@ -2017,7 +2017,7 @@
 
                         svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 65)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                            .style("fill", "deeppink").text("(AZ, GA are also alarming)");
+                            .style("fill", "deeppink").text("(FL, AZ, GA started reporting huge daily cases)");
                         svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 55)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                             .style("fill", "deeppink").text("Cases as of June end");
@@ -2031,7 +2031,7 @@
                         }
 
                         svg_4.append("text")
-                            .attr("transform", "translate("+(x_2(pdate) - 40)+","+(y_2(value) - 15)+")")
+                            .attr("transform", "translate("+(x_2(pdate) - 20)+","+(y_2(value) - 15)+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "start")
                             .style("font-size", "12px")
@@ -2053,7 +2053,7 @@
 
                         svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 65)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                            .style("fill", "deeppink").text("(CA, IL, TX, FL cases are alarming)");
+                            .style("fill", "deeppink").text("(CA, TX, started reporting huge daily cases)");
                         svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 55)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                             .style("fill", "deeppink").text("Cases as of May end");
@@ -2067,7 +2067,7 @@
                             }
                         }
                         svg_4.append("text")
-                            .attr("transform", "translate("+(x_2(pdate) - 40)+","+(y_2(value) - 15)+")")
+                            .attr("transform", "translate("+(x_2(pdate) - 20)+","+(y_2(value) - 50)+")")
                             .attr("dy", ".35em")
                             .attr("text-anchor", "start")
                             .style("font-size", "12px")
@@ -2076,7 +2076,7 @@
 
                         xy = [];
                         xy.push({x: x_2(pdate), y: y_2(value) - 45})
-                        xy.push({x: x_2(pdate), y: y_2(value) - 25})
+                        xy.push({x: x_2(pdate), y: y_2(value) - 5})
                         svg_4.append("path")
                             .datum(xy)
                             .attr("fill", "none")
@@ -2087,10 +2087,10 @@
                                 .y(function(d) { return d.y;})
                             )
 
-                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 65)+")")
+                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 75)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                            .style("fill", "deeppink").text("(New York with 300K is 30% of overall count)");
-                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 55)+")")
+                            .style("fill", "deeppink").text("(NY and IL are 25% of new cases.)");
+                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 60)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                             .style("fill", "deeppink").text("Cases as of April end");
                         break;
@@ -2133,7 +2133,7 @@
 
                         xy = [];
                         xy.push({x: x_2(pdate) - 10, y: y_2(value) - 25})
-                        xy.push({x: x_2(pdate) - 10, y: y_2(value) - 90})
+                        xy.push({x: x_2(pdate) - 10, y: y_2(value) - 70})
                         svg_4.append("path")
                             .datum(xy)
                             .attr("fill", "none")
@@ -2144,9 +2144,9 @@
                                 .y(function(d) { return d.y;})
                             )
 
-                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 5)+","+(y_2(value) - 100)+")")
+                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 5)+","+(y_2(value) - 80)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                            .style("fill", "deeppink").text("Overall deaths as of May end");
+                            .style("fill", "deeppink").text("New deaths as of May end");
 
                     case 'june':
                         value = ""
@@ -2167,7 +2167,7 @@
 
                         xy = [];
                         xy.push({x: x_2(pdate) - 10, y: y_2(value) - 25})
-                        xy.push({x: x_2(pdate) - 10, y: y_2(value) - 70})
+                        xy.push({x: x_2(pdate) - 10, y: y_2(value) - 50})
                         svg_4.append("path")
                             .datum(xy)
                             .attr("fill", "none")
@@ -2178,9 +2178,9 @@
                                 .y(function(d) { return d.y;})
                             )
 
-                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 5)+","+(y_2(value) - 80)+")")
+                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 5)+","+(y_2(value) - 60)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                            .style("fill", "deeppink").text("Overall deaths as of May end");
+                            .style("fill", "deeppink").text("New deaths as of May end");
                     case 'may':
                         value = ""
                         pdate = parseDate("20200531")
@@ -2200,7 +2200,7 @@
 
                         xy = [];
                         xy.push({x: x_2(pdate) - 10, y: y_2(value) - 25})
-                        xy.push({x: x_2(pdate) - 10, y: y_2(value) - 60})
+                        xy.push({x: x_2(pdate) - 10, y: y_2(value) - 40})
                         svg_4.append("path")
                             .datum(xy)
                             .attr("fill", "none")
@@ -2211,9 +2211,9 @@
                                 .y(function(d) { return d.y;})
                             )
 
-                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 5)+","+(y_2(value) - 70)+")")
+                        svg_4.append("text").attr("transform", "translate("+(x_2(pdate) + 5)+","+(y_2(value) - 50)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                            .style("fill", "deeppink").text("Overall deaths as of May end");
+                            .style("fill", "deeppink").text("New deaths as of May end");
                     case 'april':
                         value = ""
                         pdate = parseDate("20200430")
@@ -2232,7 +2232,7 @@
                             .text(formatValue(value));
 
                         xy = [];
-                        xy.push({x: x_2(pdate) - 10, y: y_2(value) - 25})
+                        xy.push({x: x_2(pdate) - 10, y: y_2(value) - 15})
                         xy.push({x: x_2(pdate) - 10, y: y_2(value) - 40})
                         svg_4.append("path")
                             .datum(xy)
@@ -2245,8 +2245,8 @@
                             );
 
                         svg_4.append("text").attr("transform", "translate("+(x_2(pdate) - 30)+","+(y_2(value) - 50)+")")
-                            .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                            .style("fill", "deeppink").text("Overall deaths as of April end");
+                            .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
+                            .style("fill", "deeppink").text("New deaths as of April end");
                         break;
                 }
 
