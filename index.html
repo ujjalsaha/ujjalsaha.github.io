@@ -299,13 +299,6 @@
 </div>
 
 <script>
-    overall_cases("april")
-
-
-
-    /* ################################################################ */
-    /* ########################## LINE CHART ########################## */
-    /* ################################################################ */
 
     var formatValue = d3.format(",")
     var parseDate = d3.timeParse("%Y%m%d"),
@@ -313,12 +306,10 @@
         formatValue = d3.format(","),
         dateFormatter = d3.timeFormat("%B %d, %Y");
 
-    // set the dimensions and margins of the graph
+    // ########## Create SVG element for OVERALL CASES LINE CHART
     var margin = {top: 70, right: 30, bottom: 60, left: 80},
         width = 850 - margin.left - margin.right,
         height = 450 - margin.top - margin.bottom;
-
-    // append the svg object to the body of the page
     var svg_2 = d3.select("#svg_2")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -327,6 +318,18 @@
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
+    // ########## Create SVG element for OVERALL CASES MAP
+    width = 850; height = 500;
+    var svg = d3.select("#svg_1")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height - margin.top);
+
+    overall_cases("april")
+
+    /* ################################################################ */
+    /* ########################## LINE CHART ########################## */
+    /* ################################################################ */
     function country_cases(month) {
         // set the dimensions and margins of the graph
         margin = {top: 70, right: 30, bottom: 60, left: 80},
@@ -654,15 +657,6 @@
     /* ######################################################### */
     /* ########################## MAP ########################## */
     /* ######################################################### */
-
-
-    //Create SVG element and append map to the SVG
-    width = 850; height = 500;
-    var svg = d3.select("#svg_1")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height - margin.top);
-
     function overall_cases(month) {
         margin = {top: 0, right: 0, bottom: 0, left: 0}
         width = 850;
