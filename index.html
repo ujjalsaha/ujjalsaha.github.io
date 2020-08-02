@@ -1359,6 +1359,17 @@
                     .y(function (d) {return d.y;})
                 );
 
+            // Illinois
+            var xy = [];
+            xy.push({x: width - 320, y: 60})
+            xy.push({x: width - 320, y: 200})
+            layer2.append("path").datum(xy).attr("fill", "none").attr("stroke", "deeppink").attr("stroke-width", 2)
+                .attr("d", d3.line()
+                    .x(function (d) {return d.x;})
+                    .y(function (d) {return d.y;})
+                );
+
+
             if (month == "june"){
                 // Arizona
                 var xy = [];
@@ -1383,19 +1394,8 @@
                 layer3.append("text").attr("x", width / 2).attr("y", height - 10).style("font-size", "12px").attr("text-anchor", "middle").style("fill", "deeppink")
                     .text("Arizona, Georgia are spiking up too. CA, TX, FL continue to spike.")
 
-                // Illinois
-                var xy = [];
-                xy.push({x: width - 320, y: 60})
-                xy.push({x: width - 320, y: 200})
-                layer2.append("path").datum(xy).attr("fill", "none").attr("stroke", "deeppink").attr("stroke-width", 2)
-                    .attr("d", d3.line()
-                        .x(function (d) {return d.x;})
-                        .y(function (d) {return d.y;})
-                    );
-
                 layer3.append("text").attr("x", width - 380).attr("y", 50).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink")
-                    .text("Illinois and few other east side states are spiking too.")
-
+                    .text("Illinois is not spiking at an alarming rate like NY, CA.")
 
             }
 
@@ -1404,21 +1404,14 @@
                 layer3.append("text").attr("x", width / 2).attr("y", height - 10).style("font-size", "12px").attr("text-anchor", "middle").style("fill", "deeppink")
                     .text("By July, CA, TX, FL are worst affected places along with NY. These all are also top populated States.")
 
-                // Illinois
-                var xy = [];
-                xy.push({x: width - 320, y: 60})
-                xy.push({x: width - 320, y: 200})
-                layer2.append("path").datum(xy).attr("fill", "none").attr("stroke", "deeppink").attr("stroke-width", 2)
-                    .attr("d", d3.line()
-                        .x(function (d) {return d.x;})
-                        .y(function (d) {return d.y;})
-                    );
-
                 layer3.append("text").attr("x", width - 380).attr("y", 50).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink")
                     .text("Unlike other red states, Illinois stopped spiking at alarming rate.")
 
             }
             if (month == "may") {
+                layer3.append("text").attr("x", width - 380).attr("y", 50).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink")
+                    .text("Illinois are spiking too along with few other east states.")
+
                 layer3.append("text").attr("x", width / 2).attr("y", height - 10).style("font-size", "12px").attr("text-anchor", "middle").style("fill", "deeppink")
                     .text("CA is spiking at an alarming rates. Texas and Florida as well. ")
             }
