@@ -910,16 +910,16 @@
                 // Filter the dataset to get selected state rows only
                 var filterdata = data.filter(function (d) {
                     if (month == "april"){
-                        return parseDate(d.state) < parseDate("20200430")
+                        return parseDate(d.date) < parseDate("20200430")
                     }
                     else if (month == "may"){
-                        return parseDate(d.state) < parseDate("20200531")
+                        return parseDate(d.date) < parseDate("20200531")
                     }
                     else if (month == "june"){
-                        return parseDate(d.state) < parseDate("20200630")
+                        return parseDate(d.date) < parseDate("20200630")
                     }
                     else if (month == "july"){
-                        return parseDate(d.state) < parseDate("20200731")
+                        return parseDate(d.date) < parseDate("20200731")
                     }
                     else{
                         return true
