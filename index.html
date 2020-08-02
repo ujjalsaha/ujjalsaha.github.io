@@ -1045,10 +1045,10 @@
                                 width = 850 - margin.left - margin.right;
                                 height = 450 - margin.top - margin.bottom;
 
-                                var max_positive = filterdata_temp[0].positive
-                                var min_positive = filterdata_temp[filterdata_temp.length - 1].positive
-                                var max_death = filterdata_temp[0].death
-                                var min_death = filterdata_temp[filterdata_temp.length - 1].death
+                                var max_positive = filterdata[0].positive
+                                var min_positive = filterdata[filterdata.length - 1].positive
+                                var max_death = filterdata[0].death
+                                var min_death = filterdata[filterdata.length - 1].death
 
                                 console.log("max_positive: " + max_positive)
                                 console.log("min_positive: " + min_positive)
@@ -1059,7 +1059,7 @@
 
                                 // Add Y axis
                                 var y_3 = d3.scaleLinear()
-                                    .domain([0, max_positive])
+                                    .domain([0, filterdata_temp[0].positive])
                                     .range([height, 0]);
                                 svg_2.append("g")
                                     .call(d3.axisLeft(y_3)
@@ -1102,7 +1102,7 @@
 
                                 // Add X axis --> it is a date format
                                 var x_3 = d3.scaleTime()
-                                    .domain(d3.extent(filterdata, function (d) {
+                                    .domain(d3.extent(filterdata_temp[0].date, function (d) {
                                         return d.date;
                                     }))
                                     .range([0, width]);
