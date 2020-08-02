@@ -466,36 +466,38 @@
                     );
 
                 // Add the CONFIRMED label at the tip of the line and annotation
-                svg_2.append("text")
-                    .attr("transform", "translate("+(x_2(filterdata[0].date) - 40)+","+(y_2(filterdata[0].value) - 15)+")")
-                    .attr("dy", ".35em")
-                    .attr("text-anchor", "start")
-                    .style("font-size", "12px")
-                    .style("font-weight", "bold")
-                    .text(formatValue(filterdata[0].value));
-
-                xy = [];
-                xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].value) - 45})
-                xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].value) - 25})
-                svg_2.append("path")
-                    .datum(xy)
-                    .attr("fill", "none")
-                    .attr("stroke", "deeppink")
-                    .attr("stroke-width", 2)
-                    .attr("d", d3.line()
-                        .x(function(d) { return d.x;})
-                        .y(function(d) { return d.y;})
-                    )
-
                 switch (month) {
                     case 'july':
                         value = ""
-                        pdate = parseDate("20200731")
+                        pdate = parseDate("20200724")
                         for (i = 0; i < filterdata.length ; i++) {
                             if (filterdata[i].date == parseDate) {
                                 value = filterdata[i].value
                             }
                         }
+                        console.log("July value: " + value)
+
+                        svg_2.append("text")
+                            .attr("transform", "translate("+(x_2(pdate) - 40)+","+(y_2(value) - 15)+")")
+                            .attr("dy", ".35em")
+                            .attr("text-anchor", "start")
+                            .style("font-size", "12px")
+                            .style("font-weight", "bold")
+                            .text(formatValue(value));
+
+                        xy = [];
+                        xy.push({x: x_2(pdate), y: y_2(value) - 45})
+                        xy.push({x: x_2(pdate), y: y_2(value) - 25})
+                        svg_2.append("path")
+                            .datum(xy)
+                            .attr("fill", "none")
+                            .attr("stroke", "deeppink")
+                            .attr("stroke-width", 2)
+                            .attr("d", d3.line()
+                                .x(function(d) { return d.x;})
+                                .y(function(d) { return d.y;})
+                            )
+
                         svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 65)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                             .style("fill", "deeppink").text("(NY, CA, TX, FL are mostly affected)");
@@ -510,6 +512,29 @@
                                 value = filterdata[i].value
                             }
                         }
+                        console.log("July value: " + value)
+
+                        svg_2.append("text")
+                            .attr("transform", "translate("+(x_2(pdate) - 40)+","+(y_2(value) - 15)+")")
+                            .attr("dy", ".35em")
+                            .attr("text-anchor", "start")
+                            .style("font-size", "12px")
+                            .style("font-weight", "bold")
+                            .text(formatValue(value));
+
+                        xy = [];
+                        xy.push({x: x_2(pdate), y: y_2(value) - 45})
+                        xy.push({x: x_2(pdate), y: y_2(value) - 25})
+                        svg_2.append("path")
+                            .datum(xy)
+                            .attr("fill", "none")
+                            .attr("stroke", "deeppink")
+                            .attr("stroke-width", 2)
+                            .attr("d", d3.line()
+                                .x(function(d) { return d.x;})
+                                .y(function(d) { return d.y;})
+                            )
+
                         svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 65)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                             .style("fill", "deeppink").text("(AZ, GA are also alarming)");
@@ -518,12 +543,35 @@
                             .style("fill", "deeppink").text("Cases as of June end");
                     case 'may':
                         value = ""
-                        pdate = parseDate("20200530")
+                        pdate = parseDate("20200531")
                         for (i = 0; i < filterdata.length ; i++) {
                             if (filterdata[i].date == parseDate) {
                                 value = filterdata[i].value
                             }
                         }
+                        console.log("July value: " + value)
+
+                        svg_2.append("text")
+                            .attr("transform", "translate("+(x_2(pdate) - 40)+","+(y_2(value) - 15)+")")
+                            .attr("dy", ".35em")
+                            .attr("text-anchor", "start")
+                            .style("font-size", "12px")
+                            .style("font-weight", "bold")
+                            .text(formatValue(value));
+
+                        xy = [];
+                        xy.push({x: x_2(pdate), y: y_2(value) - 45})
+                        xy.push({x: x_2(pdate), y: y_2(value) - 25})
+                        svg_2.append("path")
+                            .datum(xy)
+                            .attr("fill", "none")
+                            .attr("stroke", "deeppink")
+                            .attr("stroke-width", 2)
+                            .attr("d", d3.line()
+                                .x(function(d) { return d.x;})
+                                .y(function(d) { return d.y;})
+                            )
+
                         svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 65)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                             .style("fill", "deeppink").text("(CA, IL, TX, FL cases are alarming)");
@@ -532,12 +580,35 @@
                             .style("fill", "deeppink").text("Cases as of May end");
                     case 'april':
                         value = ""
-                        pdate = parseDate("20200431")
+                        pdate = parseDate("20200430")
                         for (i = 0; i < filterdata.length ; i++) {
                             if (filterdata[i].date == parseDate) {
                                 value = filterdata[i].value
                             }
                         }
+                        console.log("July value: " + value)
+
+                        svg_2.append("text")
+                            .attr("transform", "translate("+(x_2(pdate) - 40)+","+(y_2(value) - 15)+")")
+                            .attr("dy", ".35em")
+                            .attr("text-anchor", "start")
+                            .style("font-size", "12px")
+                            .style("font-weight", "bold")
+                            .text(formatValue(value));
+
+                        xy = [];
+                        xy.push({x: x_2(pdate), y: y_2(value) - 45})
+                        xy.push({x: x_2(pdate), y: y_2(value) - 25})
+                        svg_2.append("path")
+                            .datum(xy)
+                            .attr("fill", "none")
+                            .attr("stroke", "deeppink")
+                            .attr("stroke-width", 2)
+                            .attr("d", d3.line()
+                                .x(function(d) { return d.x;})
+                                .y(function(d) { return d.y;})
+                            )
+
                         svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 65)+")")
                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                             .style("fill", "deeppink").text("(New York with 300K is 30% of overall count)");
