@@ -1293,7 +1293,7 @@
                                         i = bisectDate(filterdata, x0, 1),
                                         d0 = filterdata[i],
                                         d1 = filterdata[i + 1],
-                                        d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+                                        d = x0 - d0.date >= d1.date - x0 ? d1 : d0;
                                     focus.attr("transform", "translate(" + x_3(d.date) + "," + y_3(d.positive) + ")");
                                     dfocus.attr("transform", "translate(" + x_3(d.date) + "," + y_3(d.death) + ")");
                                     focus.select(".tooltip-date").text(dateFormatter(d.date));
