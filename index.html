@@ -662,9 +662,10 @@
                         i = bisectDate(sorted_data, x0, 1),
                         d0 = sorted_data[i - 1],
                         d1 = sorted_data[i],
-                        d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-                    focus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.value) + ")");
-                    dfocus.attr("transform", "translate(" + x_2(d.date) + "," + y_2(d.death) + ")");
+                        df = x0 - d0.date > d1.date - x0 ? d1 : d0;
+                    console.log("sorted_data: " + sorted_data.length)
+                    focus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.value) + ")");
+                    dfocus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.death) + ")");
                     focus.select(".tooltip-date").text(dateFormatter(d.date));
                     focus.select(".tooltip-cases").text(formatValue(d.value));
                     focus.select(".tooltip-deaths").text(formatValue(d.death));
