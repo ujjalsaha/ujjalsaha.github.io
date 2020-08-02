@@ -800,8 +800,21 @@
                     return d.y;
                 })
             );
-        layer3.append("text").attr("x", width - 210).attr("y", 85).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("New York is now the oldest in");
-        layer3.append("text").attr("x", width - 210).attr("y", 95).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text("league with high overall cases.");
+
+
+        new_york_comment_line1 = ""
+        new_york_comment_line2 = ""
+        if (month == "april"){
+            new_york_comment_line1 = "New York is the first state to cross";
+            new_york_comment_line2 = "300K cases. Other states are spiking.";
+        }
+        if (month == "july"){
+            new_york_comment_line1 = "New York is now the oldest in";
+            ew_york_comment_line2 = "league with high overall cases.";
+        }
+
+        layer3.append("text").attr("x", width - 210).attr("y", 85).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text(new_york_comment_line1);
+        layer3.append("text").attr("x", width - 210).attr("y", 95).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text(new_york_comment_line2);
 
         // Add the title for the map
         layer3.append("text")
