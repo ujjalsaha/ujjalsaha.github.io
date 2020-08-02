@@ -1158,16 +1158,16 @@
                                         }
 
                                         svg_2.append("text")
-                                            .attr("transform", "translate("+(x_3(pdate) - 40)+","+(y_3(value) - 15)+")")
+                                            .attr("transform", "translate("+(x_3(pdate) + 10)+","+(y_3(value) - 15)+")")
                                             .attr("dy", ".35em")
-                                            .attr("text-anchor", "start")
+                                            .attr("text-anchor", "end")
                                             .style("font-size", "12px")
                                             .style("font-weight", "bold")
                                             .text(formatValue(value));
 
                                         xy = [];
-                                        xy.push({x: x_3(pdate), y: y_3(value) - 45})
-                                        xy.push({x: x_3(pdate), y: y_3(value) - 25})
+                                        xy.push({x: x_3(pdate) - 10, y: y_3(value) - 45})
+                                        xy.push({x: x_3(pdate) - 10, y: y_3(value) - 25})
                                         svg_2.append("path")
                                             .datum(xy)
                                             .attr("fill", "none")
@@ -1178,7 +1178,7 @@
                                                 .y(function(d) { return d.y;})
                                             )
 
-                                        svg_2.append("text").attr("transform", "translate("+(x_3(pdate) + 10)+","+(y_3(value) - 55)+")")
+                                        svg_2.append("text").attr("transform", "translate("+(x_3(pdate))+","+(y_3(value) - 55)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                                             .style("fill", "deeppink").text("Cases till July end");
                                     case 'june':
@@ -1191,16 +1191,16 @@
                                         }
 
                                         svg_2.append("text")
-                                            .attr("transform", "translate("+(x_3(pdate) - 40)+","+(y_3(value) - 15)+")")
+                                            .attr("transform", "translate("+(x_3(pdate) + 10)+","+(y_3(value) - 15)+")")
                                             .attr("dy", ".35em")
-                                            .attr("text-anchor", "start")
+                                            .attr("text-anchor", "end")
                                             .style("font-size", "12px")
                                             .style("font-weight", "bold")
                                             .text(formatValue(value));
 
                                         xy = [];
-                                        xy.push({x: x_3(pdate), y: y_3(value) - 45})
-                                        xy.push({x: x_3(pdate), y: y_3(value) - 25})
+                                        xy.push({x: x_3(pdate) - 10, y: y_3(value) - 45})
+                                        xy.push({x: x_3(pdate) - 10, y: y_3(value) - 25})
                                         svg_2.append("path")
                                             .datum(xy)
                                             .attr("fill", "none")
@@ -1211,7 +1211,7 @@
                                                 .y(function(d) { return d.y;})
                                             )
 
-                                        svg_2.append("text").attr("transform", "translate("+(x_3(pdate) + 10)+","+(y_3(value) - 55)+")")
+                                        svg_2.append("text").attr("transform", "translate("+(x_3(pdate))+","+(y_3(value) - 55)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                                             .style("fill", "deeppink").text("Cases until June end");
                                     case 'may':
@@ -1224,16 +1224,16 @@
                                         }
 
                                         svg_2.append("text")
-                                            .attr("transform", "translate("+(x_3(pdate) - 40)+","+(y_3(value) - 15)+")")
+                                            .attr("transform", "translate("+(x_3(pdate) + 10)+","+(y_3(value) - 15)+")")
                                             .attr("dy", ".35em")
-                                            .attr("text-anchor", "start")
+                                            .attr("text-anchor", "end")
                                             .style("font-size", "12px")
                                             .style("font-weight", "bold")
                                             .text(formatValue(value));
 
                                         xy = [];
-                                        xy.push({x: x_3(pdate), y: y_3(value) - 45})
-                                        xy.push({x: x_3(pdate), y: y_3(value) - 25})
+                                        xy.push({x: x_3(pdate) - 10, y: y_3(value) - 45})
+                                        xy.push({x: x_3(pdate) - 10, y: y_3(value) - 25})
                                         svg_2.append("path")
                                             .datum(xy)
                                             .attr("fill", "none")
@@ -1244,7 +1244,7 @@
                                                 .y(function(d) { return d.y;})
                                             )
 
-                                        svg_2.append("text").attr("transform", "translate("+(x_3(pdate) + 10)+","+(y_3(value) - 55)+")")
+                                        svg_2.append("text").attr("transform", "translate("+(x_3(pdate))+","+(y_3(value) - 55)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                                             .style("fill", "deeppink").text("Cases until May end");
                                     case 'april':
@@ -1257,16 +1257,16 @@
                                             }
                                         }
                                         svg_2.append("text")
-                                            .attr("transform", "translate("+(x_3(pdate) - 40)+","+(y_3(value) - 15)+")")
+                                            .attr("transform", "translate("+(x_3(pdate) + 10)+","+(y_3(value) - 15)+")")
                                             .attr("dy", ".35em")
-                                            .attr("text-anchor", "start")
+                                            .attr("text-anchor", "end")
                                             .style("font-size", "12px")
                                             .style("font-weight", "bold")
                                             .text(formatValue(value));
 
                                         xy = [];
-                                        xy.push({x: x_3(pdate), y: y_3(value) - 45})
-                                        xy.push({x: x_3(pdate), y: y_3(value) - 25})
+                                        xy.push({x: x_3(pdate) - 10, y: y_3(value) - 45})
+                                        xy.push({x: x_3(pdate) - 10, y: y_3(value) - 25})
                                         svg_2.append("path")
                                             .datum(xy)
                                             .attr("fill", "none")
@@ -1277,7 +1277,7 @@
                                                 .y(function(d) { return d.y;})
                                             )
 
-                                        svg_2.append("text").attr("transform", "translate("+(x_3(pdate) + 10)+","+(y_3(value) - 55)+")")
+                                        svg_2.append("text").attr("transform", "translate("+(x_3(pdate))+","+(y_3(value) - 55)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                                             .style("fill", "deeppink").text("Cases until April end");
                                         break;
