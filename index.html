@@ -2676,7 +2676,20 @@
                                                 .y(function(d) { return d.y;})
                                             )
 
-                                        svg_4.append("text").attr("transform", "translate("+(x_3(pdate) - 30)+","+(-10)+")")
+                                        xy = [];
+                                        xy.push({x: x_3(pdate), y: height})
+                                        xy.push({x: x_3(pdate), y: 25})
+                                        svg_4.append("path")
+                                            .datum(xy)
+                                            .attr("fill", "none")
+                                            .attr("stroke", "gray")
+                                            .attr("stroke-width", 2)
+                                            .attr("d", d3.line()
+                                                .x(function(d) { return d.x;})
+                                                .y(function(d) { return d.y;})
+                                            )
+
+                                        svg_4.append("text").attr("transform", "translate("+(x_3(pdate) - 40)+","+(-10)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                                             .style("fill", "deeppink").text("Cases till July end");
                                     case 'june':
@@ -2689,7 +2702,7 @@
                                         }
 
                                         svg_4.append("text")
-                                            .attr("transform", "translate("+(x_3(pdate) + 10)+","+(y_3(value) - 85)+")")
+                                            .attr("transform", "translate("+(x_3(pdate) - 5)+","+(-10)+")")
                                             .attr("dy", ".35em")
                                             .attr("text-anchor", "end")
                                             .style("font-size", "12px")
@@ -2697,8 +2710,8 @@
                                             .text(formatValue(value));
 
                                         xy = [];
-                                        xy.push({x: x_3(pdate), y: y_3(value) - 75})
-                                        xy.push({x: x_3(pdate), y: y_3(value) - 10})
+                                        xy.push({x: x_3(pdate), y: -15})
+                                        xy.push({x: x_3(pdate), y: 25})
                                         svg_4.append("path")
                                             .datum(xy)
                                             .attr("fill", "none")
@@ -2708,10 +2721,22 @@
                                                 .x(function(d) { return d.x;})
                                                 .y(function(d) { return d.y;})
                                             )
+                                        xy = [];
+                                        xy.push({x: x_3(pdate), y: height})
+                                        xy.push({x: x_3(pdate), y: 25})
+                                        svg_4.append("path")
+                                            .datum(xy)
+                                            .attr("fill", "none")
+                                            .attr("stroke", "gray")
+                                            .attr("stroke-width", 2)
+                                            .attr("d", d3.line()
+                                                .x(function(d) { return d.x;})
+                                                .y(function(d) { return d.y;})
+                                            )
 
-                                        svg_4.append("text").attr("transform", "translate("+(x_3(pdate) + 40)+","+(y_3(value) - 100)+")")
+                                        svg_4.append("text").attr("transform", "translate("+(x_3(pdate) - 40)+","+(-10)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                                            .style("fill", "deeppink").text("Cases until June end");
+                                            .style("fill", "deeppink").text("Cases till June end");
                                     case 'may':
                                         value = ""
                                         pdate = parseDate("20200531")
@@ -2813,19 +2838,6 @@
                                             .style("font-weight", "bold")
                                             .text(formatValue(value));
 
-                                        xy = [];
-                                        xy.push({x: x_3(pdate), y: -15})
-                                        xy.push({x: x_3(pdate), y: 25})
-                                        svg_4.append("path")
-                                            .datum(xy)
-                                            .attr("fill", "none")
-                                            .attr("stroke", "deeppink")
-                                            .attr("stroke-width", 2)
-                                            .attr("d", d3.line()
-                                                .x(function(d) { return d.x;})
-                                                .y(function(d) { return d.y;})
-                                            )
-
                                         svg_4.append("text").attr("transform", "translate("+(x_3(pdate) - 30)+","+(10)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                                             .style("fill", "deeppink").text("Death till July end");
@@ -2840,29 +2852,16 @@
                                         }
 
                                         svg_4.append("text")
-                                            .attr("transform", "translate("+(x_3(pdate))+","+(y_3(value) - 15)+")")
+                                            .attr("transform", "translate("+(x_3(pdate) - 5)+","+(-10)+")")
                                             .attr("dy", ".35em")
                                             .attr("text-anchor", "end")
                                             .style("font-size", "12px")
                                             .style("font-weight", "bold")
                                             .text(formatValue(value));
 
-                                        xy = [];
-                                        xy.push({x: x_3(pdate) - 10, y: y_3(value) - 20})
-                                        xy.push({x: x_3(pdate) - 10, y: y_3(value) - 40})
-                                        svg_4.append("path")
-                                            .datum(xy)
-                                            .attr("fill", "none")
-                                            .attr("stroke", "deeppink")
-                                            .attr("stroke-width", 2)
-                                            .attr("d", d3.line()
-                                                .x(function(d) { return d.x;})
-                                                .y(function(d) { return d.y;})
-                                            )
-
-                                        svg_4.append("text").attr("transform", "translate("+(x_3(pdate) + 5)+","+(y_3(value) - 50)+")")
+                                        svg_4.append("text").attr("transform", "translate("+(x_3(pdate) - 40)+","+(-10)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                                            .style("fill", "deeppink").text("Deaths as of May end");
+                                            .style("fill", "deeppink").text("Cases till June end");
                                     case 'may':
                                         value = ""
                                         pdate = parseDate("20200531")
