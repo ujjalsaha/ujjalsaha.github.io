@@ -2485,8 +2485,8 @@
                                 val = {
                                     state: d.state,
                                     date: parseDate(d.date),
-                                    positive: d.positive,
-                                    death: d.death
+                                    positive: d.new_positive,
+                                    death: d.new_death
                                 }
                                 // console.log("Val: " + val)
                                 return val
@@ -2534,21 +2534,27 @@
                                     .attr("x", -(margin.right + margin.left))
                                     .attr("y", -margin.top);
 
-                                var max_positive = filterdata[0].positive
-                                var min_positive = filterdata[filterdata.length - 1].positive
-                                var max_death = filterdata[0].death
-                                var min_death = filterdata[filterdata.length - 1].death
+                                var max_positive = 0
+                                var min_positive = filterdata_temp[0].positive
+                                var max_death = 0
+                                var min_death = filterdata_temp[0].death
+                                for (i = 0; i < filterdata_temp.length; i++) {
+                                    max_positive = (parseInt(filterdata_temp[i].positive) > max_positive) ? parseInt(filterdata_temp[i].positive) : max_positive
+                                    min_positive = (parseInt(filterdata_temp[i].positive) < min_positive) ? parseInt(filterdata_temp[i].positive) : min_positive
+                                    max_death = (parseInt(filterdata_temp[i].death) > max_positive) ? parseInt(filterdata_temp[i].death) : max_death
+                                    min_death = (parseInt(filterdata_temp[i].death) < min_positive) ? parseInt(filterdata_temp[i].death) : min_death
+                                }
 
-                                //console.log("max_positive: " + max_positive)
-                                //console.log("min_positive: " + min_positive)
-                                //console.log("max_death: " + max_death)
-                                //console.log("min_death: " + min_death)
+                                console.log("max_positive: " + max_positive)
+                                console.log("min_positive: " + min_positive)
+                                console.log("max_death: " + max_death)
+                                console.log("min_death: " + min_death)
                                 //console.log("width: " + width)
                                 //console.log("height: " + height)
 
                                 // Add Y axis
                                 var y_3 = d3.scaleLinear()
-                                    .domain([0, filterdata_temp[0].positive])
+                                    .domain([0, max_positive])
                                     .range([height, 0]);
                                 svg_4.append("g")
                                     .call(d3.axisLeft(y_3)
@@ -2770,7 +2776,6 @@
                                             .style("fill", "deeppink").text("Cases until April end");
                                         break;
                                 }
-
 
                                 // Add the line for deaths
                                 svg_4.append("path")
