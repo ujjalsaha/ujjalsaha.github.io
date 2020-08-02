@@ -545,7 +545,7 @@
                 else if (month == "june") { death_ann = "(death are spiking more than before)"}
                 else if (month == "july") { death_ann = "(death are spiking more than before)"}
                 else {death_ann = ""}
-                var death_x = (month == "july") ? x_2(filterdata[0].date) - 200 : x_2(filterdata[0].date)
+                var death_x = (month == "july") ? x_2(filterdata[0].date) - 200 : x_2(filterdata[0].date - 30)
                 svg_2.append("text").attr("transform", "translate("+death_x+","+(y_2(filterdata[0].death) - 60)+")")
                     .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
                     .style("fill", "deeppink").text(death_ann);
