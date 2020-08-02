@@ -848,25 +848,29 @@
                     .on("mouseover", function() { focus.style("display", null); dfocus.style("display", null);})
                     .on("mouseout", function() { focus.style("display", "none"); dfocus.style("display", "none");})
                     .on("mousemove", mousemove);
-                function mousemove() {
 
-                    var sorted_data = filterdata
-                    sorted_data.sort(function(a, b) {
-                        return a.date - b.date;
-                    });
+                    function mousemove() {
 
-                    var x0 = x_2.invert(d3.mouse(this)[0]),
-                        i = bisectDate(sorted_data, x0, 1),
-                        d0 = sorted_data[i - 1],
-                        d1 = sorted_data[i],
-                        df = x0 - d0.date.getTime() > d1.date.getTime() - x0 ? d1 : d0;
-                    console.log("sorted_data: " + sorted_data.length)
-                    focus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.value) + ")");
-                    dfocus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.death) + ")");
-                    focus.select(".tooltip-date").text(dateFormatter(df.date));
-                    focus.select(".tooltip-cases").text(formatValue(df.value));
-                    focus.select(".tooltip-deaths").text(formatValue(df.death));
-                }
+                        var sorted_data = filterdata
+                        sorted_data.sort(function(a, b) {
+                            return a.date - b.date;
+                        });
+
+                        var x0 = x_2.invert(d3.mouse(this)[0]),
+                            i = bisectDate(sorted_data, x0, 1),
+                            d0 = sorted_data[i - 1],
+                            d1 = sorted_data[i],
+                            df = x0 - d0.date.getTime() > d1.date.getTime() - x0 ? d1 : d0;
+                        console.log("sorted_data: " + sorted_data.length)
+                        console.log(df.date)
+                        if (df.date.getTime() < filterdata[0].date.getTime()) {
+                            focus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.value) + ")");
+                            dfocus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.death) + ")");
+                            focus.select(".tooltip-date").text(dateFormatter(df.date));
+                            focus.select(".tooltip-cases").text(formatValue(df.value));
+                            focus.select(".tooltip-deaths").text(formatValue(df.death));
+                        }
+                    }
             });
     }
 
