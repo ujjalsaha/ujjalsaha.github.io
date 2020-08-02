@@ -863,8 +863,8 @@
                             df = x0 - d0.date.getTime() > d1.date.getTime() - x0 ? d1 : d0;
                         console.log("sorted_data: " + sorted_data.length)
                         console.log("df.date: " + df.date)
-                        console.log("sorted_data[0].date: " + sorted_data[0].date)
-                        if (df.date.getTime() < sorted_data[0].date.getTime()) {
+                        console.log("sorted_data[0].date: " + sorted_data[sorted_data.length -1].date)
+                        if (df.date.getTime() < sorted_data[sorted_data.length -1].date.getTime()) {
                             console.log("Inside displaybox")
                             focus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.value) + ")");
                             dfocus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.death) + ")");
