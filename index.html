@@ -167,6 +167,11 @@
         fill-opacity: 0.4;
     }
 
+    .background_box{
+        fill: lightcyan;
+        fill-opacity: 0.4;
+    }
+
     .tooltip-date, .tooltip-cases, .tooltip-deaths {
         font-weight: bold;
     }
@@ -1044,6 +1049,13 @@
                                 margin = {top: 70, right: 30, bottom: 60, left: 80};
                                 width = 850 - margin.left - margin.right;
                                 height = 450 - margin.top - margin.bottom;
+
+                                svg_2.append("rect")
+                                    .attr("class", "background_box")
+                                    .attr("width", 850)
+                                    .attr("height", 450)
+                                    .attr("x", 0)
+                                    .attr("y", 0);
 
                                 var max_positive = filterdata[0].positive
                                 var min_positive = filterdata[filterdata.length - 1].positive
