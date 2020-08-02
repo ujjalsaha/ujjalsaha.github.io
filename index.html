@@ -785,26 +785,27 @@
             layer3.append("text").attr("x", 5).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("Alaska is Gray color which")
             layer3.append("text").attr("x", 5).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("meaning low overall cases");
 
-            var xy = [];
-            xy.push({x: width - 180, y: 100})
-            xy.push({x: width - 180, y: 160})
-            layer2.append("path")
-                .datum(xy)
-                .attr("fill", "none")
-                .attr("stroke", "deeppink")
-                .attr("stroke-width", 2)
-                .attr("d", d3.line()
-                    .x(function (d) {
-                        return d.x;
-                    })
-                    .y(function (d) {
-                        return d.y;
-                    })
-                );
         }
 
 
         // NEW York Annotation at the maps
+        var xy = [];
+        xy.push({x: width - 180, y: 100})
+        xy.push({x: width - 180, y: 160})
+        layer2.append("path")
+            .datum(xy)
+            .attr("fill", "none")
+            .attr("stroke", "deeppink")
+            .attr("stroke-width", 2)
+            .attr("d", d3.line()
+                .x(function (d) {
+                    return d.x;
+                })
+                .y(function (d) {
+                    return d.y;
+                })
+            );
+
         new_york_comment_line1 = ""
         new_york_comment_line2 = ""
         if (month == "april"){
