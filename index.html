@@ -1191,9 +1191,9 @@
 
                                 // Add the label at the tip of the death cases line
                                 svg_2.append("text")
-                                    .attr("transform", "translate(" + (width - 20) + "," + (y_3(max_death) - 10) + ")")
+                                    .attr("transform", "translate(" + width + "," + (y_3(max_death) - 10) + ")")
                                     .attr("dy", ".35em")
-                                    .attr("text-anchor", "start")
+                                    .attr("text-anchor", "end")
                                     .style("font-size", "12px")
                                     .style("font-weight", "bold")
                                     .text(formatValue(max_death));
@@ -1218,48 +1218,6 @@
                                 svg_2.append("text").attr("transform", "translate(" + (width - 100) + "," + (y_3(max_death) - 60) + ")")
                                     .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
                                     .style("fill", "deeppink").text("Overall deaths so far");
-
-                                // Add the label at the bottom of the line and annotation
-                                var xy = [];
-                                xy.push({x: 10, y: height - 30})
-                                xy.push({x: 10, y: height - 50})
-                                svg_2.append("path")
-                                    .datum(xy)
-                                    .attr("fill", "none")
-                                    .attr("stroke", "deeppink")
-                                    .attr("stroke-width", 2)
-                                    .attr("d", d3.line()
-                                        .x(function (d) {
-                                            return d.x;
-                                        })
-                                        .y(function (d) {
-                                            return d.y;
-                                        })
-                                    )
-
-                                svg_2.append("text")
-                                    .attr("transform", "translate(" + (5) + "," + (height - 15) + ")")
-                                    .attr("dy", ".35em")
-                                    .attr("text-anchor", "start")
-                                    .style("font-size", "12px")
-                                    .style("font-weight", "bold")
-                                    .text(formatValue(min_positive));
-
-                                svg_2.append("text").attr("transform", "translate(" + (5) + "," + (height - 100) + ")")
-                                    .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
-                                    .style("fill", "deeppink").text("Positives cases");
-                                svg_2.append("text").attr("transform", "translate(" + (5) + "," + (height - 90) + ")").attr("dy", ".35em")
-                                    .attr("text-anchor", "start").style("font-size", "12px")
-                                    .style("fill", "deeppink").text("started increasing");
-                                svg_2.append("text").attr("transform", "translate(" + (5) + "," + (height - 80) + ")").attr("dy", ".35em")
-                                    .attr("text-anchor", "start").style("font-size", "12px")
-                                    .style("fill", "deeppink").text("during mid of Mar");
-                                svg_2.append("text").attr("transform", "translate(" + (5) + "," + (height - 70) + ")").attr("dy", ".35em")
-                                    .attr("text-anchor", "start").style("font-size", "12px")
-                                    .style("fill", "deeppink").text("and lockdown");
-                                svg_2.append("text").attr("transform", "translate(" + (5) + "," + (height - 60) + ")").attr("dy", ".35em")
-                                    .attr("text-anchor", "start").style("font-size", "12px")
-                                    .style("fill", "deeppink").text("begins");
 
                                 // Add the annotation
                                 svg_2.append("rect")
