@@ -3091,24 +3091,6 @@
                     .text("CA and TX are reporting new cases at an alarming rates")
             }
 
-            // Wyoming
-            var xy = [];
-            xy.push({x: 350, y: 200})
-            xy.push({x: 20, y: 340})
-            layer2.append("path")
-                .datum(xy)
-                .attr("fill", "none")
-                .attr("stroke", "deeppink")
-                .attr("stroke-width", 2)
-                .attr("d", d3.line()
-                    .x(function (d) {
-                        return d.x;
-                    })
-                    .y(function (d) {
-                        return d.y;
-                    })
-                );
-
             // Alaska
             var xy = [];
             xy.push({x: 75, y: height - 120})
@@ -3127,8 +3109,8 @@
                     })
                 );
             layer3.append("text").attr("x", 5).attr("y", 350).style("font-size", "12px").style("fill", "deeppink").text("Light color states like")
-            layer3.append("text").attr("x", 5).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("Alaska, Wyoming & Others ")
-            layer3.append("text").attr("x", 5).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("aren't reporting much new cases.");
+            layer3.append("text").attr("x", 5).attr("y", 360).style("font-size", "12px").style("fill", "deeppink").text("Alaska and Others aren't ")
+            layer3.append("text").attr("x", 5).attr("y", 370).style("font-size", "12px").style("fill", "deeppink").text("reporting much new cases.");
 
         }
 
