@@ -896,8 +896,6 @@
         //Read the data
         d3.csv("country_cumulative.csv",
 
-            console.log("CountryCases")
-
             // When reading the csv, I must format variables:
             function (d) {
                 // console.log(d.date, d.positive)
@@ -908,6 +906,8 @@
 
             // Now I can use this dataset:
             function (data) {
+                console.log("CountryCases")
+
 
                 // Filter the dataset to get selected state rows only
                 var filterdata = data.filter(function (d) {
