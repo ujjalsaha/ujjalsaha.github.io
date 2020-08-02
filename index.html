@@ -466,12 +466,13 @@
                     );
 
                 // Add the CONFIRMED label at the tip of the line and annotation
+                console.log("Switch Month: " + month)
                 switch (month) {
                     case 'july':
                         value = ""
                         pdate = parseDate("20200724")
                         for (i = 0; i < filterdata.length ; i++) {
-                            if (filterdata[i].date == parseDate) {
+                            if (filterdata[i].date == pdate) {
                                 value = filterdata[i].value
                             }
                         }
@@ -508,11 +509,11 @@
                         value = ""
                         pdate = parseDate("20200630")
                         for (i = 0; i < filterdata.length ; i++) {
-                            if (filterdata[i].date == parseDate) {
+                            if (filterdata[i].date == pdate) {
                                 value = filterdata[i].value
                             }
                         }
-                        console.log("July value: " + value)
+                        console.log("June value: " + value)
 
                         svg_2.append("text")
                             .attr("transform", "translate("+(x_2(pdate) - 40)+","+(y_2(value) - 15)+")")
@@ -545,11 +546,11 @@
                         value = ""
                         pdate = parseDate("20200531")
                         for (i = 0; i < filterdata.length ; i++) {
-                            if (filterdata[i].date == parseDate) {
+                            if (filterdata[i].date == pdate) {
                                 value = filterdata[i].value
                             }
                         }
-                        console.log("July value: " + value)
+                        console.log("May value: " + value)
 
                         svg_2.append("text")
                             .attr("transform", "translate("+(x_2(pdate) - 40)+","+(y_2(value) - 15)+")")
@@ -582,11 +583,13 @@
                         value = ""
                         pdate = parseDate("20200430")
                         for (i = 0; i < filterdata.length ; i++) {
-                            if (filterdata[i].date == parseDate) {
+                            console.log("filterdata[" + i + "].date: " + filterdata[i].date)
+                            console.log("pdate: " + pdate)
+                            if (filterdata[i].date == pdate) {
                                 value = filterdata[i].value
                             }
                         }
-                        console.log("July value: " + value)
+                        console.log("Apr value: " + value)
 
                         svg_2.append("text")
                             .attr("transform", "translate("+(x_2(pdate) - 40)+","+(y_2(value) - 15)+")")
