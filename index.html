@@ -918,7 +918,7 @@
                 var filterdata = data.filter(function (d) {
                     if (month == "april"){
                         console.log("April Month: " + month)
-                        return parseDate(d.date) < parseDate("20200430")
+                        return d.date < "20200430"
                     }
                     else if (month == "may"){
                         console.log("May Month: " + month)
