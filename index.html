@@ -1129,10 +1129,9 @@
 
         }
 
-        if (month == "april") or (month == "july"){
+        // NEW York Annotation at the maps
+        if (month == "april") or (month == "july")
         {
-
-            // NEW York Annotation at the maps
             var xy = [];
             xy.push({x: width - 180, y: 100})
             xy.push({x: width - 180, y: 160})
@@ -1142,12 +1141,8 @@
                 .attr("stroke", "deeppink")
                 .attr("stroke-width", 2)
                 .attr("d", d3.line()
-                    .x(function (d) {
-                        return d.x;
-                    })
-                    .y(function (d) {
-                        return d.y;
-                    })
+                    .x(function (d) {return d.x;})
+                    .y(function (d) {return d.y;})
                 );
         }
 
@@ -1174,7 +1169,7 @@
             .text("United States - Overall Case Count (Cumulative) ");
 
 
-        // add a legend
+        // Add a legend
         var l_w = 120, l_h = 210;
         layer3.append("text")
             .attr("x", 780)
