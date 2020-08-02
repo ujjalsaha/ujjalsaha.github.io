@@ -106,7 +106,7 @@
         padding-bottom: 20px;
         padding-left: 20px;
         padding-right: 20px;
-        max-width: 1600px;
+        max-width: 1750px;
         border: 2px solid #AAAE92;
         line-height: 20px;
         color: grey;
@@ -181,17 +181,23 @@
 </head>
 <body>
 <div class="header_div">
-    <span class="guideline_header">Narrative Visualization Walkthrough - Demonstrating Interactive Slideshow using COVID-19 Dataset for United States</span><br/>
-    This is a demonstration of Narrative Visualisation using the Interactive Slideshow Structure using the COVID-19 Dataset of United States and tries to establish sequence of hierarchies putting forward the observation in terms of various Scenes as pages. The narrative visualization mainly explore the areas of overall cases and new cases within united states and how each state is affected in terms of case counts.
-    This whole Visualization is based on three Scenes. Below is the brief description of each scene.
+    <span class="guideline_header;" style="text-align: center">Narrative Visualization Walkthrough - Demonstrating Interactive Slideshow using COVID-19 Dataset for United States</span><br/>
+    This is a demonstration of Narrative Visualisation using the Interactive Slideshow Structure using the COVID-19 Dataset of United States and tries to establish sequence of hierarchies putting forward the observation in terms of various Scenes as pages. The narrative visualization mainly explore the overall cases and new cases of COVID-19 pandemic within united states and how each state is affected in terms of case counts.
+    This whole Visualization is based on four Scenes. .
     <p>
-        <span class="bold">Scene 1 (United States - COVID-19 Overall Case Count):</span> where author puts forwards the observation with overall cases on the states of United States and being within scene1 lets user explore with the tooltip, parameters and triggers.<br/>
-        <span class="bold">Scene 2 (United States - COVID-19 New Case Count):</span> where author puts forwards the observation with new cases on the states of United States and being within scene2 lets user explore the visualization with the tooltip, parameters and triggers.<br/>
-        <span class="bold">Scene 3 (United States - COVID-19 Top 10 States):</span> where author puts forwards the observation of top10 states with overall positive case counts vs top10 states with new case counts. Also letting the user explore the visualization with the tooltip, parameters and triggers. This is the summary and end of the narrative visualization.<br/>
+        <span class="bold">Scenes:</span><br/>
+        &nbsp;&nbsp;1. <span class="bold">Scene 1 (United States - COVID-19 Until April 2020):</span> where author presents the situation with new cases and overall cases on the states of United States until April 2020 and being within scene1 lets user explore with the User controls. With help of annotations, author also presents critical observations.<br/>
+        &nbsp;&nbsp;2. <span class="bold">Scene 2 (United States - COVID-19 Until May 2020):</span>  where author presents the situation with new cases and overall cases on the states of United States until May 2020 and being within scene2 lets user explore with the User controls. With help of annotations, author also presents critical observations.<br/>
+        &nbsp;&nbsp;3. <span class="bold">Scene 3 (United States - COVID-19 Until June 2020):</span>  where author presents the situation with new cases and overall cases on the states of United States until Jun 2020 and being within scene3 lets user explore with the User controls. With help of annotations, author also presents critical observations.<br/>
+        &nbsp;&nbsp;4. <span class="bold">Scene 4 (United States - COVID-19 Until July 2020):</span>  where author presents the situation with new cases and overall cases on the states of United States until July 2020 and being within scene1 lets user explore with the User controls. With help of annotations, author also presents critical observations. Author also makes some conclusion as this is the final scene.<br/>
+    <p>
+        <span class="bold">Parameters and Triggers:  </span><br/>
+        The scence changes from slide to slide based on the parameters such as date, overall cases and new cases. The slide button triggers the change in parameters that brings up a new scene each time.
     </p>
     <p>
-        <span class="bold">Navigation: </span>Sections below explains more about each scene. In this narrative visualization, each scene is presented as individual slide and each slide is a webpage. To move to next scene/slides/pages, use the Prev and Next links below, or just click the button to jump to a page.
-        <span style="font-size: 8px">(For best experience of the narrative visualisation, it is highly recommended to browse the slides in order, and not to jum slides)</span>
+        <span class="bold">Navigation with the Scenes: </span><br>
+        In this narrative visualization, each scene is presented as individual slide containing 4 charts. Couple of charts (Map and Line chart) representing COVID-19 new cases and other couple of charts (Map and Line Chart) representing CONVID-19 overall cases.
+        Below section has the buttons that changes scenes. To move to next scene/slides/pages, click the button left to right in order. Every time a button is pressed to change a scene, the selected button will turn Gray in color and other buttons will remain Brown color. For best experience of the narrative visualisation, it is highly recommended to browse the slides in order, and not to jump slides.
     </p>
 </div>
 <div class="header_div" style="text-align: center">
@@ -214,84 +220,57 @@
     <table>
         <tr>
             <td valign="top">
-                <div style="max-width: 700px; line-height: 20px;padding: 20px">
-                    <span class="guideline_header">Map - Showing Cumulative Confirmed Cases for Each States of United States</span><br/>
-                    <p>
-                        Seeing the total number of confirmed cases over time, can illustrate how the pandemic is expanding within the country.
-                        The map shows cumulative cases for each states – which means, till date the total number of people who have ever tested positive for coronavirus in United States, regardless of whether they have recovered or died.
-                        The coloring scale on the map shows states that are red most affected in red to gradually fading to gray states that are having least number of cases. With the color grading scale, we are seeing see most states have been affected so far with with few of them having high concentration of infected people.
-                        From the map, as an <span class="bold"> observation </span> we see states like New York, California, New Jersey, Florida, Texas etc are the hard hit areas with highest count of cumulative COVID-19 cases so far.
-                    </p>
-                    <p>
-                        <span class="bold">User Controls:</span><br/>
-                        The map is interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:<br/>
-                        &nbsp;&nbsp;1. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Tooltip </span> -> Hovering over any state shows the cases counts and few other info.<br/>
-                        &nbsp;&nbsp;2. <span class="bold" style="text-decoration: underline; color: #aaaaaa"> Cross Filter (Parameter: State)</span> -> Clicking a state from the map with bring up respective state's cumulative case count on the line chart.<br/>
-                    </p>
+                <div class="header_div" style="text-align: center; border-color: darkcyan; border-width: 3px">
+                    <span style="text-align: center; font-weight: bold; font-size: x-large; color: darkcyan">United States - New Cases of COVID-19</span><br/><br/>
+                    <div id="svg_3" style="overflow: visible"></div>
+                    <br/><br/>
+                    <div style="padding-left: 10px">
+                        <input id="back_button_new" name="back_button_new"
+                               type="button"
+                               value="Back to New Cases for United States"
+                               onclick="back_to_overall_country()" />
+                    </div>
+                    <div id="svg_4" ></div>
                 </div>
             </td>
             <td>
-                <div id="svg_1" style="overflow: visible"></div>
+            </td>
+            <td>
+                <div class="header_div" style="text-align: center; border-color: crimson; border-width: 3px" >
+                    <span style="text-align: center; font-weight: bold; font-size: x-large; color: crimson">United States - Cumulative Overall Cases of COVID-19</span><br/><br/>
+                    <div id="svg_1" style="overflow: visible"></div>
+                    <br/><br/>
+                    <div style="padding-left: 10px" align="left">
+                        <input id="back_button_overall" name="back_button_overall"
+                               type="button"
+                               value="Back to Overall Cases for United States"
+                               onclick="back_to_overall_country()" />
+                    </div>
+                    <div id="svg_2" ></div>
+                </div>
             </td>
         </tr>
     </table>
 </div>
 <br/>
-<div class="header_div">
-    <!-- table border="1" -->
-    <table>
-        <tr>
-            <td valign="top" >
-                <div style="max-width: 700px; line-height: 20px;padding: 20px">
-                    <span class="guideline_header">Line Chart - Cumulative Confirmed Cases for the United States</span><br/>
-                    <p>
-                        The line chart here shows:<br/>
-                        &nbsp;&nbsp;1. For entire United States at what pace the overall cases are increasing<br/>
-                        &nbsp;&nbsp;2. If user clicks on a state on the above map, as cross-filter is enable, the view on the line chart will switch to state level and will show state level overall case count.<br/>
-                    </p>
-                    <p>
-                        A fine <span class="bold"> observation </span> we noticed this graph has an upward bend that can indicate more cases are being report in last few weeks then ever before.
-                        Around late June, when the lockdown was lifted, there is sudden rise in the curve which would mean as states are opening more community spreading is also aggressive.
-                        The color blue was used just to make it appealing, where blue itself has no color significance on the line chart.
-                    </p>
-                    <p>
-                        <span class="bold">Annotations:</span><br/>
-                        The line chart has also couple of annotations:<br/>
-                        &nbsp;&nbsp;1. A vertical line that shows when states re-opened from lockdown and post lockdown effect of coronavirus on people.<br/>
-                        &nbsp;&nbsp;2. At the tip of the line chart, show the total case count for the latest date.<br/>
-                    </p>
-                    <p>
-                        <span class="bold">User Controls:</span><br/>
-                        The line is also interactive with limited user controls and below are the user controls listed so user can explore further tweaking some parameters:<br/>
-                    </p>
-                </div>
-            </td>
-            <td valign="top">
-                <div style="padding-left: 10px">
-                    <input name="updateButton"
-                           type="button"
-                           value="Overall Cases for United States"
-                           onclick="back_to_overall_country()" />
-                </div>
-                <div id="svg_2" ></div>
-            </td>
-        </tr>
-    </table>
-</div>
 <br/>
 <div class="header_div">
-    <span class="guideline_header">Definitions of the Parameters:</span><br/>
-    1. <span class="bold">Confirmed Cases:</span> A confirmed case is a person who has a positive test result from an FDA approved diagnostic molecular test.<br/>
-    2: <span class="bold">Date: </span>Date on which data was compiled by the data provider.<br/>
-    3. <span class="bold">States: </span>States of the United States.<br/> Cross-filter is enabled on this scnene letting the user to see state level confirmed cases.
+    <span class="guideline_header"> Parameters and Triggers:</span><br/>
+    1: <span class="bold">Date: </span>With changes in scenes creates a trigger to change data to present COVID-19 data for a different window frame. And this opens more opportunity for analysis and observation regarding impact by COVID-19 <br/>
+    2. <span class="bold">Overall Confirmed Cases:</span> As data changes by change is screen so as confirmed cases which is why this is another parameter of this narrative visualization. So change in date triggers changes in confirmed acses values. Confirmed cases on different scenes opens up way for in-depth analysis..<br/>
+    3. <span class="bold">New Rising Cases:</span> As data changes by change is screen so as new rising cases which is why this is another parameter of this narrative visualization. So change in date triggers changes in new rising cases values. We will experience how new cases on different scenes opens up way for in-depth analysis.<br/>
 </div>
 <br/>
 <div class="header_div">
     <span class="guideline_header">General Facts<br/></span>
-    <span class="bold">Data Sources:</span><br/>
-      1. COVID-19 data: <a href="https://covidtracking.com/data/api">https://covidtracking.com/data/api</a><br/>
-      2. COVID-19 States Reopen dates: <a href="https://www.nytimes.com/interactive/2020/us/states-reopen-map-coronavirus.html">https://www.nytimes.com/interactive/2020/us/states-reopen-map-coronavirus.html</a><br/>
-      3.
+    <span class="bold">1. Data Sources:</span><br/>
+      &nbsp;&nbsp;&nbsp;a. COVID-19 data: <a href="https://covidtracking.com/data/api">https://covidtracking.com/data/api</a><br/>
+      &nbsp;&nbsp;&nbsp;b. COVID-19 States Reopen dates: <a href="https://www.nytimes.com/interactive/2020/us/states-reopen-map-coronavirus.html">https://www.nytimes.com/interactive/2020/us/states-reopen-map-coronavirus.html</a><br/>
+      &nbsp;&nbsp;&nbsp;c. United States Population information were gathered from <a href="https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html">census.gov</a> and not current.<br/>
+      2. These are public data set downloaded as freely available on the above sites. No further verification and validation process have been carried out.<br/>
+      3. Start date for the entire narrative visualization has been fixed to Mar 16, as before Mar16 the data was inconsistent as few states weren't able to report data before Mar 16.<br/>
+      4. Only 52 States of United Sates haven been considered for this narrative visualization. Union Territory and other territories haven't been considered in this analysis.<br/>
+      5. Data only until Jul 24, 2020 are present on the dataset that was used for this narrative visualization.<br/>
 </div>
 
 <script>
@@ -888,11 +867,11 @@
     /* ######################################################### */
     function overall_cases_map(month) {
         if (month == "april"){
-            console.log("april")
             document.getElementById('scene_info').innerHTML = "<span  class='scene_header'>Scene 1 - " + month.toUpperCase() + " 2020: </span><br/> " +
-            "Shows impact of COVID-19 across states in United States from beginning until Apr end. For better representation of data we have consideres data starting from Mar 16, 2020." +
-            "The Scene is comprised of a Map chart and Line Chart on right hand side that shows how overall cases has impacted various states since beginning of pandemic until Apr 2020. Most of the states seems spiking while New York has been hit hard." +
-            "The Scene is also comprised of a Map chart and Line Chart on left hand side that shows new rising cases since beginning of pandemic until Apr 2020. Daily counts on New York state are spiking aggressively. While some otehr states like California, Illinois, New Jeysey are also having daily new cases the spike</br>" +
+            "Shows impact of COVID-19 across states in United States from beginning until Apr 2020 end. For better representation of data we have considered data starting from Mar 16, 2020." +
+            "The Scene is comprised of a Map chart and Line Chart on right hand side that shows how overall cases has impacted various states since beginning of pandemic until Apr 2020. Most of the states seems spiking while New York has been hit hard (red color on overall cses map depicts the same)." +
+            "The Scene is also comprised of a Map chart and Line Chart on left hand side that shows new rising cases since beginning of pandemic until Apr 2020. Daily counts on New York state are spiking aggressively. While some otehr states like California, Illinois, New Jeysey are also having daily new cases the spike and can be identified with dark Cyan shades on the map" +
+            "April is the month where most of states increased their testing capacity and infrastructure so more and more people can be tested and ncessary action can be takes with contact tracing, quarantine etc to slow the spread. By April end many states were considering of reopening from the lockdown that was imposed mid March-ish. Lets see on next scene how case counts might change with states reopening.</br>" +
             "<span style='font-size:small; font-weight: bold; color: #aaaaaa'>User Controls:</span><br/>" +
             "&nbsp;&nbsp;1. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Tooltip </span> -> Hovering over on Map Chart and line chart area will display the tooltip showing case count and otehr info.<br/>" +
             "&nbsp;&nbsp;2. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Cross Filter (State selected from Map)</span> -> Clicking a state from the Overall or New Cases maps and that will bring yp state level cases counts on the corresponding line charts. Use the button to switch to country view.<br/>" +
@@ -905,9 +884,16 @@
 
         }
         else if (month == "may"){
-            console.log("may")
-            document.getElementById('scene_info').innerHTML = "<span  class='scene_header'>Scene 2 - " + month.toUpperCase() + " 2020: </span> Shows impact of COVID-19 across states in United States but in terms of cumulative confirmed cases." +
-                "The Scene is comprised of a Map chart and Line Chart that shows how overall cases has impacted various states since beginning of pandemic and how overall cases has increased over the period (cumulative) and is still increasing. More description and user control options are mentioned on respective charts.";
+            document.getElementById('scene_info').innerHTML = "<span  class='scene_header'>Scene 2 - " + month.toUpperCase() + " 2020: </span><br/> " +
+                "Shows impact of COVID-19 across states in United States from beginning until May 2020 end. For better representation of data we have considered data starting from Mar 16, 2020." +
+                "The overall cases represented on the Map chart and Line Chart on right hand side shows continuous spike. Also shows few other states are on the verge of being as badly affected as New York (for e.g. Illinois, California, Texas, Florida etc) appearing as darker red shades on the map."  +
+                "The new rising cases which is represented on the Map chart and Line Chart on left hand side also confirms about the spike raises in most of coastal states and north east states. Counts on New York state are spiking aggressively so as New Jersey, California, Illinois and other is darkar Cyan in color on the map." +
+                "One of the main reason some states are showing surge in cases as few states were opeining from the lockdown. Because of reopening a spike in overall cases wont be surprising on upcoming months. Lets see on next scene how reopening might continue surge in case counts" +
+                "Also few west and midwest states (Like Wyoming, Nebraska, Utah, nevada, Alaska, Hawaii etc) with low population density doesn't seems to be that much affected and they are still Gray color on overall cases map and yellow color on new cases map.<br/>" +
+                "<span style='font-size:small; font-weight: bold; color: #aaaaaa'>User Controls:</span><br/>" +
+                "&nbsp;&nbsp;1. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Tooltip </span> -> Hovering over on Map Chart and line chart area will display the tooltip showing case count and otehr info.<br/>" +
+                "&nbsp;&nbsp;2. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Cross Filter (State selected from Map)</span> -> Clicking a state from the Overall or New Cases maps and that will bring yp state level cases counts on the corresponding line charts. Use the button to switch to country view.<br/>" +
+                "&nbsp;&nbsp;3. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Button (Switch to Country Level)  </span> -> On the Line char, the button is provided to Switch on entire United States data at any point while interacting with state data from map.<br/>";
 
             document.getElementById('april').style.background = "burlywood"
             document.getElementById('may').style.background = "lightgray"
@@ -915,9 +901,16 @@
             document.getElementById('july').style.background = "burlywood"
         }
         else if (month == "june"){
-            console.log("june")
-            document.getElementById('scene_info').innerHTML = "<span  class='scene_header'>Scene 3 - " + month.toUpperCase() + " 2020: </span> Shows impact of COVID-19 across states in United States but in terms of cumulative confirmed cases." +
-                "The Scene is comprised of a Map chart and Line Chart that shows how overall cases has impacted various states since beginning of pandemic and how overall cases has increased over the period (cumulative) and is still increasing. More description and user control options are mentioned on respective charts.";
+            document.getElementById('scene_info').innerHTML = "<span  class='scene_header'>Scene 2 - " + month.toUpperCase() + " 2020: </span><br/> " +
+                "Shows impact of COVID-19 across states in United States from beginning until June 2020 end. For better representation of data we have considered data starting from Mar 16, 2020." +
+                "The overall cases represented on the Map chart and Line Chart on right hand side shows continuous spike. State like New York, Illinois, California, Texas, Florida etc appearing to still spiking."  +
+                "The new rising cases which is represented on the Map chart and Line Chart on left hand side also confirms about the spike raises with more daily postives being reported." +
+                "Reopening is continuing with more states reopening during month of June. Because of reopening a surge spike in overall cases wont be surprising on upcoming months. Lets see on next scene how the case counts is affected with almost all states reopoened by June." +
+                "Low populated states seems to be doing better and still not as badly affected as the populated states.<br/>" +
+                "<span style='font-size:small; font-weight: bold; color: #aaaaaa'>User Controls:</span><br/>" +
+                "&nbsp;&nbsp;1. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Tooltip </span> -> Hovering over on Map Chart and line chart area will display the tooltip showing case count and otehr info.<br/>" +
+                "&nbsp;&nbsp;2. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Cross Filter (State selected from Map)</span> -> Clicking a state from the Overall or New Cases maps and that will bring yp state level cases counts on the corresponding line charts. Use the button to switch to country view.<br/>" +
+                "&nbsp;&nbsp;3. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Button (Switch to Country Level)  </span> -> On the Line char, the button is provided to Switch on entire United States data at any point while interacting with state data from map.<br/>";
 
             document.getElementById('april').style.background = "burlywood"
             document.getElementById('may').style.background = "burlywood"
@@ -925,9 +918,16 @@
             document.getElementById('july').style.background = "burlywood"
         }
         else {
-            console.log("july")
-            document.getElementById('scene_info').innerHTML = "<span  class='scene_header'>Scene 4 - " + month.toUpperCase() + " 2020: </span> Shows impact of COVID-19 across states in United States but in terms of cumulative confirmed cases." +
-                "The Scene is comprised of a Map chart and Line Chart that shows how overall cases has impacted various states since beginning of pandemic and how overall cases has increased over the period (cumulative) and is still increasing. More description and user control options are mentioned on respective charts.";
+            document.getElementById('scene_info').innerHTML = "<span  class='scene_header'>Scene 4 - " + month.toUpperCase() + " 2020: </span><br/> " +
+                "This is the final scene of the narrative visualization showing impact of COVID-19 across states in United States from beginning until July 2020 end. For better representation of data we have considered data starting from Mar 16, 2020." +
+                "The overall cases represented on the Map chart and Line Chart on right hand side shows continuous spike however there are few interesting observation. Illinois state which was showing trend of surge in case count was able to control the spike and still haven't appeared fully red."  +
+                "The new rising cases which is represented on the Map chart and Line Chart on left hand side also gives some interesting observation, New York state is no dark Cyan in color which show even though numbers of cases are high, but new cases aren't being reported but case counts are kind of settling down." +
+                "From both the map views (Overall and new rising cases), it seems California, Texas, Florida are still aggressively peaking the spikes. Many states are still rising in cases caounts and the trend sappear to be continuing for a while. However, Low populated states seems to be doing better and still not as badly affected as the populated states." +
+                "With this final scene and our conslucison we will also let the user to come to some other conclusion with fine observation while exploring the charts with the user controls. <br/>" +
+                "<span style='font-size:small; font-weight: bold; color: #aaaaaa'>User Controls:</span><br/>" +
+                "&nbsp;&nbsp;1. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Tooltip </span> -> Hovering over on Map Chart and line chart area will display the tooltip showing case count and otehr info.<br/>" +
+                "&nbsp;&nbsp;2. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Cross Filter (State selected from Map)</span> -> Clicking a state from the Overall or New Cases maps and that will bring yp state level cases counts on the corresponding line charts. Use the button to switch to country view.<br/>" +
+                "&nbsp;&nbsp;3. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Button (Switch to Country Level)  </span> -> On the Line char, the button is provided to Switch on entire United States data at any point while interacting with state data from map.<br/>";
 
             document.getElementById('april').style.background = "burlywood"
             document.getElementById('may').style.background = "burlywood"
