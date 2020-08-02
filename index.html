@@ -586,7 +586,7 @@
                         for (i = 0; i < filterdata.length ; i++) {
                             console.log("filterdata[" + i + "].date: " + filterdata[i].date)
                             console.log("pdate: " + pdate)
-                            if (filterdata[i].date == pdate) {
+                            if (filterdata[i].date.getTime() == pdate.getTime()) {
                                 console.log("April Match")
                                 value = filterdata[i].value
                                 break;
