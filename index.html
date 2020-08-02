@@ -1122,11 +1122,12 @@
                                     .style("font-size", "10px")
                                     .text("Mar 16");
 
+                                e_date = (month == "april") ? "Apr 30" : (month == "may") ? "May 31" : (month =="june") ? "Jun 30" : "Jul 24";
                                 svg_2.append("text")
                                     .attr("transform", "translate(" + (width + 5) + " ," + (height + 16) + ")")
                                     .style("text-anchor", "middle")
                                     .style("font-size", "10px")
-                                    .text("Jul 24");
+                                    .text(e_date);
 
                                 // Add the line for confirmed
                                 const path = svg_2.append("path")
