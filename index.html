@@ -847,8 +847,8 @@
                 console.log("y_2(filterdata[filterdata.length -1].value): " + y_2(filterdata[0].value))
                 svg_2.append("rect")
                     .attr("class", "overlay")
-                    .attr("width", x_2(filterdata[filterdata.length -1].date))
-                    .attr("height", y_2(filterdata[filterdata.length -1].value))
+                    .attr("width", x_2(filterdata[0].date))
+                    .attr("height", y_2(filterdata[0].value))
                     .on("mouseover", function() { focus.style("display", null); dfocus.style("display", null);})
                     .on("mouseout", function() { focus.style("display", "none"); dfocus.style("display", "none");})
                     .on("mousemove", mousemove);
