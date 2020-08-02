@@ -195,16 +195,16 @@
     </p>
 </div>
 <div class="header_div" style="text-align: center">
-    <span id="perv_span" style="color: #aaaaaa; text-decoration: underline">Prev</span>
-    <a id="prev" style="color:darkmagenta;visibility: hidden" href="#" onclick="prev_slide()">Prev</a>
+    <!--span id="perv_span" style="color: #aaaaaa; text-decoration: underline">Prev</span -->
+    <!--a id="prev" style="color:darkmagenta;visibility: hidden" href="#" onclick="prev_slide()">Prev</a-->
     <ul>
         <li><a id="april" class="slide_button" href="#" onclick="overall_cases_map('april');">Apr 2020</a></li>
         <li><a id="may" class="slide_button" href="#" onclick="overall_cases_map('may');">May 2020</a></li>
         <li><a id="june" class="slide_button" href="#" onclick="overall_cases_map('june');">June 2020</a></li>
         <li><a id="july" class="slide_button" href="#" onclick="overall_cases_map('july');">July 2020</a></li>
     </ul>
-    <a id="next" style="color:darkmagenta;visibility: visible" href="#" onclick="next_slide()">Next</a>
-    <span id="next_span" style="color: #aaaaaa; text-decoration: underline;visibility: hidden">Next</span>
+    <!---a id="next" style="color:darkmagenta;visibility: visible" href="#" onclick="next_slide()">Next</a-->
+    <!--span-- id="next_span" style="color: #aaaaaa; text-decoration: underline;visibility: hidden">Next</span-->
 
 </div>
 <div id="scene_info" class="header_div"></div>
@@ -902,8 +902,6 @@
             document.getElementById('may').style.background = "burlywood"
             document.getElementById('june').style.background = "burlywood"
             document.getElementById('july').style.background = "burlywood"
-            document.getElementById('prev').style.display = "none"
-            document.getElementById('prev_span').style.display = "block"
 
         }
         else if (month == "may"){
@@ -935,8 +933,6 @@
             document.getElementById('may').style.background = "burlywood"
             document.getElementById('june').style.background = "burlywood"
             document.getElementById('july').style.background = "lightgray"
-            document.getElementById('next').style.display = "none"
-            document.getElementById('next_span').style.display = "block"
         }
 
         selected_month = month
@@ -1800,8 +1796,8 @@
             overall_cases_map("june")
         }
         else if (selected_month == "june") {
-            document.getElementById('next').style.display = "none"
-            document.getElementById('next_span').style.display = "block"
+            //document.getElementById('next').style.display = "none"
+            //document.getElementById('next_span').style.display = "block"
             overall_cases_map("july")
         }
         else {
@@ -1811,8 +1807,8 @@
 
     function prev_slide() {
         if (selected_month == "may") {
-            document.getElementById('prev').style.display = "none"
-            document.getElementById('prev_span').style.display = "block"
+            //document.getElementById('prev').style.display = "none"
+            //document.getElementById('prev_span').style.display = "block"
 
             overall_cases_map("april")
         }
