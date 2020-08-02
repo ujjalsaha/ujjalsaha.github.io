@@ -1102,7 +1102,7 @@
 
                                 // Add X axis --> it is a date format
                                 var x_3 = d3.scaleTime()
-                                    .domain(d3.extent(filterdata_temp[0].date, function (d) {
+                                    .domain(d3.extent(filterdata_temp, function (d) {
                                         return d.date;
                                     }))
                                     .range([0, width]);
