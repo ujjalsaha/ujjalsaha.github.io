@@ -2469,8 +2469,8 @@
                     .on("mouseover", function (d) {
                         var tooltip_html = "<span class='bold' style='font-size: small;color: maroon'>" + d.properties.state + "</span><br/>" +
                             "<span>Population: </span>" + d.properties.population + "<br/>" +
-                            "<span>Overall Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
-                            "<span>Overall Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
+                            "<span>New Cases: </span>" + formatValue(d.properties.positive) + "<br/>" +
+                            "<span>New Deaths: </span>" + formatValue(d.properties.death) + "<br/>";
                         div.transition()
                             .duration(200)
                             .style("opacity", .9);
@@ -3045,28 +3045,18 @@
                     .y(function (d) {return d.y;})
                 );
 
-            // Florida
-            var xy = [];
-            xy.push({x: width / 2 + 220, y: height - 110})
-            xy.push({x: width / 2 + 150, y: height - 20})
-            layer2.append("path").datum(xy).attr("fill", "none").attr("stroke", "deeppink").attr("stroke-width", 2)
-                .attr("d", d3.line()
-                    .x(function (d) {return d.x;})
-                    .y(function (d) {return d.y;})
-                );
 
-            // Illinois
-            var xy = [];
-            xy.push({x: width - 320, y: 60})
-            xy.push({x: width - 320, y: 200})
-            layer2.append("path").datum(xy).attr("fill", "none").attr("stroke", "deeppink").attr("stroke-width", 2)
-                .attr("d", d3.line()
-                    .x(function (d) {return d.x;})
-                    .y(function (d) {return d.y;})
-                );
+            if ((month == "june") || (month == "july")) {
+                // Florida
+                var xy = [];
+                xy.push({x: width / 2 + 220, y: height - 110})
+                xy.push({x: width / 2 + 150, y: height - 20})
+                layer2.append("path").datum(xy).attr("fill", "none").attr("stroke", "deeppink").attr("stroke-width", 2)
+                    .attr("d", d3.line()
+                        .x(function (d) {return d.x;})
+                        .y(function (d) {return d.y;})
+                    );
 
-
-            if (month == "june"){
                 // Arizona
                 var xy = [];
                 xy.push({x: 200, y: 320})
@@ -3087,28 +3077,18 @@
                         .y(function (d) {return d.y;})
                     );
 
-                layer3.append("text").attr("x", width / 2).attr("y", height - 10).style("font-size", "12px").attr("text-anchor", "middle").style("fill", "deeppink")
-                    .text("Arizona, Georgia are spiking up too. CA, TX, FL continue to spike.")
-
-                layer3.append("text").attr("x", width - 380).attr("y", 50).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink")
-                    .text("Illinois is not spiking at an alarming rate unlike NY, CA.")
             }
-
-
             if (month == "july") {
                 layer3.append("text").attr("x", width / 2).attr("y", height - 10).style("font-size", "12px").attr("text-anchor", "middle").style("fill", "deeppink")
-                    .text("By July, CA, TX, FL are worst affected places along with NY. These all are also top populated States.")
-
-                layer3.append("text").attr("x", width - 380).attr("y", 50).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink")
-                    .text("Unlike other red states, Illinois stopped spiking at alarming rate.")
-
+                    .text("By July, CA, TX, FL are worst affected places on new rising cases.")
+            }
+            if (month == "june") {
+                layer3.append("text").attr("x", width / 2).attr("y", height - 10).style("font-size", "12px").attr("text-anchor", "middle").style("fill", "deeppink")
+                    .text("FL, AZ, GA are spiking up in new cases. CA, TX continue reporting high number in new cases.")
             }
             if (month == "may") {
-                layer3.append("text").attr("x", width - 380).attr("y", 50).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink")
-                    .text("Illinois is spiking too along with few other east states.")
-
                 layer3.append("text").attr("x", width / 2).attr("y", height - 10).style("font-size", "12px").attr("text-anchor", "middle").style("fill", "deeppink")
-                    .text("CA is spiking at an alarming rates. Texas and Florida as well. ")
+                    .text("CA and TX are reporting new cases at an alarming rates")
             }
 
             // Alaska
@@ -3134,8 +3114,19 @@
         }
 
         // NEW York Annotation at the maps
-        if ((month == "april") || (month == "july"))
+        if ((month == "april") || (month == "july") || (month == "may"))
         {
+            // Illinois
+            var xy = [];
+            xy.push({x: width - 320, y: 60})
+            xy.push({x: width - 320, y: 200})
+            layer2.append("path").datum(xy).attr("fill", "none").attr("stroke", "deeppink").attr("stroke-width", 2)
+                .attr("d", d3.line()
+                    .x(function (d) {return d.x;})
+                    .y(function (d) {return d.y;})
+                );
+
+            // NEw York
             var xy = [];
             xy.push({x: width - 180, y: 100})
             xy.push({x: width - 180, y: 160})
@@ -3152,16 +3143,26 @@
 
         new_york_comment_line1 = ""
         new_york_comment_line2 = ""
+        if (month == "may"){
+            new_york_comment_line1 = "New York is not spiking anymore. Although total cases";
+            new_york_comment_line2 = "are high. But less new cases which is good news.";
+            illinois_comment_line1 = "Illinois new case counts recducing as well"
+
+        }
         if (month == "april"){
-            new_york_comment_line1 = "New York is the first state to cross";
-            new_york_comment_line2 = "300K cases. Other states are spiking.";
+            new_york_comment_line1 = "New York is the first state to cross 4K cases";
+            new_york_comment_line2 = "in single day. Other states are spiking";
+            illinois_comment_line1 = "Illinois also reporting new cases more than most of other states"
         }
         if (month == "july"){
             new_york_comment_line1 = "New York is now the oldest in";
             new_york_comment_line2 = "league with high overall cases.";
+            illinois_comment_line1 = "Illinois new cases are in much control like New York"
         }
         layer3.append("text").attr("x", width - 210).attr("y", 80).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text(new_york_comment_line1);
         layer3.append("text").attr("x", width - 210).attr("y", 90).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink").text(new_york_comment_line2);
+        layer3.append("text").attr("x", width - 380).attr("y", 50).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "deeppink")
+            .text(illinois_comment_line1)
 
         // Add a legend
         var l_w = 120, l_h = 210;
