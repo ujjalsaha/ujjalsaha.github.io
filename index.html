@@ -159,12 +159,12 @@
 
     .unshaded_annotation_box{
         fill: gainsboro;
-        fill-opacity: 0.3;
+        fill-opacity: 0.4;
     }
 
     .annotation_box{
         fill: gainsboro;
-        fill-opacity: 0.3;
+        fill-opacity: 0.4;
     }
 
     .tooltip-date, .tooltip-cases, .tooltip-deaths {
@@ -508,9 +508,9 @@
 
                 var cases_ann = ""
                 if (month == "april") { cases_ann = "(New York with 300K is 30% of overall count)"}
-                else if (month == "may") { cases_ann = "(CA, IL, TX, FL are also spiking)"}
-                else if (month == "june") { cases_ann = "(The Curve is spiking up)"}
-                else if (month == "july") { cases_ann = "(Sharp rise in the curve after reopening)"}
+                else if (month == "may") { cases_ann = "(CA, IL, TX, FL cases are alarming)"}
+                else if (month == "june") { cases_ann = "(AZ, GA are also alarming)"}
+                else if (month == "july") { cases_ann = "(NY, CA, TX, FL are mostly affected)"}
                 else {cases_ann = ""}
                 svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) + 10)+","+(y_2(filterdata[0].value) - 65)+")")
                     .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
@@ -544,7 +544,7 @@
                     .text(formatValue(data[0].death));
 
                 var xy = [];
-                daheight = (month == "april") ? 40 : (month == "may") ? 50 : (month == "june") ? 60 : (month == "july") ? 70 : 40
+                daheight = (month == "april") ? 30 : (month == "may") ? 50 : (month == "june") ? 70 : (month == "july") ? 90 : 30
                 xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].death) - 20})
                 xy.push({x: x_2(filterdata[0].date), y: y_2(filterdata[0].death) - daheight})
                 svg_2.append("path")
@@ -558,12 +558,12 @@
                     );
 
                 if (month == "april") {
-                    svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) - 30)+","+(y_2(filterdata[0].death) - 50)+")")
+                    svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) - 30)+","+(y_2(filterdata[0].death) - 40)+")")
                         .attr("dy", ".35em").attr("text-anchor", "start").style("font-size", "12px")
                         .style("fill", "deeppink").text("Overall deaths as of " + month + " end");
                 }
                 else{
-                    daheight = (month == "may") ? 60 : (month == "june") ? 70 : (month == "july") ? 80 : 50
+                    daheight = (month == "may") ? 60 : (month == "june") ? 80 : (month == "july") ? 100 : 60
                     svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) + 5)+","+(y_2(filterdata[0].death) - daheight)+")")
                         .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
                         .style("fill", "deeppink").text("Overall deaths as of " + month + " end");
