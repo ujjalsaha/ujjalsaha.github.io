@@ -324,7 +324,7 @@
 
     function back_to_overall_country()
     {
-        console.log("222 selected month: " + selected_month)
+        // console.log("222 selected month: " + selected_month)
         overall_cases_line(selected_month)
     }
 
@@ -352,28 +352,27 @@
 
             // Now I can use this dataset:
             function (data) {
-                console.log("CountryCases")
-
-                console.log("Original Data Length: " + data.length)
-                console.log("Month: " + month)
+                //console.log("CountryCases")
+                //console.log("Original Data Length: " + data.length)
+                //console.log("Month: " + month)
 
 
                 // Filter the dataset to get selected state rows only
                 var filterdata = data.filter(function (d) {
                     if (month == "april"){
-                        console.log("Month April: " + month)
+                        //console.log("Month April: " + month)
                         return d.date < parseDate("20200501")
                     }
                     else if (month == "may"){
-                        console.log("Month may: " + month)
+                        //console.log("Month may: " + month)
                         return d.date < parseDate("20200601")
                     }
                     else if (month == "june"){
-                        console.log("Month June: " + month)
+                        //console.log("Month June: " + month)
                         return d.date < parseDate("20200701")
                     }
                     else if (month == "july"){
-                        console.log("Month July: " + month)
+                        //console.log("Month July: " + month)
                         return d.date < parseDate("20200725")
                     }
                     else{
@@ -381,7 +380,7 @@
                     }
                 })
 
-                console.log("Filtered Data Length: " + filterdata.length)
+                //console.log("Filtered Data Length: " + filterdata.length)
 
                 // Add the title for the line graph
                 svg_2.append("text")
@@ -466,7 +465,7 @@
                     );
 
                 // Add the CONFIRMED label at the tip of the line and annotation
-                console.log("Switch Month: " + month)
+                //console.log("Switch Month: " + month)
                 switch (month) {
                     case 'july':
                         value = ""
@@ -843,10 +842,10 @@
                 focus.append("text").attr("x", -75).attr("y", -19).text("Deaths:");
                 focus.append("text").attr("class", "tooltip-deaths").attr("x", -35).attr("y", -19);
 
-                console.log("filterdata[filterdata.length -1].date: " + filterdata[0].date)
-                console.log("x_2(filterdata[filterdata.length -1].date): " + x_2(filterdata[0].date))
-                console.log("filterdata[filterdata.length -1].value: " + filterdata[0].value)
-                console.log("y_2(filterdata[filterdata.length -1].value): " + y_2(filterdata[0].value))
+                //console.log("filterdata[filterdata.length -1].date: " + filterdata[0].date)
+                //console.log("x_2(filterdata[filterdata.length -1].date): " + x_2(filterdata[0].date))
+                //console.log("filterdata[filterdata.length -1].value: " + filterdata[0].value)
+                //console.log("y_2(filterdata[filterdata.length -1].value): " + y_2(filterdata[0].value))
                 svg_2.append("rect")
                     .attr("class", "overlay")
                     .attr("width", x_2(filterdata[0].date))
@@ -867,12 +866,7 @@
                             d0 = sorted_data[i - 1],
                             d1 = sorted_data[i],
                             df = x0 - d0.date.getTime() > d1.date.getTime() - x0 ? d1 : d0;
-                        console.log("sorted_data: " + sorted_data.length)
-                        console.log("df.date: " + df.date)
-                        console.log("sorted_data[n].date: " + sorted_data[sorted_data.length -1].date)
-                        console.log("sorted_data[0].date: " + sorted_data[0].date)
                         if (df.date.getTime() < sorted_data[sorted_data.length -1].date.getTime()) {
-                            console.log("Inside displaybox")
                             focus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.value) + ")");
                             dfocus.attr("transform", "translate(" + x_2(df.date) + "," + y_2(df.death) + ")");
                             focus.select(".tooltip-date").text(dateFormatter(df.date));
@@ -1541,7 +1535,7 @@
             .attr("transform", "translate(777,275)")
             .call(yAxis)
 
-        console.log("111 selected month: " + selected_month)
+        //console.log("111 selected month: " + selected_month)
         back_to_overall_country()
     }
 </script>
