@@ -1132,7 +1132,7 @@
                     .y(function (d) {return d.y;})
                 );
             var xy = [];
-            xy.push({x: width / 2 + 20, y: height - 50})
+            xy.push({x: width / 2 + 20, y: height - 120})
             xy.push({x: width / 2 + 20, y: height - 20})
             layer2.append("path").datum(xy).attr("fill", "none").attr("stroke", "deeppink").attr("stroke-width", 2)
                 .attr("d", d3.line()
@@ -1140,8 +1140,8 @@
                     .y(function (d) {return d.y;})
                 );
             var xy = [];
-            xy.push({x: width / 3, y: height / 3})
-            xy.push({x: width / 3 - 50, y: height - 20})
+            xy.push({x: width / 2 + 200, y: height - 100})
+            xy.push({x: width / 2 + 150, y: height - 20})
             layer2.append("path").datum(xy).attr("fill", "none").attr("stroke", "deeppink").attr("stroke-width", 2)
                 .attr("d", d3.line()
                     .x(function (d) {return d.x;})
