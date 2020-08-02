@@ -2931,24 +2931,11 @@
                                         break;
                                 }
 
-                                /*
-                                // Add the annotation
-                                svg_4.append("rect")
-                                    .attr("class", "annotation_box")
-                                    .attr("width", width - (width - x_3(selected_state_reopen)))
-                                    .attr("height", 370)
-                                    .attr("x", x_3(selected_state_reopen))
-                                    .attr("y", -20)
-                                    .attr("rx", 4)
-                                    .attr("ry", 4);
-
-                                svg_4.append("text")
-                                    .attr("x", 640)
-                                    .attr("y", -40)
-                                    .attr("text-anchor", "middle")
-                                    .style("font-size", "12px")
-                                    .style("fill", "deeppink")
-                                    .text("Shaded area showing reopening after");
+                                // Add the Legend
+                                svg_4.append("rect").attr("width", 15).attr("height", 15).attr("x", 10).attr("y", 10).style("fill", "steelblue").attr("rx", 4).attr("ry", 4);
+                                svg_4.append("text").attr("x", 30).attr("y", 10).attr("text-anchor", "right").style("font-size", "12px").text("Case Count");
+                                svg_4.append("rect").attr("width", 15).attr("height", 15).attr("x", 10).attr("y", 30).style("fill", "orange").attr("rx", 4).attr("ry", 4);
+                                svg_4.append("text").attr("x", 30).attr("y", 30).attr("text-anchor", "right").style("font-size", "12px").text("Death Count");
 
                                 svg_4.append("text")
                                     .attr("x", 640)
@@ -2957,7 +2944,6 @@
                                     .style("font-size", "12px")
                                     .style("fill", "deeppink")
                                     .text("lockdown and affected overall counts");
-                                */
 
                                 // Add Tooltip for line chart
                                 var dfocus = svg_4.append("g")
