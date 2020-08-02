@@ -324,38 +324,17 @@
 
     function back_to_overall_country()
     {
-        svg_2.selectAll("*").remove();
-        
-        if (selected_month == "may")
-        {
-            overall_cases_line("april")
-            overall_cases_line("may")
-        }
-        else if (selected_month == "june")
-        {
-            overall_cases_line("april")
-            overall_cases_line("may")
-            overall_cases_line("june")
-        }
-        else if (selected_month == "july")
-        {
-            console.log("222 selected month: " + selected_month)
-
-            overall_cases_line("april")
-            overall_cases_line("may")
-            overall_cases_line("june")
-            overall_cases_line("july")
-        }
-        else
-        {
-            overall_cases_line("april")
-        }
+        console.log("222 selected month: " + selected_month)
+        overall_cases_line(selected_month)
     }
 
     /* ################################################################ */
     /* ########################## LINE CHART ########################## */
     /* ################################################################ */
     function overall_cases_line(month) {
+        // clear the canvas
+        svg_2.selectAll("*").remove();
+
         selected_month = month
         // set the dimensions and margins of the graph
         margin = {top: 70, right: 30, bottom: 60, left: 80},
@@ -508,18 +487,60 @@
                         .y(function(d) { return d.y;})
                     )
 
-                var cases_ann = ""
-                if (month == "april") { cases_ann = "(New York with 300K is 30% of overall count)"}
-                else if (month == "may") { cases_ann = "(CA, IL, TX, FL cases are alarming)"}
-                else if (month == "june") { cases_ann = "(AZ, GA are also alarming)"}
-                else if (month == "july") { cases_ann = "(NY, CA, TX, FL are mostly affected)"}
-                else {cases_ann = ""}
-                svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) + 10)+","+(y_2(filterdata[0].value) - 65)+")")
-                    .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                    .style("fill", "deeppink").text(cases_ann);
-                svg_2.append("text").attr("transform", "translate("+(x_2(filterdata[0].date) + 10)+","+(y_2(filterdata[0].value) - 55)+")")
-                    .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                    .style("fill", "deeppink").text("Cases as of " + month + " end");
+                switch (month) {
+                    case 'july':
+                        pdate = parseDate("20200731")
+                        for (i = 0; i < filterdata.length ; i++) {
+                            if (filterdata[i].date == parseDate) {
+                                value = filterdata[i].value
+                            }
+                        }
+                        svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y2(value) - 65)+")")
+                            .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
+                            .style("fill", "deeppink").text("(NY, CA, TX, FL are mostly affected)");
+                        svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 55)+")")
+                            .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
+                            .style("fill", "deeppink").text("Cases as of July end");
+                    case 'june':
+                        pdate = parseDate("20200630")
+                        for (i = 0; i < filterdata.length ; i++) {
+                            if (filterdata[i].date == parseDate) {
+                                value = filterdata[i].value
+                            }
+                        }
+                        svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y2(value) - 65)+")")
+                            .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
+                            .style("fill", "deeppink").text("(AZ, GA are also alarming)");
+                        svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 55)+")")
+                            .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
+                            .style("fill", "deeppink").text("Cases as of June end");
+                    case 'may':
+                        pdate = parseDate("20200530")
+                        for (i = 0; i < filterdata.length ; i++) {
+                            if (filterdata[i].date == parseDate) {
+                                value = filterdata[i].value
+                            }
+                        }
+                        svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y2(value) - 65)+")")
+                            .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
+                            .style("fill", "deeppink").text("(CA, IL, TX, FL cases are alarming)");
+                        svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 55)+")")
+                            .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
+                            .style("fill", "deeppink").text("Cases as of May end");
+                    case 'april':
+                        pdate = parseDate("20200431")
+                        for (i = 0; i < filterdata.length ; i++) {
+                            if (filterdata[i].date == parseDate) {
+                                value = filterdata[i].value
+                            }
+                        }
+                        svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y2(value) - 65)+")")
+                            .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
+                            .style("fill", "deeppink").text("(New York with 300K is 30% of overall count)");
+                        svg_2.append("text").attr("transform", "translate("+(x_2(pdate) + 10)+","+(y_2(value) - 55)+")")
+                            .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
+                            .style("fill", "deeppink").text("Cases as of April end");
+                }
 
                 // Add the line for deaths
                 svg_2.append("path")
@@ -651,13 +672,13 @@
                     .on("mouseover", function() { focus.style("display", null); dfocus.style("display", null);})
                     .on("mouseout", function() { focus.style("display", "none"); dfocus.style("display", "none");})
                     .on("mousemove", mousemove);
-
-                var sorted_data = filterdata
-                sorted_data.sort(function(a, b) {
-                    return a.date - b.date;
-                });
-
                 function mousemove() {
+
+                    var sorted_data = filterdata
+                    sorted_data.sort(function(a, b) {
+                        return a.date - b.date;
+                    });
+
                     var x0 = x_2.invert(d3.mouse(this)[0]),
                         i = bisectDate(sorted_data, x0, 1),
                         d0 = sorted_data[i - 1],
