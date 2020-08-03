@@ -365,7 +365,7 @@
                 "Also few west and midwest states (Like Wyoming, Nebraska, Utah, nevada, Alaska, Hawaii etc) with low population density doesn't seems to be that much affected and they are still Gray color on overall cases map and yellow color on new cases map. " +
                 "Annotations are also used in the charts to represent some fine observation to the audience. </br>" +
                 "<span style='font-size:small; font-weight: bold; color: #aaaaaa'>User Controls:</span><br/>" +
-                "&nbsp;&nbsp;1. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Tooltip </span> -> Hovering over on Map Chart and line chart area will display the tooltip showing case count and other info.<br/>" +
+                "&nbsp;&nbsp;1. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Tooltip </span> -> Hovering over on Map chart and Line chart area will display the tooltip showing case count and other info.<br/>" +
                 "&nbsp;&nbsp;2. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Cross Filter (State selected from Map)</span> -> Clicking a state from the Overall or New Cases maps will bring up state level case counts on the corresponding line charts below respective maps. Use the button on line chart to switch back to country view.<br/>" +
                 "&nbsp;&nbsp;3. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Button (Switch to Country Level)  </span> -> On the Line chart, a button is provided to switch back on United States (country level) data at any point while interacting with state data in that chart.<br/>";
 
@@ -382,7 +382,7 @@
                 "Reopening is continuing with more states reopening during month of June. Because of reopening a surge spike in overall cases wont be surprising on upcoming months. Lets see on next scene how the case counts is affected with almost all states reopoened by June." +
                 "Low populated states seems to be doing better and still not as badly affected as the populated states. Annotations are also used in the charts to represent some fine observation to the audience. </br>" +
                 "<span style='font-size:small; font-weight: bold; color: #aaaaaa'>User Controls:</span><br/>" +
-                "&nbsp;&nbsp;1. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Tooltip </span> -> Hovering over on Map Chart and line chart area will display the tooltip showing case count and other info.<br/>" +
+                "&nbsp;&nbsp;1. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Tooltip </span> -> Hovering over on Map chart and Line chart area will display the tooltip showing case count and other info.<br/>" +
                 "&nbsp;&nbsp;2. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Cross Filter (State selected from Map)</span> -> Clicking a state from the Overall or New Cases maps will bring up state level case counts on the corresponding line charts below respective maps. Use the button on line chart to switch back to country view.<br/>" +
                 "&nbsp;&nbsp;3. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Button (Switch to Country Level)  </span> -> On the Line chart, a button is provided to switch back on United States (country level) data at any point while interacting with state data in that chart.<br/>";
 
@@ -399,7 +399,7 @@
                 "From both the map views (Overall and new rising cases), it seems California, Texas, Florida are still aggressively peaking the spikes. Line Charts for Overall and New cases shows most of states are still rising in cases counts (except few Like New York, New Jersey, Illinois etc) and appears to be continuing for a while. However, Low populated states seems to be doing better and still not as badly affected as the populated states." +
                 " Annotations are also used in the charts to represent some fine observation to the audience. Line charts also show that the States reopening from the lockdoan has also might have played a role of fuel in the surge in case counts during last couple of months (June and July). With this final scene of the interactive slideshow and we will also let the user to further explore data on each slides using the provided user controls. </br>" +
                 "<span style='font-size:small; font-weight: bold; color: #aaaaaa'>User Controls:</span><br/>" +
-                "&nbsp;&nbsp;1. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Tooltip </span> -> Hovering over on Map Chart and line chart area will display the tooltip showing case count and other info.<br/>" +
+                "&nbsp;&nbsp;1. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Tooltip </span> -> Hovering over on Map chart and Line chart area will display the tooltip showing case count and other info.<br/>" +
                 "&nbsp;&nbsp;2. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Cross Filter (State selected from Map)</span> -> Clicking a state from the Overall or New Cases maps will bring up state level case counts on the corresponding line charts below respective maps. Use the button on line chart to switch back to country view.<br/>" +
                 "&nbsp;&nbsp;3. <span class='bold' style='text-decoration: underline; color: #aaaaaa'> Button (Switch to Country Level)  </span> -> On the Line chart, a button is provided to switch back on United States (country level) data at any point while interacting with state data in that chart.<br/>";
 
@@ -1432,7 +1432,7 @@
 
                                         svg_2.append("text").attr("transform", "translate("+(x_3(pdate) + 5)+","+(y_3(value) - 60)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                                            .style("fill", "deeppink").text("Deaths as of May end");
+                                            .style("fill", "deeppink").text("Deaths as of July end");
 
                                     case 'june':
                                         value = ""
@@ -1466,7 +1466,7 @@
 
                                         svg_2.append("text").attr("transform", "translate("+(x_3(pdate) + 5)+","+(y_3(value) - 50)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                                            .style("fill", "deeppink").text("Deaths as of May end");
+                                            .style("fill", "deeppink").text("Deaths as of June end");
                                     case 'may':
                                         value = ""
                                         pdate = parseDate("20200531")
@@ -2775,7 +2775,7 @@
 
                                         svg_4.append("text").attr("transform", "translate("+(x_3(pdate) - 35)+","+(-10)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                                            .style("fill", "deeppink").text("Cases - June end");
+                                            .style("fill", "deeppink").text("Cases - May end");
                                     case 'april':
                                         value = ""
                                         pdate = parseDate("20200430")
@@ -2820,7 +2820,7 @@
 
                                         svg_4.append("text").attr("transform", "translate("+(x_3(pdate) - 35)+","+(-10)+")")
                                             .attr("dy", ".35em").attr("text-anchor", "end").style("font-size", "12px")
-                                            .style("fill", "deeppink").text("Cases - June end");
+                                            .style("fill", "deeppink").text("Cases - Apr end");
                                         break;
                                 }
 
