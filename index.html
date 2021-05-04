@@ -40,7 +40,7 @@
         if (error) {
             throw error;
         }
-
+        console.log(data); 
         xScale.domain(data.map(function(d) { return d.year; }));
         yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
 
