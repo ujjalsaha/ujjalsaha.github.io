@@ -1,5 +1,8 @@
-# URL
-ujjalsaha.github.io
+# Description
+Demonstration of Data Visualization (Narrative Vizualization) using D3.js 
+
+# Demo URL
+http://ujjalsaha.github.io
 
 # Messaging. What is the message you are trying to communicate with the narrative visualization?
 
